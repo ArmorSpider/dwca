@@ -22,3 +22,9 @@ class GoalRoll(object):
             dos = 0
         LOG.debug('GoalRoll has {} DoS'.format(dos))
         return dos
+
+    def get_reverse(self):
+        roll_string = str(self.roll_result)
+        reversed_string = roll_string[::-1]
+        reverse_roll = int(reversed_string)
+        return reverse_roll

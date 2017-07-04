@@ -96,11 +96,21 @@ class Test(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
+    def test_has_stat_thing(self):
+        pass
+
     @given(result=st.integers(min_value=1, max_value=100), target=st.integers(min_value=1, max_value=300))
     def test_get_degrees_of_success_should_work(self, result, target):
         goal_roll = GoalRoll(result, target)
         dos = goal_roll.get_degrees_of_success()
         self.assert_dos_calculation(goal_roll, dos)
+
+    def test_get_reverse_should_reverse_roll_result(self):
+        goal_roll = GoalRoll(21, 100)
+        expected = 12
+
+        actual = goal_roll.get_reverse()
+        self.assertEqual(expected, actual)
 
     def assert_dos_calculation(self, goal_roll, dos):
         _roll_dice = goal_roll.roll_result
