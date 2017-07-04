@@ -1,3 +1,6 @@
 QUALITIES = 'qualitites'
 TRAITS = 'traits'
 TALENTS = 'talents'
+DICE = 'dice'
+PENETRATION = 'penetration'
+DAMAGE = 'flat_damage'

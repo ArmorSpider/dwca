@@ -3,11 +3,10 @@ import unittest
 from hypothesis import strategies as st
 from hypothesis.core import given
 
-from src.entities import QUALITIES, TALENTS, TRAITS
-from src.entities.attack import Attack
-from src.entities.entity import Entity, Character
+from src.entities import QUALITIES, TALENTS, TRAITS, DICE, DAMAGE, PENETRATION
+from src.entities.attack import Attack, Action
+from src.entities.entity import Character
 from src.entities.weapon import Weapon
-from src.goal_roll.goal_roll import GoalRoll
 
 
 class Test(unittest.TestCase):
@@ -17,9 +16,9 @@ class Test(unittest.TestCase):
         self.weapon = Weapon()
         chainsword_definition = {
             "name": 'Astartes Chainsword',
-            "flat_damage": 3,
-            "penetration": 3,
-            "dice": 1,
+            DAMAGE: 5,
+            PENETRATION: 3,
+            DICE: 1,
             QUALITIES: {
                     "balanced": True,
                     "tearing": True
@@ -96,30 +95,61 @@ class Test(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
-    def test_has_stat_thing(self):
-        pass
+    def test_calculate_num_damage_dice_should_use_weapons_num_dice(self):
+        entity = self.space_marine
+        weapon = self.chainsword
+        attack = entity.attack(weapon)
 
-    @given(result=st.integers(min_value=1, max_value=100), target=st.integers(min_value=1, max_value=300))
-    def test_get_degrees_of_success_should_work(self, result, target):
-        goal_roll = GoalRoll(result, target)
-        dos = goal_roll.get_degrees_of_success()
-        self.assert_dos_calculation(goal_roll, dos)
+        expected = 1
+        actual = attack.calculate_num_dice()
 
-    def test_get_reverse_should_reverse_roll_result(self):
-        goal_roll = GoalRoll(21, 100)
-        expected = 12
-
-        actual = goal_roll.get_reverse()
         self.assertEqual(expected, actual)
 
-    def assert_dos_calculation(self, goal_roll, dos):
-        _roll_dice = goal_roll.roll_result
-        target = goal_roll.target
-        diff = target - _roll_dice
+    def test_calculate_penetration_should_use_weapons_penetration(self):
+        entity = self.space_marine
+        weapon = self.chainsword
+        attack = entity.attack(weapon)
+
+        expected = 3
+        actual = attack.calculate_penetration()
+
+        self.assertEqual(expected, actual)
+
+    def test_calculate_flat_damage_should_use_weapons_damage(self):
+        entity = self.space_marine
+        weapon = self.chainsword
+        attack = entity.attack(weapon)
+
+        expected = 5
+        actual = attack.calculate_flat_damage()
+
+        self.assertEqual(expected, actual)
+
+    @given(result=st.integers(min_value=1, max_value=100), roll_target=st.integers(min_value=1, max_value=300))
+    def test_get_degrees_of_success_should_work(self, result, roll_target):
+        action = Action()
+        action.try_action(roll_target, result)
+        dos = action.get_degrees_of_success()
+        self.assert_dos_calculation(action, dos)
+
+    def test_get_reverse_should_reverse_roll_result(self):
+        input_values = [21, 100, 20, 1]
+        expected = [12, 001, 02, 10]
+
+        for input_value, expected_value in zip(input_values, expected):
+            action = Action()
+            action.try_action(100, roll_result=input_value)
+            actual = action.get_reverse()
+            self.assertEqual(expected_value, actual)
+
+    def assert_dos_calculation(self, action, dos):
+        roll_result = action.roll_result
+        roll_target = action.roll_target
+        diff = roll_target - roll_result
         tens = int(diff / 10)
         if tens < 0:
             tens = 0
-        # print 'Roll: {}, Target: {}, Diff:{} , DoS: {}'.format(roll_result, target,
+        # print 'Roll: {}, Target: {}, Diff:{} , DoS: {}'.format(roll_result, roll_target,
         # diff, dos)
         self.assertTrue(dos <= tens)
 
