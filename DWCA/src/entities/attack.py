@@ -13,21 +13,21 @@ class Attack(object):
     def get_attacker(self):
         return self.attacker
 
-    def get_attacker_stat(self, stat_name):
+    def _get_attacker_stat(self, stat_name):
         attacker = self.get_attacker()
         stat = attacker.get_stat(stat_name)
         return stat
 
-    def get_weapon_stat(self, stat_name):
+    def _get_weapon_stat(self, stat_name):
         weapon = self.get_weapon()
         stat = weapon.get_stat(stat_name)
         return stat
 
     def get_weapon_qualities(self):
-        return self.get_weapon_stat(QUALITIES)
+        return self._get_weapon_stat(QUALITIES)
 
     def get_attacker_traits(self):
-        return self.get_attacker_stat(TRAITS)
+        return self._get_attacker_stat(TRAITS)
 
     def get_attacker_talents(self):
-        return self.get_attacker_stat(TALENTS)
+        return self._get_attacker_stat(TALENTS)

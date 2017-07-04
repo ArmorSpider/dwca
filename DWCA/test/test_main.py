@@ -103,13 +103,13 @@ class Test(unittest.TestCase):
         self.assert_dos_calculation(goal_roll, dos)
 
     def assert_dos_calculation(self, goal_roll, dos):
-        _roll_dice = goal_roll._roll_dice
+        _roll_dice = goal_roll.roll_result
         target = goal_roll.target
         diff = target - _roll_dice
         tens = int(diff / 10)
         if tens < 0:
             tens = 0
-        # print 'Roll: {}, Target: {}, Diff:{} , DoS: {}'.format(_roll_dice, target,
+        # print 'Roll: {}, Target: {}, Diff:{} , DoS: {}'.format(roll_result, target,
         # diff, dos)
         self.assertTrue(dos <= tens)
 
