@@ -4,11 +4,13 @@ from hypothesis import strategies as st
 from hypothesis.core import given
 
 from src.entities import QUALITIES, TALENTS, TRAITS, DICE, DAMAGE, PENETRATION,\
-    NAME
+    NAME, ARMOR
 from src.entities.attack import Attack, Action
 from src.entities.entity import Character
 from src.entities.weapon import Weapon
-from src.hit_location import HitLocation, get_hit_location
+from src.hit_location import HitLocation, get_hit_location, HITLOC_ALL,\
+    HITLOC_BODY, RIGHT_ARM, BODY, HEAD, LEFT_ARM, LEFT_LEG, RIGHT_LEG
+from src.hitloc_series import get_hit_locations
 
 
 class Test(unittest.TestCase):
@@ -22,18 +24,21 @@ class Test(unittest.TestCase):
             PENETRATION: 3,
             DICE: 1,
             QUALITIES: {
-                "balanced": True,
-                "tearing": True
+                'balanced': True,
+                'tearing': True
             }
         }
         space_marine_definition = {
             NAME: 'Space Marine',
             TALENTS: {
-                "crushing_blow": True
+                'crushing_blow': True
             },
             TRAITS: {
-                "machine": 5,
-            }
+                'machine': 5,
+            },
+            ARMOR: {HITLOC_ALL: 8,
+                    HITLOC_BODY: 10
+                    }
 
         }
 
@@ -83,7 +88,7 @@ class Test(unittest.TestCase):
         attack = entity.attack(weapon)
 
         expected = {'balanced': True, 'tearing': True}
-        actual = attack.get_weapon_qualities()
+        actual = attack._get_weapon_qualities()
 
         self.assertEqual(expected, actual)
 
@@ -93,7 +98,7 @@ class Test(unittest.TestCase):
         attack = entity.attack(weapon)
 
         expected = {'machine': 5}
-        actual = attack.get_attacker_traits()
+        actual = attack._get_attacker_traits()
 
         self.assertEqual(expected, actual)
 
@@ -103,7 +108,7 @@ class Test(unittest.TestCase):
         attack = entity.attack(weapon)
 
         expected = {'crushing_blow': True}
-        actual = attack.get_attacker_talents()
+        actual = attack._get_attacker_talents()
 
         self.assertEqual(expected, actual)
 
@@ -177,6 +182,30 @@ class Test(unittest.TestCase):
     def test_non_matching_hit_location_should_raise_value_error(self):
         with self.assertRaises(ValueError):
             get_hit_location(125)
+
+    def test_get_hit_locations_for_right_arm_should_match_expectations(self):
+        expected = [RIGHT_ARM, RIGHT_ARM, BODY, HEAD,
+                    BODY,  RIGHT_ARM, RIGHT_ARM, RIGHT_ARM]
+        actual = get_hit_locations(HitLocation.RIGHT_ARM, len(expected))
+        self.assertEqual(expected, actual)
+
+    def test_get_hit_locations_for_left_arm_should_match_expectations(self):
+        expected = [LEFT_ARM, LEFT_ARM, BODY, HEAD,
+                    BODY,  LEFT_ARM, LEFT_ARM, LEFT_ARM]
+        actual = get_hit_locations(HitLocation.LEFT_ARM, len(expected))
+        self.assertEqual(expected, actual)
+
+    def test_get_hit_locations_for_left_leg_should_match_expectations(self):
+        expected = [LEFT_LEG, LEFT_LEG, BODY, LEFT_ARM,
+                    HEAD, BODY, BODY, BODY]
+        actual = get_hit_locations(HitLocation.LEFT_LEG, len(expected))
+        self.assertEqual(expected, actual)
+
+    def test_get_hit_locations_for_right_leg_should_match_expectations(self):
+        expected = [RIGHT_LEG, RIGHT_LEG, BODY, RIGHT_ARM,
+                    HEAD, BODY, BODY, BODY]
+        actual = get_hit_locations(HitLocation.RIGHT_LEG, len(expected))
+        self.assertEqual(expected, actual)
 
     @given(result=st.integers(min_value=1, max_value=100), roll_target=st.integers(min_value=1, max_value=300))
     def test_get_degrees_of_success_should_work(self, result, roll_target):
