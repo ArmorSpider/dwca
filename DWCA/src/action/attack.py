@@ -1,6 +1,6 @@
+from src.action.action import Action
 from src.dwca_log.log import get_log
 from src.entities import TRAITS, TALENTS, QUALITIES, DICE, PENETRATION, DAMAGE
-from src.entities.action import Action
 
 
 LOG = get_log(__name__)
@@ -39,6 +39,34 @@ class Attack(Action):
         # Str bonus if melee
         return flat_damage
 
+    def get_defensive_modifiers(self):
+        modifiers = {}
+        modifiers.update(self._get_target_traits())
+        modifiers.update(self._get_target_talents())
+        return modifiers
+
+    def get_offensive_modifiers(self):
+        modifiers = {}
+        modifiers.update(self._get_weapon_qualities())
+        modifiers.update(self._get_attacker_traits())
+        modifiers.update(self._get_attacker_talents())
+        return modifiers
+
+    def _get_weapon_qualities(self):
+        return self._get_weapon_stat(QUALITIES)
+
+    def _get_attacker_traits(self):
+        return self._get_attacker_stat(TRAITS)
+
+    def _get_attacker_talents(self):
+        return self._get_attacker_stat(TALENTS)
+
+    def _get_target_traits(self):
+        return self._get_target_stat(TRAITS)
+
+    def _get_target_talents(self):
+        return self._get_target_stat(TALENTS)
+
     def _get_target_stat(self, stat_name):
         return self._get_entity_stat(self.get_target(), stat_name)
 
@@ -51,31 +79,3 @@ class Attack(Action):
     def _get_entity_stat(self, entity, stat_name):
         stat = entity.get_stat(stat_name)
         return stat
-
-    def get_defensive_modifiers(self):
-        modifiers = {}
-        modifiers.update(self.get_target_traits())
-        modifiers.update(self.get_target_talents())
-        return modifiers
-
-    def get_offensive_modifiers(self):
-        modifiers = {}
-        modifiers.update(self.get_weapon_qualities())
-        modifiers.update(self.get_attacker_traits())
-        modifiers.update(self.get_attacker_talents())
-        return modifiers
-
-    def get_weapon_qualities(self):
-        return self._get_weapon_stat(QUALITIES)
-
-    def get_attacker_traits(self):
-        return self._get_attacker_stat(TRAITS)
-
-    def get_attacker_talents(self):
-        return self._get_attacker_stat(TALENTS)
-
-    def get_target_traits(self):
-        return self._get_target_stat(TRAITS)
-
-    def get_target_talents(self):
-        return self._get_target_stat(TALENTS)

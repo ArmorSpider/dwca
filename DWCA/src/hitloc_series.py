@@ -1,8 +1,8 @@
 from src.hit_location import HitLocation, HEAD, BODY, LEFT_ARM, RIGHT_ARM,\
     LEFT_LEG, RIGHT_LEG
-from src.iterator_util import build_repeating_iterator, combine_iterators,\
+from src.util.iterator_util import build_repeating_iterator, combine_iterators,\
     extract_list_from_iterable
-from src.rand_util import select_randomly
+from src.util.rand_util import select_randomly
 
 
 RANDOM_ARM = 'RANDOM_ARM'

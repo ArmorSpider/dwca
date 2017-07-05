@@ -5,7 +5,7 @@ from hypothesis.core import given
 
 from src.entities import QUALITIES, TALENTS, TRAITS, DICE, DAMAGE, PENETRATION,\
     NAME, ARMOR
-from src.entities.attack import Attack, Action
+from src.action.attack import Attack, Action
 from src.entities.entity import Character
 from src.entities.weapon import Weapon
 from src.hit_location import HitLocation, get_hit_location, HITLOC_ALL,\
