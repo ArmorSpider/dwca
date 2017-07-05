@@ -65,6 +65,16 @@ class Test(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
+    def test_attack_should_contain_target_if_specified(self):
+        entity = self.entity
+        weapon = self.weapon
+        attack = entity.attack(weapon=weapon, target=entity)
+
+        expected = entity
+        actual = attack.get_target()
+
+        self.assertEqual(expected, actual)
+
     def test_get_qualities_should_return_weapon_qualities(self):
         entity = self.space_marine
         weapon = self.chainsword
@@ -92,6 +102,30 @@ class Test(unittest.TestCase):
 
         expected = {'crushing_blow': True}
         actual = attack.get_attacker_talents()
+
+        self.assertEqual(expected, actual)
+
+    def test_get_offensive_modifiers_should_return_attacker_traits_talents_and_weapon_qualities(self):
+        entity = self.space_marine
+        weapon = self.chainsword
+        attack = entity.attack(weapon)
+
+        expected = {'crushing_blow': True,
+                    'machine': 5,
+                    'balanced': True,
+                    'tearing': True}
+        actual = attack.get_offensive_modifiers()
+
+        self.assertEqual(expected, actual)
+
+    def test_get_defensive_modifiers_should_return_target_traits_and_talents(self):
+        entity = self.space_marine
+        weapon = self.chainsword
+        attack = entity.attack(weapon, target=entity)
+
+        expected = {'crushing_blow': True,
+                    'machine': 5}
+        actual = attack.get_defensive_modifiers()
 
         self.assertEqual(expected, actual)
 

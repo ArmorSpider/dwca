@@ -15,6 +15,7 @@ class Entity(object):
 
 class Character(Entity):
 
-    def attack(self, weapon):
+    def attack(self, weapon, target=None):
         return Attack(weapon=weapon,
-                      attacker=self)
+                      attacker=self,
+                      target=target)
