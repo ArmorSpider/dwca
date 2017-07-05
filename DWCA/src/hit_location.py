@@ -14,3 +14,6 @@ def get_hit_location(reversed_roll):
     for hit_location in list(HitLocation):
         if reversed_roll <= hit_location.value:
             return hit_location
+    else:
+        raise ValueError(
+            '{} is not a supported HitLocation'.format(reversed_roll))

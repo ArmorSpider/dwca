@@ -174,6 +174,10 @@ class Test(unittest.TestCase):
             actual = get_hit_location(input_roll)
             self.assertEqual(expected_location, actual)
 
+    def test_non_matching_hit_location_should_raise_value_error(self):
+        with self.assertRaises(ValueError):
+            get_hit_location(125)
+
     @given(result=st.integers(min_value=1, max_value=100), roll_target=st.integers(min_value=1, max_value=300))
     def test_get_degrees_of_success_should_work(self, result, roll_target):
         action = Action()
