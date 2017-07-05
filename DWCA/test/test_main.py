@@ -3,10 +3,12 @@ import unittest
 from hypothesis import strategies as st
 from hypothesis.core import given
 
-from src.entities import QUALITIES, TALENTS, TRAITS, DICE, DAMAGE, PENETRATION
+from src.entities import QUALITIES, TALENTS, TRAITS, DICE, DAMAGE, PENETRATION,\
+    NAME
 from src.entities.attack import Attack, Action
 from src.entities.entity import Character
 from src.entities.weapon import Weapon
+from src.hit_location import HitLocation, get_hit_location
 
 
 class Test(unittest.TestCase):
@@ -15,19 +17,19 @@ class Test(unittest.TestCase):
         self.entity = Character()
         self.weapon = Weapon()
         chainsword_definition = {
-            "name": 'Astartes Chainsword',
+            NAME: 'Astartes Chainsword',
             DAMAGE: 5,
             PENETRATION: 3,
             DICE: 1,
             QUALITIES: {
-                    "balanced": True,
-                    "tearing": True
+                "balanced": True,
+                "tearing": True
             }
         }
         space_marine_definition = {
-            'name': 'Space Marine',
+            NAME: 'Space Marine',
             TALENTS: {
-                    "crushing_blow": True
+                "crushing_blow": True
             },
             TRAITS: {
                 "machine": 5,
@@ -158,6 +160,19 @@ class Test(unittest.TestCase):
         actual = attack.calculate_flat_damage()
 
         self.assertEqual(expected, actual)
+
+    def test_get_hit_location_should_work(self):
+        input_rolls = [10, 20, 30, 70, 85, 100]
+        expected_locations = [HitLocation.HEAD,
+                              HitLocation.RIGHT_ARM,
+                              HitLocation.LEFT_ARM,
+                              HitLocation.BODY,
+                              HitLocation.RIGHT_LEG,
+                              HitLocation.LEFT_LEG]
+
+        for input_roll, expected_location in zip(input_rolls, expected_locations):
+            actual = get_hit_location(input_roll)
+            self.assertEqual(expected_location, actual)
 
     @given(result=st.integers(min_value=1, max_value=100), roll_target=st.integers(min_value=1, max_value=300))
     def test_get_degrees_of_success_should_work(self, result, roll_target):
