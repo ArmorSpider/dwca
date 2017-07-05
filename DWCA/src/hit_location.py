@@ -1,5 +1,8 @@
 
 from enum import Enum
+from src.dwca_log.log import get_log
+
+LOG = get_log(__name__)
 
 
 class HitLocation(Enum):
@@ -14,6 +17,8 @@ class HitLocation(Enum):
 def get_hit_location(reversed_roll):
     for hit_location in list(HitLocation):
         if reversed_roll <= hit_location.value:
+            LOG.debug(
+                'Hit location for {} is {}'.format(reversed_roll, hit_location))
             return hit_location
     raise ValueError('{} is not a supported HitLocation'.format(reversed_roll))
 

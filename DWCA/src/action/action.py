@@ -1,5 +1,6 @@
 from src.dice import roll_action_dice
 from src.dwca_log.log import get_log
+from src.hit_location import get_hit_location
 LOG = get_log(__name__)
 
 
@@ -39,3 +40,8 @@ class Action(object):
         if len(reversed_string) == 1:
             reversed_string += '0'
         return int(reversed_string)
+
+    def get_hit_location(self):
+        reversed_roll = self.get_reverse()
+        hit_location = get_hit_location(reversed_roll)
+        return hit_location

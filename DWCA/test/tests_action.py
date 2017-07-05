@@ -3,6 +3,8 @@ import unittest
 from hypothesis import strategies as st
 from hypothesis.core import given
 from src.action.action import Action
+from src.hit_location import HEAD, RIGHT_ARM, LEFT_ARM, BODY, LEFT_LEG,\
+    RIGHT_LEG
 
 
 class Test(unittest.TestCase):
@@ -23,6 +25,16 @@ class Test(unittest.TestCase):
             action.try_action(100, roll_result=input_value)
             actual = action.get_reverse()
             self.assertEqual(expected_value, actual)
+
+    def test_get_hit_location_should_get_hit_location_based_on_reversed_roll(self):
+        input_values = [1, 2, 3, 4, 8, 9]
+        expected = [HEAD, RIGHT_ARM, LEFT_ARM, BODY, RIGHT_LEG, LEFT_LEG]
+
+        for input_value, expected_hitloc in zip(input_values, expected):
+            action = Action()
+            action.try_action(roll_target=100, roll_result=input_value)
+            actual = action.get_hit_location()
+            self.assertEqual(expected_hitloc, actual)
 
     def assert_dos_calculation(self, action, dos):
         roll_result = action.roll_result
