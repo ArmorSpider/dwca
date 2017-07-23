@@ -1,59 +1,77 @@
 from collections import namedtuple
 import re
 
-from src.entities import NAME, DICE, DAMAGE, QUALITIES
+from src.entities import NAME, DICE, DAMAGE, QUALITIES, PENETRATION, DAMAGE_TYPE,\
+    WEAPON_CLASS
 from src.util.read_file import pretty_print
 
 
-WEAPON_CLASSES = ['Melee', 'Mounted']
+WEAPON_CLASSES = ['Melee', 'Mounted', 'Basic', 'Heavy', 'Pistol', 'n/a']
 RENOWN_RANKS = ['Famed', 'Distinguished', 'Respected']
 
 
-def hi():
-    with open('C:\\Users\\Dos\'\\Desktop\cool_file.txt') as file_:
-        content = file_.readlines()
-        content = [x.strip() for x in content]
-        content = [x.replace('\u2020', '') for x in content]
-        weapon_lines = []
-        for line in content:
-            if 'd10' in line:
-                clean_line = re.sub(r'([^\s\w\,()+]|_)+', '', line)
-                clean_line = remove_renown_ranks(clean_line)
-                weapon_lines.append(clean_line)
+def read_weapon_lines_file():
+    with open('C:\\Users\\Dos\'\\Desktop\cooler_file.txt') as file_:
+        file_lines = file_.readlines()
+        weapon_lines = extract_weapon_lines(file_lines)
+        pretty_print(weapon_lines)
         weapon_definitions = {}
         for weapon_line in weapon_lines:
-            name, weapon_class = extract_name_and_class(weapon_line)
-            damage_profile = extract_damage_profile(weapon_line)
-            qualities = convert_qualities_list_to_dict(
-                damage_profile.qualities)
-            weapon_def = {
-                NAME: name,
-                'class': weapon_class,
-                DICE: damage_profile.dice,
-                DAMAGE: damage_profile.damage,
-                'damage_type': damage_profile.damage_type,
-                'penetration': damage_profile.penetration,
-                QUALITIES: qualities
-            }
-            internal_name = name.lower().strip().replace(' ', '_')
-
+            print weapon_line
+            weapon_def, internal_name = build_weapon_definition(weapon_line)
             weapon_definitions[internal_name] = weapon_def
         pretty_print(weapon_definitions)
         return weapon_definitions
+
+
+def extract_weapon_lines(file_lines):
+    weapon_lines = []
+    for line in file_lines:
+        if 'd10' in line:
+            clean_line = re.sub(r'([^\s\w\,()+/]|_)+', '', line).strip()
+            clean_line = remove_renown_ranks(clean_line)
+            clean_line = clean_line.replace('Full', '')
+            weapon_lines.append(clean_line)
+    return weapon_lines
+
+
+def build_weapon_definition(weapon_line):
+    print 'Building "{}"'.format(weapon_line)
+    weapon_name, weapon_class = extract_name_and_class(weapon_line)
+    damage_profile = extract_damage_profile(weapon_line)
+    weapon_def = {
+        NAME: weapon_name,
+        WEAPON_CLASS: weapon_class,
+        DICE: damage_profile.dice,
+        DAMAGE: damage_profile.damage,
+        DAMAGE_TYPE: damage_profile.damage_type,
+        PENETRATION: damage_profile.penetration,
+        QUALITIES: damage_profile.qualities
+    }
+    internal_name = extract_internal_name(weapon_name)
+    return weapon_def, internal_name
+
+
+def extract_internal_name(weapon_name):
+    return weapon_name.lower().strip().replace(' ', '_')
 
 
 def extract_damage_profile(weapon_line):
     DamageProfile = namedtuple(
         'DmgProfile', ['dice', 'damage', 'penetration', 'damage_type', 'qualities'])
     matches = re.findall(
-        r'(\d)d10\+*(\d*) ([IREX]) (\d*) ?(\w.*)?(\d|$)', weapon_line)[0]
-    damage_profile = DamageProfile(dice=int(matches[0]),
-                                   damage=int(
-                                       matches[1] if matches[1] != '' else 0),
-                                   damage_type=matches[2],
-                                   penetration=int(matches[
-                                       3] if matches[3] != '' else 0),
-                                   qualities=matches[4].split(','))
+        r'(\d)d10\+*(\d*)\s?([IREX])\s?(\d*)[\W\d]*(\w.*)?(\d|$)', weapon_line)[0]
+    dice = int(matches[0])
+    damage = int(matches[1] if matches[1] != '' else 0)
+    damage_type = matches[2]
+    penetration = int(matches[3] if matches[3] != '' else 0)
+    qualities_list = matches[4].split(',')
+    qualities_dict = convert_qualities_list_to_dict(qualities_list)
+    damage_profile = DamageProfile(dice=dice,
+                                   damage=damage,
+                                   damage_type=damage_type,
+                                   penetration=penetration,
+                                   qualities=qualities_dict)
     return damage_profile
 
 

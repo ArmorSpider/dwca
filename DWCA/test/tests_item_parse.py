@@ -4,14 +4,14 @@ Created on 7 Jul 2017
 @author: Dos'
 '''
 import unittest
-from src.item_parse import hi
+from src.item_parse import read_weapon_lines_file
 
 
 class Test(unittest.TestCase):
 
-    def testName(self):
+    def DISABLED_testName(self):
         expected = self.cool_dict
-        actual = hi()
+        actual = read_weapon_lines_file()
 
         self.assertEqual(expected, actual)
 
