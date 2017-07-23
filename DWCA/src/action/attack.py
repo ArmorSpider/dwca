@@ -1,4 +1,5 @@
 from src.action.action import Action
+from src.modifiers.modifier import get_modifier
 from src.dwca_log.log import get_log
 from src.entities import TRAITS, TALENTS, QUALITIES, DICE, PENETRATION, DAMAGE
 
@@ -22,58 +23,67 @@ class Attack(Action):
     def get_target(self):
         return self.target
 
+    def offensive_modifiers(self):
+        modifiers = self._combine_offensive_modifiers()
+        modifiers_iterator = self._get_modifiers_iterator(modifiers)
+        return modifiers_iterator
+
+    def defensive_modifiers(self):
+        modifiers = self._combine_defensive_modifiers()
+        modifiers_iterator = self._get_modifiers_iterator(modifiers)
+        return modifiers_iterator
+
+    def _get_modifiers_iterator(self, modifiers_dict):
+        for modifier_name in modifiers_dict:
+            modifier = get_modifier(modifier_name)
+            if modifier is not None:
+                yield modifier
+
     def calculate_num_dice(self):
-        num_dice = self._get_weapon_stat(DICE)
+        num_dice = self.get_weapon_stat(DICE)
         # TODO: Calculate modifiers!
         return num_dice
 
     def calculate_penetration(self):
-        penetration = self._get_weapon_stat(PENETRATION)
-        # TODO: Calculate modifiers!
-        # razor sharp
+        penetration = self.get_weapon_stat(PENETRATION)
+        for modifier in self.offensive_modifiers():
+            penetration = modifier.modify_penetration(self, penetration)
         return penetration
 
     def calculate_flat_damage(self):
-        flat_damage = self._get_weapon_stat(DAMAGE)
-        # TODO: Calculate modifiers!
-        # Str bonus if melee
+        flat_damage = self.get_weapon_stat(DAMAGE)
+        for modifier in self.offensive_modifiers():
+            flat_damage = modifier.modify_damage(self, flat_damage)
+        LOG.debug('Flat damage is {}'.format(flat_damage))
         return flat_damage
 
-    def get_defensive_modifiers(self):
+    def _combine_defensive_modifiers(self):
+        LOG.debug('Getting  modifiers.')
         modifiers = {}
-        modifiers.update(self._get_target_traits())
-        modifiers.update(self._get_target_talents())
+        modifiers.update(self.get_target_stat(TRAITS))
+        modifiers.update(self.get_target_stat(TALENTS))
+        LOG.debug('Found {} defensive modifiers.'.format(len(modifiers)))
         return modifiers
 
-    def get_offensive_modifiers(self):
+    def _combine_offensive_modifiers(self):
+        LOG.debug('Getting offensive modifiers.')
         modifiers = {}
-        modifiers.update(self._get_weapon_qualities())
-        modifiers.update(self._get_attacker_traits())
-        modifiers.update(self._get_attacker_talents())
+        modifiers.update(self.get_weapon_stat(QUALITIES))
+        modifiers.update(self.get_attacker_stat(TRAITS))
+        modifiers.update(self.get_attacker_stat(TALENTS))
+        LOG.debug('Found {} offensive modifiers.'.format(len(modifiers)))
         return modifiers
 
-    def _get_weapon_qualities(self):
-        return self._get_weapon_stat(QUALITIES)
+    def is_melee(self):
+        return False
 
-    def _get_attacker_traits(self):
-        return self._get_attacker_stat(TRAITS)
-
-    def _get_attacker_talents(self):
-        return self._get_attacker_stat(TALENTS)
-
-    def _get_target_traits(self):
-        return self._get_target_stat(TRAITS)
-
-    def _get_target_talents(self):
-        return self._get_target_stat(TALENTS)
-
-    def _get_target_stat(self, stat_name):
+    def get_target_stat(self, stat_name):
         return self._get_entity_stat(self.get_target(), stat_name)
 
-    def _get_attacker_stat(self, stat_name):
+    def get_attacker_stat(self, stat_name):
         return self._get_entity_stat(self.get_attacker(), stat_name)
 
-    def _get_weapon_stat(self, stat_name):
+    def get_weapon_stat(self, stat_name):
         return self._get_entity_stat(self.get_weapon(), stat_name)
 
     def _get_entity_stat(self, entity, stat_name):

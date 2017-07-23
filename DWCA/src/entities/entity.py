@@ -1,4 +1,6 @@
-from src.action.attack import Attack
+from src.dwca_log.log import get_log
+
+LOG = get_log(__name__)
 
 
 class Entity(object):
@@ -10,12 +12,7 @@ class Entity(object):
         return self.definition
 
     def get_stat(self, stat_name):
-        return self.get_definition().get(stat_name)
-
-
-class Character(Entity):
-
-    def attack(self, weapon, target=None):
-        return Attack(weapon=weapon,
-                      attacker=self,
-                      target=target)
+        LOG.debug('Getting stat "{}"'.format(stat_name))
+        result = self.get_definition().get(stat_name)
+        LOG.debug('{} = {}'.format(stat_name, result))
+        return result
