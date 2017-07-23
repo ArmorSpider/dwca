@@ -1,0 +1,5 @@
+auran_genestealer:
+  characteristics: {weapon_skill: 65, strength: 60, toughness: 60}
+  armor: {all: 6}
+  traits: {unnatural_strength: 2, unnatural_agility: 3, dark_sight: True, fear: 2, improved_natural_weapons: True, multiple_arms: True, tyranid: True}
+  talents: {ambidextrous: True, crushing_blow: True, fearless: True, hard_target: True, leap_up: True, lightning_attack: True, swift_attacK: True, lightning_reflexes: True, preternatural_speed: True, step_aside: True}

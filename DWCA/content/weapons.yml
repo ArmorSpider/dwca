@@ -1,0 +1,192 @@
+astartes_chainfist:
+  class: Mounted
+  damage_type: E
+  dice: '2'
+  flat_damage: 0
+  name: Astartes Chainfist
+  penetration: '10'
+  qualities: {power field: true, tearing: true, unwieldy: true}
+astartes_chainsword:
+  class: Melee
+  damage_type: R
+  dice: '1'
+  flat_damage: '3'
+  name: Astartes Chainsword
+  penetration: '3'
+  qualities: {balanced: true, tearing: true}
+astartes_combat_knife:
+  class: Melee
+  damage_type: R
+  dice: '1'
+  flat_damage: 0
+  name: Astartes Combat Knife
+  penetration: 0
+  qualities: {}
+astartes_executioner_axe:
+  class: Melee
+  damage_type: E
+  dice: '1'
+  flat_damage: '13'
+  name: Astartes Executioner Axe
+  penetration: '8'
+  qualities: {felling: 1, power field: true, unwieldy: true}
+astartes_force_staff:
+  class: Melee
+  damage_type: I
+  dice: '1'
+  flat_damage: '1'
+  name: Astartes Force Staff
+  penetration: '0'
+  qualities: {balanced: true, special: true}
+astartes_force_sword:
+  class: Melee
+  damage_type: R
+  dice: '1'
+  flat_damage: '2'
+  name: Astartes Force Sword 
+  penetration: '2'
+  qualities: {balanced: true, special: true}
+astartes_lightning_claw:
+  class: Melee
+  damage_type: E
+  dice: '1'
+  flat_damage: '6'
+  name: Astartes Lightning Claw
+  penetration: '8'
+  qualities: {power field: true, proven: 4}
+astartes_power_axe:
+  class: Melee
+  damage_type: E
+  dice: '1'
+  flat_damage: '8'
+  name: Astartes Power Axe
+  penetration: '7'
+  qualities: {power field: true, unbalanced: true}
+astartes_power_claymore:
+  class: Melee
+  damage_type: E
+  dice: '1'
+  flat_damage: '11'
+  name: Astartes Power Claymore
+  penetration: '8'
+  qualities: {devastating: 1, power field: true, unwieldy: true}
+astartes_power_falchion:
+  class: Melee
+  damage_type: E
+  dice: '1'
+  flat_damage: '4'
+  name: Astartes Power Falchion
+  penetration: '6'
+  qualities: {power field: true, razor sharp: true}
+astartes_power_fist:
+  class: Melee
+  damage_type: E
+  dice: '2'
+  flat_damage: 0
+  name: Astartes Power Fist
+  penetration: '9'
+  qualities: {power field: true, unwieldy: true}
+astartes_power_spear:
+  class: Melee
+  damage_type: E
+  dice: '1'
+  flat_damage: '6'
+  name: Astartes Power Spear
+  penetration: '7'
+  qualities: {power field: true}
+astartes_power_sword:
+  class: Melee
+  damage_type: E
+  dice: '1'
+  flat_damage: '6'
+  name: Astartes Power Sword
+  penetration: '6'
+  qualities: {balanced: true, power field: true}
+astartes_thunder_hammer:
+  class: Melee
+  damage_type: E
+  dice: '2'
+  flat_damage: '5'
+  name: Astartes Thunder Hammer
+  penetration: '9'
+  qualities: {concussive: true, power field: true, unwieldy: true}
+bonesword:
+  class: Melee
+  damage_type: R
+  dice: '1'
+  flat_damage: 0
+  name: Bonesword
+  penetration: '6'
+  qualities: {drain life: true}
+breaching_augur:
+  class: Melee
+  damage_type: R
+  dice: '2'
+  flat_damage: '11'
+  name: Breaching Augur
+  penetration: '7'
+  qualities: {power field: true, tearing: true, unwieldy: true}
+bulkhead_shears:
+  class: Melee
+  damage_type: R
+  dice: '2'
+  flat_damage: '13'
+  name: Bulkhead Shears
+  penetration: '6'
+  qualities: {tearing: true, unwieldy: true}
+ceremonial_sword:
+  class: Melee
+  damage_type: R
+  dice: '1'
+  flat_damage: '3'
+  name: Ceremonial Sword
+  penetration: '2'
+  qualities: {balanced: true}
+crozius_arcanum:
+  class: Melee
+  damage_type: E
+  dice: '1'
+  flat_damage: '7'
+  name: Crozius Arcanum
+  penetration: '7'
+  qualities: {balanced: true, power field: true}
+lash_whip:
+  class: Melee
+  damage_type: R
+  dice: '1'
+  flat_damage: '3'
+  name: Lash Whip
+  penetration: '3'
+  qualities: {flexible: true, snare: true}
+omnissian_axe_(astartespattern):
+  class: Melee
+  damage_type: E
+  dice: '1'
+  flat_damage: '11'
+  name: Omnissian Axe (AstartesPattern)
+  penetration: '6'
+  qualities: {power field: true, unbalanced: true}
+rending_claws:
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Rending Claws
+  penetration: 5
+  qualities: {razor_sharp: true}
+sacris_claymore:
+  class: Melee
+  damage_type: R
+  dice: '2'
+  flat_damage: '2'
+  name: Sacris Claymore
+  penetration: '2'
+  qualities: {unbalanced: true}
+scything_talons:
+  class: Melee
+  damage_type: R
+  dice: '1'
+  flat_damage: '2'
+  name: Scything Talons
+  penetration: '3'
+  qualities: {}
