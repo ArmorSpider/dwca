@@ -7,7 +7,7 @@ import unittest
 
 from src.action.attack import Attack
 from src.entities import NAME, DAMAGE, PENETRATION, DICE, QUALITIES, TALENTS,\
-    TRAITS, ARMOR
+    TRAITS, ARMOR, CHARACTERISTICS
 from src.entities.character import Character
 from src.entities.weapon import Weapon
 from src.hit_location import HITLOC_ALL, HITLOC_BODY
@@ -30,6 +30,7 @@ class Test(unittest.TestCase):
         }
         space_marine_definition = {
             NAME: 'Space Marine',
+            CHARACTERISTICS: {},
             TALENTS: {
                 'crushing_blow': True
             },
@@ -88,7 +89,7 @@ class Test(unittest.TestCase):
         melee_attack = entity.melee_attack(weapon)
 
         expected = {'balanced': True, 'tearing': True}
-        actual = melee_attack._get_weapon_qualities()
+        actual = melee_attack.get_weapon_stat(QUALITIES)
 
         self.assertEqual(expected, actual)
 
@@ -98,7 +99,7 @@ class Test(unittest.TestCase):
         melee_attack = entity.melee_attack(weapon)
 
         expected = {'machine': 5}
-        actual = melee_attack._get_attacker_traits()
+        actual = melee_attack.get_attacker_stat(TRAITS)
 
         self.assertEqual(expected, actual)
 
@@ -108,7 +109,7 @@ class Test(unittest.TestCase):
         melee_attack = entity.melee_attack(weapon)
 
         expected = {'crushing_blow': True}
-        actual = melee_attack._get_attacker_talents()
+        actual = melee_attack.get_attacker_stat(TALENTS)
 
         self.assertEqual(expected, actual)
 
