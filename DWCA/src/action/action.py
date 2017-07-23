@@ -1,11 +1,10 @@
 from src.dice import roll_action_dice
 from src.dwca_log.log import get_log
 from src.hit_location import get_hit_location
+from src.util.rand_util import get_tens
+from src.util.string_util import reverse_string
+
 LOG = get_log(__name__)
-
-
-def reverse_string(string_):
-    return string_[::-1]
 
 
 class Action(object):
@@ -28,7 +27,7 @@ class Action(object):
 
     def get_degrees_of_success(self):
         if self.is_successfull() is True:
-            dos = int((self.roll_target - self.roll_result) / 10)
+            dos = get_tens(self.roll_target - self.roll_result)
         else:
             dos = 0
         LOG.debug('Action has {} DoS'.format(dos))
