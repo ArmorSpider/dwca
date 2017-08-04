@@ -1,8 +1,6 @@
-'''
-Created on 5 Jul 2017
 
-@author: Dos'
-'''
+# pylint: skip-file
+
 import unittest
 
 from src.action.attack import Attack
@@ -126,24 +124,13 @@ class Test(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
-    def test_get_defensive_modifiers_should_return_target_traits_and_talents(self):
-        entity = self.space_marine
-        weapon = self.chainsword
-        melee_attack = entity.melee_attack(weapon, target=entity)
-
-        expected = {'crushing_blow': True,
-                    'machine': 5}
-        actual = melee_attack._combine_defensive_modifiers()
-
-        self.assertEqual(expected, actual)
-
     def test_calculate_num_damage_dice_should_use_weapons_num_dice(self):
         entity = self.space_marine
         weapon = self.chainsword
         melee_attack = entity.melee_attack(weapon)
 
         expected = 1
-        actual = melee_attack.calculate_num_dice()
+        actual = melee_attack._calculate_num_dice()
 
         self.assertEqual(expected, actual)
 
@@ -153,7 +140,7 @@ class Test(unittest.TestCase):
         melee_attack = entity.melee_attack(weapon)
 
         expected = 3
-        actual = melee_attack.calculate_penetration()
+        actual = melee_attack._calculate_penetration()
 
         self.assertEqual(expected, actual)
 
@@ -163,6 +150,6 @@ class Test(unittest.TestCase):
         melee_attack = entity.melee_attack(weapon)
 
         expected = 5
-        actual = melee_attack.calculate_flat_damage()
+        actual = melee_attack._calculate_flat_damage()
 
         self.assertEqual(expected, actual)

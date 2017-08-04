@@ -1,3 +1,4 @@
+from src.entities import QUALITIES
 from src.entities.entity import Entity
 from src.util.read_file import read_weapon
 
@@ -13,3 +14,8 @@ class Weapon(Entity):
     def is_melee(self):
         weapon_class = self.get_stat('class')
         return weapon_class.lower() == 'melee'
+
+    def has_quality(self, quality_name):
+        qualities = self.get_stat(QUALITIES)
+        quality_value = qualities.get(quality_name)
+        return quality_value

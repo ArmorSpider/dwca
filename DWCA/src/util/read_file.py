@@ -1,14 +1,9 @@
-import json
 import os
 
 import yaml
 
 
 CONTENT_PATH = r'C:\Git\DWCA\DWCA\content'
-
-
-def pretty_print(dict_):
-    print json.dumps(dict_, indent=4)
 
 
 def read_file(file_path):
@@ -22,7 +17,6 @@ def read_weapon(weapon_name):
     weapon_library = read_file(file_path)
     try:
         weapon_definition = weapon_library[weapon_name]
-        # pretty_print(weapon_definition)
         return weapon_definition
     except KeyError:
         print '"{}" not available.'.format(weapon_name)
@@ -33,7 +27,6 @@ def read_character(character_name):
     character_library = read_file(file_path)
     try:
         character_definition = character_library[character_name]
-        # pretty_print(character_definition)
         return character_definition
     except KeyError:
         print '"{}" not available.'.format(character_name)

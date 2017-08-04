@@ -9,10 +9,10 @@ astartes_chainfist:
 astartes_chainsword:
   class: Melee
   damage_type: R
-  dice: '1'
-  flat_damage: '3'
+  dice: 1
+  flat_damage: 3
   name: Astartes Chainsword
-  penetration: '3'
+  penetration: 3
   qualities: {balanced: true, tearing: true}
 astartes_combat_knife:
   class: Melee

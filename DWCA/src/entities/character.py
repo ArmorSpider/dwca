@@ -1,7 +1,8 @@
 from src.action.melee_attack import MeleeAttack
 from src.dwca_log.log import get_log
-from src.entities import ARMOR, CHARACTERISTICS, TRAITS
+from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES
 from src.entities.entity import Entity
+from src.entities.species import is_alien_species
 from src.hit_location import HITLOC_ALL
 from src.util.rand_util import get_tens
 from src.util.read_file import read_character
@@ -22,9 +23,16 @@ def get_char(char_name):
 class Character(Entity):
 
     def melee_attack(self, weapon, target=None):
+        LOG.info('%s attacks %s with a(n) %s.', self, target, weapon)
         return MeleeAttack(weapon=weapon,
                            attacker=self,
                            target=target)
+
+    def _get_species(self):
+        return self.get_stat(SPECIES, 'N/A')
+
+    def is_alien(self):
+        return is_alien_species(self._get_species())
 
     def get_armor(self, hit_location):
         armor_dict = self._get_armor_definition()
@@ -53,11 +61,18 @@ class Character(Entity):
         final_bonus = characteristic_bonus * characteristic_multiplier
         return final_bonus
 
+    def has_talent(self, talent_name):
+        talents = self.get_stat(TALENTS)
+        talent_value = talents.get(talent_name)
+        LOG.debug(
+            'Found value "%s" for talent "%s"', talent_value, talent_name)
+        return talent_value
+
     def get_trait(self, trait_name):
         traits = self.get_stat(TRAITS)
         trait_value = traits.get(trait_name)
         LOG.debug(
-            'Found value "{}" for trait "{}"'.format(trait_value, trait_name))
+            'Found value "%s" for trait "%s"', trait_value, trait_name)
         return trait_value
 
     def get_characteristic_multiplier(self, characteristic):

@@ -1,7 +1,7 @@
 import logging
 import sys
 
-DEFAULT_CONSOLE_LOG_LEVEL = logging.DEBUG
+DEFAULT_CONSOLE_LOG_LEVEL = logging.INFO
 
 
 def get_log(log_name):

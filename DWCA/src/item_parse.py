@@ -3,7 +3,7 @@ import re
 
 from src.entities import NAME, DICE, DAMAGE, QUALITIES, PENETRATION, DAMAGE_TYPE,\
     WEAPON_CLASS
-from src.util.read_file import pretty_print
+from src.util.dict_util import pretty_print
 
 
 WEAPON_CLASSES = ['Melee', 'Mounted', 'Basic', 'Heavy', 'Pistol', 'n/a']

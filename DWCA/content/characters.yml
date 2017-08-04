@@ -1,5 +1,28 @@
 auran_genestealer:
-  characteristics: {weapon_skill: 65, strength: 60, toughness: 60}
+  name: Auran Genestealer
   armor: {all: 6}
-  traits: {unnatural_strength: 2, unnatural_agility: 3, dark_sight: True, fear: 2, improved_natural_weapons: True, multiple_arms: True, tyranid: True}
-  talents: {ambidextrous: True, crushing_blow: True, fearless: True, hard_target: True, leap_up: True, lightning_attack: True, swift_attacK: True, lightning_reflexes: True, preternatural_speed: True, step_aside: True}
+  species: tyranid
+  characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, hard_target: true,
+    leap_up: true, lightning_attack: true, lightning_reflexes: true, preternatural_speed: true,
+    step_aside: true, swift_attacK: true}
+  traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
+    tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
+john_bobb:
+  name: John-Bobb
+  species: human
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
+  talents: {flesh_render: true, deathwatch_training: true, ambidextrous: true, astartes_weapon_training: true, bulging_biceps: true,
+    heightened_hearing: true, heightened_sight: true, killing_strike: true, nerves_of_steel: true,
+    quick_draw: true, resistance_psychic: true, unarmed_master: true}
+  traits: {unnatural_strength : 2, unnatural_toughness: 2}
+bohn_jobb:
+  name: Bohn-Jobb
+  species: human
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
+  talents: {flesh_render: true, touched_by_the_fates: true, ambidextrous: true, astartes_weapon_training: true, bulging_biceps: true,
+    heightened_hearing: true, heightened_sight: true, killing_strike: true, nerves_of_steel: true,
+    quick_draw: true, resistance_psychic: true, unarmed_master: true}
+  traits: {unnatural_strength : 2, unnatural_toughness: 2}
