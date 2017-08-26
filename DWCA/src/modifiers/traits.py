@@ -26,3 +26,18 @@ class Overwhelming(Modifier):
             if attacker.get_magnitude() >= 20:
                 current_num_dice += 1
         return current_num_dice
+
+
+class FireDrill(Modifier):
+
+    name = 'fire_drill'
+
+
+class TouchedByTheFates(Modifier):
+
+    name = 'touched_by_the_fates'
+
+
+class MultipleArms(Modifier):
+
+    name = 'multiple_arms'

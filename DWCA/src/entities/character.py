@@ -7,6 +7,9 @@ from src.entities.char_stats import STAT_TGH
 from src.entities.entity import Entity
 from src.entities.species import is_alien_species
 from src.hit_location import HITLOC_ALL
+from src.modifiers.qualities import Felling, Toxic
+from src.modifiers.talents import SwiftAttack, LightningAttack
+from src.modifiers.traits import MultipleArms
 from src.util.rand_util import get_tens
 from src.util.read_file import read_character
 
@@ -31,27 +34,44 @@ class Character(Entity):
         effective_damage = hit.calculate_effective_damage(armor, toughness)
         LOG.info('%s was hit in %s for %s damage.', self,
                  hit.hit_location, effective_damage)
+        Toxic.handle_toxic(attack, effective_damage)
         return effective_damage
 
     def _get_effective_toughness_bonus(self, attack):
-        felling_value = attack.get_weapon().get_quality('felling', 0)
+        felling_value = attack.get_weapon().get_quality(Felling.name, 0)
         toughness = self.get_characteristic_bonus(
             STAT_TGH, multiplier_penalty=felling_value)
         return toughness
 
+    def get_num_melee_attacks(self):
+        num_attacks = 1
+        if self.get_talent(SwiftAttack.name) is not None:
+            num_attacks += 1
+        if self.get_talent(LightningAttack.name) is not None:
+            num_attacks += 1
+        if self.get_trait(MultipleArms.name) is not None:
+            num_attacks += 1
+        LOG.info('%s can make %s melee attacks.', self, num_attacks)
+        return num_attacks
+
+    def get_num_ranged_attacks(self):
+        num_attacks = 1
+        LOG.info('%s can make %s ranged attacks.', self, num_attacks)
+        return num_attacks
+
     def attack(self, weapon, target=None, firemode=SINGLE_SHOT):
         if weapon.is_melee():
-            return self.melee_attack(weapon, target)
+            return self._melee_attack(weapon, target)
         else:
-            return self.ranged_attack(weapon, target, firemode)
+            return self._ranged_attack(weapon, target, firemode)
 
-    def melee_attack(self, weapon, target=None):
+    def _melee_attack(self, weapon, target=None):
         LOG.info('%s attacks %s with a(n) %s.', self, target, weapon)
         return MeleeAttack(weapon=weapon,
                            attacker=self,
                            target=target)
 
-    def ranged_attack(self, weapon, target=None, firemode=SINGLE_SHOT):
+    def _ranged_attack(self, weapon, target=None, firemode=SINGLE_SHOT):
         LOG.info('%s attacks %s with a(n) %s.', self, target, weapon)
         return RangedAttack(weapon=weapon,
                             attacker=self,
@@ -72,10 +92,10 @@ class Character(Entity):
         return armor
 
     def _get_armor_definition(self):
-        return self.get_stat(ARMOR)
+        return self.get_stat(ARMOR, default={})
 
     def _get_characteristics(self):
-        return self.get_stat(CHARACTERISTICS)
+        return self.get_stat(CHARACTERISTICS, default={})
 
     def get_characteristic(self, characteristic):
         char_stats = self._get_characteristics()
@@ -91,15 +111,15 @@ class Character(Entity):
         final_bonus = characteristic_bonus * characteristic_multiplier
         return final_bonus
 
-    def has_talent(self, talent_name):
-        talents = self.get_stat(TALENTS)
+    def get_talent(self, talent_name):
+        talents = self.get_stat(TALENTS, default={})
         talent_value = talents.get(talent_name)
         LOG.debug(
             'Found value "%s" for talent "%s"', talent_value, talent_name)
         return talent_value
 
     def get_trait(self, trait_name):
-        traits = self.get_stat(TRAITS)
+        traits = self.get_stat(TRAITS, default={})
         trait_value = traits.get(trait_name)
         LOG.debug(
             'Found value "%s" for trait "%s"', trait_value, trait_name)

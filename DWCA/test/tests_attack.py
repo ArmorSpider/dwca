@@ -47,109 +47,109 @@ class Test(unittest.TestCase):
     def test_attacking_should_return_an_attack(self):
         entity = self.entity
         weapon = self.weapon
-        melee_attack = entity.melee_attack(weapon)
+        _melee_attack = entity._melee_attack(weapon)
 
-        self.assertIsInstance(melee_attack, Attack)
+        self.assertIsInstance(_melee_attack, Attack)
 
     def test_attack_should_contain_weapon(self):
         entity = self.entity
         weapon = self.chainsword
-        melee_attack = entity.melee_attack(weapon)
+        _melee_attack = entity._melee_attack(weapon)
 
         expected = weapon
-        actual = melee_attack.get_weapon()
+        actual = _melee_attack.get_weapon()
 
         self.assertEqual(expected, actual)
 
     def test_attack_should_contain_attacker(self):
         entity = self.entity
         weapon = self.weapon
-        melee_attack = entity.melee_attack(weapon=weapon)
+        _melee_attack = entity._melee_attack(weapon=weapon)
 
         expected = entity
-        actual = melee_attack.get_attacker()
+        actual = _melee_attack.get_attacker()
 
         self.assertEqual(expected, actual)
 
     def test_attack_should_contain_target_if_specified(self):
         entity = self.entity
         weapon = self.weapon
-        melee_attack = entity.melee_attack(weapon=weapon, target=entity)
+        _melee_attack = entity._melee_attack(weapon=weapon, target=entity)
 
         expected = entity
-        actual = melee_attack.get_target()
+        actual = _melee_attack.get_target()
 
         self.assertEqual(expected, actual)
 
     def test_get_qualities_should_return_weapon_qualities(self):
         entity = self.space_marine
         weapon = self.chainsword
-        melee_attack = entity.melee_attack(weapon)
+        _melee_attack = entity._melee_attack(weapon)
 
         expected = {'balanced': True, 'tearing': True}
-        actual = melee_attack.get_weapon_stat(QUALITIES)
+        actual = _melee_attack.get_weapon_stat(QUALITIES)
 
         self.assertEqual(expected, actual)
 
     def test_get_attacker_traits_should_return_attacker_traits(self):
         entity = self.space_marine
         weapon = self.chainsword
-        melee_attack = entity.melee_attack(weapon)
+        _melee_attack = entity._melee_attack(weapon)
 
         expected = {'machine': 5}
-        actual = melee_attack.get_attacker_stat(TRAITS)
+        actual = _melee_attack.get_attacker_stat(TRAITS)
 
         self.assertEqual(expected, actual)
 
     def test_get_attacker_talents_should_return_attacker_talents(self):
         entity = self.space_marine
         weapon = self.chainsword
-        melee_attack = entity.melee_attack(weapon)
+        _melee_attack = entity._melee_attack(weapon)
 
         expected = {'crushing_blow': True}
-        actual = melee_attack.get_attacker_stat(TALENTS)
+        actual = _melee_attack.get_attacker_stat(TALENTS)
 
         self.assertEqual(expected, actual)
 
     def test_get_offensive_modifiers_should_return_attacker_traits_talents_and_weapon_qualities(self):
         entity = self.space_marine
         weapon = self.chainsword
-        melee_attack = entity.melee_attack(weapon)
+        _melee_attack = entity._melee_attack(weapon)
 
         expected = {'crushing_blow': True,
                     'machine': 5,
                     'balanced': True,
                     'tearing': True}
-        actual = melee_attack._combine_offensive_modifiers()
+        actual = _melee_attack._combine_offensive_modifiers()
 
         self.assertEqual(expected, actual)
 
     def test_calculate_num_damage_dice_should_use_weapons_num_dice(self):
         entity = self.space_marine
         weapon = self.chainsword
-        melee_attack = entity.melee_attack(weapon)
+        _melee_attack = entity._melee_attack(weapon)
 
         expected = 1
-        actual = melee_attack._calculate_num_dice()
+        actual = _melee_attack._calculate_num_dice()
 
         self.assertEqual(expected, actual)
 
     def test_calculate_penetration_should_use_weapons_penetration(self):
         entity = self.space_marine
         weapon = self.chainsword
-        melee_attack = entity.melee_attack(weapon)
+        _melee_attack = entity._melee_attack(weapon)
 
         expected = 3
-        actual = melee_attack._calculate_penetration()
+        actual = _melee_attack._calculate_penetration()
 
         self.assertEqual(expected, actual)
 
     def test_calculate_flat_damage_should_use_weapons_damage(self):
         entity = self.space_marine
         weapon = self.chainsword
-        melee_attack = entity.melee_attack(weapon)
+        _melee_attack = entity._melee_attack(weapon)
 
         expected = 5
-        actual = melee_attack._calculate_flat_damage()
+        actual = _melee_attack._calculate_flat_damage()
 
         self.assertEqual(expected, actual)

@@ -25,6 +25,7 @@ class Attack(Action):
 
     def hits_generator(self):
         num_hits = self._get_num_hits()
+        LOG.info('Attack scored %s hits.', num_hits)
         hit_locations = get_hit_locations(self.get_hit_location(), num_hits)
         for hit_location in hit_locations:
             hit = Hit(hit_location=hit_location,
@@ -99,7 +100,7 @@ class Attack(Action):
         return modifiers_iterator
 
     def _calculate_num_dice(self):
-        num_dice = self.get_weapon_stat(DICE)
+        num_dice = self.get_weapon_stat(DICE, default=1)
         for modifier in self._offensive_modifiers():
             num_dice = modifier.modify_num_dice(self, num_dice)
         return num_dice
@@ -111,23 +112,22 @@ class Attack(Action):
         return tearing_dice
 
     def _calculate_penetration(self):
-        penetration = self.get_weapon_stat(PENETRATION)
+        penetration = self.get_weapon_stat(PENETRATION, default=0)
         for modifier in self._offensive_modifiers():
             penetration = modifier.modify_penetration(self, penetration)
         return penetration
 
     def _calculate_flat_damage(self):
-        flat_damage = self.get_weapon_stat(DAMAGE)
+        flat_damage = self.get_weapon_stat(DAMAGE, default=0)
         for modifier in self._offensive_modifiers():
             flat_damage = modifier.modify_damage(self, flat_damage)
         return flat_damage
 
     def _calculate_num_hits(self):
-        if self.is_successfull() is False:
-            return 0
-        else:
-            num_hits = 1
-            return num_hits
+        num_hits = 1
+        for modifier in self._offensive_modifiers():
+            num_hits = modifier.modify_num_hits(self, num_hits)
+        return num_hits
 
     def _roll_raw_damage(self):
         real_dice = self._get_num_dice()
@@ -151,20 +151,30 @@ class Attack(Action):
     def _combine_offensive_modifiers(self):
         LOG.debug('Getting offensive modifiers.')
         modifiers = {}
-        modifiers.update(self.get_weapon_stat(QUALITIES))
-        modifiers.update(self.get_attacker_stat(TRAITS))
-        modifiers.update(self.get_attacker_stat(TALENTS))
+        modifiers.update(self.get_weapon_stat(QUALITIES, default={}))
+        modifiers.update(self.get_attacker_stat(TRAITS, default={}))
+        modifiers.update(self.get_attacker_stat(TALENTS, default={}))
         LOG.debug('Found %s offensive modifiers.', len(modifiers))
         return modifiers
 
     def is_melee(self):
         return self.get_weapon().is_melee()
 
-    def get_target_stat(self, stat_name):
-        return self.get_target().get_stat(stat_name)
+    def is_ranged(self):
+        return self.get_weapon().is_melee() is not True
 
-    def get_attacker_stat(self, stat_name):
-        return self.get_attacker().get_stat(stat_name)
+    def get_num_attacks(self):
+        attacker = self.get_attacker()
+        if self.is_melee():
+            return attacker.get_num_melee_attacks()
+        else:
+            return attacker.get_num_ranged_attacks()
 
-    def get_weapon_stat(self, stat_name):
-        return self.get_weapon().get_stat(stat_name)
+    def get_target_stat(self, stat_name, default=None):
+        return self.get_target().get_stat(stat_name, default)
+
+    def get_attacker_stat(self, stat_name, default=None):
+        return self.get_attacker().get_stat(stat_name, default)
+
+    def get_weapon_stat(self, stat_name, default=None):
+        return self.get_weapon().get_stat(stat_name, default)

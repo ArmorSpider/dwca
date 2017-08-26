@@ -1,6 +1,7 @@
 from src.action.attack import Attack
 from src.dwca_log.log import get_log
 from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
+from src.modifiers.qualities import Storm
 
 
 LOG = get_log(__name__)
@@ -25,19 +26,21 @@ class RangedAttack(Attack):
             LOG.debug('DoS hits: %s (%s DoS)', dos_hits, dos)
         return dos_hits
 
-    def _calulcate_firemode_hits(self):
+    def _calculate_firemode_hits(self):
         num_hits = 1
         dos_hits = self._calulcate_dos_hits()
         num_hits += dos_hits
         rof = self.get_weapon().get_rof(self.firemode)
         LOG.debug('Max hits: %s. RoF cap: %s', num_hits, rof)
         num_hits = min(num_hits, rof)
-        LOG.info('Firemode hits: %s.', num_hits)
+        if self.get_weapon().get_quality(Storm.name) is not None:
+            num_hits += num_hits
+            LOG.info('Double RoF hits from "storm" quality.')
+        LOG.debug('Firemode hits: %s.', num_hits)
         return num_hits
 
     def _calculate_num_hits(self):
-        firemode_hits = self._calulcate_firemode_hits()
-        num_hits = firemode_hits
+        num_hits = self._calculate_firemode_hits()
         for modifier in self._offensive_modifiers():
             num_hits = modifier.modify_num_hits(self, num_hits)
-        return firemode_hits
+        return num_hits

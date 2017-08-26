@@ -1,69 +1,88 @@
-auran_genestealer:
-  name: Auran Genestealer
-  armor: {all: 6}
-  species: tyranid
-  characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
-  talents: {ambidextrous: true, crushing_blow: true, fearless: true, hard_target: true,
-    leap_up: true, lightning_attack: true, lightning_reflexes: true, preternatural_speed: true,
-    step_aside: true, swift_attacK: true}
-  traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
-    tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
-renegade_militia:
-  name: Renegade Militia
-  armor: {all: 4}
-  species: human
-  characteristics: {strength: 35, toughness: 35, weapon_skill: 35, ballistic_skill: 35}
-  talents: {}
-  traits: {disciplined: true, horde: true}
-marius:
-  name: Marius the Parry-God
-  armor: {all: 8, body: 10}
-  characteristics: {strength: 43, toughness: 50}
-  traits: {unnatural_toughness: 2, unnatural_strength: 2}
-  talents: {deathwatch_training: true}
-gilmech:
-  name: Gilmech
-  armor: {all: 11, body: 13, head: 13}
-  characteristics: {strength: 43, toughness: 50}
-  traits: {unnatural_toughness: 2, unnatural_strength: 2}
-  talents: {deathwatch_training: true}
-pele:
-  name: Pele
-  armor: {all: 13, body: 15}
-  characteristics: {strength: 45, toughness: 50}
-  traits: {unnatural_toughness: 2, unnatural_strength: 2}
-  talents: {deathwatch_training: true}
+dummy:
+  name: Dummy
 alakir:
-  name: Al'akir
   armor: {all: 8, body: 10}
   characteristics: {strength: 42, toughness: 54}
-  traits: {unnatural_toughness: 2, unnatural_strength: 2}
+  name: Al'akir
   talents: {deathwatch_training: true}
-dev_genestealer:
-  name: Dev Genestealer
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+chaos_marine:
+  name: Chaos Space Marine
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 65, toughness: 45}
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+  talents: {bolter_drill: true, swift_attacK: true, true_grit: true}
+auran_genestealer:
   armor: {all: 6}
-  species: tyranid
   characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
+  name: Auran Genestealer
+  species: tyranid
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, hard_target: true,
+    leap_up: true, lightning_attack: true, lightning_reflexes: true, preternatural_speed: true,
+    step_aside: true, swift_attack: true}
+  traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
+    tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
+daemon_prince:
+  armor: {all: 12}
+  characteristics: {strength: 66, toughness: 45, weapon_skill: 75}
+  name: Daemon Prince
+  species: daemon
+  talents: {crippling_strike: true, crushing_blow: true, hammer_blow: true, killing_strike: true,
+    swift_attack: true, thunder_charge: true}
+  traits: {brutal_charge: true, daemonic: true, fear: 4, touched_by_the_fates: 3,
+    unnatural_strength: 3, unnatural_toughness: 2}
+dev_bohn_jobb:
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
+  name: Bohn-Jobb
+  species: human
+  talents: {ambidextrous: true, astartes_weapon_training: true, bulging_biceps: true,
+    flesh_render: true, heightened_hearing: true, heightened_sight: true, killing_strike: true,
+    nerves_of_steel: true, quick_draw: true, resistance_psychic: true, touched_by_the_fates: true,
+    unarmed_master: true}
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+dev_genestealer:
+  armor: {all: 6}
+  characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
+  name: Dev Genestealer
+  species: tyranid
   talents: {ambidextrous: true, crushing_blow: true, fearless: true, hard_target: true,
     leap_up: true, lightning_attack: true, lightning_reflexes: true, preternatural_speed: true,
     step_aside: true, swift_attacK: true}
   traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
     tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
 dev_john_bobb:
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
   name: John-Bobb
   species: human
+  talents: {ambidextrous: true, astartes_weapon_training: true, bulging_biceps: true,
+    deathwatch_training: true, flesh_render: true, heightened_hearing: true, heightened_sight: true,
+    killing_strike: true, nerves_of_steel: true, quick_draw: true, resistance_psychic: true,
+    unarmed_master: true}
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+gilmech:
+  armor: {all: 11, body: 13, head: 13}
+  characteristics: {strength: 43, toughness: 50}
+  name: Gilmech
+  talents: {deathwatch_training: true, mighty_shot: true}
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+marius:
   armor: {all: 8, body: 10}
-  characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
-  talents: {flesh_render: true, deathwatch_training: true, ambidextrous: true, astartes_weapon_training: true, bulging_biceps: true,
-    heightened_hearing: true, heightened_sight: true, killing_strike: true, nerves_of_steel: true,
-    quick_draw: true, resistance_psychic: true, unarmed_master: true}
-  traits: {unnatural_strength : 2, unnatural_toughness: 2}
-dev_bohn_jobb:
-  name: Bohn-Jobb
+  characteristics: {strength: 43, toughness: 50}
+  name: Marius the Parry-God
+  talents: {deathwatch_training: true}
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+pele:
+  armor: {all: 13, body: 15}
+  characteristics: {strength: 45, toughness: 50}
+  name: Pele
+  talents: {deathwatch_training: true}
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+renegade_militia:
+  armor: {all: 4}
+  characteristics: {ballistic_skill: 35, strength: 35, toughness: 35, weapon_skill: 35}
+  name: Renegade Militia
   species: human
-  armor: {all: 8, body: 10}
-  characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
-  talents: {flesh_render: true, touched_by_the_fates: true, ambidextrous: true, astartes_weapon_training: true, bulging_biceps: true,
-    heightened_hearing: true, heightened_sight: true, killing_strike: true, nerves_of_steel: true,
-    quick_draw: true, resistance_psychic: true, unarmed_master: true}
-  traits: {unnatural_strength : 2, unnatural_toughness: 2}
+  talents: {}
+  traits: {disciplined: true, horde: true}

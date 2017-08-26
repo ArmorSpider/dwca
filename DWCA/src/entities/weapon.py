@@ -16,10 +16,12 @@ class Weapon(Entity):
         return weapon_class.lower() == 'melee'
 
     def get_quality(self, quality_name, default=None):
-        qualities = self.get_stat(QUALITIES)
+        qualities = self.get_stat(QUALITIES, default={})
         quality_value = qualities.get(quality_name, default)
         return quality_value
 
     def get_rof(self, firemode):
         rof = self.get_stat(firemode)
+        if rof is None:
+            raise ValueError('Weapon not capable of %s' % firemode)
         return rof

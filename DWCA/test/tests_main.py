@@ -1,7 +1,6 @@
 
 import unittest
 
-from main import boosh
 from src.dice import queue_rolls
 from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
 from src.entities.char_stats import STAT_TGH
@@ -20,7 +19,7 @@ class Test(unittest.TestCase):
         attacker = get_char('dev_genestealer')
         target = get_char('dev_john_bobb')
         weapon = get_weapon('rending_claws')
-        attack = attacker.melee_attack(weapon, target)
+        attack = attacker._melee_attack(weapon, target)
         attack.try_action(96, 1)
         expected_dice = 1
         expected_pen = 10
@@ -41,7 +40,7 @@ class Test(unittest.TestCase):
         target = get_char('dev_genestealer')
         attacker = get_char('dev_john_bobb')
         weapon = get_weapon('astartes_chainsword')
-        attack = attacker.melee_attack(weapon, target)
+        attack = attacker._melee_attack(weapon, target)
         expected = 2
         actual = attack._get_tearing_dice()
         self.assertEqual(expected, actual)
@@ -50,7 +49,7 @@ class Test(unittest.TestCase):
         target = get_char('dev_genestealer')
         attacker = get_char('dev_bohn_jobb')
         weapon = get_weapon('astartes_chainsword')
-        attack = attacker.melee_attack(weapon, target)
+        attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
         queue_rolls([10])
         flat_damage = attack._get_flat_damage()
@@ -63,7 +62,7 @@ class Test(unittest.TestCase):
         target = get_char('dev_genestealer')
         attacker = get_char('dev_john_bobb')
         weapon = get_weapon('astartes_chainsword')
-        attack = attacker.melee_attack(weapon, target)
+        attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
         queue_rolls([10, 0, 0, 5])  # two tearing dice
         flat_damage = attack._get_flat_damage()
@@ -75,7 +74,7 @@ class Test(unittest.TestCase):
         target = get_char('dev_bohn_jobb')
         attacker = get_char('dev_john_bobb')
         weapon = get_weapon('astartes_chainsword')
-        attack = attacker.melee_attack(weapon, target)
+        attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
         queue_rolls([10])
         flat_damage = attack._get_flat_damage()
@@ -87,7 +86,7 @@ class Test(unittest.TestCase):
         target = get_char('dev_bohn_jobb')
         attacker = get_char('dev_john_bobb')
         weapon = get_weapon('dev_felling_chainsword')
-        attack = attacker.melee_attack(weapon, target)
+        attack = attacker._melee_attack(weapon, target)
         attack.try_action(100, 1)
 
         expected_raw_toughness = 10
@@ -105,7 +104,7 @@ class Test(unittest.TestCase):
         target = get_char('dev_bohn_jobb')
         attacker = get_char('dev_john_bobb')
         weapon = get_weapon('dev_bolter')
-        attack = attacker.ranged_attack(weapon, target, firemode=SINGLE_SHOT)
+        attack = attacker._ranged_attack(weapon, target, firemode=SINGLE_SHOT)
         attack.try_action(100, 1)
 
         expected = 1
@@ -116,7 +115,7 @@ class Test(unittest.TestCase):
         target = get_char('dev_bohn_jobb')
         attacker = get_char('dev_john_bobb')
         weapon = get_weapon('dev_bolter')
-        attack = attacker.ranged_attack(weapon, target, firemode=SEMI_AUTO)
+        attack = attacker._ranged_attack(weapon, target, firemode=SEMI_AUTO)
         attack.try_action(100, 1)
 
         expected = 3
@@ -127,7 +126,7 @@ class Test(unittest.TestCase):
         target = get_char('dev_bohn_jobb')
         attacker = get_char('dev_john_bobb')
         weapon = get_weapon('dev_bolter')
-        attack = attacker.ranged_attack(weapon, target, firemode=FULL_AUTO)
+        attack = attacker._ranged_attack(weapon, target, firemode=FULL_AUTO)
         attack.try_action(100, 1)
 
         expected = 5

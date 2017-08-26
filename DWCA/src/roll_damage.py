@@ -1,5 +1,7 @@
 from src.dice import roll_damage_dice, roll_action_dice
 from src.dwca_log.log import get_log
+from src.modifiers.talents import DeathwatchTraining
+from src.modifiers.traits import TouchedByTheFates
 
 
 LOG = get_log(__name__)
@@ -30,12 +32,12 @@ def is_fury_triggered(actual_results):
 
 
 def is_fury_possible(attack):
-    return attack.get_attacker().has_talent('deathwatch_training') or \
-        attack.get_attacker().has_talent('touched_by_the_fates')
+    return attack.get_attacker().get_talent(DeathwatchTraining.name) or \
+        attack.get_attacker().get_talent(TouchedByTheFates.name)
 
 
 def is_fury_auto_confirmed(attack):
-    return attack.get_attacker().has_talent('deathwatch_training') and \
+    return attack.get_attacker().get_talent(DeathwatchTraining.name) and \
         attack.get_target().is_alien()
 
 

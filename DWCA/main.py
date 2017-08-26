@@ -5,6 +5,7 @@ from src.dwca_log.log import get_log
 from src.entities.character import get_char
 from src.entities.horde import get_horde
 from src.entities.weapon import get_weapon
+from src.message_queue import log_messages
 from src.modifiers.modifier import register_modifiers
 from src.util.string_util import convert_to_snake_case
 
@@ -16,11 +17,14 @@ def main():
     event = build_attack_event()
     register_modifiers()
     main_handler(event)
+    log_messages()
 
 
 def main_handler(event):
-    total_damage = multiple_attacks(event)
-    LOG.info('Total damage: %s', total_damage)
+    attack_damages = multiple_attacks(event)
+    total_damage = sum(attack_damages)
+    LOG.info('Total damage: %s (%s)', total_damage,
+             ' + '.join([str(attack_damage) for attack_damage in attack_damages]))
 
 
 def construct_attack(event):
@@ -80,11 +84,11 @@ def try_attack(event):
 
 def multiple_attacks(event):
     num_attacks = event.get('num_attacks', 1)
-    total_damage = 0
+    attack_damages = []
     for _ in range(num_attacks):
         attack_damage = try_attack(event)
-        total_damage += attack_damage
-    return total_damage
+        attack_damages.append(attack_damage)
+    return attack_damages
 
 
 if __name__ == '__main__':
