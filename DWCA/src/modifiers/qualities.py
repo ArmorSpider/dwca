@@ -1,8 +1,12 @@
 from src.cli import ask_user
+from src.dwca_log.log import get_log
 from src.entities import PENETRATION
 from src.entities.char_stats import STAT_TGH
 from src.message_queue import queue_message
 from src.modifiers.modifier import Modifier
+
+
+LOG = get_log(__name__)
 
 
 class RazorSharp(Modifier):
@@ -13,6 +17,7 @@ class RazorSharp(Modifier):
         if attack.get_degrees_of_success() >= 2:
             weapons_penetration = attack.get_weapon_stat(PENETRATION)
             current_pen += weapons_penetration
+            LOG.debug('Double penetration from RazorSharp.')
             return current_pen
         else:
             return current_pen
@@ -23,6 +28,7 @@ class Tearing(Modifier):
     name = 'tearing'
 
     def modify_tearing_dice(self, attack, current_tearing_dice):
+        LOG.debug('+1 tearing dice from Tearing.')
         return current_tearing_dice + 1
 
 
@@ -50,6 +56,7 @@ class TwinLinked(Modifier):
 
     def modify_num_hits(self, attack, current_num_hits):
         if attack.get_degrees_of_success() >= 2:
+            LOG.debug('+1 hit from TwinLinked.')
             current_num_hits += 1
         return current_num_hits
 
@@ -62,8 +69,10 @@ class Accurate(Modifier):
         if attack.get_degrees_of_success() >= 2:
             if ask_user('Was attack aimed?') is True:
                 current_num_dice += 1
+                LOG.debug('+1d10 from Accurate with DoS >= 2')
                 if attack.get_degrees_of_success() >= 4:
                     current_num_dice += 1
+                    LOG.debug('+1d10 from Accurate with DoS >= 4')
         return current_num_dice
 
 
@@ -86,6 +95,7 @@ class PowerField(Modifier):
     def modify_num_hits(self, attack, current_num_hits):
         if attack.get_target().is_horde():
             current_num_hits += 1
+            LOG.debug('+1 hit from PowerField against hordes.')
         return current_num_hits
 
 

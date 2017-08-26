@@ -1,5 +1,9 @@
+from src.dwca_log.log import get_log
 from src.modifiers.modifier import Modifier
 from src.modifiers.qualities import Tearing
+
+
+LOG = get_log(__name__)
 
 
 class CrushingBlow(Modifier):
@@ -9,6 +13,7 @@ class CrushingBlow(Modifier):
     def modify_damage(self, attack, current_damage):
         if attack.is_melee():
             current_damage += 2
+            LOG.debug('+2 damage from CrushingBlow.')
         return current_damage
 
 
@@ -19,6 +24,7 @@ class MightyShot(Modifier):
     def modify_damage(self, attack, current_damage):
         if attack.is_ranged():
             current_damage += 2
+            LOG.debug('+2 damage from MightyShot.')
         return current_damage
 
 
@@ -28,6 +34,7 @@ class FleshRender(Modifier):
 
     def modify_tearing_dice(self, attack, current_tearing_dice):
         if attack.is_melee() and attack.get_weapon().get_quality(Tearing.name):
+            LOG.debug('+1 tearing dice from FleshRender.')
             return current_tearing_dice + 1
 
 
