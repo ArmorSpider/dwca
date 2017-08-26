@@ -32,6 +32,13 @@ class Attack(Action):
                       penetration=self._get_penetration())
             yield hit
 
+    def apply_hits(self):
+        attack_total_damage = 0
+        if self.is_successfull():
+            for hit in self.hits_generator():
+                attack_total_damage += self.get_target().mitigate_hit(self, hit)
+        return attack_total_damage
+
     def _get_num_hits(self):
         if self.num_hits is not None:
             num_hits = self.num_hits

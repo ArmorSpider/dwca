@@ -1,9 +1,10 @@
 import os
 
 import yaml
+from definitions import ROOT_DIR
 
 
-CONTENT_PATH = r'C:\Git\DWCA\DWCA\content'
+CONTENT_PATH = os.path.join(ROOT_DIR, 'content')
 
 
 def read_file(file_path):

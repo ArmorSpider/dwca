@@ -1,6 +1,9 @@
 from src.action.melee_attack import MeleeAttack
+from src.action.ranged_attack import RangedAttack
 from src.dwca_log.log import get_log
-from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES
+from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
+    SINGLE_SHOT
+from src.entities.char_stats import STAT_TGH
 from src.entities.entity import Entity
 from src.entities.species import is_alien_species
 from src.hit_location import HITLOC_ALL
@@ -22,11 +25,38 @@ def get_char(char_name):
 
 class Character(Entity):
 
+    def mitigate_hit(self, attack, hit):
+        armor = self.get_armor(hit.hit_location)
+        toughness = self._get_effective_toughness_bonus(attack)
+        effective_damage = hit.calculate_effective_damage(armor, toughness)
+        LOG.info('%s was hit in %s for %s damage.', self,
+                 hit.hit_location, effective_damage)
+        return effective_damage
+
+    def _get_effective_toughness_bonus(self, attack):
+        felling_value = attack.get_weapon().get_quality('felling', 0)
+        toughness = self.get_characteristic_bonus(
+            STAT_TGH, multiplier_penalty=felling_value)
+        return toughness
+
+    def attack(self, weapon, target=None, firemode=SINGLE_SHOT):
+        if weapon.is_melee():
+            return self.melee_attack(weapon, target)
+        else:
+            return self.ranged_attack(weapon, target, firemode)
+
     def melee_attack(self, weapon, target=None):
         LOG.info('%s attacks %s with a(n) %s.', self, target, weapon)
         return MeleeAttack(weapon=weapon,
                            attacker=self,
                            target=target)
+
+    def ranged_attack(self, weapon, target=None, firemode=SINGLE_SHOT):
+        LOG.info('%s attacks %s with a(n) %s.', self, target, weapon)
+        return RangedAttack(weapon=weapon,
+                            attacker=self,
+                            target=target,
+                            firemode=firemode)
 
     def _get_species(self):
         return self.get_stat(SPECIES, 'N/A')
@@ -53,11 +83,11 @@ class Character(Entity):
             characteristic, UNDEFINED_CHARACTERISTIC_VALUE)
         return char_stat
 
-    def get_characteristic_bonus(self, characteristic):
+    def get_characteristic_bonus(self, characteristic, multiplier_penalty=0):
         characteristic_value = self.get_characteristic(characteristic)
         characteristic_bonus = get_tens(characteristic_value)
         characteristic_multiplier = self.get_characteristic_multiplier(
-            characteristic)
+            characteristic, multiplier_penalty)
         final_bonus = characteristic_bonus * characteristic_multiplier
         return final_bonus
 
@@ -75,11 +105,12 @@ class Character(Entity):
             'Found value "%s" for trait "%s"', trait_value, trait_name)
         return trait_value
 
-    def get_characteristic_multiplier(self, characteristic):
+    def get_characteristic_multiplier(self, characteristic, multiplier_penalty):
         trait_name = 'unnatural_{}'.format(characteristic)
         trait_value = self.get_trait(trait_name)
         if trait_value is not None:
-            multiplier = trait_value
+            multiplier = max(trait_value - multiplier_penalty,
+                             DEFAULT_CHARACTERISTIC_MULTIPLIER)
         else:
             multiplier = DEFAULT_CHARACTERISTIC_MULTIPLIER
         return multiplier

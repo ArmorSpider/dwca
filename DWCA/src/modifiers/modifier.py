@@ -27,6 +27,10 @@ class Modifier(object):
         _ = attack
         return current_tearing_dice
 
+    def modify_num_hits(self, attack, current_num_hits):
+        _ = attack
+        return current_num_hits
+
 
 def register_modifiers():
     known_modifiers = [cls() for cls in Modifier.__subclasses__()  # pylint: disable=E1101

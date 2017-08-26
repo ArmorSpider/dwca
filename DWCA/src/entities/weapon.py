@@ -15,7 +15,11 @@ class Weapon(Entity):
         weapon_class = self.get_stat('class')
         return weapon_class.lower() == 'melee'
 
-    def has_quality(self, quality_name):
+    def get_quality(self, quality_name, default=None):
         qualities = self.get_stat(QUALITIES)
-        quality_value = qualities.get(quality_name)
+        quality_value = qualities.get(quality_name, default)
         return quality_value
+
+    def get_rof(self, firemode):
+        rof = self.get_stat(firemode)
+        return rof

@@ -32,7 +32,7 @@ def _get_standard_formatter():
 
 class CustomFormatter(logging.Formatter):
 
-    detailed_formatting = '[%(asctime)s] [%(levelname)s] - %(message)-120s (%(name)s.%(funcName)s:%(lineno)d)'
+    detailed_formatting = '[%(levelname)s] - %(message)-120s (%(name)s.%(funcName)s:%(lineno)d)'
     error_formatting = detailed_formatting
     debug_formatting = detailed_formatting
     warning_formatting = detailed_formatting

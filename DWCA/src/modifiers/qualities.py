@@ -11,6 +11,8 @@ class RazorSharp(Modifier):
             weapons_penetration = attack.get_weapon_stat(PENETRATION)
             current_pen += weapons_penetration
             return current_pen
+        else:
+            return current_pen
 
 
 class Tearing(Modifier):

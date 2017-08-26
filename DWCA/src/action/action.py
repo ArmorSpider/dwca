@@ -29,7 +29,7 @@ class Action(object):
         if self.is_successfull() is True:
             dos = get_tens(self.roll_target - self.roll_result)
         else:
-            dos = 0
+            dos = -1
         LOG.debug('Action has {} DoS'.format(dos))
         return dos
 

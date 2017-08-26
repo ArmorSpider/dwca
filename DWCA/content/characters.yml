@@ -8,7 +8,48 @@ auran_genestealer:
     step_aside: true, swift_attacK: true}
   traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
     tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
-john_bobb:
+renegade_militia:
+  name: Renegade Militia
+  armor: {all: 4}
+  species: human
+  characteristics: {strength: 35, toughness: 35, weapon_skill: 35, ballistic_skill: 35}
+  talents: {}
+  traits: {disciplined: true, horde: true}
+marius:
+  name: Marius the Parry-God
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 43, toughness: 50}
+  traits: {unnatural_toughness: 2, unnatural_strength: 2}
+  talents: {deathwatch_training: true}
+gilmech:
+  name: Gilmech
+  armor: {all: 11, body: 13, head: 13}
+  characteristics: {strength: 43, toughness: 50}
+  traits: {unnatural_toughness: 2, unnatural_strength: 2}
+  talents: {deathwatch_training: true}
+pele:
+  name: Pele
+  armor: {all: 13, body: 15}
+  characteristics: {strength: 45, toughness: 50}
+  traits: {unnatural_toughness: 2, unnatural_strength: 2}
+  talents: {deathwatch_training: true}
+alakir:
+  name: Al'akir
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 42, toughness: 54}
+  traits: {unnatural_toughness: 2, unnatural_strength: 2}
+  talents: {deathwatch_training: true}
+dev_genestealer:
+  name: Dev Genestealer
+  armor: {all: 6}
+  species: tyranid
+  characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, hard_target: true,
+    leap_up: true, lightning_attack: true, lightning_reflexes: true, preternatural_speed: true,
+    step_aside: true, swift_attacK: true}
+  traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
+    tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
+dev_john_bobb:
   name: John-Bobb
   species: human
   armor: {all: 8, body: 10}
@@ -17,7 +58,7 @@ john_bobb:
     heightened_hearing: true, heightened_sight: true, killing_strike: true, nerves_of_steel: true,
     quick_draw: true, resistance_psychic: true, unarmed_master: true}
   traits: {unnatural_strength : 2, unnatural_toughness: 2}
-bohn_jobb:
+dev_bohn_jobb:
   name: Bohn-Jobb
   species: human
   armor: {all: 8, body: 10}

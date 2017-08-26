@@ -22,3 +22,6 @@ class Entity(object):
         result = self.get_definition().get(stat_name, default)
         LOG.debug('%s = %s', stat_name, result)
         return result
+
+    def is_horde(self):
+        return False
