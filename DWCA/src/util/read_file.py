@@ -5,6 +5,7 @@ import yaml
 
 from definitions import ROOT_DIR
 from src.dwca_log.log import get_log
+from src.errors import WeaponNotFoundError
 from src.util.string_util import convert_to_snake_case
 
 
@@ -27,6 +28,7 @@ def read_weapon(weapon_name, best_match=True):
         return weapon_definition
     except KeyError:
         print '"{}" not available.'.format(weapon_name)
+        raise WeaponNotFoundError
 
 
 def find_best_character_match(character_name):
@@ -37,9 +39,9 @@ def find_best_character_match(character_name):
     return best_match
 
 
-def find_best_match(input_, options):
+def find_best_match(input_string, options):
     results = difflib.get_close_matches(
-        input_, options, n=1)
+        input_string, options, n=1)
     if len(results) >= 1:
         best_match = results[0]
     else:

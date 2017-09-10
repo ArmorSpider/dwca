@@ -2,8 +2,8 @@ from enum import Enum
 
 
 class CharStat(Enum):
-    WEAPON_SKILL = 'weapon skill'
-    BALLISTIC_SKILL = 'ballistic skill'
+    WEAPON_SKILL = 'weapon_skill'
+    BALLISTIC_SKILL = 'ballistic_skill'
     STRENGTH = 'strength'
     TOUGHNESS = 'toughness'
     AGILITY = 'agility'

@@ -1,10 +1,12 @@
 
 import unittest
 
+from definitions import PROTECTION_MAX, OVERLOAD_MAX
 from src.entities import ARMOR, CHARACTERISTICS, TRAITS
 from src.entities.char_stats import STAT_WS, STAT_BS, STAT_STR, STAT_TGH,\
     STAT_AGI, STAT_INT, STAT_PER, STAT_WIL, STAT_FEL
 from src.entities.character import Character
+from src.force_field import ForceField
 from src.hit_location import HITLOC_ALL, HITLOC_BODY, HitLocation
 
 
@@ -33,6 +35,9 @@ class Test(unittest.TestCase):
                               }
 
         }
+        self.force_field_char_def = {'name': 'Mr. Force Field', 'force_field': {
+            PROTECTION_MAX: 65, OVERLOAD_MAX: 10}}
+        self.char_with_force_field = Character(self.force_field_char_def)
 
         self.char_with_stats = Character(character_with_characteristics)
         self.character = Character(character_definition)
@@ -98,5 +103,11 @@ class Test(unittest.TestCase):
     def test_unnatural_traits_should_only_multiply_tens(self):
         expected = 4
         actual = self.char_with_stats.get_characteristic_bonus(STAT_STR)
+
+        self.assertEqual(expected, actual)
+
+    def test_get_force_field_should_return_force_field(self):
+        expected = ForceField({PROTECTION_MAX: 65, OVERLOAD_MAX: 10})
+        actual = self.char_with_force_field.force_field
 
         self.assertEqual(expected, actual)

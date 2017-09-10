@@ -19,7 +19,7 @@ class Horde(Character):
 
     def __init__(self, definition=None, magnitude=1):
         Character.__init__(self, definition=definition)
-        self.magnitude = magnitude
+        self.magnitude = int(magnitude)
 
     def is_horde(self):
         return True
@@ -39,7 +39,7 @@ class Horde(Character):
         toughness = self._get_effective_toughness_bonus(attack)
         effective_damage = hit.calculate_effective_damage(armor, toughness)
         magnitude_damage = min(1, effective_damage)
-        devastating_value = attack.get_weapon().get_quality(Devastating.name)
-        if devastating_value is not None:
-            magnitude_damage += devastating_value
+        magnitude_damage = Devastating.handle_devastating(
+            attack, magnitude_damage)
+        LOG.info('Magnitude damage: %s', magnitude_damage)
         return magnitude_damage

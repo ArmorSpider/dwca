@@ -39,19 +39,19 @@ TABLES = {
 
 
 def heyo():
-    input_ = None
-    while input_ != 'quit':
+    input_string = None
+    while input_string != 'quit':
         try:
-            input_ = raw_input('Input stuff: ')
-            if input_ == 'run':
+            input_string = raw_input('Input stuff: ')
+            if input_string == 'run':
                 module_run()
-            if input_ == 'attack':
+            if input_string == 'attack':
                 module_attack()
-            if input_ == 'info':
+            if input_string == 'info':
                 module_info()
-            if input_ == 'kill':
+            if input_string == 'kill':
                 module_kill()
-            if input_ == 'allies':
+            if input_string == 'allies':
                 module_add_allies()
         except Exception as error:
             print 'DISASTER.'
@@ -98,32 +98,32 @@ def module_info():
 def module_attack():
     print '_____________[NEW ATTACK]_____________'
     try:
-        input_ = raw_input('Genestealers attack who?: ')
+        input_string = raw_input('Genestealers attack who?: ')
         num_attacks = int(raw_input('How many attacks?: '))
         roll_target = int(raw_input('Roll target?: '))
-        target_name = convert_to_snake_case(input_)
+        target_name = convert_to_snake_case(input_string)
         genestealer = get_char('auran_genestealer')
         weapon = get_weapon('rending_claws')
         target = get_char(target_name)
         for _ in range(num_attacks):
-            attack = genestealer.melee_attack(weapon, target)
+            attack = genestealer._melee_attack(weapon, target)
             attack.try_action(roll_target)
             if attack.is_successfull():
-                for hit in attack.hits_generator():
-                    target.mitigate_hit(attack, hit)
+                for is_hit_blocked in attack.hits_generator():
+                    target.mitigate_hit(attack, is_hit_blocked)
     except Exception:
         print 'Something broke. Oops.'
 
 
 def module_run():
-    input_ = raw_input(
+    input_string = raw_input(
         'Run module: which table? (heth, caele, priest, diaz or all) ')
-    if input_ == 'all':
+    if input_string == 'all':
         for table in TABLES:
             simulate_round(table)
     else:
         for table in TABLES:
-            if input_ == table[TABLE_NAME]:
+            if input_string == table[TABLE_NAME]:
                 simulate_round(table)
 
 

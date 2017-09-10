@@ -16,13 +16,16 @@ class Action(object):
     def try_action(self, roll_target, roll_result=None):
         if roll_result is None:
             roll_result = roll_action_dice()
-        self.roll_result = roll_result
-        self.roll_target = roll_target
+        self.roll_result = int(roll_result)
+        self.roll_target = int(roll_target)
+        dos = self.get_degrees_of_success()
+        LOG.info('Action has %s DoS. (%s vs. %s).', dos,
+                 self.roll_result, self.roll_target)
 
     def is_successfull(self):
         result = self.roll_result <= self.roll_target
-        LOG.debug('Is roll_result {} vs {} successfull: {}'.format(
-            self.roll_result, self.roll_target, result))
+        LOG.debug('Is roll_result %s vs %s successfull: %s',
+                  self.roll_result, self.roll_target, result)
         return result
 
     def get_degrees_of_success(self):
@@ -30,7 +33,7 @@ class Action(object):
             dos = get_tens(self.roll_target - self.roll_result)
         else:
             dos = -1
-        LOG.debug('Action has {} DoS'.format(dos))
+        LOG.debug('Action has %s DoS', dos)
         return dos
 
     def get_reverse(self):

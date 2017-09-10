@@ -18,9 +18,9 @@ class Entity(object):
         return str(self.get_stat('name'))
 
     def get_stat(self, stat_name, default=None):
-        LOG.debug('Getting stat "%s"', stat_name)
+        LOG.log(5, 'Getting stat "%s"', stat_name)
         result = self.get_definition().get(stat_name, default)
-        LOG.debug('%s = %s', stat_name, result)
+        LOG.log(5, '%s = %s', stat_name, result)
         return result
 
     def is_horde(self):

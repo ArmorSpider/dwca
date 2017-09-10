@@ -34,7 +34,7 @@ class CustomFormatter(logging.Formatter):
 
     detailed_formatting = '[%(levelname)s] - %(message)-120s (%(name)s.%(funcName)s:%(lineno)d)'
     error_formatting = detailed_formatting
-    debug_formatting = detailed_formatting
+    debug_formatting = '[%(levelname)s] %(message)s'
     warning_formatting = detailed_formatting
     info_formatting = '%(message)s'
 

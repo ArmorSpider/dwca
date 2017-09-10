@@ -6,10 +6,15 @@ def input_string(prompt):
     return string_
 
 
+def input_int(prompt):
+    int_ = int(raw_input(prompt))
+    return int_
+
+
 def ask_user(prompt):
     yn_prompt = prompt + ' (y/n)'
-    input_ = input_string(yn_prompt)
-    result = input_.lower() == 'y'
+    input_string = input_string(yn_prompt)
+    result = input_string.lower() == 'y'
     return result
 
 

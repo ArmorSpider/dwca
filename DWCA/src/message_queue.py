@@ -10,5 +10,8 @@ def queue_message(message):
 
 
 def log_messages():
+    if len(MESSAGE_QUEUE) > 0:
+        LOG.info('________[EXTRA EFFECTS]________')
     for message in MESSAGE_QUEUE:
         LOG.info(message)
+    del MESSAGE_QUEUE[:]

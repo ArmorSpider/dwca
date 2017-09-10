@@ -35,9 +35,20 @@ class Attack(Action):
 
     def apply_hits(self):
         attack_total_damage = 0
+        hit_damages = []
         if self.is_successfull():
-            for hit in self.hits_generator():
-                attack_total_damage += self.get_target().mitigate_hit(self, hit)
+            force_field = self.target.force_field
+            for index, hit in enumerate(self.hits_generator()):
+                LOG.info('[Hit %s]', index + 1)
+                if force_field is not None:
+                    if force_field.is_hit_blocked() is True:
+                        LOG.info('Blocked by force field.')
+                        continue
+                hit_damage = self.get_target().mitigate_hit(self, hit)
+                hit_damages.append(hit_damage)
+            attack_total_damage = sum(hit_damages)
+            LOG.info('All hits combined damage: %s (%s)', attack_total_damage,
+                     ' + '.join([str(hit_damage) for hit_damage in hit_damages]))
         return attack_total_damage
 
     def _get_num_hits(self):
@@ -132,7 +143,7 @@ class Attack(Action):
     def _roll_raw_damage(self):
         real_dice = self._get_num_dice()
         tearing_dice = self._get_tearing_dice()
-        results = roll_normal_damage(real_dice, tearing_dice)
+        results = roll_normal_damage(real_dice, tearing_dice, self)
         results = roll_righteous_fury(results, self)
         raw_rolled_damage = sum(results)
         LOG.debug('Rolled %s raw damage. (Rolls: %s)',
@@ -140,12 +151,11 @@ class Attack(Action):
         return raw_rolled_damage
 
     def _roll_damage(self):
-        LOG.info('Rolling damage!')
         rolled_damage = self._roll_raw_damage()
         flat_damage = self._get_flat_damage()
         total_damage = rolled_damage + flat_damage
-        LOG.info('Total damage: %s. (Rolled: %s, Flat: %s)',
-                 total_damage, rolled_damage, flat_damage)
+        LOG.debug('Total damage: %s. (Rolled: %s, Flat: %s)',
+                  total_damage, rolled_damage, flat_damage)
         return total_damage
 
     def _combine_offensive_modifiers(self):

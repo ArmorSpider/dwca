@@ -1,3 +1,4 @@
+from definitions import WEAPONS, FORCE_FIELD
 from src.action.melee_attack import MeleeAttack
 from src.action.ranged_attack import RangedAttack
 from src.dwca_log.log import get_log
@@ -6,8 +7,9 @@ from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
 from src.entities.char_stats import STAT_TGH
 from src.entities.entity import Entity
 from src.entities.species import is_alien_species
+from src.force_field import ForceField
 from src.hit_location import HITLOC_ALL
-from src.modifiers.qualities import Felling, Toxic
+from src.modifiers.qualities import Felling, Toxic, DrainLife
 from src.modifiers.talents import SwiftAttack, LightningAttack
 from src.modifiers.traits import MultipleArms
 from src.util.rand_util import get_tens
@@ -28,13 +30,27 @@ def get_char(char_name):
 
 class Character(Entity):
 
+    @property
+    def force_field(self):
+        force_field_definition = self.get_stat(FORCE_FIELD)
+        if force_field_definition is None:
+            return None
+        else:
+            return ForceField(force_field_definition)
+
+    @property
+    def weapons(self):
+        return self.get_stat(WEAPONS, [])
+
     def mitigate_hit(self, attack, hit):
         armor = self.get_armor(hit.hit_location)
         toughness = self._get_effective_toughness_bonus(attack)
-        effective_damage = hit.calculate_effective_damage(armor, toughness)
+        effective_damage = hit.calculate_effective_damage(
+            armor, toughness)
         LOG.info('%s was hit in %s for %s damage.', self,
                  hit.hit_location, effective_damage)
         Toxic.handle_toxic(attack, effective_damage)
+        DrainLife.handle_drain_life(attack, effective_damage)
         return effective_damage
 
     def _get_effective_toughness_bonus(self, attack):
@@ -114,15 +130,14 @@ class Character(Entity):
     def get_talent(self, talent_name):
         talents = self.get_stat(TALENTS, default={})
         talent_value = talents.get(talent_name)
-        LOG.debug(
-            'Found value "%s" for talent "%s"', talent_value, talent_name)
+        LOG.log(5, 'Found value "%s" for talent "%s"',
+                talent_value, talent_name)
         return talent_value
 
     def get_trait(self, trait_name):
         traits = self.get_stat(TRAITS, default={})
         trait_value = traits.get(trait_name)
-        LOG.debug(
-            'Found value "%s" for trait "%s"', trait_value, trait_name)
+        LOG.log(5, 'Found value "%s" for trait "%s"', trait_value, trait_name)
         return trait_value
 
     def get_characteristic_multiplier(self, characteristic, multiplier_penalty):

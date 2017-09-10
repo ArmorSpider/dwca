@@ -1,17 +1,9 @@
-dummy:
-  name: Dummy
 alakir:
   armor: {all: 8, body: 10}
   characteristics: {strength: 42, toughness: 54}
   name: Al'akir
   talents: {deathwatch_training: true}
-  traits: {unnatural_strength: 2, unnatural_toughness: 2}
-chaos_marine:
-  name: Chaos Space Marine
-  armor: {all: 8, body: 10}
-  characteristics: {strength: 65, toughness: 45}
-  traits: {unnatural_strength: 2, unnatural_toughness: 2}
-  talents: {bolter_drill: true, swift_attacK: true, true_grit: true}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
 auran_genestealer:
   armor: {all: 6}
   characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
@@ -22,6 +14,24 @@ auran_genestealer:
     step_aside: true, swift_attack: true}
   traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
     tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
+  weapons: [rending_claws]
+carnifex:
+  armor: {all: 10}
+  characteristics: {ballistic_skill: 25, strength: 70, toughness: 65, weapon_skill: 35,
+    willpower: 45}
+  name: Carnifex
+  species: tyranid
+  talents: {berserk_charge: true, swift_attacK: true, two_weapon_wielder: melee}
+  traits: {brutal_charge: true, multiple_arms: true, regeneration: 5, unnatural_strength: 3,
+    unnatural_toughness: 2}
+  weapons: [scything_talons, bio_plasma]
+chaos_marine:
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 65, toughness: 45}
+  name: Chaos Space Marine
+  talents: {bolter_drill: true, swift_attacK: true, true_grit: true}
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [bolt_pistol, bolster, chainsword]
 daemon_prince:
   armor: {all: 12}
   characteristics: {strength: 66, toughness: 45, weapon_skill: 75}
@@ -31,6 +41,18 @@ daemon_prince:
     swift_attack: true, thunder_charge: true}
   traits: {brutal_charge: true, daemonic: true, fear: 4, touched_by_the_fates: 3,
     unnatural_strength: 3, unnatural_toughness: 2}
+  weapons: [chaos_sword]
+dagon_overlord:
+  armor: {all: 10}
+  characteristics: {ballistic_skill: 35, strength: 65, toughness: 63, weapon_skill: 81}
+  name: Dagon Overlord
+  species: tyranid
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, lightning_attack: true,
+    psy_rating: 8, swift_attack: true, two_weapon_wielder: melee}
+  traits: {brutal_charge: true, multiple_arms: true, natural_armor: true, unnatural_strength: 3,
+    unnatural_toughness: 3, unnatural_willpower: 2}
+  weapons: [scything_talons, bonesword, twin_devourer]
+  wounds: 180
 dev_bohn_jobb:
   armor: {all: 8, body: 10}
   characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
@@ -41,6 +63,7 @@ dev_bohn_jobb:
     nerves_of_steel: true, quick_draw: true, resistance_psychic: true, touched_by_the_fates: true,
     unarmed_master: true}
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
+  force_field: {protection_max: 65, overload_max: 10}
 dev_genestealer:
   armor: {all: 6}
   characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
@@ -61,24 +84,106 @@ dev_john_bobb:
     killing_strike: true, nerves_of_steel: true, quick_draw: true, resistance_psychic: true,
     unarmed_master: true}
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
+dummy: {name: Dummy}
+gargoyle:
+  armor: {all: 3}
+  characteristics: {ballistic_skill: 33, strength: 32, toughness: 30, weapon_skill: 30}
+  name: Gargoyle
+  species: tyranid
+  talents: {death_from_above: true, leap_up: true}
+  traits: {horde: true, natural_armor: true}
+  weapons: [fleshborer]
+  wounds: 9
+genestealer_broodlord:
+  armor: {all: 6}
+  characteristics: {strength: 45, toughness: 40, weapon_skill: 75}
+  name: Genestealer Broodlord
+  species: tyranid
+  talents: {ambidextrous: true, fearless: true, hard_target: true, leap_up: true,
+    lightning_attack: true, step_aside: true, swift_attack: true}
+  traits: {multiple_arms: true, natural_armor: true, unnatural_agility: 2, unnatural_speed: true,
+    unnatural_strength: 3, unnatural_toughness: 3}
+  weapons: [rending_claws]
 gilmech:
   armor: {all: 11, body: 13, head: 13}
   characteristics: {strength: 43, toughness: 50}
   name: Gilmech
   talents: {deathwatch_training: true, mighty_shot: true}
-  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+hierophant:
+  armor: {all: 12}
+  characteristics: {ballistic_skill: 34, strength: 90, toughness: 84, weapon_skill: 66}
+  name: Hierophant
+  species: tyranid
+  talents: {berserk_charge: true, furious_assault: true, lightning_attack: true, swift_attack: true,
+    two_weapon_wielder: melee}
+  traits: {multiple_arms: true, natural_armor: true, regeneration: 15, unnatural_strength: 4,
+    unnatural_toughness: 4}
+  weapons: [scything_talons, lashwhip, claw_stomp, twin_biocannons]
+  wounds: 220
+hormagaunt:
+  armor: {all: 3}
+  characteristics: {ballistic_skill: 20, strength: 35, toughness: 30, weapon_skill: 45}
+  name: Hormagaunt
+  species: tyranid
+  talents: {swift_attack: true}
+  traits: {horde: true, natural_armor: true, overwhelming: true}
+  weapons: [scything_talons]
+  wounds: 9
+zoanthrope:
+  name: Zoanthrope
+  species: tyranid
+  characteristics: {weapon_skill: 30, ballistic_skill: 45, strength: 45, toughness: 45}
+  wounds: 32
+  talents: {fearless: true, psy_rating: 6}
+  traits: {natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
+  armor: {all: 6}
+  weapons: [teeth_and_claws]
+lictor:
+  armor: {all: 6}
+  characteristics: {strength: 65, toughness: 40, weapon_skill: 65}
+  name: Lictor
+  species: tyranid
+  talents: {ambidextrous: true, assassin_strike: true, berserk_charge: true, crushing_blow: true,
+    fearless: true, furious_assault: true, hard_target: true, lightning_attack: true,
+    sprint: true, step_aside: true, swift_attack: true}
+  traits: {multiple_arms: true, natural_armor: true, toxic: 1d10, unnatural_agility: true,
+    unnatural_perception: true, unnatural_strength: true, unnatural_toughness: true}
+  weapons: [scything_talons, rending_claws]
+  wounds: 40
 marius:
   armor: {all: 8, body: 10}
-  characteristics: {strength: 43, toughness: 50}
+  characteristics: {ballistic_skill: 44, strength: 43, toughness: 50, weapon_skill: 66}
   name: Marius the Parry-God
   talents: {deathwatch_training: true}
-  traits: {unnatural_strength: 2, unnatural_toughness: 2}
-pele:
-  armor: {all: 13, body: 15}
-  characteristics: {strength: 45, toughness: 50}
-  name: Pele
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [marius_honour_blades, sharpshooter_rifle]
+  force_field: {protection_max: 25, overload_max: 10}
+namael:
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 42, toughness: 43}
+  name: Namael
   talents: {deathwatch_training: true}
-  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  force_field: {protection_max: 55, overload_max: 10}
+purestrain_genestealer:
+  armor: {all: 4}
+  characteristics: {strength: 45, toughness: 40, weapon_skill: 65}
+  name: Purestrain Genestealer
+  species: tyranid
+  talents: {ambidextrous: true, fearless: true, hard_target: true, leap_up: true,
+    lightning_attack: true, step_aside: true, swift_attack: true}
+  traits: {multiple_arms: true, natural_armor: true, unnatural_agility: 2, unnatural_speed: true,
+    unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [rending_claws]
+ravener:
+  armor: {all: 6}
+  characteristics: {ballistic_skill: 40, strength: 45, toughness: 40, weapon_skill: 60}
+  name: Ravener
+  species: tyranid
+  talents: {fearless: true, lightning_attack: true, swift_attack: true}
+  traits: {multiple_arms: true, natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [scything_talons, rending_claws, devourer, deathspitter, ravener_spine_fists]
 renegade_militia:
   armor: {all: 4}
   characteristics: {ballistic_skill: 35, strength: 35, toughness: 35, weapon_skill: 35}
@@ -86,3 +191,86 @@ renegade_militia:
   species: human
   talents: {}
   traits: {disciplined: true, horde: true}
+  weapons: [autogun]
+ripper_swarm:
+  armor: {all: 2}
+  characteristics: {strength: 25, toughness: 30, weapon_skill: 35}
+  name: Ripper Swarm
+  species: tyranid
+  talents: {fearless: true, swift_attack: true}
+  traits: {horde: true, natural_armor: true, overwhelming: true, rampage: true, relentless: true}
+  weapons: [ripper_mandibles]
+termagant:
+  armor: {all: 3}
+  characteristics: {ballistic_skill: 33, strength: 32, toughness: 30, weapon_skill: 30}
+  name: Termagant
+  species: tyranid
+  traits: {horde: true, natural_armor: true, overwhelming: true}
+  weapons: [fleshborer]
+  wounds: 9
+thornback:
+  armor: {all: 10}
+  characteristics: {ballistic_skill: 35, strength: 70, toughness: 65, weapon_skill: 35,
+    willpower: 45}
+  name: Carnifex (Thornback)
+  species: tyranid
+  talents: {berserk_charge: true, two_weapon_wielder: ballistic}
+  traits: {brutal_charge: true, multiple_arms: true, regeneration: 5, toxic: 1d10,
+    unnatural_strength: 3, unnatural_toughness: 2}
+  weapons: [twin_devourer, stranglethorn_cannon]
+trygon:
+  armor: {all: 10}
+  characteristics: {ballistic_skill: 30, strength: 60, toughness: 60, weapon_skill: 50}
+  name: Trygon
+  species: tyranid
+  talents: {ambidextrous: true, fearless: true, furious_assault: true, swift_attack: true,
+    two_weapon_wielder: melee}
+  traits: {multiple_arms: true, natural_armor: true, unnatural_strength: 3, unnatural_toughness: 2}
+  weapons: [scything_talon, bio_electric_pulse]
+  wounds: 160
+tyranid_warrior:
+  armor: {all: 8}
+  characteristics: {ballistic_skill: 30, strength: 60, toughness: 50, weapon_skill: 55}
+  name: Tyranid Warror
+  species: tyranid
+  talents: {fearless: true, swift_attack: true}
+  traits: {multiple_arms: true, natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [scything_talons, rending_claws, devourer, deathspitter]
+  wounds: 48
+tyrant_guard:
+  armor: {all: 10}
+  characteristics: {ballistic_skill: 30, strength: 50, toughness: 60, weapon_skill: 55}
+  name: Tyrant Guard
+  species: tyranid
+  talents: {fearless: true, swift_attack: true}
+  traits: {natural_armor: true, sturdy: true, unnatural_strength: 2, unnatural_toughness: 3}
+  weapons: [scything_talons, rending_claws, lashwhip, bonesword]
+  wounds: 45
+venomspitter:
+  armor: {all: 10}
+  characteristics: {ballistic_skill: 15, strength: 70, toughness: 65, weapon_skill: 35,
+    willpower: 45}
+  name: Carnifex (Venomspitter)
+  species: tyranid
+  talents: {berserk_charge: true, two_weapon_wielder: ballistic}
+  traits: {brutal_charge: true, multiple_arms: true, regeneration: 5, unnatural_strength: 3,
+    unnatural_toughness: 2}
+  weapons: [heavy_venom_cannon]
+venomthrope:
+  characteristics: {strength: 55, toughness: 55, weapon_skill: 48}
+  name: Venomthrope
+  species: tyranid
+  talents: {ambidextrous: true, swift_attack: true}
+  traits: {multiple_arms: true, natural_armor: true, spore_cloud: true, toxic: 2d10
+      Test is -30, toxic_miasma: true, unnatural_strength: true, unnatural_toughness: true}
+  weapons: [lashwhip]
+  wounds: 40
+warrior_prime:
+  armor: {all: 10}
+  characteristics: {ballistic_skill: 40, strength: 50, toughness: 50, weapon_skill: 65}
+  name: Tyranid Warrior Prime
+  species: tyranid
+  talents: {fearless: true, lightning_attack: true, swift_attack: true}
+  traits: {multiple_arms: true, natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [scything_talons, rending_claws, bonesword, lashwhip, devourer, deathspitter]
+  wounds: 80

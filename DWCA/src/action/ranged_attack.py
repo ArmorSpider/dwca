@@ -41,6 +41,9 @@ class RangedAttack(Attack):
 
     def _calculate_num_hits(self):
         num_hits = self._calculate_firemode_hits()
+        if self.get_weapon().get_stat('damage_type') == 'X' and self.get_target().is_horde():
+            LOG.info('+1 hit from damage type X against hordes.')
+            num_hits += 1
         for modifier in self._offensive_modifiers():
             num_hits = modifier.modify_num_hits(self, num_hits)
         return num_hits
