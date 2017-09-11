@@ -1,6 +1,6 @@
 from src.dice import roll_damage_dice, roll_action_dice
 from src.dwca_log.log import get_log
-from src.modifiers.qualities import Volatile, Proven
+from src.modifiers.qualities import Volatile, Proven, Hellfire
 from src.modifiers.talents import DeathwatchTraining
 from src.modifiers.traits import TouchedByTheFates
 
@@ -34,26 +34,30 @@ def handle_dos_minimum_damage(dos, roll_results):
 
 def roll_righteous_fury(actual_results, attack):
     fury_possible = is_fury_possible(attack)
-    fury_triggered = is_fury_triggered(actual_results)
+    fury_triggered = is_fury_triggered(actual_results, attack)
     auto_confirm = is_fury_auto_confirmed(attack)
     if fury_triggered and fury_possible:
         righteous_fury(actual_results, attack, auto_confirm)
     return actual_results
 
 
-def is_fury_triggered(actual_results):
-    return 10 in actual_results
+def is_fury_triggered(actual_results, attack):
+    fury_triggered = 10 in actual_results
+    if attack.weapon.get_quality(Hellfire.name):
+        fury_triggered = 10 in actual_results or 9 in actual_results
+    return fury_triggered
 
 
 def is_fury_possible(attack):
     attacker = attack.get_attacker()
     return attacker.get_talent(DeathwatchTraining.name) or \
-        attacker.get_talent(TouchedByTheFates.name)
+        attacker.get_talent(TouchedByTheFates.name) or \
+        attack.weapon.get_quality(Volatile.name)
 
 
 def is_fury_auto_confirmed(attack):
-    return (attack.get_attacker().get_talent(DeathwatchTraining.name) and
-            attack.get_target().is_alien()) or attack.get_weapon().get_quality(Volatile.name) is not None
+    return (attack.attacker.get_talent(DeathwatchTraining.name) and
+            attack.target.is_alien()) or attack.weapon.get_quality(Volatile.name) is not None
 
 
 def righteous_fury(results, attack, auto_confirm):

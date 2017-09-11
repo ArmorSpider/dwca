@@ -1,9 +1,10 @@
 alakir:
-  armor: {all: 8, body: 10}
+  armor: {body: 14, left_arm: 12, right_arm: 8, left_leg: 8, right_leg: 8, head: 8}
   characteristics: {strength: 42, toughness: 54}
   name: Al'akir
   talents: {deathwatch_training: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  force_field: {overload_max: 10, protection_max: 55}
 auran_genestealer:
   armor: {all: 6}
   characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
@@ -31,7 +32,7 @@ chaos_marine:
   name: Chaos Space Marine
   talents: {bolter_drill: true, swift_attacK: true, true_grit: true}
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
-  weapons: [bolt_pistol, bolster, chainsword]
+  weapons: [bolt_pistol, bolter, chainsword]
 daemon_prince:
   armor: {all: 12}
   characteristics: {strength: 66, toughness: 45, weapon_skill: 75}
@@ -56,6 +57,7 @@ dagon_overlord:
 dev_bohn_jobb:
   armor: {all: 8, body: 10}
   characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
+  force_field: {overload_max: 10, protection_max: 65}
   name: Bohn-Jobb
   species: human
   talents: {ambidextrous: true, astartes_weapon_training: true, bulging_biceps: true,
@@ -63,7 +65,6 @@ dev_bohn_jobb:
     nerves_of_steel: true, quick_draw: true, resistance_psychic: true, touched_by_the_fates: true,
     unarmed_master: true}
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
-  force_field: {protection_max: 65, overload_max: 10}
 dev_genestealer:
   armor: {all: 6}
   characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
@@ -105,7 +106,7 @@ genestealer_broodlord:
     unnatural_strength: 3, unnatural_toughness: 3}
   weapons: [rending_claws]
 gilmech:
-  armor: {all: 11, body: 13, head: 13}
+  armor: {body: 10, left_arm: 11, right_arm: 11, left_leg: 11, right_leg: 11, head: 13}
   characteristics: {strength: 43, toughness: 50}
   name: Gilmech
   talents: {deathwatch_training: true, mighty_shot: true}
@@ -130,15 +131,6 @@ hormagaunt:
   traits: {horde: true, natural_armor: true, overwhelming: true}
   weapons: [scything_talons]
   wounds: 9
-zoanthrope:
-  name: Zoanthrope
-  species: tyranid
-  characteristics: {weapon_skill: 30, ballistic_skill: 45, strength: 45, toughness: 45}
-  wounds: 32
-  talents: {fearless: true, psy_rating: 6}
-  traits: {natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
-  armor: {all: 6}
-  weapons: [teeth_and_claws]
 lictor:
   armor: {all: 6}
   characteristics: {strength: 65, toughness: 40, weapon_skill: 65}
@@ -153,19 +145,19 @@ lictor:
   wounds: 40
 marius:
   armor: {all: 8, body: 10}
-  characteristics: {ballistic_skill: 44, strength: 43, toughness: 50, weapon_skill: 66}
+  characteristics: {ballistic_skill: 44, strength: 43, toughness: 50, weapon_skill: 66, intelligence: 54, perception: 38}
+  force_field: {overload_max: 10, protection_max: 25}
   name: Marius the Parry-God
-  talents: {deathwatch_training: true}
+  talents: {deathwatch_training: true, hunter_of_aliens: true, slaughter_the_swarm: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
-  weapons: [marius_honour_blades, sharpshooter_rifle]
-  force_field: {protection_max: 25, overload_max: 10}
+  weapons: [marius_honour_blades, hellfire_bolt_pistol, bolter, marius_hesh_bolter]
 namael:
-  armor: {all: 8, body: 10}
+  armor: {body: 14, left_arm: 12, right_arm: 8, left_leg: 8, right_leg: 8, head: 8}
   characteristics: {strength: 42, toughness: 43}
+  force_field: {overload_max: 10, protection_max: 55}
   name: Namael
   talents: {deathwatch_training: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
-  force_field: {protection_max: 55, overload_max: 10}
 purestrain_genestealer:
   armor: {all: 4}
   characteristics: {strength: 45, toughness: 40, weapon_skill: 65}
@@ -237,6 +229,15 @@ tyranid_warrior:
   traits: {multiple_arms: true, natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [scything_talons, rending_claws, devourer, deathspitter]
   wounds: 48
+hive_tyrant:
+  name: Hive Tyrant
+  characteristics: {ballistic_skill: 33, strength: 60, toughness: 53, weapon_skill: 78}
+  species: tyranid
+  wounds: 120
+  armor: {all: 10}
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, psy_rating: 8, two_weapon_wielder: melee, swift_attack: true}
+  traits: {brutal_charge: true, natural_armor: true, multiple_arms: true, unnatural_strength: 3, unnatural_toughness: 3}
+  weapons: [scything_talons, bonesword, stranglethorn_cannon]
 tyrant_guard:
   armor: {all: 10}
   characteristics: {ballistic_skill: 30, strength: 50, toughness: 60, weapon_skill: 55}
@@ -265,6 +266,14 @@ venomthrope:
       Test is -30, toxic_miasma: true, unnatural_strength: true, unnatural_toughness: true}
   weapons: [lashwhip]
   wounds: 40
+volter:
+  armor: {all: 20}
+  characteristics: {ballistic_skill: 50, strength: 50, toughness: 50, weapon_skill: 60}
+  name: Forge Master Volter
+  species: human
+  talents: {touched_by_the_fates: 2}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [plasma_pistol, multi_melta, bulkhead_shears]
 warrior_prime:
   armor: {all: 10}
   characteristics: {ballistic_skill: 40, strength: 50, toughness: 50, weapon_skill: 65}
@@ -274,3 +283,12 @@ warrior_prime:
   traits: {multiple_arms: true, natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [scything_talons, rending_claws, bonesword, lashwhip, devourer, deathspitter]
   wounds: 80
+zoanthrope:
+  armor: {all: 6}
+  characteristics: {ballistic_skill: 45, strength: 45, toughness: 45, weapon_skill: 30}
+  name: Zoanthrope
+  species: tyranid
+  talents: {fearless: true, psy_rating: 6}
+  traits: {natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [teeth_and_claws]
+  wounds: 32

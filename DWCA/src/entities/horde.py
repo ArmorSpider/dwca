@@ -1,6 +1,6 @@
 from src.dwca_log.log import get_log
 from src.entities.character import Character
-from src.modifiers.qualities import Devastating
+from src.modifiers.qualities import Devastating, Hellfire
 from src.modifiers.traits import FireDrill
 from src.util.rand_util import get_tens
 from src.util.read_file import read_character
@@ -36,10 +36,13 @@ class Horde(Character):
 
     def mitigate_hit(self, attack, hit):
         armor = self.get_armor(hit.hit_location)
+        armor = Hellfire.handle_hellfire_armor(attack, armor)
         toughness = self._get_effective_toughness_bonus(attack)
         effective_damage = hit.calculate_effective_damage(armor, toughness)
         magnitude_damage = min(1, effective_damage)
         magnitude_damage = Devastating.handle_devastating(
+            attack, magnitude_damage)
+        magnitude_damage = Hellfire.handle_hellfire_magnitude_damage(
             attack, magnitude_damage)
         LOG.info('Magnitude damage: %s', magnitude_damage)
         return magnitude_damage

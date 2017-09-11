@@ -8,8 +8,8 @@ from src.entities.char_stats import STAT_TGH
 from src.entities.entity import Entity
 from src.entities.species import is_alien_species
 from src.force_field import ForceField
-from src.hit_location import HITLOC_ALL
-from src.modifiers.qualities import Felling, Toxic, DrainLife
+from src.hit_location import HITLOC_ALL, get_hit_location_name
+from src.modifiers.qualities import Felling, Toxic, DrainLife, Hellfire
 from src.modifiers.talents import SwiftAttack, LightningAttack
 from src.modifiers.traits import MultipleArms
 from src.util.rand_util import get_tens
@@ -44,6 +44,7 @@ class Character(Entity):
 
     def mitigate_hit(self, attack, hit):
         armor = self.get_armor(hit.hit_location)
+        armor = Hellfire.handle_hellfire_armor(attack, armor)
         toughness = self._get_effective_toughness_bonus(attack)
         effective_damage = hit.calculate_effective_damage(
             armor, toughness)
@@ -102,7 +103,8 @@ class Character(Entity):
 
     def get_armor(self, hit_location):
         armor_dict = self._get_armor_definition()
-        armor = armor_dict.get(hit_location)
+        hitloc_name = get_hit_location_name(hit_location)
+        armor = armor_dict.get(hitloc_name)
         if armor is None:
             armor = armor_dict.get(HITLOC_ALL, UNDEFINED_ARMOR_VALUE)
         return armor

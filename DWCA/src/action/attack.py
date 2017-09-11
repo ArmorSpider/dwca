@@ -146,8 +146,8 @@ class Attack(Action):
         results = roll_normal_damage(real_dice, tearing_dice, self)
         results = roll_righteous_fury(results, self)
         raw_rolled_damage = sum(results)
-        LOG.debug('Rolled %s raw damage. (Rolls: %s)',
-                  raw_rolled_damage, results)
+        LOG.info('Rolled %s raw damage. (Rolls: %s)',
+                 raw_rolled_damage, results)
         return raw_rolled_damage
 
     def _roll_damage(self):

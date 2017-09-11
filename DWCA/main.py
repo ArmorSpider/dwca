@@ -49,13 +49,13 @@ def handle_user_input(user_input, event):
     if ':' in user_input:
         update_dict = parse_event_update_string(user_input)
         event.update(update_dict)
-    elif user_input == RUN:
+    if user_input == RUN:
         check_required_keys(
             event, [ATTACKER, TARGET, WEAPON, ROLL_TARGET])
         run_event(event)
-    elif user_input == CLEAR:
+    if user_input == CLEAR:
         event = {}
-    elif user_input == AUTO:
+    if user_input == AUTO:
         check_required_keys(event, [ATTACKER])
         event = auto_module(event)
 

@@ -41,6 +41,11 @@ class FireDrill(Modifier):
     name = 'fire_drill'
 
 
+class NaturalArmor(Modifier):
+
+    name = 'natural_armor'
+
+
 class TouchedByTheFates(Modifier):
 
     name = 'touched_by_the_fates'

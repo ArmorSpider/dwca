@@ -4,6 +4,7 @@ from src.entities import PENETRATION
 from src.entities.char_stats import STAT_TGH
 from src.message_queue import queue_message
 from src.modifiers.modifier import Modifier
+from src.modifiers.traits import NaturalArmor
 from src.state_manager import StateManager
 
 
@@ -141,6 +142,25 @@ class PowerField(Modifier):
 class Storm(Modifier):
 
     name = 'storm'
+
+
+class Hellfire(Modifier):
+
+    name = 'hellfire'
+
+    @staticmethod
+    def handle_hellfire_armor(attack, armor):
+        if attack.weapon.get_quality(Hellfire.name) and attack.target.get_trait(NaturalArmor.name):
+            LOG.info('Hellfire negates natural armor.')
+            armor = 0
+        return armor
+
+    @staticmethod
+    def handle_hellfire_magnitude_damage(attack, magnitude_damage):
+        if attack.weapon.get_quality(Hellfire.name):
+            LOG.info('+1 magnitude damage per hit from Hellfire.')
+            magnitude_damage += 1
+        return magnitude_damage
 
 
 class Devastating(Modifier):

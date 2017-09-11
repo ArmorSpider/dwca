@@ -56,6 +56,16 @@ bolt_pistol:
   qualities: {tearing: true}
   semi_auto: 2
   single_shot: 1
+hellfire_bolt_pistol:
+  class: Pistol
+  damage_type: X
+  dice: 1
+  flat_damage: 9
+  name: Astartes Bolt Pistol
+  penetration: 4
+  qualities: {tearing: true, hellfire: true}
+  semi_auto: 2
+  single_shot: 1
 bolter:
   class: Basic
   damage_type: X
@@ -251,7 +261,7 @@ heavy_venom_cannon:
   qualities: {blast: 5, living_ammunition: true, proven: 3, toxic: 1d10}
   single_shot: 1
 krak_grenade_melee: {class: Melee, damage_type: E, dice: 3, flat_damage: 4, name: Krak
-    Grenade (Melee), penetration: 6, single_shot: 1}
+    Grenade (Melee), penetration: 6}
 krak_missile:
   class: Basic
   dice: 3
@@ -259,6 +269,15 @@ krak_missile:
   penetration: 8
   qualities: {blast: 1}
   single_shot: 1
+marius_hesh_bolter:
+  class: Basic
+  dice: 1
+  flat_damage: 7
+  single_shot: 1
+  semi_auto: 3
+  damage_type: X
+  penetration: 4
+  qualities: {tearing: true, accurate: true, reliable: true, toxic: 1d10}
 lash_whip:
   class: Melee
   damage_type: R
@@ -283,6 +302,16 @@ marius_honour_blades:
   name: Marius' Honour Blades
   penetration: 6
   qualities: {power_field: true, razor_sharp: true}
+multi_melta:
+  class: Heavy
+  damage_type: E
+  dice: 2
+  flat_damage: 20
+  name: Firestorm Multi-melta
+  penetration: 14
+  qualities: {blast: 2, recharge: true, volatile: true}
+  semi_auto: 2
+  single_shot: 1
 omnissian_axe:
   class: Melee
   damage_type: E
@@ -358,6 +387,8 @@ power_sword:
   name: Astartes Power Sword
   penetration: 6
   qualities: {balanced: true, power_field: true}
+ravener_spine_fists: {class: Basic, damage_type: R, dice: 1, flat_damage: 12, full_auto: 4,
+  name: Spine Fists, penetration: 2, semi_auto: 2, single_shot: 1}
 rending_claws:
   class: Melee
   damage_type: R
@@ -398,8 +429,6 @@ sharpshooter_rifle:
   penetration: 2
   qualities: {accurate: true, felling: 1, toxic: 1d10}
   single_shot: 1
-ravener_spine_fists: {class: Basic, damage_type: R, dice: 1, flat_damage: 12, full_auto: 4,
-  name: Spine Fists, penetration: 2, semi_auto: 2, single_shot: 1}
 storm_bolter:
   class: Basic
   damage_type: X
