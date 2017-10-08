@@ -151,6 +151,9 @@ def auto_module(event):
         elif firemode == FULL_AUTO:
             LOG.info('+20 to roll target from full auto.')
             roll_target += 20
+        if weapon.get_quality('twin_linked', False):
+            LOG.info('+20 to roll target from twin-linked.')
+            roll_target += 20
         event[FIREMODE] = firemode
     event[WEAPON] = weapon_name
     event[NUM_ATTACKS] = num_attacks
