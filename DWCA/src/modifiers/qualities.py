@@ -1,6 +1,5 @@
-from src.cli import ask_user
 from src.dwca_log.log import get_log
-from src.entities import PENETRATION
+from src.entities import PENETRATION, DICE, DAMAGE
 from src.entities.char_stats import STAT_TGH
 from src.message_queue import queue_message
 from src.modifiers.modifier import Modifier
@@ -142,6 +141,43 @@ class PowerField(Modifier):
 class Storm(Modifier):
 
     name = 'storm'
+
+
+class Snare(Modifier):
+
+    name = 'snare'
+
+    @staticmethod
+    def handle_snare(attack):
+        if attack.weapon.get_quality(Snare.name):
+            queue_message('SNARE: %s must make AGI test or be immobilised.')
+
+
+class DeadlySnare(Modifier):
+
+    name = 'deadly_snare'
+
+    @staticmethod
+    def handle_deadly_snare(attack):
+        if attack.weapon.get_quality(Snare.name):
+            damage_roll_base = '{dice}d10+{flat_damage} Pen: {pen}'
+            damage_roll = damage_roll_base.format(dice=attack.get_weapon_stat(DICE, 1),
+                                                  flat_damage=attack.get_weapon_stat(
+                                                      DAMAGE, 0),
+                                                  pen=attack.get_weapon_stat(PENETRATION, 0))
+            queue_message(
+                'DEADLY_SNARE: %s must make AGI test or be immobilised.'
+                'Take %s each turn until escape.' % damage_roll)
+
+
+class Flexible(Modifier):
+
+    name = 'flexible'
+
+    @staticmethod
+    def handle_flexible(attack):
+        if attack.weapon.get_quality(Flexible.name):
+            queue_message('FLEXIBLE: Attack cannot be parried.')
 
 
 class Hellfire(Modifier):

@@ -22,7 +22,8 @@ def roll_normal_damage(real_dice, tearing_dice, attack=None):
     return actual_results
 
 
-def handle_dos_minimum_damage(dos, roll_results):
+def handle_dos_minimum_damage(attack, roll_results):
+    dos = attack.get_degrees_of_success()
     capped_dos = min(dos, 9)  # avoid righteous fury from DoS
     sorted_results_descending = sorted(roll_results, reverse=True)
     minimum_value = sorted_results_descending.pop()

@@ -1,6 +1,7 @@
 from definitions import WEAPONS, FORCE_FIELD
 from src.action.melee_attack import MeleeAttack
 from src.action.ranged_attack import RangedAttack
+from src.cover import get_cover_armor_for_hitloc
 from src.dwca_log.log import get_log
 from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
     SINGLE_SHOT
@@ -9,7 +10,8 @@ from src.entities.entity import Entity
 from src.entities.species import is_alien_species
 from src.force_field import ForceField
 from src.hit_location import HITLOC_ALL, get_hit_location_name
-from src.modifiers.qualities import Felling, Toxic, DrainLife, Hellfire
+from src.modifiers.qualities import Felling, Toxic, DrainLife, Hellfire, Snare,\
+    Flexible
 from src.modifiers.talents import SwiftAttack, LightningAttack
 from src.modifiers.traits import MultipleArms
 from src.util.rand_util import get_tens
@@ -43,6 +45,7 @@ class Character(Entity):
         return self.get_stat(WEAPONS, [])
 
     def mitigate_hit(self, attack, hit):
+        self._on_hit(attack)
         armor = self.get_armor(hit.hit_location)
         armor = Hellfire.handle_hellfire_armor(attack, armor)
         toughness = self._get_effective_toughness_bonus(attack)
@@ -53,6 +56,10 @@ class Character(Entity):
         Toxic.handle_toxic(attack, effective_damage)
         DrainLife.handle_drain_life(attack, effective_damage)
         return effective_damage
+
+    def _on_hit(self, attack):
+        Snare.handle_snare(attack)
+        Flexible.handle_flexible(attack)
 
     def _get_effective_toughness_bonus(self, attack):
         felling_value = attack.get_weapon().get_quality(Felling.name, 0)
@@ -107,7 +114,9 @@ class Character(Entity):
         armor = armor_dict.get(hitloc_name)
         if armor is None:
             armor = armor_dict.get(HITLOC_ALL, UNDEFINED_ARMOR_VALUE)
-        return armor
+        cover_armor = get_cover_armor_for_hitloc(hit_location)
+        total_armor = armor + cover_armor
+        return total_armor
 
     def _get_armor_definition(self):
         return self.get_stat(ARMOR, default={})

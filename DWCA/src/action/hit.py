@@ -7,8 +7,8 @@ class Hit(object):
 
     def __init__(self, hit_location, damage, penetration):
         self.hit_location = hit_location
-        self.damage = damage
-        self.penetration = penetration
+        self.damage = int(damage)
+        self.penetration = int(penetration)
 
     def calculate_effective_damage(self, armor, toughness):
         effective_armor = max(armor - self.penetration, 0)

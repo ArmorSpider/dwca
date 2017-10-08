@@ -33,12 +33,16 @@ class Attack(Action):
                       penetration=self._get_penetration())
             yield hit
 
-    def apply_hits(self):
+    def apply_hits(self, custom_hits=None):
         attack_total_damage = 0
         hit_damages = []
         if self.is_successfull():
             force_field = self.target.force_field
-            for index, hit in enumerate(self.hits_generator()):
+            if custom_hits is None:
+                hits = self.hits_generator()
+            else:
+                hits = custom_hits
+            for index, hit in enumerate(hits):
                 LOG.info('[Hit %s]', index + 1)
                 if force_field is not None:
                     if force_field.is_hit_blocked() is True:

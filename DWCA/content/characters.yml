@@ -122,6 +122,7 @@ hierophant:
     unnatural_toughness: 4}
   weapons: [scything_talons, lashwhip, claw_stomp, twin_biocannons]
   wounds: 220
+  force_field: {overload_max: 5, protection_max: 65}
 hormagaunt:
   armor: {all: 3}
   characteristics: {ballistic_skill: 20, strength: 35, toughness: 30, weapon_skill: 45}
@@ -145,7 +146,7 @@ lictor:
   wounds: 40
 marius:
   armor: {all: 8, body: 10}
-  characteristics: {ballistic_skill: 44, strength: 43, toughness: 50, weapon_skill: 66, intelligence: 54, perception: 38}
+  characteristics: {ballistic_skill: 44, strength: 43, toughness: 50, weapon_skill: 81, intelligence: 54, perception: 38}
   force_field: {overload_max: 10, protection_max: 25}
   name: Marius the Parry-God
   talents: {deathwatch_training: true, hunter_of_aliens: true, slaughter_the_swarm: true}
@@ -226,7 +227,7 @@ tyranid_warrior:
   name: Tyranid Warror
   species: tyranid
   talents: {fearless: true, swift_attack: true}
-  traits: {multiple_arms: true, natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
+  traits: {multiple_arms: true, natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2, horde: true}
   weapons: [scything_talons, rending_claws, devourer, deathspitter]
   wounds: 48
 hive_tyrant:
@@ -290,5 +291,6 @@ zoanthrope:
   species: tyranid
   talents: {fearless: true, psy_rating: 6}
   traits: {natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
+  force_field: {overload_max: 5, protection_max: 65}
   weapons: [teeth_and_claws]
   wounds: 32
