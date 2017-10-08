@@ -51,7 +51,7 @@ dagon_overlord:
   talents: {ambidextrous: true, crushing_blow: true, fearless: true, lightning_attack: true,
     psy_rating: 8, swift_attack: true, two_weapon_wielder: melee}
   traits: {brutal_charge: true, multiple_arms: true, natural_armor: true, unnatural_strength: 3,
-    unnatural_toughness: 3, unnatural_willpower: 2}
+    unnatural_toughness: 3, unnatural_willpower: 2, toxic: 2d10 -30 TGH}
   weapons: [scything_talons, bonesword, twin_devourer]
   wounds: 180
 dev_bohn_jobb:
@@ -106,7 +106,7 @@ genestealer_broodlord:
     unnatural_strength: 3, unnatural_toughness: 3}
   weapons: [rending_claws]
 gilmech:
-  armor: {body: 10, left_arm: 11, right_arm: 11, left_leg: 11, right_leg: 11, head: 13}
+  armor: {body: 13, left_arm: 11, right_arm: 11, left_leg: 11, right_leg: 11, head: 13}
   characteristics: {strength: 43, toughness: 50}
   name: Gilmech
   talents: {deathwatch_training: true, mighty_shot: true}
