@@ -5,7 +5,7 @@ import yaml
 
 from definitions import ROOT_DIR
 from src.dwca_log.log import get_log
-from src.errors import WeaponNotFoundError
+from src.errors import WeaponNotFoundError, NoMatchError
 from src.util.string_util import convert_to_snake_case
 
 
@@ -45,7 +45,7 @@ def find_best_match(input_string, options):
     if len(results) >= 1:
         best_match = results[0]
     else:
-        best_match = None
+        raise NoMatchError('No match found for %s.' % input_string)
     return best_match
 
 
