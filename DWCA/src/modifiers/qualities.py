@@ -211,3 +211,17 @@ class Devastating(Modifier):
                      devastating_value)
             magnitude_damage += devastating_value
         return magnitude_damage
+
+
+class DamagePerDos(Modifier):
+
+    name = 'damage_per_dos'
+
+    def modify_damage(self, attack, current_damage):
+        dos = attack.get_degrees_of_success()
+        damage_per_dos = attack.weapon.get_quality(DamagePerDos.name)
+        bonus_damage = max(0, damage_per_dos * dos)
+        LOG.info('+%s damage from DamagePerDos(%s)',
+                 bonus_damage, damage_per_dos)
+        current_damage += bonus_damage
+        return current_damage
