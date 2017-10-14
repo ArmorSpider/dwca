@@ -1,6 +1,6 @@
 from enum import Enum
 from src.dwca_log.log import get_log
-from src.util.string_util import convert_to_snake_case
+from src.util.string_util import normalize_string
 
 LOG = get_log(__name__)
 
@@ -26,7 +26,7 @@ def is_alien_species(species_string):
 def identify_species(species_string):
     species_result = Species.XENO
     for species in list(Species):
-        if convert_to_snake_case(species_string) == species.value:
+        if normalize_string(species_string) == species.value:
             species_result = species
     LOG.debug('"%s" identified as %s.', species_string, species_result)
     return species_result

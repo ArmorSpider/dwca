@@ -1,21 +1,21 @@
 from definitions import WEAPONS, FORCE_FIELD
 from src.action.melee_attack import MeleeAttack
 from src.action.ranged_attack import RangedAttack
-from src.cover import get_cover_armor_for_hitloc
 from src.dwca_log.log import get_log
 from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
     SINGLE_SHOT
 from src.entities.char_stats import STAT_TGH
 from src.entities.entity import Entity
+from src.entities.libraries import read_character
 from src.entities.species import is_alien_species
-from src.force_field import ForceField
 from src.hit_location import HITLOC_ALL, get_hit_location_name
 from src.modifiers.qualities import Felling, Toxic, DrainLife, Hellfire, Snare,\
     Flexible
 from src.modifiers.talents import SwiftAttack, LightningAttack
 from src.modifiers.traits import MultipleArms
+from src.situational.cover import get_cover_armor_for_hitloc
+from src.situational.force_field import ForceField
 from src.util.rand_util import get_tens
-from src.util.read_file import read_character
 
 
 LOG = get_log(__name__)

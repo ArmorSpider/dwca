@@ -1,7 +1,7 @@
 import unittest
 
 from definitions import PROTECTION_MAX, OVERLOAD_MAX
-from src.force_field import ForceField
+from src.situational.force_field import ForceField
 
 
 class Test(unittest.TestCase):

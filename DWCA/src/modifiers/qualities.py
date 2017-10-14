@@ -1,10 +1,10 @@
 from src.dwca_log.log import get_log
 from src.entities import PENETRATION, DICE, DAMAGE
 from src.entities.char_stats import STAT_TGH
-from src.message_queue import queue_message
+from src.cli.message_queue import queue_message
 from src.modifiers.modifier import Modifier
 from src.modifiers.traits import NaturalArmor
-from src.state_manager import StateManager
+from src.situational.state_manager import StateManager
 
 
 LOG = get_log(__name__)

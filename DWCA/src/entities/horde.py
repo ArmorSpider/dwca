@@ -1,9 +1,9 @@
 from src.dwca_log.log import get_log
 from src.entities.character import Character
+from src.entities.libraries import read_character
 from src.modifiers.qualities import Devastating, Hellfire
 from src.modifiers.traits import FireDrill
 from src.util.rand_util import get_tens
-from src.util.read_file import read_character
 
 
 LOG = get_log(__name__)

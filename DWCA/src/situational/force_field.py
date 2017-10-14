@@ -1,7 +1,7 @@
 from definitions import PROTECTION_MAX, OVERLOAD_MAX
 from src.dice import roll_action_dice
 from src.dwca_log.log import get_log
-from src.state_manager import is_overloaded
+from src.situational.state_manager import is_overloaded
 
 LOG = get_log(__name__)
 

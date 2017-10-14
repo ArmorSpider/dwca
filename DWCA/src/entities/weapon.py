@@ -1,7 +1,7 @@
 from definitions import CLASS, MELEE
 from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
 from src.entities.entity import Entity
-from src.util.read_file import read_weapon
+from src.entities.libraries import read_weapon
 
 
 def get_weapon(weapon_name):

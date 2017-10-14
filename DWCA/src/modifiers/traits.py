@@ -1,6 +1,6 @@
 from src.dwca_log.log import get_log
 from src.modifiers.modifier import Modifier
-from src.state_manager import StateManager, has_charged
+from src.situational.state_manager import StateManager, has_charged
 
 
 LOG = get_log(__name__)

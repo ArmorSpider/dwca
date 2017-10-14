@@ -1,6 +1,6 @@
 from src.dwca_log.log import get_log
 from src.hit_location import BODY, RIGHT_LEG, LEFT_LEG
-from src.state_manager import StateManager
+from src.situational.state_manager import StateManager
 
 
 LOG = get_log(__name__)

@@ -1,6 +1,7 @@
 from src.dwca_log.log import get_log
+from src.entities.libraries import find_best_match
 from src.errors import NoMatchError
-from src.util.read_file import find_best_match
+from src.util.string_util import normalize_string
 
 
 LOG = get_log(__name__)
@@ -47,7 +48,3 @@ def match_pair(key, value, match_map):
 
 def is_valid_pair_string(pair_string):
     return pair_string.count(KEY_VALUE_SEPARATOR) == 1
-
-
-def normalize_string(input_string):
-    return input_string.strip().lower().replace(' ', '_')

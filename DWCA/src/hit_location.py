@@ -24,7 +24,10 @@ def get_hit_location(reversed_roll):
 
 
 def get_hit_location_name(hit_location):
-    return hit_location.name.lower()
+    if isinstance(hit_location, HitLocation):
+        return hit_location.name.lower()
+    else:
+        return hit_location
 
 
 HEAD = HitLocation.HEAD

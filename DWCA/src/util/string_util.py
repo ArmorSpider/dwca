@@ -2,5 +2,5 @@ def reverse_string(string_):
     return string_[::-1]
 
 
-def convert_to_snake_case(string_):
-    return string_.replace(' ', '_').lower()
+def normalize_string(input_string):
+    return input_string.strip().lower().replace(' ', '_')

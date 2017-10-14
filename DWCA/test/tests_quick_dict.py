@@ -1,5 +1,6 @@
 from unittest import TestCase
-from src.util.quick_dict import quick_dict
+
+from src.cli.quick_dict import quick_dict
 
 
 class Test(TestCase):
