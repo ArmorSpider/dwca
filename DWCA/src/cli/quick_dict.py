@@ -47,6 +47,8 @@ def _match_pair(key, value, match_map):
     matched_key = find_best_match(input_string=key,
                                   options=possible_keys)
     possible_values = match_map[matched_key]
+    if possible_values is None:
+        return matched_key, value
     matched_value = find_best_match(input_string=value,
                                     options=possible_values)
     return matched_key, matched_value

@@ -1,7 +1,7 @@
 import sys
 
 from definitions import FIREMODE, WEAPON, NUM_ATTACKS, ROLL_TARGET, ATTACKER,\
-    TARGET
+    TARGET, OVERLOADED, CHARGE, AIMED, COVER
 from src.action.attack import Attack
 from src.action.hit import Hit
 from src.cli.match_map import get_default_match_map
@@ -15,7 +15,9 @@ from src.handler import build_attacker, main_handler, check_required_keys,\
     build_target
 from src.hit_location import BODY
 from src.modifiers.modifier import register_modifiers
+from src.save_manager import SaveManager
 from src.situational.state_manager import StateManager
+from src.util.dict_util import pretty_print
 from src.util.string_util import normalize_string
 from src.util.user_input import user_choose_from_list, user_input_int
 
@@ -57,6 +59,13 @@ class CLICommand(object):
     def _process_event(self, event):
         return event
 
+    def _toggle_key(self, key, event):
+        if key in event:
+            event.pop(key)
+        else:
+            event[key] = True
+        return event
+
 
 class CommandRun(CLICommand):
 
@@ -77,6 +86,71 @@ class CommandQuit(CLICommand):
 
     def _process_event(self, event):
         sys.exit(0)
+
+
+class CommandOverload(CLICommand):
+
+    keyword = 'overload'
+
+    def _process_event(self, event):
+        event = self._toggle_key(OVERLOADED, event)
+        return event
+
+
+class CommandCover(CLICommand):
+
+    keyword = 'cover'
+
+    def _process_event(self, event):
+        armor_value = user_input_int('Enter cover armor value: ')
+        if armor_value:
+            event[COVER] = armor_value
+        else:
+            event.pop(COVER, None)
+        return event
+
+
+class CommandCharge(CLICommand):
+
+    keyword = 'charge'
+
+    def _process_event(self, event):
+        event = self._toggle_key(CHARGE, event)
+        return event
+
+
+class CommandAim(CLICommand):
+
+    keyword = 'aim'
+
+    def _process_event(self, event):
+        event = self._toggle_key(AIMED, event)
+        return event
+
+
+class CommandSave(CLICommand):
+
+    keyword = 'save'
+
+    def _process_event(self, event):
+        state_name = raw_input('Save state as: ')
+        clean_state_name = normalize_string(state_name)
+        SaveManager.save_state(clean_state_name, event)
+        return event
+
+
+class CommandLoad(CLICommand):
+
+    keyword = 'load'
+
+    def _process_event(self, event):
+        available_states = SaveManager.saved_states.keys()
+        LOG.info('Available states:')
+        pretty_print(available_states)
+        state_name = raw_input('Load which state? ')
+        clean_state_name = normalize_string(state_name)
+        state = SaveManager.load_state(clean_state_name)
+        return state
 
 
 class CommandDamage(CLICommand):

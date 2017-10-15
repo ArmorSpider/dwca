@@ -8,7 +8,8 @@ class Test(TestCase):
     def setUp(self):
         self.match_map = {'fruits': ['banana', 'melon', 'avocado'],
                           'people': ['hank', 'james', 'the_emperor'],
-                          'food': ['bacon', 'ham', 'eggs']}
+                          'food': ['bacon', 'ham', 'eggs'],
+                          'criminals': None}
 
     def test_empty_string_should_return_empty_dict(self):
         input_string = ''
@@ -58,5 +59,11 @@ class Test(TestCase):
     def test_pair_with_half_match_should_not_be_allowed(self):
         input_string = 'people: AAAAAAAAAAAAA'
         expected = {}
+        actual = quick_dict_parse(input_string, match_map=self.match_map)
+        self.assertEqual(expected, actual)
+
+    def test_pair_with_matches_none_should_allow_anything(self):
+        input_string = 'criminals: AAAA'
+        expected = {'criminals': 'aaaa'}
         actual = quick_dict_parse(input_string, match_map=self.match_map)
         self.assertEqual(expected, actual)

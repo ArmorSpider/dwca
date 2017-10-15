@@ -1,10 +1,10 @@
 alakir:
-  armor: {body: 14, left_arm: 12, right_arm: 8, left_leg: 8, right_leg: 8, head: 8}
+  armor: {body: 14, head: 8, left_arm: 12, left_leg: 8, right_arm: 8, right_leg: 8}
   characteristics: {strength: 42, toughness: 54}
+  force_field: {overload_max: 10, protection_max: 55}
   name: Al'akir
   talents: {deathwatch_training: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
-  force_field: {overload_max: 10, protection_max: 55}
 auran_genestealer:
   armor: {all: 6}
   characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
@@ -50,8 +50,8 @@ dagon_overlord:
   species: tyranid
   talents: {ambidextrous: true, crushing_blow: true, fearless: true, lightning_attack: true,
     psy_rating: 8, swift_attack: true, two_weapon_wielder: melee}
-  traits: {brutal_charge: true, multiple_arms: true, natural_armor: true, unnatural_strength: 3,
-    unnatural_toughness: 3, unnatural_willpower: 2, toxic: 2d10 -30 TGH}
+  traits: {brutal_charge: true, multiple_arms: true, natural_armor: true, toxic: 2d10
+      -30 TGH, unnatural_strength: 3, unnatural_toughness: 3, unnatural_willpower: 2}
   weapons: [scything_talons, bonesword, twin_devourer]
   wounds: 180
 dev_bohn_jobb:
@@ -106,7 +106,7 @@ genestealer_broodlord:
     unnatural_strength: 3, unnatural_toughness: 3}
   weapons: [rending_claws]
 gilmech:
-  armor: {body: 13, left_arm: 11, right_arm: 11, left_leg: 11, right_leg: 11, head: 13}
+  armor: {body: 13, head: 13, left_arm: 11, left_leg: 11, right_arm: 11, right_leg: 11}
   characteristics: {strength: 43, toughness: 50}
   name: Gilmech
   talents: {deathwatch_training: true, mighty_shot: true}
@@ -114,6 +114,7 @@ gilmech:
 hierophant:
   armor: {all: 12}
   characteristics: {ballistic_skill: 34, strength: 90, toughness: 84, weapon_skill: 66}
+  force_field: {overload_max: 5, protection_max: 65}
   name: Hierophant
   species: tyranid
   talents: {berserk_charge: true, furious_assault: true, lightning_attack: true, swift_attack: true,
@@ -122,7 +123,17 @@ hierophant:
     unnatural_toughness: 4}
   weapons: [scything_talons, lashwhip, claw_stomp, twin_biocannons]
   wounds: 220
-  force_field: {overload_max: 5, protection_max: 65}
+hive_tyrant:
+  armor: {all: 10}
+  characteristics: {ballistic_skill: 33, strength: 60, toughness: 53, weapon_skill: 78}
+  name: Hive Tyrant
+  species: tyranid
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, psy_rating: 8,
+    swift_attack: true, two_weapon_wielder: melee}
+  traits: {brutal_charge: true, multiple_arms: true, natural_armor: true, unnatural_strength: 3,
+    unnatural_toughness: 3}
+  weapons: [scything_talons, bonesword, stranglethorn_cannon]
+  wounds: 120
 hormagaunt:
   armor: {all: 3}
   characteristics: {ballistic_skill: 20, strength: 35, toughness: 30, weapon_skill: 45}
@@ -132,6 +143,12 @@ hormagaunt:
   traits: {horde: true, natural_armor: true, overwhelming: true}
   weapons: [scything_talons]
   wounds: 9
+land_raider:
+  armor: {all: 50}
+  characteristics: {ballistic_skill: 50}
+  name: Land Raider (Tank)
+  weapons: [twin_heavy_bolter, twin_lascannon]
+  wounds: 95
 lictor:
   armor: {all: 6}
   characteristics: {strength: 65, toughness: 40, weapon_skill: 65}
@@ -146,14 +163,16 @@ lictor:
   wounds: 40
 marius:
   armor: {all: 8, body: 10}
-  characteristics: {ballistic_skill: 44, strength: 43, toughness: 50, weapon_skill: 81, intelligence: 54, perception: 38}
+  characteristics: {ballistic_skill: 44, intelligence: 54, perception: 38, strength: 43,
+    toughness: 50, weapon_skill: 81}
   force_field: {overload_max: 10, protection_max: 25}
   name: Marius the Parry-God
   talents: {deathwatch_training: true, hunter_of_aliens: true, slaughter_the_swarm: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
-  weapons: [marius_honour_blades, hellfire_bolt_pistol, bolter, marius_hesh_bolter, marius_lightning_claws]
+  weapons: [marius_honour_blades, hellfire_bolt_pistol, bolter, marius_hesh_bolter,
+    marius_lightning_claws]
 namael:
-  armor: {body: 14, left_arm: 12, right_arm: 8, left_leg: 8, right_leg: 8, head: 8}
+  armor: {body: 14, head: 8, left_arm: 12, left_leg: 8, right_arm: 8, right_leg: 8}
   characteristics: {strength: 42, toughness: 43}
   force_field: {overload_max: 10, protection_max: 55}
   name: Namael
@@ -193,6 +212,12 @@ ripper_swarm:
   talents: {fearless: true, swift_attack: true}
   traits: {horde: true, natural_armor: true, overwhelming: true, rampage: true, relentless: true}
   weapons: [ripper_mandibles]
+stormraven:
+  armor: {all: 37}
+  characteristics: {ballistic_skill: 50}
+  name: Stormraven
+  weapons: [twin_assault_cannon, twin_heavy_bolter, bloodstrike_missile]
+  wounds: 35
 termagant:
   armor: {all: 3}
   characteristics: {ballistic_skill: 33, strength: 32, toughness: 30, weapon_skill: 30}
@@ -227,18 +252,10 @@ tyranid_warrior:
   name: Tyranid Warror
   species: tyranid
   talents: {fearless: true, swift_attack: true}
-  traits: {multiple_arms: true, natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2, horde: true}
+  traits: {horde: true, multiple_arms: true, natural_armor: true, unnatural_strength: 2,
+    unnatural_toughness: 2}
   weapons: [scything_talons, rending_claws, devourer, deathspitter]
   wounds: 48
-hive_tyrant:
-  name: Hive Tyrant
-  characteristics: {ballistic_skill: 33, strength: 60, toughness: 53, weapon_skill: 78}
-  species: tyranid
-  wounds: 120
-  armor: {all: 10}
-  talents: {ambidextrous: true, crushing_blow: true, fearless: true, psy_rating: 8, two_weapon_wielder: melee, swift_attack: true}
-  traits: {brutal_charge: true, natural_armor: true, multiple_arms: true, unnatural_strength: 3, unnatural_toughness: 3}
-  weapons: [scything_talons, bonesword, stranglethorn_cannon]
 tyrant_guard:
   armor: {all: 10}
   characteristics: {ballistic_skill: 30, strength: 50, toughness: 60, weapon_skill: 55}
@@ -287,10 +304,10 @@ warrior_prime:
 zoanthrope:
   armor: {all: 6}
   characteristics: {ballistic_skill: 45, strength: 45, toughness: 45, weapon_skill: 30}
+  force_field: {overload_max: 5, protection_max: 65}
   name: Zoanthrope
   species: tyranid
   talents: {fearless: true, psy_rating: 6}
   traits: {natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
-  force_field: {overload_max: 5, protection_max: 65}
   weapons: [teeth_and_claws]
   wounds: 32
