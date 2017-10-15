@@ -10,6 +10,7 @@ from src.cli.quick_dict import quick_dict_parse
 from src.dwca_log.log import get_log
 from src.entities import SEMI_AUTO, FULL_AUTO
 from src.entities.char_stats import STAT_WS, STAT_BS
+from src.entities.libraries import get_weapon_library, get_character_library
 from src.entities.weapon import get_weapon
 from src.handler import build_attacker, main_handler, check_required_keys,\
     build_target
@@ -86,6 +87,36 @@ class CommandQuit(CLICommand):
 
     def _process_event(self, event):
         sys.exit(0)
+
+
+class CommandWeapon(CLICommand):
+
+    keyword = 'weapon'
+
+    def _process_event(self, event):
+        weapon_name = user_choose_from_list(get_weapon_library().keys())
+        event[WEAPON] = weapon_name
+        return event
+
+
+class CommandAttacker(CLICommand):
+
+    keyword = 'attacker'
+
+    def _process_event(self, event):
+        character_name = user_choose_from_list(get_character_library().keys())
+        event[ATTACKER] = character_name
+        return event
+
+
+class CommandTarget(CLICommand):
+
+    keyword = 'target'
+
+    def _process_event(self, event):
+        character_name = user_choose_from_list(get_character_library().keys())
+        event[TARGET] = character_name
+        return event
 
 
 class CommandOverload(CLICommand):

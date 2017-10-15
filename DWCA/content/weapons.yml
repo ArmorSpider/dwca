@@ -493,6 +493,7 @@ toxic_tendrils:
   penetration: 3
   qualities: {toxic: 3d10+5 (Test is -40)}
 twin_assault_cannons:
+  name: Twin-Linked Assault Cannons
   class: Mounted
   damage_type: I
   dice: 2
@@ -536,6 +537,7 @@ twin_heavy_bolter:
   penetration: 5
   qualities: {tearing: true, twin_linked: true}
 twin_lascannon:
+  name: Twin-Linked Lascannons
   class: Heavy
   dice: 5
   flat_damage: 10
