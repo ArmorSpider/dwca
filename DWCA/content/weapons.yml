@@ -2,10 +2,12 @@ autocannon:
   class: Heavy
   damage_type: I
   dice: 4
+  flat_damage: 5
   full_auto: 5
   name: Autocannon
   penetration: 4
   qualities: {}
+  range: 300
   semi_auto: 2
   single_shot: 1
 autogun:
@@ -16,9 +18,11 @@ autogun:
   name: Autogun
   penetration: 0
   qualities: {}
+  range: 100
   semi_auto: 3
   single_shot: 1
 avenger_shuriken_catapult:
+  _package: eldar
   class: Basic
   damage_type: R
   dice: 1
@@ -31,6 +35,7 @@ avenger_shuriken_catapult:
   semi_auto: 3
   single_shot: 1
 barbed_strangler:
+  _package: tyranid
   class: Heavy
   damage_type: I
   dice: 1
@@ -39,16 +44,21 @@ barbed_strangler:
   penetration: 3
   qualities: {blast: 10, deadly_snare: true, devastating: 2, living_ammunition: true,
     tearing: true}
+  range: 80
   single_shot: 1
 bio_acid_spray:
+  _package: tyranid
+  class: Basic
   damage_type: E
   dice: 3
   flat_damage: 6
   name: Bio-Acid Spray
   penetration: 4
   qualities: {living_ammunition: true, tearing: true, toxic: true}
+  range: 30
   single_shot: 1
 bio_electric_pulse:
+  _package: tyranid
   class: Basic
   damage_type: E
   dice: 2
@@ -57,7 +67,9 @@ bio_electric_pulse:
   name: Bio-Electric pulse
   penetration: 4
   qualities: {living_ammunition: true, storm: true}
+  range: 30
 bio_plasma:
+  _package: tyranid
   class: Basic
   damage_type: E
   dice: 3
@@ -65,16 +77,19 @@ bio_plasma:
   name: Bio-Plasma
   penetration: 9
   qualities: {blast: 5}
+  range: 30
   single_shot: 1
 biting_blade:
+  _package: eldar
   class: Melee
+  damage_type: R
   dice: 2
   flat_damage: 5
   name: Biting Blade
   penetration: 3
   qualities: {damage_per_dos: 3, razor_sharp: true, tearing: true}
 bloodstrike_missile: {class: Basic, damage_type: X, dice: 4, flat_damage: 6, name: Bloodstrike
-    Missile, penetration: 14, single_shot: 1}
+    Missile, penetration: 14, range: 750, single_shot: 1}
 bolt_pistol:
   class: Pistol
   damage_type: X
@@ -83,6 +98,7 @@ bolt_pistol:
   name: Astartes Bolt Pistol
   penetration: 4
   qualities: {tearing: true}
+  range: 30
   semi_auto: 2
   single_shot: 1
 bolter:
@@ -93,6 +109,7 @@ bolter:
   name: Astartes Bolter (Godwyn)
   penetration: 4
   qualities: {tearing: true}
+  range: 100
   semi_auto: 3
   single_shot: 1
 boltgun:
@@ -103,16 +120,21 @@ boltgun:
   name: Astartes Boltgun (Stalker)
   penetration: 4
   qualities: {accurate: true, tearing: true}
+  range: 200
   single_shot: 1
 bomb_rack:
+  _package: chaos
   class: Mounted
   damage_type: X
   dice: 3
   flat_damage: 10
+  name: Bombadier-operated Bomb Rack
   penetration: 6
   qualities: {blast: 15}
+  range: 30
   single_shot: 1
 bonesword:
+  _package: tyranid
   class: Melee
   damage_type: R
   dice: 1
@@ -129,6 +151,7 @@ breaching_augur:
   penetration: 7
   qualities: {power_field: true, tearing: true, unwieldy: true}
 bright_lance:
+  _package: eldar
   class: Heavy
   damage_type: E
   dice: 4
@@ -155,13 +178,22 @@ ceremonial_sword:
   penetration: 2
   qualities: {balanced: true}
 chainfist:
-  class: Mounted
+  class: Melee
   damage_type: E
   dice: 2
   flat_damage: 0
   name: Astartes Chainfist
   penetration: 10
   qualities: {power_field: true, tearing: true, unwieldy: true}
+chainsabre:
+  _package: eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 4
+  name: Chainsabre
+  penetration: 3
+  qualities: {balanced: true, razor_sharp: true, tearing: true}
 chainsword:
   class: Melee
   damage_type: R
@@ -171,6 +203,7 @@ chainsword:
   penetration: 3
   qualities: {balanced: true, tearing: true}
 chaos_sword:
+  _package: chaos
   class: Melee
   damage_type: E
   dice: 2
@@ -195,6 +228,7 @@ crozius_arcanum:
   penetration: 7
   qualities: {balanced: true, power_field: true}
 deathspitter:
+  _package: tyranid
   class: Basic
   damage_type: E
   dice: 1
@@ -202,9 +236,11 @@ deathspitter:
   name: Deathspitter
   penetration: 4
   qualities: {living_ammunition: true, tearing: true}
+  range: 40
   semi_auto: 3
   single_shot: 1
 dev_bolter:
+  _package: dev
   class: Basic
   damage_type: R
   dice: 1
@@ -213,9 +249,11 @@ dev_bolter:
   name: Astartes Bolter Dev
   penetration: 3
   qualities: {tearing: true}
+  range: 100
   semi_auto: 3
   single_shot: 1
 dev_felling_chainsword:
+  _package: dev
   class: Melee
   damage_type: R
   dice: 1
@@ -224,14 +262,18 @@ dev_felling_chainsword:
   penetration: 3
   qualities: {balanced: true, felling: 2, tearing: true}
 devourer:
+  _package: tyranid
   class: Basic
+  damage_type: R
   dice: 1
   flat_damage: 9
   full_auto: 6
   name: Devourer
   penetration: 0
   qualities: {living_ammunition: true, storm: true, tearing: true}
+  range: 30
 distort_cannon:
+  _package: eldar
   class: Mounted
   damage_type: R
   dice: 4
@@ -250,8 +292,12 @@ dual_lightning_claw:
   name: Astartes Lightning Claw
   penetration: 8
   qualities: {damage_per_dos: 2, power_field: true, proven: 4}
-dummy: {class: Melee, damage_type: I, name: Dummy Weapon}
+dummy: {class: Melee, damage_type: I, dice: 1, flat_damage: 0, name: Dummy Weapon,
+  penetration: 0}
+dummy_ranged: {class: Basic, damage_type: I, dice: 1, flat_damage: 0, name: Dummy
+    Ranged, penetration: 0, range: 100, single_shot: 1}
 eldar_chainsword:
+  _package: eldar
   class: Melee
   damage_type: R
   dice: 1
@@ -260,13 +306,16 @@ eldar_chainsword:
   penetration: 3
   qualities: {balanced: true, razor_sharp: true, tearing: true}
 eldar_executioner:
+  _package: eldar
   class: Melee
+  damage_type: E
   dice: 2
   flat_damage: 5
   name: Executioner
   penetration: 10
   qualities: {balanced: true, power_field: true}
 eldar_krak_missile:
+  _package: eldar
   class: Heavy
   damage_type: X
   dice: 4
@@ -274,7 +323,9 @@ eldar_krak_missile:
   name: Eldar Missile Launcher(Krak Missile)
   penetration: 10
   qualities: {blast: 1}
+  range: 250
 eldar_laspistol:
+  _package: eldar
   class: Pistol
   damage_type: E
   dice: 1
@@ -285,9 +336,10 @@ eldar_laspistol:
   range: 35
   semi_auto: 2
   single_shot: 1
-eldar_monoblade: {class: Melee, damage_type: R, dice: 1, flat_damage: 5, name: Eldar
-    Mono-blade, penetration: 2}
+eldar_monoblade: {_package: eldar, class: Melee, damage_type: R, dice: 1, flat_damage: 5,
+  name: Eldar Mono-blade, penetration: 2}
 eldar_plasma_grenade:
+  _package: eldar
   class: Basic
   damage_type: E
   dice: 1
@@ -298,6 +350,7 @@ eldar_plasma_grenade:
   range: 15
   single_shot: 1
 eldar_plasma_missile:
+  _package: eldar
   class: Heavy
   damage_type: E
   dice: 2
@@ -315,7 +368,19 @@ executioner_axe:
   name: Astartes Executioner Axe
   penetration: 8
   qualities: {felling: 1, power_field: true, unwieldy: true}
+fire_pike:
+  _package: eldar
+  class: Basic
+  damage_type: E
+  dice: 3
+  flat_damage: 15
+  name: Fire Pike
+  penetration: 15
+  qualities: {blast: 1, felling: 1, penetration_per_dos: 2}
+  range: 80
+  single_shot: 1
 fleshborer:
+  _package: tyranid
   class: Basic
   damage_type: R
   dice: 1
@@ -323,6 +388,7 @@ fleshborer:
   name: Fleshborer
   penetration: 3
   qualities: {living_ammunition: true, tearing: true}
+  range: 20
   single_shot: 1
 force_staff:
   class: Melee
@@ -344,8 +410,35 @@ frag_missile:
   class: Basic
   damage_type: X
   dice: 2
+  flat_damage: 0
+  name: Astartes Frag Missile
   penetration: 4
   qualities: {blast: 5, devastating: 1}
+  range: 250
+fusion_gun:
+  _package: eldar
+  class: Basic
+  damage_type: E
+  dice: 3
+  flat_damage: 8
+  name: Fusion Gun
+  penetration: 13
+  qualities: {felling: 1, penetration_per_dos: 2, reliable: true}
+  range: 40
+  single_shot: 1
+hawks_talon:
+  _package: eldar
+  class: Basic
+  damage_type: E
+  dice: 2
+  flat_damage: 8
+  full_auto: 6
+  name: Hawk's Talon
+  penetration: 5
+  qualities: {never_jams: true}
+  range: 120
+  semi_auto: 3
+  single_shot: 1
 heavy_bolter:
   class: Heavy
   damage_type: X
@@ -355,7 +448,9 @@ heavy_bolter:
   name: Astartes Heavy Bolter
   penetration: 5
   qualities: {tearing: true}
+  range: 150
 heavy_venom_cannon:
+  _package: tyranid
   class: Heavy
   damage_type: I
   dice: 4
@@ -363,6 +458,7 @@ heavy_venom_cannon:
   name: Heavy Venom Cannon
   penetration: 6
   qualities: {blast: 5, living_ammunition: true, proven: 3, toxic: 1d10}
+  range: 100
   single_shot: 1
 hellfire_bolt_pistol:
   class: Pistol
@@ -372,33 +468,56 @@ hellfire_bolt_pistol:
   name: Astartes Bolt Pistol
   penetration: 4
   qualities: {hellfire: true, tearing: true}
+  range: 30
   semi_auto: 2
   single_shot: 1
 hierophant_claw_stomp:
+  _package: tyranid
   class: Melee
+  damage_type: R
   dice: 1
   flat_damage: 1
   name: Hierophant Claw Stomp
   penetration: 4
   qualities: {devastating: 8}
 inferno_gun:
+  _package: empire
   class: Mounted
+  damage_type: E
   dice: 2
   flat_damage: 15
   name: Inferno Gun
   penetration: 8
   qualities: {flame: true, reliable: true}
+  range: 50
   single_shot: 1
 krak_grenade_melee: {class: Melee, damage_type: E, dice: 3, flat_damage: 4, name: Krak
     Grenade (Melee), penetration: 6}
 krak_missile:
   class: Basic
+  damage_type: X
   dice: 3
   flat_damage: 10
+  name: Astartes Krak Missile
   penetration: 8
   qualities: {blast: 1}
+  range: 250
+  single_shot: 1
+lasblaster:
+  _package: eldar
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 6
+  full_auto: 6
+  name: Lastblaster
+  penetration: 4
+  qualities: {reliable: true}
+  range: 120
+  semi_auto: 3
   single_shot: 1
 lash_whip:
+  _package: tyranid
   class: Melee
   damage_type: R
   dice: 1
@@ -415,6 +534,7 @@ lightning_claw:
   penetration: 8
   qualities: {damage_per_dos: 1, power_field: true, proven: 4}
 mandiblaster_helm:
+  _package: eldar
   class: Basic
   damage_type: E
   dice: 2
@@ -437,8 +557,10 @@ marius_hesh_bolter:
   damage_type: X
   dice: 1
   flat_damage: 7
+  name: Marius' Hesh Bolter
   penetration: 4
   qualities: {accurate: true, reliable: true, tearing: true, toxic: 1d10}
+  range: 50
   semi_auto: 3
   single_shot: 1
 marius_honour_blades:
@@ -458,6 +580,7 @@ marius_lightning_claw:
   penetration: 8
   qualities: {damage_per_dos: 2, power_field: true, proven: 4, razor_sharp: true}
 mc_eldar_chainsword:
+  _package: eldar
   class: Melee
   damage_type: R
   dice: 1
@@ -466,6 +589,7 @@ mc_eldar_chainsword:
   penetration: 3
   qualities: {balanced: true, razor_sharp: true, tearing: true}
 mc_eldar_power_sword:
+  _package: eldar
   class: Melee
   damage_type: E
   dice: 1
@@ -473,7 +597,32 @@ mc_eldar_power_sword:
   name: Mastercrafted Eldar Power Sword
   penetration: 8
   qualities: {balanced: 2, power_field: true}
+mc_fusion_gun:
+  _package: eldar
+  class: Basic
+  damage_type: E
+  dice: 3
+  flat_damage: 10
+  name: Mastercrafted Fusion Gun
+  penetration: 13
+  qualities: {felling: 1, penetration_per_dos: 2, reliable: true}
+  range: 40
+  single_shot: 1
+mc_lasblaster:
+  _package: eldar
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  full_auto: 6
+  name: Mastercrafted Lastblaster
+  penetration: 4
+  qualities: {never_jams: true}
+  range: 120
+  semi_auto: 3
+  single_shot: 1
 mc_power_glaive:
+  _package: eldar
   class: Melee
   damage_type: E
   dice: 1
@@ -481,7 +630,21 @@ mc_power_glaive:
   name: Mastercrafted Power Glaive
   penetration: 8
   qualities: {balanced: true, power_field: true}
+mc_reaper_launcher:
+  _package: eldar
+  class: Heavy
+  damage_type: X
+  dice: 2
+  flat_damage: 14
+  full_auto: 5
+  name: Mastercrafted Reaper Launcher
+  penetration: 10
+  qualities: {reliable: true, tearing: true}
+  range: 250
+  semi_auto: 3
+  single_shot: 1
 mc_shuriken_pistol:
+  _package: eldar
   class: Pistol
   damage_type: R
   dice: 1
@@ -494,6 +657,7 @@ mc_shuriken_pistol:
   semi_auto: 3
   single_shot: 1
 mc_witchblade:
+  _package: eldar
   class: Melee
   damage_type: R
   dice: 1
@@ -502,6 +666,7 @@ mc_witchblade:
   penetration: 10
   qualities: {balanced: true, power_field: true}
 mirrorsword:
+  _package: eldar
   class: Melee
   damage_type: E
   dice: 1
@@ -517,6 +682,7 @@ multi_melta:
   name: Firestorm Multi-melta
   penetration: 14
   qualities: {blast: 2, recharge: true, volatile: true}
+  range: 100
   semi_auto: 2
   single_shot: 1
 omnissian_axe:
@@ -528,6 +694,7 @@ omnissian_axe:
   penetration: 6
   qualities: {power_field: true, unbalanced: true}
 plasma_blastgun:
+  _package: empire
   class: Mounted
   damage_type: E
   dice: 2
@@ -535,9 +702,11 @@ plasma_blastgun:
   name: Plasma Blastgun
   penetration: 8
   qualities: {blast: 12, volatile: true}
+  range: 600
   semi_auto: 2
   single_shot: 1
 plasma_blastgun_max:
+  _package: empire
   class: Mounted
   damage_type: E
   dice: 3
@@ -545,6 +714,7 @@ plasma_blastgun_max:
   name: Plasma Blastgun (Max)
   penetration: 10
   qualities: {blast: 16, volatile: true}
+  range: 800
   single_shot: 1
 plasma_cannon:
   class: Heavy
@@ -554,6 +724,7 @@ plasma_cannon:
   name: Astartes Plasma Cannon
   penetration: 10
   qualities: {blast: 3, volatile: true}
+  range: 150
   single_shot: 1
 plasma_gun:
   class: Basic
@@ -563,6 +734,7 @@ plasma_gun:
   name: Astartes Plasma Gun (Ragefire)
   penetration: 10
   qualities: {volatile: true}
+  range: 100
   semi_auto: 2
   single_shot: 1
 power_axe:
@@ -613,9 +785,23 @@ power_sword:
   name: Astartes Power Sword
   penetration: 6
   qualities: {balanced: true, power_field: true}
-ravener_spine_fists: {class: Basic, damage_type: R, dice: 1, flat_damage: 12, full_auto: 4,
-  name: Spine Fists, penetration: 2, semi_auto: 2, single_shot: 1}
+ravener_spine_fists: {_package: tyranid, class: Basic, damage_type: R, dice: 1, flat_damage: 12,
+  full_auto: 4, name: Spine Fists, penetration: 2, range: 20, semi_auto: 2, single_shot: 1}
+reaper_launcher:
+  _package: eldar
+  class: Heavy
+  damage_type: X
+  dice: 2
+  flat_damage: 12
+  full_auto: 5
+  name: Reaper Launcher
+  penetration: 10
+  qualities: {reliable: true, tearing: true}
+  range: 250
+  semi_auto: 3
+  single_shot: 1
 rending_claws:
+  _package: tyranid
   class: Melee
   damage_type: R
   dice: 1
@@ -624,6 +810,7 @@ rending_claws:
   penetration: 5
   qualities: {razor_sharp: true}
 ripper_mandibles:
+  _package: tyranid
   class: Melee
   damage_type: R
   dice: 1
@@ -640,6 +827,8 @@ sacris_claymore:
   penetration: 2
   qualities: {unbalanced: true}
 scatter_laser:
+  _package: eldar
+  class: Heavy
   damage_type: E
   dice: 3
   flat_damage: 10
@@ -649,6 +838,7 @@ scatter_laser:
   qualities: {reliable: true, storm: true}
   range: 180
 scything_talons:
+  _package: tyranid
   class: Melee
   damage_type: R
   dice: 1
@@ -657,6 +847,7 @@ scything_talons:
   penetration: 3
   qualities: {}
 shadow_weaver:
+  _package: eldar
   class: Mounted
   damage_type: R
   dice: 4
@@ -668,13 +859,16 @@ shadow_weaver:
   single_shot: 1
 sharpshooter_rifle:
   class: Basic
+  damage_type: R
   dice: 1
   flat_damage: 4
   name: Mk.IX Ultra-Pattern Sharpshooter's Rifle
   penetration: 2
   qualities: {accurate: true, felling: 1, toxic: 1d10}
+  range: 250
   single_shot: 1
 shuriken_cannon:
+  _package: eldar
   class: Heavy
   damage_type: R
   dice: 2
@@ -684,127 +878,8 @@ shuriken_cannon:
   penetration: 6
   qualities: {razor_sharp: true, reliable: true, tearing: true}
   range: 110
-chainsabre:
-  name: Chainsabre
-  class: Melee
-  damage_type: R
-  dice: 1
-  flat_damage: 4
-  penetration: 3
-  qualities: {balanced: true, tearing: true, razor_sharp: true}
-fusion_gun:
-  name: Fusion Gun
-  range: 40
-  single_shot: 1
-  damage_type: E
-  class: Basic
-  dice: 3
-  flat_damage: 8
-  penetration: 13
-  qualities: {reliable: true, felling: 1, penetration_per_dos: 2}
-mc_fusion_gun:
-  name: Mastercrafted Fusion Gun
-  range: 40
-  single_shot: 1
-  damage_type: E
-  class: Basic
-  dice: 3
-  flat_damage: 10
-  penetration: 13
-  qualities: {reliable: true, felling: 1, penetration_per_dos: 2}
-fire_pike:
-  name: Fire Pike
-  range: 80
-  class: Basic
-  single_shot: 1
-  dice: 3
-  flat_damage: 15
-  penetration: 15
-  damage_type: E
-  qualities: {blast: 1, felling: 1, penetration_per_dos: 2}
-reaper_launcher:
-  name: Reaper Launcher
-  class: Heavy
-  range: 250
-  single_shot: 1
-  semi_auto: 3
-  full_auto: 5
-  dice: 2
-  flat_damage: 12
-  damage_type: X
-  penetration: 10
-  qualities: {reliable: true, tearing: true}
-mc_reaper_launcher:
-  name: Mastercrafted Reaper Launcher
-  class: Heavy
-  range: 250
-  single_shot: 1
-  semi_auto: 3
-  full_auto: 5
-  dice: 2
-  flat_damage: 14
-  damage_type: X
-  penetration: 10
-  qualities: {reliable: true, tearing: true}
-lasblaster:
-  name: Lastblaster
-  class: Basic
-  range: 120
-  single_shot: 1
-  semi_auto: 3
-  full_auto: 6
-  damage_type: E
-  penetration: 4
-  qualities: {reliable: true}
-  dice: 1
-  flat_damage: 6
-mc_lasblaster:
-  name: Mastercrafted Lastblaster
-  class: Basic
-  range: 120
-  single_shot: 1
-  semi_auto: 3
-  full_auto: 6
-  damage_type: E
-  penetration: 4
-  qualities: {never_jams: true}
-  dice: 1
-  flat_damage: 8
-hawks_talon:
-  name: Hawk's Talon
-  class: Basic
-  range: 120
-  single_shot: 1
-  semi_auto: 3
-  full_auto: 6
-  dice: 2
-  flat_damage: 8
-  penetration: 5
-  qualities: {never_jams: true}
-sunrifle:
-  name: Sunrifle
-  class: Basic
-  range: 90
-  single_shot: 1
-  semi_auto: 4
-  full_auto: 8
-  dice: 1
-  flat_damage: 10
-  damage_type: E
-  penetration: 4
-  qualities: {never_jams: true, storm: true}
-tempest_launcher:
-  name: Tempest Launcher
-  class: Heavy
-  range: 300
-  single_shot: 1
-  semi_auto: 3
-  dice: 2
-  flat_damage: 6
-  damage_type: X
-  penetration: 10
-  qualities: {blast: 6, devastating: 1, tearing: true}
 shuriken_catapult:
+  _package: eldar
   class: Basic
   damage_type: R
   dice: 1
@@ -817,6 +892,7 @@ shuriken_catapult:
   semi_auto: 3
   single_shot: 1
 shuriken_pistol:
+  _package: eldar
   class: Pistol
   damage_type: R
   dice: 1
@@ -829,6 +905,7 @@ shuriken_pistol:
   semi_auto: 3
   single_shot: 1
 starcannon:
+  _package: eldar
   class: Heavy
   damage_type: E
   dice: 3
@@ -846,9 +923,11 @@ storm_bolter:
   name: Astartes Storm Bolter
   penetration: 4
   qualities: {storm: true, tearing: true}
+  range: 100
   semi_auto: 4
   single_shot: 1
 stranglethorn_cannon:
+  _package: tyranid
   class: Heavy
   damage_type: I
   dice: 2
@@ -857,9 +936,35 @@ stranglethorn_cannon:
   penetration: 3
   qualities: {blast: 10, deadly_snare: true, devastating: 2, living_ammunition: true,
     tearing: true}
+  range: 80
+  single_shot: 1
+sunrifle:
+  _package: eldar
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 10
+  full_auto: 8
+  name: Sunrifle
+  penetration: 4
+  qualities: {never_jams: true, storm: true}
+  range: 90
+  semi_auto: 4
   single_shot: 1
 teeth_and_claws: {class: Melee, damage_type: R, dice: 1, flat_damage: 4, name: Teeth
     and Claws, penetration: 3}
+tempest_launcher:
+  _package: eldar
+  class: Heavy
+  damage_type: X
+  dice: 2
+  flat_damage: 6
+  name: Tempest Launcher
+  penetration: 10
+  qualities: {blast: 6, devastating: 1, tearing: true}
+  range: 300
+  semi_auto: 3
+  single_shot: 1
 thunder_hammer:
   class: Melee
   damage_type: E
@@ -869,6 +974,8 @@ thunder_hammer:
   penetration: 9
   qualities: {concussive: true, power_field: true, unwieldy: true}
 toxic_tendrils:
+  damage_type: R
+  _package: tyranid
   class: Melee
   dice: 1
   flat_damage: -2
@@ -876,6 +983,7 @@ toxic_tendrils:
   penetration: 3
   qualities: {toxic: 3d10+5 (Test is -40)}
 twin_assault_cannons:
+  _package: empire
   class: Mounted
   damage_type: I
   dice: 2
@@ -884,32 +992,41 @@ twin_assault_cannons:
   name: Twin-Linked Assault Cannons
   penetration: 6
   qualities: {devastating: 1, tearing: true, twin_linked: true}
+  range: 150
 twin_autocannons:
   class: Heavy
   damage_type: I
   dice: 4
+  flat_damage: 5
   full_auto: 5
   name: Twin-Linked Autocannons
   penetration: 4
   qualities: {twin_linked: true}
+  range: 300
   semi_auto: 2
   single_shot: 1
 twin_biocannons:
+  _package: tyranid
   class: Heavy
+  damage_type: X
   dice: 4
   flat_damage: 6
   name: Twin-Linked Biocannons
   penetration: 6
   qualities: {blast: 4, devastating: 3, felling: 2, toxic: 1d10, twin_linked: true}
+  range: 200
   single_shot: 1
 twin_devourer:
+  _package: tyranid
   class: Basic
+  damage_type: R
   dice: 1
   flat_damage: 9
   full_auto: 6
   name: Twin-Linked Devourer
   penetration: 0
   qualities: {living_ammunition: true, storm: true, tearing: true, twin_linked: true}
+  range: 30
 twin_heavy_bolter:
   class: Heavy
   damage_type: X
@@ -919,15 +1036,20 @@ twin_heavy_bolter:
   name: Astartes Heavy Bolter
   penetration: 5
   qualities: {tearing: true, twin_linked: true}
+  range: 150
 twin_lascannon:
+  _package: empire
   class: Heavy
+  damage_type: E
   dice: 5
   flat_damage: 10
   name: Twin-Linked Lascannons
   penetration: 10
   qualities: {proven: 3, twin_linked: true}
+  range: 300
   single_shot: 1
 twin_turbo_laser:
+  _package: empire
   class: Mounted
   damage_type: E
   dice: 4
@@ -935,8 +1057,10 @@ twin_turbo_laser:
   name: Double-barrelled Turbo-laser Destructor
   penetration: 20
   qualities: {blast: 8, felling: 2, twin_linked: true}
+  range: 1000
   single_shot: 1
 venom_cannon:
+  _package: tyranid
   class: Heavy
   damage_type: I
   dice: 2
@@ -944,16 +1068,21 @@ venom_cannon:
   name: Venom Cannon
   penetration: 6
   qualities: {blast: 5, living_ammunition: true, toxic: 1d10}
+  range: 100
   single_shot: 1
 vulcan_mega_bolter:
+  _package: empire
   class: Mounted
   damage_type: X
   dice: 2
   flat_damage: 13
   full_auto: 15
   name: Vulcan mega-bolter
+  penetration: 7
   qualities: {inaccurate: true, storm: true, tearing: true}
+  range: 400
 witchblade:
+  _package: eldar
   class: Melee
   damage_type: R
   dice: 1
