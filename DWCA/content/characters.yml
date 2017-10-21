@@ -16,6 +16,12 @@ auran_genestealer:
   traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
     tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
   weapons: [rending_claws]
+warhound_titan:
+  armor: {all: 45}
+  characteristics: {ballistic_skill: 50}
+  wounds: 90
+  name: Warhound Titan
+  weapons: [vulcan_mega_bolter, twin_turbo_laser, plasma_blastgun, plasma_blastgun_max]
 carnifex:
   armor: {all: 10}
   characteristics: {ballistic_skill: 25, strength: 70, toughness: 65, weapon_skill: 35,
@@ -111,6 +117,14 @@ gilmech:
   name: Gilmech
   talents: {deathwatch_training: true, mighty_shot: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+hierodule:
+  name: Hierodule
+  species: tyranid
+  armor: {all: 12}
+  characteristics: {strength: 82, toughness: 81, weapon_skill: 64, ballistic_skill: 23}
+  talents: {ambidextrous: true, berserk_charge: true, combat_master: true, fearless: true, furious_assault: true, lightning_attack: true, swift_attack: true, two_weapon_wielder: melee}
+  traits: {fear: 4, multiple_arms: true, natural_armor: true, regeneration: 5, unnatural_strength: 3, unnatural_toughness: 3}
+  weapons: [scything_talons, bio_acid_spray]
 hierophant:
   armor: {all: 12}
   characteristics: {ballistic_skill: 34, strength: 90, toughness: 84, weapon_skill: 66}
@@ -121,7 +135,7 @@ hierophant:
     two_weapon_wielder: melee}
   traits: {multiple_arms: true, natural_armor: true, regeneration: 15, unnatural_strength: 4,
     unnatural_toughness: 4}
-  weapons: [scything_talons, lashwhip, claw_stomp, twin_biocannons]
+  weapons: [scything_talons, lashwhip, hierophant_claw_stomp, twin_biocannons]
   wounds: 220
 hive_tyrant:
   armor: {all: 10}
