@@ -6,6 +6,7 @@ alakir:
   talents: {deathwatch_training: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
 auran_genestealer:
+  _package: tyranid
   armor: {all: 6}
   characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
   name: Auran Genestealer
@@ -16,13 +17,8 @@ auran_genestealer:
   traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
     tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
   weapons: [rending_claws]
-warhound_titan:
-  armor: {all: 45}
-  characteristics: {ballistic_skill: 50}
-  wounds: 90
-  name: Warhound Titan
-  weapons: [vulcan_mega_bolter, twin_turbo_laser, plasma_blastgun, plasma_blastgun_max]
 carnifex:
+  _package: tyranid
   armor: {all: 10}
   characteristics: {ballistic_skill: 25, strength: 70, toughness: 65, weapon_skill: 35,
     willpower: 45}
@@ -33,6 +29,7 @@ carnifex:
     unnatural_toughness: 2}
   weapons: [scything_talons, bio_plasma]
 chaos_marine:
+  _package: chaos
   armor: {all: 8, body: 10}
   characteristics: {strength: 65, toughness: 45}
   name: Chaos Space Marine
@@ -40,6 +37,7 @@ chaos_marine:
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [bolt_pistol, bolter, chainsword]
 daemon_prince:
+  _package: chaos
   armor: {all: 12}
   characteristics: {strength: 66, toughness: 45, weapon_skill: 75}
   name: Daemon Prince
@@ -50,6 +48,7 @@ daemon_prince:
     unnatural_strength: 3, unnatural_toughness: 2}
   weapons: [chaos_sword]
 dagon_overlord:
+  _package: tyranid
   armor: {all: 10}
   characteristics: {ballistic_skill: 35, strength: 65, toughness: 63, weapon_skill: 81}
   name: Dagon Overlord
@@ -61,6 +60,7 @@ dagon_overlord:
   weapons: [scything_talons, bonesword, twin_devourer]
   wounds: 180
 dev_bohn_jobb:
+  _package: dev
   armor: {all: 8, body: 10}
   characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
   force_field: {overload_max: 10, protection_max: 65}
@@ -72,6 +72,7 @@ dev_bohn_jobb:
     unarmed_master: true}
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
 dev_genestealer:
+  _package: dev
   armor: {all: 6}
   characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
   name: Dev Genestealer
@@ -82,6 +83,7 @@ dev_genestealer:
   traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
     tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
 dev_john_bobb:
+  _package: dev
   armor: {all: 8, body: 10}
   characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
   name: John-Bobb
@@ -93,6 +95,7 @@ dev_john_bobb:
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
 dummy: {name: Dummy}
 gargoyle:
+  _package: tyranid
   armor: {all: 3}
   characteristics: {ballistic_skill: 33, strength: 32, toughness: 30, weapon_skill: 30}
   name: Gargoyle
@@ -102,6 +105,7 @@ gargoyle:
   weapons: [fleshborer]
   wounds: 9
 genestealer_broodlord:
+  _package: tyranid
   armor: {all: 6}
   characteristics: {strength: 45, toughness: 40, weapon_skill: 75}
   name: Genestealer Broodlord
@@ -118,14 +122,18 @@ gilmech:
   talents: {deathwatch_training: true, mighty_shot: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
 hierodule:
+  _package: tyranid
+  armor: {all: 12}
+  characteristics: {ballistic_skill: 23, strength: 82, toughness: 81, weapon_skill: 64}
   name: Hierodule
   species: tyranid
-  armor: {all: 12}
-  characteristics: {strength: 82, toughness: 81, weapon_skill: 64, ballistic_skill: 23}
-  talents: {ambidextrous: true, berserk_charge: true, combat_master: true, fearless: true, furious_assault: true, lightning_attack: true, swift_attack: true, two_weapon_wielder: melee}
-  traits: {fear: 4, multiple_arms: true, natural_armor: true, regeneration: 5, unnatural_strength: 3, unnatural_toughness: 3}
+  talents: {ambidextrous: true, berserk_charge: true, combat_master: true, fearless: true,
+    furious_assault: true, lightning_attack: true, swift_attack: true, two_weapon_wielder: melee}
+  traits: {fear: 4, multiple_arms: true, natural_armor: true, regeneration: 5, unnatural_strength: 3,
+    unnatural_toughness: 3}
   weapons: [scything_talons, bio_acid_spray]
 hierophant:
+  _package: tyranid
   armor: {all: 12}
   characteristics: {ballistic_skill: 34, strength: 90, toughness: 84, weapon_skill: 66}
   force_field: {overload_max: 5, protection_max: 65}
@@ -138,6 +146,7 @@ hierophant:
   weapons: [scything_talons, lashwhip, hierophant_claw_stomp, twin_biocannons]
   wounds: 220
 hive_tyrant:
+  _package: tyranid
   armor: {all: 10}
   characteristics: {ballistic_skill: 33, strength: 60, toughness: 53, weapon_skill: 78}
   name: Hive Tyrant
@@ -149,6 +158,7 @@ hive_tyrant:
   weapons: [scything_talons, bonesword, stranglethorn_cannon]
   wounds: 120
 hormagaunt:
+  _package: tyranid
   armor: {all: 3}
   characteristics: {ballistic_skill: 20, strength: 35, toughness: 30, weapon_skill: 45}
   name: Hormagaunt
@@ -158,12 +168,14 @@ hormagaunt:
   weapons: [scything_talons]
   wounds: 9
 land_raider:
+  _package: empire
   armor: {all: 50}
   characteristics: {ballistic_skill: 50}
   name: Land Raider (Tank)
   weapons: [twin_heavy_bolter, twin_lascannon]
   wounds: 95
 lictor:
+  _package: tyranid
   armor: {all: 6}
   characteristics: {strength: 65, toughness: 40, weapon_skill: 65}
   name: Lictor
@@ -193,6 +205,7 @@ namael:
   talents: {deathwatch_training: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
 purestrain_genestealer:
+  _package: tyranid
   armor: {all: 4}
   characteristics: {strength: 45, toughness: 40, weapon_skill: 65}
   name: Purestrain Genestealer
@@ -203,6 +216,7 @@ purestrain_genestealer:
     unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [rending_claws]
 ravener:
+  _package: tyranid
   armor: {all: 6}
   characteristics: {ballistic_skill: 40, strength: 45, toughness: 40, weapon_skill: 60}
   name: Ravener
@@ -211,6 +225,7 @@ ravener:
   traits: {multiple_arms: true, natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [scything_talons, rending_claws, devourer, deathspitter, ravener_spine_fists]
 renegade_militia:
+  _package: chaos
   armor: {all: 4}
   characteristics: {ballistic_skill: 35, strength: 35, toughness: 35, weapon_skill: 35}
   name: Renegade Militia
@@ -219,6 +234,7 @@ renegade_militia:
   traits: {disciplined: true, horde: true}
   weapons: [autogun]
 ripper_swarm:
+  _package: tyranid
   armor: {all: 2}
   characteristics: {strength: 25, toughness: 30, weapon_skill: 35}
   name: Ripper Swarm
@@ -227,12 +243,14 @@ ripper_swarm:
   traits: {horde: true, natural_armor: true, overwhelming: true, rampage: true, relentless: true}
   weapons: [ripper_mandibles]
 stormraven:
+  _package: empire
   armor: {all: 37}
   characteristics: {ballistic_skill: 50}
   name: Stormraven
   weapons: [twin_assault_cannon, twin_heavy_bolter, bloodstrike_missile]
   wounds: 35
 termagant:
+  _package: tyranid
   armor: {all: 3}
   characteristics: {ballistic_skill: 33, strength: 32, toughness: 30, weapon_skill: 30}
   name: Termagant
@@ -241,6 +259,7 @@ termagant:
   weapons: [fleshborer]
   wounds: 9
 thornback:
+  _package: tyranid
   armor: {all: 10}
   characteristics: {ballistic_skill: 35, strength: 70, toughness: 65, weapon_skill: 35,
     willpower: 45}
@@ -251,6 +270,7 @@ thornback:
     unnatural_strength: 3, unnatural_toughness: 2}
   weapons: [twin_devourer, stranglethorn_cannon]
 trygon:
+  _package: tyranid
   armor: {all: 10}
   characteristics: {ballistic_skill: 30, strength: 60, toughness: 60, weapon_skill: 50}
   name: Trygon
@@ -261,6 +281,7 @@ trygon:
   weapons: [scything_talon, bio_electric_pulse]
   wounds: 160
 tyranid_warrior:
+  _package: tyranid
   armor: {all: 8}
   characteristics: {ballistic_skill: 30, strength: 60, toughness: 50, weapon_skill: 55}
   name: Tyranid Warror
@@ -271,6 +292,7 @@ tyranid_warrior:
   weapons: [scything_talons, rending_claws, devourer, deathspitter]
   wounds: 48
 tyrant_guard:
+  _package: tyranid
   armor: {all: 10}
   characteristics: {ballistic_skill: 30, strength: 50, toughness: 60, weapon_skill: 55}
   name: Tyrant Guard
@@ -280,6 +302,7 @@ tyrant_guard:
   weapons: [scything_talons, rending_claws, lashwhip, bonesword]
   wounds: 45
 venomspitter:
+  _package: tyranid
   armor: {all: 10}
   characteristics: {ballistic_skill: 15, strength: 70, toughness: 65, weapon_skill: 35,
     willpower: 45}
@@ -290,6 +313,7 @@ venomspitter:
     unnatural_toughness: 2}
   weapons: [heavy_venom_cannon]
 venomthrope:
+  _package: tyranid
   characteristics: {strength: 55, toughness: 55, weapon_skill: 48}
   name: Venomthrope
   species: tyranid
@@ -299,6 +323,7 @@ venomthrope:
   weapons: [lashwhip]
   wounds: 40
 volter:
+  _package: empire
   armor: {all: 20}
   characteristics: {ballistic_skill: 50, strength: 50, toughness: 50, weapon_skill: 60}
   name: Forge Master Volter
@@ -306,7 +331,15 @@ volter:
   talents: {touched_by_the_fates: 2}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [plasma_pistol, multi_melta, bulkhead_shears]
+warhound_titan:
+  _package: empire
+  armor: {all: 45}
+  characteristics: {ballistic_skill: 50}
+  name: Warhound Titan
+  weapons: [vulcan_mega_bolter, twin_turbo_laser, plasma_blastgun, plasma_blastgun_max]
+  wounds: 90
 warrior_prime:
+  _package: tyranid
   armor: {all: 10}
   characteristics: {ballistic_skill: 40, strength: 50, toughness: 50, weapon_skill: 65}
   name: Tyranid Warrior Prime
@@ -316,6 +349,7 @@ warrior_prime:
   weapons: [scything_talons, rending_claws, bonesword, lashwhip, devourer, deathspitter]
   wounds: 80
 zoanthrope:
+  _package: tyranid
   armor: {all: 6}
   characteristics: {ballistic_skill: 45, strength: 45, toughness: 45, weapon_skill: 30}
   force_field: {overload_max: 5, protection_max: 65}
