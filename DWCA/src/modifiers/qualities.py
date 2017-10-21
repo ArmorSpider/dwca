@@ -24,6 +24,24 @@ class RazorSharp(Modifier):
             return current_pen
 
 
+class OverHeats(Modifier):
+
+    name = 'overheats'
+
+    @staticmethod
+    def handle_overheats(attack):
+        if attack.weapon.get_quality(OverHeats.name):
+            dice = attack.weapon.get_stat(DICE)
+            flat_damage = attack.weapon.get_stat(DAMAGE)
+            damage_string = '{}d10+{}'.format(dice, flat_damage)
+            message_base = ('OVERHEATS: {weapon} overheats! {attacker} takes {damage_string} damage to random arm. '
+                            'This weapon cannot be fired for one round.')
+            message = message_base.format(weapon=attack.weapon,
+                                          attacker=attack.attacker,
+                                          damage_string=damage_string)
+            queue_message(message)
+
+
 class Reliable(Modifier):
 
     name = 'reliable'

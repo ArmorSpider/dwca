@@ -1,10 +1,11 @@
 from unittest import TestCase
 
 from src.action.ranged_attack import RangedAttack
+from src.cli.message_queue import log_messages
 from src.dice import queue_rolls
 from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
 from src.entities.weapon import Weapon, get_weapon
-from src.modifiers.qualities import Reliable, NeverJams
+from src.modifiers.qualities import Reliable, NeverJams, OverHeats
 from src.situational.weapon_jam import is_weapon_jammed
 
 
@@ -120,6 +121,15 @@ class Test(TestCase):
                                     firemode=FULL_AUTO,
                                     qualities=qualities)
         expected = False
+        actual = is_weapon_jammed(attack)
+        self.assertEqual(expected, actual)
+
+    def test_single_shot_roll_result_91_and_overheats_should_return_true(self):
+        qualities = {OverHeats.name: True}
+        attack = self._build_attack(roll_result=91,
+                                    firemode=SINGLE_SHOT,
+                                    qualities=qualities)
+        expected = True
         actual = is_weapon_jammed(attack)
         self.assertEqual(expected, actual)
 

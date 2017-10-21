@@ -2,6 +2,7 @@ from src.action.attack import Attack
 from src.dwca_log.log import get_log
 from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
 from src.modifiers.qualities import Storm
+from src.situational.weapon_jam import is_attack_auto_failed
 
 
 LOG = get_log(__name__)
@@ -12,6 +13,11 @@ class RangedAttack(Attack):
     def __init__(self, weapon, attacker, target, firemode):
         Attack.__init__(self, weapon, attacker, target)
         self.firemode = firemode
+
+    def is_successfull(self):
+        success = Attack.is_successfull(self)
+        auto_fail = is_attack_auto_failed(self)
+        return success is True and auto_fail is False
 
     def _calulcate_dos_hits(self):
         dos = self.get_degrees_of_success()
