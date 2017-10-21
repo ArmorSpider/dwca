@@ -18,6 +18,18 @@ autogun:
   qualities: {}
   semi_auto: 3
   single_shot: 1
+avenger_shuriken_catapult:
+  class: Basic
+  damage_type: R
+  dice: 1
+  flat_damage: 6
+  full_auto: 10
+  name: Avenger Shuriken Catapult
+  penetration: 6
+  qualities: {reliable: true, tearing: true}
+  range: 80
+  semi_auto: 3
+  single_shot: 1
 barbed_strangler:
   class: Heavy
   damage_type: I
@@ -27,6 +39,14 @@ barbed_strangler:
   penetration: 3
   qualities: {blast: 10, deadly_snare: true, devastating: 2, living_ammunition: true,
     tearing: true}
+  single_shot: 1
+bio_acid_spray:
+  damage_type: E
+  dice: 3
+  flat_damage: 6
+  name: Bio-Acid Spray
+  penetration: 4
+  qualities: {living_ammunition: true, tearing: true, toxic: true}
   single_shot: 1
 bio_electric_pulse:
   class: Basic
@@ -46,8 +66,15 @@ bio_plasma:
   penetration: 9
   qualities: {blast: 5}
   single_shot: 1
-bloodstrike_missile: {class: Basic, damage_type: X, dice: 4, flat_damage: 6, name: Bloodstrike Missile,
-  penetration: 14, single_shot: 1}
+biting_blade:
+  class: Melee
+  dice: 2
+  flat_damage: 5
+  name: Biting Blade
+  penetration: 3
+  qualities: {damage_per_dos: 3, razor_sharp: true, tearing: true}
+bloodstrike_missile: {class: Basic, damage_type: X, dice: 4, flat_damage: 6, name: Bloodstrike
+    Missile, penetration: 14, single_shot: 1}
 bolt_pistol:
   class: Pistol
   damage_type: X
@@ -101,6 +128,16 @@ breaching_augur:
   name: Breaching Augur
   penetration: 7
   qualities: {power_field: true, tearing: true, unwieldy: true}
+bright_lance:
+  class: Heavy
+  damage_type: E
+  dice: 4
+  flat_damage: 15
+  name: Bright Lance
+  penetration: 20
+  qualities: {accurate: true}
+  range: 200
+  single_shot: 1
 bulkhead_shears:
   class: Melee
   damage_type: R
@@ -194,6 +231,17 @@ devourer:
   name: Devourer
   penetration: 0
   qualities: {living_ammunition: true, storm: true, tearing: true}
+distort_cannon:
+  class: Mounted
+  damage_type: R
+  dice: 4
+  flat_damage: 20
+  name: Distort Cannon
+  penetration: 6
+  qualities: {blast: 5, devastating: 2, felling: 3, recharge: true, volatile: true,
+    warp_weapon: true}
+  range: 100
+  single_shot: 1
 dual_lightning_claw:
   class: Melee
   damage_type: E
@@ -203,6 +251,62 @@ dual_lightning_claw:
   penetration: 8
   qualities: {damage_per_dos: 2, power_field: true, proven: 4}
 dummy: {class: Melee, damage_type: I, name: Dummy Weapon}
+eldar_chainsword:
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 3
+  name: Eldar Chainsword
+  penetration: 3
+  qualities: {balanced: true, razor_sharp: true, tearing: true}
+eldar_executioner:
+  class: Melee
+  dice: 2
+  flat_damage: 5
+  name: Executioner
+  penetration: 10
+  qualities: {balanced: true, power_field: true}
+eldar_krak_missile:
+  class: Heavy
+  damage_type: X
+  dice: 4
+  flat_damage: 6
+  name: Eldar Missile Launcher(Krak Missile)
+  penetration: 10
+  qualities: {blast: 1}
+eldar_laspistol:
+  class: Pistol
+  damage_type: E
+  dice: 1
+  flat_damage: 3
+  name: Eldar Lastpistol
+  penetration: 2
+  qualities: {reliable: true}
+  range: 35
+  semi_auto: 2
+  single_shot: 1
+eldar_monoblade: {class: Melee, damage_type: R, dice: 1, flat_damage: 5, name: Eldar
+    Mono-blade, penetration: 2}
+eldar_plasma_grenade:
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  name: Eldar Plasma Grenade
+  penetration: 6
+  qualities: {blast: 4, concussive: true, volatile: true}
+  range: 15
+  single_shot: 1
+eldar_plasma_missile:
+  class: Heavy
+  damage_type: E
+  dice: 2
+  flat_damage: 5
+  name: Eldar Missile Launcher(Plasma Missile)
+  penetration: 6
+  qualities: {blast: 6, concussive: true, volatile: true}
+  range: 250
+  single_shot: 1
 executioner_axe:
   class: Melee
   damage_type: E
@@ -270,6 +374,21 @@ hellfire_bolt_pistol:
   qualities: {hellfire: true, tearing: true}
   semi_auto: 2
   single_shot: 1
+hierophant_claw_stomp:
+  class: Melee
+  dice: 1
+  flat_damage: 1
+  name: Hierophant Claw Stomp
+  penetration: 4
+  qualities: {devastating: 8}
+inferno_gun:
+  class: Mounted
+  dice: 2
+  flat_damage: 15
+  name: Inferno Gun
+  penetration: 8
+  qualities: {flame: true, reliable: true}
+  single_shot: 1
 krak_grenade_melee: {class: Melee, damage_type: E, dice: 3, flat_damage: 4, name: Krak
     Grenade (Melee), penetration: 6}
 krak_missile:
@@ -295,6 +414,16 @@ lightning_claw:
   name: Astartes Lightning Claw
   penetration: 8
   qualities: {damage_per_dos: 1, power_field: true, proven: 4}
+mandiblaster_helm:
+  class: Basic
+  damage_type: E
+  dice: 2
+  flat_damage: 2
+  name: Mandiblaster Helm
+  penetration: 5
+  qualities: {shocking: true, twin_linked: true}
+  range: 1
+  single_shot: 1
 marius_executioner_axe:
   class: Melee
   damage_type: E
@@ -328,6 +457,58 @@ marius_lightning_claw:
   name: Astartes Lightning Claw
   penetration: 8
   qualities: {damage_per_dos: 2, power_field: true, proven: 4, razor_sharp: true}
+mc_eldar_chainsword:
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 5
+  name: Mastercrafted Eldar Chainsword
+  penetration: 3
+  qualities: {balanced: true, razor_sharp: true, tearing: true}
+mc_eldar_power_sword:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 6
+  name: Mastercrafted Eldar Power Sword
+  penetration: 8
+  qualities: {balanced: 2, power_field: true}
+mc_power_glaive:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  name: Mastercrafted Power Glaive
+  penetration: 8
+  qualities: {balanced: true, power_field: true}
+mc_shuriken_pistol:
+  class: Pistol
+  damage_type: R
+  dice: 1
+  flat_damage: 4
+  full_auto: 5
+  name: Mastercrafted Shuriken Pistol
+  penetration: 4
+  qualities: {reliable: true}
+  range: 20
+  semi_auto: 3
+  single_shot: 1
+mc_witchblade:
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 11
+  name: Mastercrafted Witchblade
+  penetration: 10
+  qualities: {balanced: true, power_field: true}
+mirrorsword:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  name: Mirrorsword
+  penetration: 10
+  qualities: {balanced: 2, power_field: true}
 multi_melta:
   class: Heavy
   damage_type: E
@@ -346,6 +527,25 @@ omnissian_axe:
   name: Omnissian Axe (AstartesPattern)
   penetration: 6
   qualities: {power_field: true, unbalanced: true}
+plasma_blastgun:
+  class: Mounted
+  damage_type: E
+  dice: 2
+  flat_damage: 20
+  name: Plasma Blastgun
+  penetration: 8
+  qualities: {blast: 12, volatile: true}
+  semi_auto: 2
+  single_shot: 1
+plasma_blastgun_max:
+  class: Mounted
+  damage_type: E
+  dice: 3
+  flat_damage: 26
+  name: Plasma Blastgun (Max)
+  penetration: 10
+  qualities: {blast: 16, volatile: true}
+  single_shot: 1
 plasma_cannon:
   class: Heavy
   damage_type: E
@@ -439,6 +639,15 @@ sacris_claymore:
   name: Sacris Claymore
   penetration: 2
   qualities: {unbalanced: true}
+scatter_laser:
+  damage_type: E
+  dice: 3
+  flat_damage: 10
+  full_auto: 6
+  name: Scatter Laser
+  penetration: 2
+  qualities: {reliable: true, storm: true}
+  range: 180
 scything_talons:
   class: Melee
   damage_type: R
@@ -447,6 +656,16 @@ scything_talons:
   name: Scything Talons
   penetration: 3
   qualities: {}
+shadow_weaver:
+  class: Mounted
+  damage_type: R
+  dice: 4
+  flat_damage: 5
+  name: Shadow Weaver
+  penetration: 3
+  qualities: {blast: 6, deadly_snare: true, devastating: 1, razor_sharp: true, tearing: true}
+  range: 250
+  single_shot: 1
 sharpshooter_rifle:
   class: Basic
   dice: 1
@@ -455,6 +674,170 @@ sharpshooter_rifle:
   penetration: 2
   qualities: {accurate: true, felling: 1, toxic: 1d10}
   single_shot: 1
+shuriken_cannon:
+  class: Heavy
+  damage_type: R
+  dice: 2
+  flat_damage: 6
+  full_auto: 10
+  name: Shuriken Cannon
+  penetration: 6
+  qualities: {razor_sharp: true, reliable: true, tearing: true}
+  range: 110
+chainsabre:
+  name: Chainsabre
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 4
+  penetration: 3
+  qualities: {balanced: true, tearing: true, razor_sharp: true}
+fusion_gun:
+  name: Fusion Gun
+  range: 40
+  single_shot: 1
+  damage_type: E
+  class: Basic
+  dice: 3
+  flat_damage: 8
+  penetration: 13
+  qualities: {reliable: true, felling: 1, penetration_per_dos: 2}
+mc_fusion_gun:
+  name: Mastercrafted Fusion Gun
+  range: 40
+  single_shot: 1
+  damage_type: E
+  class: Basic
+  dice: 3
+  flat_damage: 10
+  penetration: 13
+  qualities: {reliable: true, felling: 1, penetration_per_dos: 2}
+fire_pike:
+  name: Fire Pike
+  range: 80
+  class: Basic
+  single_shot: 1
+  dice: 3
+  flat_damage: 15
+  penetration: 15
+  damage_type: E
+  qualities: {blast: 1, felling: 1, penetration_per_dos: 2}
+reaper_launcher:
+  name: Reaper Launcher
+  class: Heavy
+  range: 250
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 5
+  dice: 2
+  flat_damage: 12
+  damage_type: X
+  penetration: 10
+  qualities: {reliable: true, tearing: true}
+mc_reaper_launcher:
+  name: Mastercrafted Reaper Launcher
+  class: Heavy
+  range: 250
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 5
+  dice: 2
+  flat_damage: 14
+  damage_type: X
+  penetration: 10
+  qualities: {reliable: true, tearing: true}
+lasblaster:
+  name: Lastblaster
+  class: Basic
+  range: 120
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 6
+  damage_type: E
+  penetration: 4
+  qualities: {reliable: true}
+  dice: 1
+  flat_damage: 6
+mc_lasblaster:
+  name: Mastercrafted Lastblaster
+  class: Basic
+  range: 120
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 6
+  damage_type: E
+  penetration: 4
+  qualities: {never_jams: true}
+  dice: 1
+  flat_damage: 8
+hawks_talon:
+  name: Hawk's Talon
+  class: Basic
+  range: 120
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 6
+  dice: 2
+  flat_damage: 8
+  penetration: 5
+  qualities: {never_jams: true}
+sunrifle:
+  name: Sunrifle
+  class: Basic
+  range: 90
+  single_shot: 1
+  semi_auto: 4
+  full_auto: 8
+  dice: 1
+  flat_damage: 10
+  damage_type: E
+  penetration: 4
+  qualities: {never_jams: true, storm: true}
+tempest_launcher:
+  name: Tempest Launcher
+  class: Heavy
+  range: 300
+  single_shot: 1
+  semi_auto: 3
+  dice: 2
+  flat_damage: 6
+  damage_type: X
+  penetration: 10
+  qualities: {blast: 6, devastating: 1, tearing: true}
+shuriken_catapult:
+  class: Basic
+  damage_type: R
+  dice: 1
+  flat_damage: 4
+  full_auto: 10
+  name: Shuriken Catapult
+  penetration: 6
+  qualities: {reliable: true}
+  range: 60
+  semi_auto: 3
+  single_shot: 1
+shuriken_pistol:
+  class: Pistol
+  damage_type: R
+  dice: 1
+  flat_damage: 2
+  full_auto: 5
+  name: Shuriken Pistol
+  penetration: 4
+  qualities: {reliable: true}
+  range: 20
+  semi_auto: 3
+  single_shot: 1
+starcannon:
+  class: Heavy
+  damage_type: E
+  dice: 3
+  flat_damage: 10
+  full_auto: 5
+  name: Starcannon
+  penetration: 10
+  qualities: {volatile: null}
+  range: 180
 storm_bolter:
   class: Basic
   damage_type: X
@@ -493,12 +876,12 @@ toxic_tendrils:
   penetration: 3
   qualities: {toxic: 3d10+5 (Test is -40)}
 twin_assault_cannons:
-  name: Twin-Linked Assault Cannons
   class: Mounted
   damage_type: I
   dice: 2
   flat_damage: 12
   full_auto: 10
+  name: Twin-Linked Assault Cannons
   penetration: 6
   qualities: {devastating: 1, tearing: true, twin_linked: true}
 twin_autocannons:
@@ -537,12 +920,21 @@ twin_heavy_bolter:
   penetration: 5
   qualities: {tearing: true, twin_linked: true}
 twin_lascannon:
-  name: Twin-Linked Lascannons
   class: Heavy
   dice: 5
   flat_damage: 10
+  name: Twin-Linked Lascannons
   penetration: 10
   qualities: {proven: 3, twin_linked: true}
+  single_shot: 1
+twin_turbo_laser:
+  class: Mounted
+  damage_type: E
+  dice: 4
+  flat_damage: 30
+  name: Double-barrelled Turbo-laser Destructor
+  penetration: 20
+  qualities: {blast: 8, felling: 2, twin_linked: true}
   single_shot: 1
 venom_cannon:
   class: Heavy
@@ -553,3 +945,19 @@ venom_cannon:
   penetration: 6
   qualities: {blast: 5, living_ammunition: true, toxic: 1d10}
   single_shot: 1
+vulcan_mega_bolter:
+  class: Mounted
+  damage_type: X
+  dice: 2
+  flat_damage: 13
+  full_auto: 15
+  name: Vulcan mega-bolter
+  qualities: {inaccurate: true, storm: true, tearing: true}
+witchblade:
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 11
+  name: Witchblade
+  penetration: 5
+  qualities: {balanced: true, power_field: true}
