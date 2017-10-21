@@ -21,6 +21,19 @@ autogun:
   range: 100
   semi_auto: 3
   single_shot: 1
+mc_avenger_shuriken_catapult:
+  _package: eldar
+  class: Basic
+  damage_type: R
+  dice: 1
+  flat_damage: 8
+  full_auto: 10
+  name: Mastercrafted Avenger Shuriken Catapult
+  penetration: 6
+  qualities: {never_jams: true, tearing: true}
+  range: 80
+  semi_auto: 3
+  single_shot: 1
 avenger_shuriken_catapult:
   _package: eldar
   class: Basic
