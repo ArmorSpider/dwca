@@ -253,3 +253,17 @@ class DamagePerDos(Modifier):
                  bonus_damage, damage_per_dos)
         current_damage += bonus_damage
         return current_damage
+
+
+class PenetrationPerDos(Modifier):
+
+    name = 'penetration_per_dos'
+
+    def modify_penetration(self, attack, current_penetration):
+        dos = attack.get_degrees_of_success()
+        penetration_per_dos = attack.weapon.get_quality(PenetrationPerDos.name)
+        bonus_penetration = max(0, penetration_per_dos * dos)
+        LOG.info('+%s penetration from PenetrationPerDos(%s)',
+                 bonus_penetration, penetration_per_dos)
+        current_penetration += bonus_penetration
+        return current_penetration
