@@ -1,6 +1,9 @@
 import difflib
 
+from definitions import CLASS, MELEE
 from src.dwca_log.log import get_log
+from src.entities import PACKAGE, NAME, DICE, DAMAGE_TYPE, PENETRATION, RANGE,\
+    DAMAGE
 from src.errors import WeaponNotFoundError, NoMatchError
 from src.util.read_file import read_weapon_library, read_character_library
 from src.util.string_util import normalize_string
@@ -8,19 +11,81 @@ from src.util.string_util import normalize_string
 
 LOG = get_log(__name__)
 
+DEFAULT_PACKAGE = 'default'
+
+
+def verify():
+    require_all = [CLASS, NAME, DICE, DAMAGE, DAMAGE_TYPE, PENETRATION]
+    ranged_only = require_all + [RANGE]
+    MasterLibrary.load_all_packages()
+    for weapon_name, weapon_def in get_weapon_library().iteritems():
+        missing_keys = []
+        is_melee = weapon_def.get(CLASS, 'NO_CLASS').lower() == MELEE
+        if is_melee:
+            required = require_all
+        else:
+            required = ranged_only
+        for key in required:
+            if key not in weapon_def:
+                missing_keys.append(key)
+        if missing_keys != []:
+            print '______[%s]______' % weapon_name
+            for key in missing_keys:
+                print '%s is missing %s' % (weapon_name, key)
+
 
 class MasterLibrary(object):
 
     weapon_library = read_weapon_library()
     character_library = read_character_library()
+    available_packages = [DEFAULT_PACKAGE]
+
+    @staticmethod
+    def load_all_packages():
+        for package in MasterLibrary.get_known_packages():
+            MasterLibrary.add_package(package)
+
+    @staticmethod
+    def get_known_packages():
+        known_packages = []
+        for entity_def in MasterLibrary.weapon_library.values():
+            package = entity_def.get(PACKAGE, DEFAULT_PACKAGE)
+            known_packages.append(package)
+        for entity_def in MasterLibrary.character_library.values():
+            package = entity_def.get(PACKAGE, DEFAULT_PACKAGE)
+            known_packages.append(package)
+        known_packages = list(set(known_packages))
+        return known_packages
+
+    @staticmethod
+    def get_loaded_packages():
+        return MasterLibrary.available_packages
+
+    @staticmethod
+    def filter_library(library_dict):
+        filtered_library = {}
+        for entity_name, entity_def in library_dict.iteritems():
+            weapon_package = entity_def.get(PACKAGE, DEFAULT_PACKAGE)
+            if weapon_package in MasterLibrary.available_packages:
+                filtered_library[entity_name] = entity_def
+        return filtered_library
+
+    @staticmethod
+    def add_package(package_name):
+        LOG.info('Added "%s" package.', package_name)
+        MasterLibrary.available_packages.append(package_name)
 
 
 def get_weapon_library():
-    return MasterLibrary.weapon_library
+    filtered_library = MasterLibrary.filter_library(
+        MasterLibrary.weapon_library)
+    return filtered_library
 
 
 def get_character_library():
-    return MasterLibrary.character_library
+    filtered_library = MasterLibrary.filter_library(
+        MasterLibrary.character_library)
+    return filtered_library
 
 
 def read_character(character_name, best_match=True):

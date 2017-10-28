@@ -22,7 +22,7 @@ class Test(unittest.TestCase):
         attack = attacker._melee_attack(weapon, target)
         attack.try_action(96, 1)
         expected_dice = 1
-        expected_pen = 10
+        expected_pen = 8
         expected_damage = 14
         expected_dos = 9
 

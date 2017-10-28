@@ -1,6 +1,7 @@
 from src.action.attack import Attack
 from src.dwca_log.log import get_log
 from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
+from src.errors import NoFiremodeError
 from src.modifiers.qualities import Storm
 from src.situational.weapon_jam import is_attack_auto_failed
 
@@ -30,6 +31,9 @@ class RangedAttack(Attack):
         elif self.firemode == FULL_AUTO:
             dos_hits = int(dos)
             LOG.debug('DoS hits: %s (%s DoS)', dos_hits, dos)
+        else:
+            raise NoFiremodeError(
+                '"%s" did not match any known firemode.' % self.firemode)
         return dos_hits
 
     def _calculate_firemode_hits(self):

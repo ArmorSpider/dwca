@@ -17,3 +17,7 @@ class WeaponNotFoundError(LibraryError):
 
 class CharNotFoundError(LibraryError):
     pass
+
+
+class NoFiremodeError(CLIError):
+    pass

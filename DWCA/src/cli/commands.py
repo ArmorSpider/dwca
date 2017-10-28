@@ -7,10 +7,13 @@ from src.action.hit import Hit
 from src.cli.match_map import get_default_match_map
 from src.cli.message_queue import log_messages
 from src.cli.quick_dict import quick_dict_parse
+from src.cli.table import print_table, print_entity_dict
 from src.dwca_log.log import get_log
-from src.entities import SEMI_AUTO, FULL_AUTO
+from src.entities import SEMI_AUTO, FULL_AUTO, TRAITS, TALENTS, CHARACTERISTICS,\
+    SKILLS
 from src.entities.char_stats import STAT_WS, STAT_BS
-from src.entities.libraries import get_weapon_library, get_character_library
+from src.entities.libraries import get_weapon_library, get_character_library,\
+    MasterLibrary
 from src.entities.weapon import get_weapon
 from src.handler import build_attacker, main_handler, check_required_keys,\
     build_target
@@ -18,7 +21,9 @@ from src.hit_location import BODY
 from src.modifiers.modifier import register_modifiers
 from src.save_manager import SaveManager
 from src.situational.state_manager import StateManager
-from src.util.dict_util import pretty_print
+from src.util.dict_util import pretty_print,\
+    sort_strings_by_length
+from src.util.read_file import read_dospedia
 from src.util.string_util import normalize_string
 from src.util.user_input import user_choose_from_list, user_input_int
 
@@ -47,6 +52,7 @@ class CLICommand(object):
 
     keyword = None
     required_keys = []
+    help = 'Does stuff'
 
     def is_this_command(self, command_string):
         normalized_string = normalize_string(command_string)
@@ -68,10 +74,25 @@ class CLICommand(object):
         return event
 
 
+class CommandHelp(CLICommand):
+
+    keyword = 'help'
+    help = 'Shows available commands.'
+
+    def _process_event(self, event):
+        table_data = []
+        for command in known_commands_generator():
+            row = [command.keyword, command.help]
+            table_data.append(row)
+        print_table(table_data, title='Available commands', headers=False)
+        return event
+
+
 class CommandRun(CLICommand):
 
     keyword = 'run'
     required_keys = [ATTACKER, TARGET, WEAPON, ROLL_TARGET]
+    help = 'Roll attacks for the current event.'
 
     def _process_event(self, event):
         register_modifiers()
@@ -81,17 +102,84 @@ class CommandRun(CLICommand):
         return event
 
 
+class CommandSkills(CLICommand):
+
+    keyword = 'skills'
+    required_keys = [ATTACKER]
+    help = 'Show characteristics and skills for attacker.'
+
+    def _process_event(self, event):
+        attacker = build_attacker(event)
+        print_entity_dict(attacker, SKILLS)
+        print_entity_dict(attacker, CHARACTERISTICS)
+        return event
+
+
+class CommandInfo(CLICommand):
+
+    keyword = 'info'
+    required_keys = [ATTACKER]
+    help = 'Show talents & traits for attacker.'
+
+    def _process_event(self, event):
+        attacker = build_attacker(event)
+        modifiers = self._get_modifiers(attacker)
+        modifier_names = sort_strings_by_length(modifiers.keys())
+        dospedia = read_dospedia()
+        table_data = []
+        for modifier in modifier_names:
+            modifier_value = modifiers.get(modifier)
+            dospedia_entry = dospedia.get(modifier, 'No entry.')
+            full_modifier_name = self._build_full_modifier_name(
+                modifier, modifier_value)
+            row = [full_modifier_name, dospedia_entry]
+            table_data.append(row)
+        print_table(table_data, attacker.get_name(), headers=False)
+        return event
+
+    def _get_modifiers(self, entity):
+        modifiers = {}
+        modifiers.update(entity.get_stat(TRAITS, {}))
+        modifiers.update(entity.get_stat(TALENTS, {}))
+        return modifiers
+
+    def _build_full_modifier_name(self, modifier_name, modifier_value):
+        if modifier_value is True:
+            full_modifier_name = modifier_name
+        else:
+            full_modifier_name = modifier_name + '(%s)' % modifier_value
+        return full_modifier_name
+
+
 class CommandQuit(CLICommand):
 
     keyword = 'quit'
+    help = 'Terminate this program.'
 
     def _process_event(self, event):
         sys.exit(0)
 
 
+class CommandPackage(CLICommand):
+
+    keyword = 'package'
+    help = 'Load a package of weapons and characters.'
+
+    def _process_event(self, event):
+        LOG.info('Choose package to load:')
+        known_packages = MasterLibrary.get_known_packages()
+        loaded_packages = MasterLibrary.get_loaded_packages()
+        non_loaded_packages = [
+            package for package in known_packages if package not in loaded_packages]
+        package_name = user_choose_from_list(non_loaded_packages)
+        MasterLibrary.add_package(package_name)
+        return event
+
+
 class CommandWeapon(CLICommand):
 
     keyword = 'weapon'
+    help = 'Choose weapon from a list of available weapons.'
 
     def _process_event(self, event):
         weapon_name = user_choose_from_list(get_weapon_library().keys())
@@ -102,6 +190,7 @@ class CommandWeapon(CLICommand):
 class CommandAttacker(CLICommand):
 
     keyword = 'attacker'
+    help = 'Choose attacker from a list of available characters.'
 
     def _process_event(self, event):
         character_name = user_choose_from_list(get_character_library().keys())
@@ -112,6 +201,7 @@ class CommandAttacker(CLICommand):
 class CommandTarget(CLICommand):
 
     keyword = 'target'
+    help = 'Choose target from a list of available characters.'
 
     def _process_event(self, event):
         character_name = user_choose_from_list(get_character_library().keys())
@@ -122,6 +212,7 @@ class CommandTarget(CLICommand):
 class CommandOverload(CLICommand):
 
     keyword = 'overload'
+    help = 'Toggle overload TRUE/FALSE for current event.'
 
     def _process_event(self, event):
         event = self._toggle_key(OVERLOADED, event)
@@ -131,6 +222,7 @@ class CommandOverload(CLICommand):
 class CommandCover(CLICommand):
 
     keyword = 'cover'
+    help = 'Add cover to the current event.'
 
     def _process_event(self, event):
         armor_value = user_input_int('Enter cover armor value: ')
@@ -144,6 +236,7 @@ class CommandCover(CLICommand):
 class CommandCharge(CLICommand):
 
     keyword = 'charge'
+    help = 'Toggle charge TRUE/FALSE for current event.'
 
     def _process_event(self, event):
         event = self._toggle_key(CHARGE, event)
@@ -153,6 +246,7 @@ class CommandCharge(CLICommand):
 class CommandAim(CLICommand):
 
     keyword = 'aim'
+    help = 'Toggle aim TRUE/FALSE for the current event'
 
     def _process_event(self, event):
         event = self._toggle_key(AIMED, event)
@@ -162,6 +256,7 @@ class CommandAim(CLICommand):
 class CommandSave(CLICommand):
 
     keyword = 'save'
+    help = 'Save the current event for this session.'
 
     def _process_event(self, event):
         state_name = raw_input('Save state as: ')
@@ -173,6 +268,7 @@ class CommandSave(CLICommand):
 class CommandLoad(CLICommand):
 
     keyword = 'load'
+    help = 'Load a saved event.'
 
     def _process_event(self, event):
         available_states = SaveManager.saved_states.keys()
@@ -187,6 +283,7 @@ class CommandLoad(CLICommand):
 class CommandDamage(CLICommand):
 
     keyword = 'damage'
+    help = 'Manually enter the total damage of hits and calculate effective damage.'
     required_keys = [ATTACKER, TARGET]
 
     def _process_event(self, event):
@@ -215,6 +312,7 @@ class CommandDamage(CLICommand):
 class CommandAuto(CLICommand):
 
     keyword = 'auto'
+    help = 'Auto configure event based on attacker.'
     required_keys = [ATTACKER]
 
     def _process_event(self, event):
@@ -248,6 +346,7 @@ class CommandAuto(CLICommand):
 class CommandClear(CLICommand):
 
     keyword = 'clear'
+    help = 'Clear the current event.'
 
     def _process_event(self, event):
         event.clear()

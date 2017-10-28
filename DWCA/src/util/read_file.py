@@ -16,6 +16,12 @@ def read_file(file_path):
         return file_content
 
 
+def read_dospedia():
+    file_path = os.path.join(CONTENT_PATH, 'dospedia.yml')
+    dospedia = read_file(file_path)
+    return dospedia
+
+
 def read_character_library():
     file_path = os.path.join(CONTENT_PATH, 'characters.yml')
     character_library = read_file(file_path)
