@@ -24,7 +24,7 @@ carnifex:
     willpower: 45}
   name: Carnifex
   species: tyranid
-  talents: {berserk_charge: true, swift_attack: true, two_weapon_wielder: melee}
+  talents: {berserk_charge: true, swift_attack: true, two_weapon_wielder_melee: true}
   traits: {brutal_charge: true, multiple_arms: true, regeneration: 5, unnatural_strength: 3,
     unnatural_toughness: 2}
   weapons: [scything_talons, bio_plasma]
@@ -54,7 +54,7 @@ dagon_overlord:
   name: Dagon Overlord
   species: tyranid
   talents: {ambidextrous: true, crushing_blow: true, fearless: true, lightning_attack: true,
-    psy_rating: 8, swift_attack: true, two_weapon_wielder: melee}
+    psy_rating: 8, swift_attack: true, two_weapon_wielder_melee: true}
   traits: {brutal_charge: true, multiple_arms: true, natural_armor: true, toxic: 2d10
       -30 TGH, unnatural_strength: 3, unnatural_toughness: 3, unnatural_willpower: 2}
   weapons: [scything_talons, bonesword, twin_devourer]
@@ -93,38 +93,50 @@ dev_john_bobb:
     killing_strike: true, nerves_of_steel: true, quick_draw: true, resistance_psychic: true,
     unarmed_master: true}
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
-dire_avenger_exarch:
-  _package: eldar
-  characteristics: {agility: 59, ballistic_skill: 62, strength: 44, toughness: 46,
-    weapon_skill: 63, willpower: 58}
-  name: Dire Avenger Exarch
-  species: eldar
-  armor: {all: 9}
-  talents: {ambidextrous: true, blademaster: true, catfall: true, combat_master: true, counter_attack: true, disarm: true, foresight: true, hard_target: true, hipshooting: true, independent_targeting: true, iron_discipline: true, jaded: true, leap_up: true, lightning_attack: true, lightning_reflexes: true, marksman: true, mighty_shot: true, nerves_of_steel: true, preternatural_speed: true, quick_draw: true, rapid_reaction: true, sprint: true, step_aside: true, swift_attack: true, two_weapon_wielder: melee, wall_of_steel: true}
-  traits: {dark_sight: true, unnatural_agility: 2, exarch: true, touched_by_the_fates: 1, xenos_tactics: [bladestorm, defend]}
-  weapons: [mc_avenger_shuriken_catapult, shuriken_pistol, eldar_monoblade, diresword, mc_power_glaive]
-  wounds: 25
 dire_avenger:
+  skills: {acrobatics: 0, awareness: 10, command: 0, dodge: 10, silent_move: 0}
   _package: eldar
   characteristics: {agility: 56, ballistic_skill: 55, strength: 38, toughness: 35,
     weapon_skill: 55, willpower: 52}
   name: Dire Avenger Aspect Warrior
   species: eldar
   talents: {ambidextrous: true, catfall: true, foresight: true, hard_target: true,
-    hipshooting: true, jaded: true, leap_up: true, lightning_reflexes: true, mighty_shot: true,
+    hip_shooting: true, jaded: true, leap_up: true, lightning_reflexes: true, mighty_shot: true,
     nerves_of_steel: true, quick_draw: true, rapid_reaction: true, sprint: true, step_aside: true}
   traits: {dark_sight: true, unnatural_agility: 2}
   weapons: [avenger_shuriken_catapult, shuriken_pistol, eldar_monoblade]
   wounds: 15
+dire_avenger_exarch:
+  skills: {acrobatics: 0, awareness: 10, command: 0, dodge: 10, silent_move: 0}
+  _package: eldar
+  armor: {all: 9}
+  characteristics: {agility: 59, ballistic_skill: 62, strength: 44, toughness: 46,
+    weapon_skill: 63, willpower: 58}
+  name: Dire Avenger Exarch
+  species: eldar
+  talents: {ambidextrous: true, blademaster: true, catfall: true, combat_master: true,
+    counter_attack: true, disarm: true, foresight: true, hard_target: true, hip_shooting: true,
+    independent_targeting: true, iron_discipline: true, jaded: true, leap_up: true,
+    lightning_attack: true, lightning_reflexes: true, marksman: true, mighty_shot: true,
+    nerves_of_steel: true, preternatural_speed: true, quick_draw: true, rapid_reaction: true,
+    sprint: true, step_aside: true, swift_attack: true, two_weapon_wielder_melee: true,
+    wall_of_steel: true}
+  traits: {dark_sight: true, exarch: 5, exarch_fast_shot: true, exarch_fighting_fury: true,
+    touched_by_the_fates: 1, unnatural_agility: 2, xenos_tactics_bladestorm: true,
+    xenos_tactics_defend: true}
+  weapons: [mc_avenger_shuriken_catapult, shuriken_pistol, eldar_monoblade, diresword,
+    mc_power_glaive]
+  wounds: 25
 dummy: {name: Dummy}
 eldar_guardian:
+  skills: {acrobatics: 0, awareness: 0, dodge: 0, silent_move: 0}
   _package: eldar
   armor: {all: 5}
   characteristics: {agility: 43, ballistic_skill: 42, strength: 31, toughness: 32,
     weapon_skill: 42, willpower: 40}
   name: Eldar Guardian
   species: eldar
-  talents: {catfall: true, foresight: true, hard_target: true, hipshooting: true,
+  talents: {catfall: true, foresight: true, hard_target: true, hip_shooting: true,
     sprint: true}
   traits: {dark_sight: true, fighting_withdrawal: true, fire_drill: true, skirmishers: true,
     unnatural_agility: 2}
@@ -137,7 +149,7 @@ eldar_heavy_platform:
     weapon_skill: 42, willpower: 40}
   name: Eldar Guardian (Heavy Weapon Platform)
   species: eldar
-  talents: {catfall: true, foresight: true, hard_target: true, hipshooting: true,
+  talents: {catfall: true, foresight: true, hard_target: true, hip_shooting: true,
     sprint: true}
   traits: {dark_sight: true, unnatural_agility: 2}
   weapons: [distort_cannon, shadow_weaver]
@@ -149,7 +161,7 @@ eldar_platform:
     weapon_skill: 42, willpower: 40}
   name: Eldar Guardian (Weapon Platform)
   species: eldar
-  talents: {catfall: true, foresight: true, hard_target: true, hipshooting: true,
+  talents: {catfall: true, foresight: true, hard_target: true, hip_shooting: true,
     sprint: true}
   traits: {dark_sight: true, unnatural_agility: 2}
   weapons: [shuriken_cannon, scatter_laser, starcannon, bright_lance, eldar_plasma_missile,
@@ -157,6 +169,7 @@ eldar_platform:
   wounds: 10
 eldar_warlock:
   _package: eldar
+  skills: {acrobatics: 0, awareness: 10, dodge: 10, psyniscience: 10, silent_move: 0, }
   armor: {all: 3, head: 5}
   characteristics: {agility: 51, ballistic_skill: 55, strength: 38, toughness: 35,
     weapon_skill: 55, willpower: 58}
@@ -164,7 +177,7 @@ eldar_warlock:
   name: Eldar Warlock
   species: eldar
   talents: {ambidextrous: true, catfall: true, foresight: true, hard_target: true,
-    hipshooting: true, psy_rating: 5, quick_draw: true, rapid_reaction: true, sprint: true,
+    hip_shooting: true, psy_rating: 5, quick_draw: true, rapid_reaction: true, sprint: true,
     swift_attack: true, warp_sense: true}
   traits: {dark_sight: true, unnatural_agility: 2, war_leader: true}
   weapons: [shuriken_pistol, witchblade, eldar_monoblade]
@@ -203,7 +216,7 @@ hierodule:
   name: Hierodule
   species: tyranid
   talents: {ambidextrous: true, berserk_charge: true, combat_master: true, fearless: true,
-    furious_assault: true, lightning_attack: true, swift_attack: true, two_weapon_wielder: melee}
+    furious_assault: true, lightning_attack: true, swift_attack: true, two_weapon_wielder_melee: true}
   traits: {fear: 4, multiple_arms: true, natural_armor: true, regeneration: 5, unnatural_strength: 3,
     unnatural_toughness: 3}
   weapons: [scything_talons, bio_acid_spray]
@@ -215,7 +228,7 @@ hierophant:
   name: Hierophant
   species: tyranid
   talents: {berserk_charge: true, furious_assault: true, lightning_attack: true, swift_attack: true,
-    two_weapon_wielder: melee}
+    two_weapon_wielder_melee: true}
   traits: {multiple_arms: true, natural_armor: true, regeneration: 15, unnatural_strength: 4,
     unnatural_toughness: 4}
   weapons: [scything_talons, lashwhip, hierophant_claw_stomp, twin_biocannons]
@@ -227,7 +240,7 @@ hive_tyrant:
   name: Hive Tyrant
   species: tyranid
   talents: {ambidextrous: true, crushing_blow: true, fearless: true, psy_rating: 8,
-    swift_attack: true, two_weapon_wielder: melee}
+    swift_attack: true, two_weapon_wielder_melee: true}
   traits: {brutal_charge: true, multiple_arms: true, natural_armor: true, unnatural_strength: 3,
     unnatural_toughness: 3}
   weapons: [scything_talons, bonesword, stranglethorn_cannon]
@@ -340,7 +353,7 @@ thornback:
     willpower: 45}
   name: Carnifex (Thornback)
   species: tyranid
-  talents: {berserk_charge: true, two_weapon_wielder: ballistic}
+  talents: {berserk_charge: true, two_weapon_wielder_ballistic: true}
   traits: {brutal_charge: true, multiple_arms: true, regeneration: 5, toxic: 1d10,
     unnatural_strength: 3, unnatural_toughness: 2}
   weapons: [twin_devourer, stranglethorn_cannon]
@@ -351,7 +364,7 @@ trygon:
   name: Trygon
   species: tyranid
   talents: {ambidextrous: true, fearless: true, furious_assault: true, swift_attack: true,
-    two_weapon_wielder: melee}
+    two_weapon_wielder_melee: true}
   traits: {multiple_arms: true, natural_armor: true, unnatural_strength: 3, unnatural_toughness: 2}
   weapons: [scything_talon, bio_electric_pulse]
   wounds: 160
@@ -383,7 +396,7 @@ venomspitter:
     willpower: 45}
   name: Carnifex (Venomspitter)
   species: tyranid
-  talents: {berserk_charge: true, two_weapon_wielder: ballistic}
+  talents: {berserk_charge: true, two_weapon_wielder_ballistic: true}
   traits: {brutal_charge: true, multiple_arms: true, regeneration: 5, unnatural_strength: 3,
     unnatural_toughness: 2}
   weapons: [heavy_venom_cannon]
