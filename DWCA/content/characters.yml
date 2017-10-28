@@ -33,7 +33,7 @@ chaos_marine:
   armor: {all: 8, body: 10}
   characteristics: {strength: 65, toughness: 45}
   name: Chaos Space Marine
-  talents: {bolter_drill: true, swift_attacK: true, true_grit: true}
+  talents: {bolter_drill: true, swift_attack: true, true_grit: true}
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [bolt_pistol, bolter, chainsword]
 daemon_prince:
@@ -79,7 +79,7 @@ dev_genestealer:
   species: tyranid
   talents: {ambidextrous: true, crushing_blow: true, fearless: true, hard_target: true,
     leap_up: true, lightning_attack: true, lightning_reflexes: true, preternatural_speed: true,
-    step_aside: true, swift_attacK: true}
+    step_aside: true, swift_attack: true}
   traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
     tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
 dev_john_bobb:
@@ -94,11 +94,11 @@ dev_john_bobb:
     unarmed_master: true}
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
 dire_avenger:
-  skills: {acrobatics: 0, awareness: 10, command: 0, dodge: 10, silent_move: 0}
   _package: eldar
   characteristics: {agility: 56, ballistic_skill: 55, strength: 38, toughness: 35,
     weapon_skill: 55, willpower: 52}
   name: Dire Avenger Aspect Warrior
+  skills: {acrobatics: 0, awareness: 10, command: 0, dodge: 10, silent_move: 0}
   species: eldar
   talents: {ambidextrous: true, catfall: true, foresight: true, hard_target: true,
     hip_shooting: true, jaded: true, leap_up: true, lightning_reflexes: true, mighty_shot: true,
@@ -107,12 +107,12 @@ dire_avenger:
   weapons: [avenger_shuriken_catapult, shuriken_pistol, eldar_monoblade]
   wounds: 15
 dire_avenger_exarch:
-  skills: {acrobatics: 0, awareness: 10, command: 0, dodge: 10, silent_move: 0}
   _package: eldar
   armor: {all: 9}
   characteristics: {agility: 59, ballistic_skill: 62, strength: 44, toughness: 46,
     weapon_skill: 63, willpower: 58}
   name: Dire Avenger Exarch
+  skills: {acrobatics: 0, awareness: 10, command: 0, dodge: 10, silent_move: 0}
   species: eldar
   talents: {ambidextrous: true, blademaster: true, catfall: true, combat_master: true,
     counter_attack: true, disarm: true, foresight: true, hard_target: true, hip_shooting: true,
@@ -129,12 +129,12 @@ dire_avenger_exarch:
   wounds: 25
 dummy: {name: Dummy}
 eldar_guardian:
-  skills: {acrobatics: 0, awareness: 0, dodge: 0, silent_move: 0}
   _package: eldar
   armor: {all: 5}
   characteristics: {agility: 43, ballistic_skill: 42, strength: 31, toughness: 32,
     weapon_skill: 42, willpower: 40}
   name: Eldar Guardian
+  skills: {acrobatics: 0, awareness: 0, dodge: 0, silent_move: 0}
   species: eldar
   talents: {catfall: true, foresight: true, hard_target: true, hip_shooting: true,
     sprint: true}
@@ -169,12 +169,12 @@ eldar_platform:
   wounds: 10
 eldar_warlock:
   _package: eldar
-  skills: {acrobatics: 0, awareness: 10, dodge: 10, psyniscience: 10, silent_move: 0, }
   armor: {all: 3, head: 5}
   characteristics: {agility: 51, ballistic_skill: 55, strength: 38, toughness: 35,
     weapon_skill: 55, willpower: 58}
   force_field: {overload_max: 0, protection_max: 58}
   name: Eldar Warlock
+  skills: {acrobatics: 0, awareness: 10, dodge: 10, psyniscience: 10, silent_move: 0}
   species: eldar
   talents: {ambidextrous: true, catfall: true, foresight: true, hard_target: true,
     hip_shooting: true, psy_rating: 5, quick_draw: true, rapid_reaction: true, sprint: true,
@@ -182,6 +182,84 @@ eldar_warlock:
   traits: {dark_sight: true, unnatural_agility: 2, war_leader: true}
   weapons: [shuriken_pistol, witchblade, eldar_monoblade]
   wounds: 15
+fire_dragon:
+  _package: eldar
+  armor: {all: 6}
+  characteristics: {agility: 51, ballistic_skill: 58, fellowship: 34, intelligence: 44,
+    perception: 48, strength: 38, toughness: 35, weapon_skill: 51, willpower: 52}
+  name: Fire Dragon Aspect Warrior
+  skills: {acrobatics: 0, awareness: 10, demolitions: 10, dodge: 10, evaluate: 10,
+    silent_move: 10}
+  species: eldar
+  talents: {ambidextrous: true, catfall: true, crack_shot: true, hard_target: true,
+    hip_shooting: true, jaded: true, last_man_standing: true, leap_up: true, lightning_reflexes: true,
+    mighty_shot: true, nerves_of_steel: true, quick_draw: true, rapid_reaction: true,
+    sprint: true, step_aside: true}
+  traits: {dark_sight: true, unnatural_agility: 2}
+  weapons: [fusion_gun, shuriken_pistol, eldar_monoblade]
+  wounds: 15
+swooping_hawk:
+  _package: eldar
+  species: eldar
+  name: Swooping Hawk Aspect Warrior
+  wounds: 15
+  armor: {all: 6}
+  skills: {acrobatics: 0, awareness: 10, command: 0, dodge: 10, pilot: 20, silent_move: 0}
+  characteristics: {weapon_skill: 52, ballistic_skill: 56, strength: 38, toughness: 35, agility: 61, intelligence: 38, perception: 48, willpower: 52, fellowship: 34}
+  traits: {dark_reaper: true, flight: 18, unnatural_agility: 2}
+  talents: {ambidextrous: true, catfall: true, foresight: true, hard_target: true, hip_shooting: true, jaded: true, leap_up: true, lightning_reflexes: true, mighty_shot: true, nerves_of_steel: true, quick_draw: true, rapid_reaction: true, sprint: true, step_aside: true}
+  weapon_skill: [lasblaster, shuriken_pistol, eldar_monoblade, eldar_plasma_grenade, eldar_haywire_grenade]
+swooping_hawk_exarch:
+  _package: eldar
+  species: eldar
+  name: Swopping Hawk Exarch
+  wounds: 25
+  skills: {acrobatics: 20, awareness: 20, command: 10, dodge: 20, pilot: 20, silent_move: 0}
+  characteristics: {weapon_skill: 60, ballistic_skill: 63, strength: 44, toughness: 46, agility: 64, intelligence: 43, perception: 61, willpower: 58, fellowship: 37}
+  traits: {dark_sight: true, exarch: 5, touched_by_the_fates: 1, unnatural_agility: 3, xenos_tactics_intercept: true, xenons_tactics_skyleap: true, exarch_elusive: true, exarch_sustained_assault: true}
+  talents: {ambidextrous: true, blademaster: true, catfall: true, combat_master: true, counter_attack: true, disarm: true, foresight: true, hard_target: true, hip_shooting: true, independent_targeting: true, iron_discipline: true, jaded: true, leap_up: true, lightning_attack: true, lightning_reflexes: true, marksman: true, mighty_shot: true, nerves_of_steel: true, preternatural_speed: true, quick_draw: true, rapid_reaction: true, sprint: true, step_aside: true, swift_attack: true, two_weapon_wielder_melee: true, two_weapon_wielder_ballistic: true, wall_of_steel: true}
+  weapons: [mc_lasblaster, mc_shuriken_pistol, eldar_monoblade, hawks_talon, sunrifle, mc_eldar_power_sword]
+dark_reaper:
+  _package: eldar
+  species: eldar
+  armor: {all: 8}
+  name: Dark Reaper Aspect Warrior
+  wounds: 17
+  skills: {awareness: 10, dodge: 0, silent_move: 0}
+  characteristics: {weapon_skill: 51, ballistic_skill: 61, strength: 38, toughness: 41, agility: 51, intelligence: 44, perception: 48, willpower: 52, fellowship: 31}
+  traits: {dark_sight: true, sturdy: true, unnatural_agility: 2, reaper_rangefinder: true, sturdy: true}
+  talents: {ambidextrous: true, catfall: true, crack_shot: true, deadeye_shot: true, foresight: true, hard_target: true, jaded: true, last_man_standing: true, leap_up: true, lightning_reflexes: true, marksman: true, mighty_shot: true, nerves_of_steel: true, quick_draw: true, rapid_reaction: true, rapid_reload: true, sprint: true, step_aside: true, target_selection: true}
+  weapons: [reaper_launcher, shuriken_pistol, eldar_monoblade]
+dark_reaper_exarch:
+  _package: eldar
+  species: eldar
+  name: Dark Reaper Exarch
+  wounds: 28
+  armor: {all: 9}
+  skills: {acrobatics: 0, awareness: 20, command: 10, dodge: 0, silent_move: 0}
+  characteristics: {weapon_skill: 60, ballistic_skill: 72, strength: 46, toughness: 52, agility: 57, intelligence: 51, perception: 58, willpower: 58, fellowship: 37}
+  traits: {dark_sight: true, exarch: 5, xenos_tactics_inescapable_devastation: true, xenos_tactics_immovable: true, exarch_exceptional_resilience: true, exarch_peerless_marksman: true, touched_by_the_fates: 1, sturdy: true, unnatural_agility: 3, unnatural_toughness: 2}
+  talents: {ambidextrous: true, bulging_biceps: true, catfall: true, crack_shot: true, deadeye_shot: true, foresight: true, hard_target: true, hip_shooting: true, jaded: true, last_man_standing: true, leap_up: true, lightning_attack: true, lightning_reflexes: true, marksman: true, mighty_shot: true, nerves_of_steel: true, quick_draw: true, rapid_reaction: true, rapid_reload: true, sharpshooter: true, sprint: true, step_aside: true, swift_attack: true}
+  weapons: [mc_reaper_launcher, mc_shuriken_pistol, eldar_monoblade, mc_shuriken_cannon, eldar_plasma_missile, eldar_krak_missile, tempest_launcher]
+fire_dragon_exarch:
+  _package: eldar
+  armor: {all: 9}
+  characteristics: {agility: 57, ballistic_skill: 66, fellowship: 37, intelligence: 51,
+    perception: 58, strength: 44, toughness: 46, weapon_skill: 60, willpower: 58}
+  name: Fire Dragon Exarch
+  skills: {acrobatics: 10, awareness: 20, command: 10, demolitions: 20, dodge: 10,
+    evaluate: 20, silent_move: 0}
+  species: eldar
+  talents: {ambidextrous: true, catfall: true, crack_shot: true, deadeye_shot: true,
+    foresight: true, hard_target: true, hip_shooting: true, jaded: true, last_man_standing: true,
+    leap_up: true, lightning_attack: true, lightning_reflexes: true, marksman: true,
+    mighty_shot: true, nerves_of_steel: true, quick_draw: true, rapid_reaction: true,
+    sprint: true, step_aside: true, swift_attack: true}
+  traits: {dark_sight: true, exarch: 5, exarch_fast_shot: true, exarch_mighty_strike: true,
+    touched_by_the_fates: 1, unnatural_agility: 3, xenos_tactics_serpents_scales: true,
+    xenos_tactics_tank_hunter: true}
+  weapons: [mc_fusion_gun, mc_shuriken_pistol, eldar_monoblade, fire_pike]
+  wounds: 25
 gargoyle:
   _package: tyranid
   armor: {all: 3}
@@ -255,6 +333,44 @@ hormagaunt:
   traits: {horde: true, natural_armor: true, overwhelming: true}
   weapons: [scything_talons]
   wounds: 9
+howling_banshee:
+  _package: eldar
+  armor: {all: 6}
+  characteristics: {ballistic_skill: 48, fellowship: 34, intelligence: 38, perception: 40,
+    strength: 43, toughness: 35, weapon_skill: 62, willpower: 52}
+  name: Howling Banshee Aspect Warrior
+  skills: {acrobatics: 10, awareness: 10, dodge: 20, silent_move: 0}
+  species: eldar
+  talents: {ambidextrous: true, catfall: true, crippling_strike: true, foresight: true,
+    hard_target: true, hip_shooting: true, jaded: true, leap_up: true, lightning_reflexes: true,
+    nerves_of_steel: true, preternatural_speed: true, quick_draw: true, rapid_reaction: true,
+    sprint: true, step_aside: true, swift_attack: true, two_weapon_wielder_ballistic: true,
+    two_weapon_wielder_melee: true}
+  traits: {dark_sight: true, unnatural_agility: 2}
+  weapons: [eldar_power_sword, shuriken_pistol, eldar_monoblade]
+  wounds: 15
+howling_banshee_exarch:
+  _package: eldar
+  armor: {all: 9}
+  characteristics: {ballistic_skill: 55, fellowship: 37, intelligence: 43, perception: 53,
+    strength: 49, toughness: 46, weapon_skill: 70, willpower: 58}
+  name: Howling Banshee Exarch
+  skills: {acrobatics: 20, awareness: 20, command: 10, dodge: 20, silent_move: 0}
+  species: eldar
+  talents: {ambidextrous: true, assassin_strike: true, blademaster: true, catfall: true,
+    combat_master: true, counter_attack: true, crippling_strike: true, crushing_blow: true,
+    disarm: true, dual_strike: true, foresight: true, hard_target: true, hip_shooting: true,
+    iron_discipline: true, jaded: true, leap_up: true, lightning_attack: true, lightning_reflexes: true,
+    marksman: true, mighty_shot: true, nerves_of_steel: true, preternatural_speed: true,
+    quick_draw: true, rapid_reaction: true, sprint: true, step_aside: true, sure_strike: true,
+    swift_attack: true, two_weapon_wielder_ballistic: true, two_weapon_wielder_melee: true,
+    wall_of_steel: true}
+  traits: {dark_sight: true, exarch: 5, exarch_banshees_wail: true, exarch_bounding_leap: true,
+    touched_by_the_fates: 1, unnatural_agility: 3, xenos_tactics_acrobatic_dodge: true,
+    xenos_tactics_war_shout: true}
+  weapons: [mc_eldar_power_sword, mc_shuriken_pistol, eldar_monoblade, mirrorsword,
+    executioner]
+  wounds: 25
 land_raider:
   _package: empire
   armor: {all: 50}
@@ -337,6 +453,43 @@ stormraven:
   name: Stormraven
   weapons: [twin_assault_cannon, twin_heavy_bolter, bloodstrike_missile]
   wounds: 35
+striking_scorpion:
+  _package: eldar
+  armor: {all: 8}
+  characteristics: {agility: 58, ballistic_skill: 48, fellowship: 34, intelligence: 38,
+    perception: 46, strength: 51, toughness: 3, weapon_skill: 62, willpower: 52}
+  name: Striking Scorpion Aspect Warrior
+  skills: {acrobatics: 0, awareness: 10, concealment: 20, dodge: 0, silent_move: 20}
+  species: eldar
+  talents: {ambidextrous: true, catfall: true, crushing_blow: true, foresight: true,
+    hard_target: true, hip_shooting: true, jaded: true, leap_up: true, lightning_reflexes: true,
+    nerves_of_steel: true, quick_draw: true, rapid_reaction: true, sprint: true, step_aside: true,
+    swift_attack: true, two_weapon_wielder_ballistic: true, two_weapon_wielder_melee: true}
+  traits: {dark_sight: true, unnatural_agility: 2}
+  weapons: [eldar_chainsword, shuriken_pistol, eldar_monoblade, mandiblaster_helm,
+    eldar_plasma_grenade]
+  wounds: 15
+striking_scorpion_exarch:
+  _package: eldar
+  armor: {all: 9}
+  characteristics: {agility: 58, ballistic_skill: 55, fellowship: 37, intelligence: 38,
+    perception: 60, strength: 58, toughness: 49, weapon_skill: 70, willpower: 58}
+  name: Striking Scorpion Exarch
+  skills: {acrobatics: 10, awareness: 20, command: 10, concealment: 30, dodge: 10,
+    silent_move: 30}
+  species: eldar
+  talents: {ambidextrous: true, catfall: true, crippling_strike: true, crushing_blow: true,
+    dual_strike: true, foresight: true, hard_target: true, hip_shooting: true, iron_discipline: true,
+    jaded: true, leap_up: true, lightning_attack: true, lightning_reflexes: true,
+    nerves_of_steel: true, preternatural_speed: true, quick_draw: true, rapid_reaction: true,
+    sprint: true, step_aside: true, swift_attack: true, two_weapon_wielder_ballistic: true,
+    two_weapon_wielder_melee: true, wall_of_steel: true}
+  traits: {dark_sight: true, exarch: 5, exarch_crushing_blow: true, exarch_stealth: true,
+    touched_by_the_fates: 1, unnatural_agility: 3, xenos_tactics_shadowstrike: true,
+    xenos_tactics_stalker: true}
+  weapons: [mc_eldar_chainsword, mc_shuriken_pistol, eldar_monoblade, biting_blade,
+    scorpions_claw, chainsabre, scorpions_claw_ranged]
+  wounds: 25
 termagant:
   _package: tyranid
   armor: {all: 3}

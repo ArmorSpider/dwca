@@ -187,7 +187,7 @@ xenos_tactics_war_shout: Action-Free, Cost-3, Sustained-No. Activate during Char
 xenos_tactics_acrobatic_dodge: Action-Free, Cost-2, Sustained-Yes. While active, any squaddie who dodges succesfully may half move. (Once per round)
 exarch_bounding_leap: When making Full Move, Charge or Run. May parkour over things.
 exarch_banshees_wail: When Charging, gain Fear(1) until next turn.
-xenos_tactics_shadowstrike: Action-Free, Cost-2, Sustained-No. (Only available if hidden.) Exarch and squad may make Charge Attack immediately.
+xenos_tactics_shadowstrike: Action-Free, Cost-2, Sustained-No. (Only available if hidden.) Exarch and squad may make Charge Attack immediately. If cost +1, squaddies attacks against unaware enemies deal +5 damage until exarchs next turn
 xenos_tactics_stalker: Action-Free, Cost-1, Sustained-Yes. Squad gets no penalties for terrain and may reroll Silent Move. If +2 cost, make -30 Concealment test as reaction to dodge ranged attack.
 exarch_stealth: Awareness tests VS Exarch get -30. Can attempt Concealment as half action, even when being observed.
 exarch_crushing_blow: Add STR_MOD (again) to melee damage.
@@ -202,3 +202,4 @@ xenos_tactics_intercept: Action-Free; Cost-1, Sustained-No. All squaddies may ma
 xenos_tactics_skyleap: Action-Full, Cost-2, Sustained-No. Exarch and squad may immediately move to high altitude w/o provoking AOOs.
 exarch_elusive: Gain AGI_MOD/2 extra reactions each turn. May only be used for Parry & Dodge.
 exarch_sustained_assault: After incapacitating an enemy, may move AGI_MOD meters and continue making attacks. 
+reaper_rangefinder: +10 BS for semi/full-auto. Dodging attacks from this weapon gets -10. Called shot is half action.

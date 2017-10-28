@@ -21,19 +21,6 @@ autogun:
   range: 100
   semi_auto: 3
   single_shot: 1
-mc_avenger_shuriken_catapult:
-  _package: eldar
-  class: Basic
-  damage_type: R
-  dice: 1
-  flat_damage: 8
-  full_auto: 10
-  name: Mastercrafted Avenger Shuriken Catapult
-  penetration: 6
-  qualities: {never_jams: true, tearing: true}
-  range: 80
-  semi_auto: 3
-  single_shot: 1
 avenger_shuriken_catapult:
   _package: eldar
   class: Basic
@@ -331,6 +318,7 @@ eldar_krak_missile:
   _package: eldar
   class: Heavy
   damage_type: X
+  single_shot: 1
   dice: 4
   flat_damage: 6
   name: Eldar Missile Launcher(Krak Missile)
@@ -444,7 +432,7 @@ hawks_talon:
   class: Basic
   damage_type: E
   dice: 2
-  flat_damage: 8
+  flat_damage: 6
   full_auto: 6
   name: Hawk's Talon
   penetration: 5
@@ -521,7 +509,7 @@ lasblaster:
   class: Basic
   damage_type: E
   dice: 1
-  flat_damage: 6
+  flat_damage: 4
   full_auto: 6
   name: Lastblaster
   penetration: 4
@@ -592,6 +580,19 @@ marius_lightning_claw:
   name: Astartes Lightning Claw
   penetration: 8
   qualities: {damage_per_dos: 2, power_field: true, proven: 4, razor_sharp: true}
+mc_avenger_shuriken_catapult:
+  _package: eldar
+  class: Basic
+  damage_type: R
+  dice: 1
+  flat_damage: 8
+  full_auto: 10
+  name: Mastercrafted Avenger Shuriken Catapult
+  penetration: 6
+  qualities: {never_jams: true, tearing: true}
+  range: 80
+  semi_auto: 3
+  single_shot: 1
 mc_eldar_chainsword:
   _package: eldar
   class: Melee
@@ -601,6 +602,15 @@ mc_eldar_chainsword:
   name: Mastercrafted Eldar Chainsword
   penetration: 3
   qualities: {balanced: true, razor_sharp: true, tearing: true}
+eldar_power_sword:
+  _package: eldar
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 4
+  name: Eldar Power Sword
+  penetration: 8
+  qualities: {balanced: 2, power_field: true}
 mc_eldar_power_sword:
   _package: eldar
   class: Melee
@@ -626,9 +636,9 @@ mc_lasblaster:
   class: Basic
   damage_type: E
   dice: 1
-  flat_damage: 8
+  flat_damage: 6
   full_auto: 6
-  name: Mastercrafted Lastblaster
+  name: Mastercrafted Lasblaster
   penetration: 4
   qualities: {never_jams: true}
   range: 120
@@ -648,7 +658,7 @@ mc_reaper_launcher:
   class: Heavy
   damage_type: X
   dice: 2
-  flat_damage: 14
+  flat_damage: 12
   full_auto: 5
   name: Mastercrafted Reaper Launcher
   penetration: 10
@@ -805,7 +815,7 @@ reaper_launcher:
   class: Heavy
   damage_type: X
   dice: 2
-  flat_damage: 12
+  flat_damage: 10
   full_auto: 5
   name: Reaper Launcher
   penetration: 10
@@ -850,6 +860,26 @@ scatter_laser:
   penetration: 2
   qualities: {reliable: true, storm: true}
   range: 180
+scorpions_claw:
+  name: Scorpion's Claw
+  _package: eldar
+  class: Melee
+  dice: 2
+  penetration: 10
+  flat_damage: 8
+  qualities: {power_field: true, unwieldy: true}
+scorpions_claw_ranged:
+  name: Scorpion's Claw (Ranged)
+  _package: eldar
+  class: Basic
+  dice: 1
+  range: 60
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 10
+  penetration: 6
+  flat_damage: 6
+  qualities: {never_jams: true, razor_sharp: true, tearing: true}
 scything_talons:
   _package: tyranid
   class: Melee
@@ -956,7 +986,7 @@ sunrifle:
   class: Basic
   damage_type: E
   dice: 1
-  flat_damage: 10
+  flat_damage: 8
   full_auto: 8
   name: Sunrifle
   penetration: 4
@@ -987,9 +1017,9 @@ thunder_hammer:
   penetration: 9
   qualities: {concussive: true, power_field: true, unwieldy: true}
 toxic_tendrils:
-  damage_type: R
   _package: tyranid
   class: Melee
+  damage_type: R
   dice: 1
   flat_damage: -2
   name: Toxic Tendrils
