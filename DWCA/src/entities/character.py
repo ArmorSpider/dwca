@@ -62,7 +62,7 @@ class Character(Entity):
         Flexible.handle_flexible(attack)
 
     def _get_effective_toughness_bonus(self, attack):
-        felling_value = attack.get_weapon().get_quality(Felling.name, 0)
+        felling_value = attack.get_modifier(Felling.name, 0)
         toughness = self.get_characteristic_bonus(
             STAT_TGH, multiplier_penalty=felling_value)
         return toughness

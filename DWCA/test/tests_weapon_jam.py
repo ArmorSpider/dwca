@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from src.action.ranged_attack import RangedAttack
 from src.cli.message_queue import log_messages
-from src.dice import queue_rolls
+from src.dice import queue_d10_rolls
 from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
 from src.entities.weapon import Weapon, get_weapon
 from src.modifiers.qualities import Reliable, NeverJams, OverHeats
@@ -58,7 +58,7 @@ class Test(TestCase):
         self.assertEqual(expected, actual)
 
     def test_single_shot_roll_result_96_and_reliable_roll_1_should_return_false(self):
-        queue_rolls([1])
+        queue_d10_rolls([1])
         qualities = {Reliable.name: True}
         attack = self._build_attack(roll_result=96,
                                     firemode=SINGLE_SHOT,
@@ -68,7 +68,7 @@ class Test(TestCase):
         self.assertEqual(expected, actual)
 
     def test_semi_auto_roll_result_94_and_reliable_roll_1_should_return_false(self):
-        queue_rolls([1])
+        queue_d10_rolls([1])
         qualities = {Reliable.name: True}
         attack = self._build_attack(roll_result=94,
                                     firemode=SEMI_AUTO,
@@ -78,7 +78,7 @@ class Test(TestCase):
         self.assertEqual(expected, actual)
 
     def test_full_auto_roll_result_94_and_reliable_roll_1_should_return_false(self):
-        queue_rolls([1])
+        queue_d10_rolls([1])
         qualities = {Reliable.name: True}
         attack = self._build_attack(roll_result=94,
                                     firemode=SEMI_AUTO,
@@ -88,7 +88,7 @@ class Test(TestCase):
         self.assertEqual(expected, actual)
 
     def test_single_shot_roll_result_96_and_reliable_10_should_return_true(self):
-        queue_rolls([10])
+        queue_d10_rolls([10])
         qualities = {Reliable.name: True}
         attack = self._build_attack(roll_result=96,
                                     firemode=SINGLE_SHOT,

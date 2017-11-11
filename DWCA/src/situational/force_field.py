@@ -1,7 +1,7 @@
 from definitions import PROTECTION_MAX, OVERLOAD_MAX
 from src.dice import roll_action_dice
 from src.dwca_log.log import get_log
-from src.situational.state_manager import is_overloaded
+from src.situational.state_manager import is_overloaded, StateManager
 
 LOG = get_log(__name__)
 
@@ -36,6 +36,7 @@ class ForceField(object):
                 self.overloaded = True
                 LOG.info('Force field overloaded! (%s vs. %s)',
                          roll_result, self.overload_max)
+                StateManager.overloaded = True
             if roll_result <= self.protection_max:
                 return True
             return False

@@ -1,7 +1,7 @@
 import sys
 
 from definitions import FIREMODE, WEAPON, NUM_ATTACKS, ROLL_TARGET, ATTACKER,\
-    TARGET, OVERLOADED, CHARGE, AIMED, COVER
+    TARGET, OVERLOADED, CHARGE, AIMED, COVER, AD_HOC
 from src.action.attack import Attack
 from src.action.hit import Hit
 from src.cli.match_map import get_default_match_map
@@ -43,7 +43,8 @@ def process_command(command_string, event):
 
 
 def known_commands_generator():
-    commands = [cls() for cls in CLICommand.__subclasses__()]
+    commands = [cls()
+                for cls in CLICommand.__subclasses__()]  # pylint: disable=E1101
     for command in commands:
         yield command
 
@@ -85,6 +86,18 @@ class CommandHelp(CLICommand):
             row = [command.keyword, command.help]
             table_data.append(row)
         print_table(table_data, title='Available commands', headers=False)
+        return event
+
+
+class ComandAdHoc(CLICommand):
+
+    keyword = 'adhoc'
+    help = 'Manually add temporary modifiers.'
+
+    def _process_event(self, event):
+        input_string = raw_input('Enter ad-hoc dict string: ')
+        ad_hoc_dict = quick_dict_parse(input_string)
+        event[AD_HOC] = ad_hoc_dict
         return event
 
 

@@ -1,7 +1,7 @@
 
 import unittest
 
-from src.dice import queue_rolls
+from src.dice import queue_d10_rolls
 from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
 from src.entities.char_stats import STAT_TGH
 from src.entities.character import get_char
@@ -14,27 +14,6 @@ class Test(unittest.TestCase):
 
     def setUp(self):
         register_modifiers()
-
-    def test_genestealer(self):
-        attacker = get_char('dev_genestealer')
-        target = get_char('dev_john_bobb')
-        weapon = get_weapon('rending_claws')
-        attack = attacker._melee_attack(weapon, target)
-        attack.try_action(96, 1)
-        expected_dice = 1
-        expected_pen = 8
-        expected_damage = 14
-        expected_dos = 9
-
-        actual_dice = attack._get_num_dice()
-        actual_pen = attack._get_penetration()
-        actual_damage = attack._get_flat_damage()
-        actual_dos = attack.get_degrees_of_success()
-
-        self.assertEqual(expected_dice, actual_dice)
-        self.assertEqual(expected_pen, actual_pen)
-        self.assertEqual(expected_damage, actual_damage)
-        self.assertEqual(expected_dos, actual_dos)
 
     def test_tearing_and_flesh_render_should_give_2_tearing_dice(self):
         target = get_char('dev_genestealer')
@@ -51,7 +30,7 @@ class Test(unittest.TestCase):
         weapon = get_weapon('astartes_chainsword')
         attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
-        queue_rolls([10])
+        queue_d10_rolls([10])
         flat_damage = attack._get_flat_damage()
         expected_damage = 10 + flat_damage
 
@@ -64,7 +43,7 @@ class Test(unittest.TestCase):
         weapon = get_weapon('astartes_chainsword')
         attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
-        queue_rolls([10, 0, 0, 5])  # two tearing dice
+        queue_d10_rolls([10, 0, 0, 5])  # two tearing dice
         flat_damage = attack._get_flat_damage()
         expected_damage = 10 + 5 + flat_damage
         actual_damage = attack._roll_damage()
@@ -76,7 +55,7 @@ class Test(unittest.TestCase):
         weapon = get_weapon('astartes_chainsword')
         attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
-        queue_rolls([10])
+        queue_d10_rolls([10])
         flat_damage = attack._get_flat_damage()
         expected_damage = 10 + flat_damage
         actual_damage = attack._roll_damage()

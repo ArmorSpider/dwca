@@ -8,7 +8,8 @@ alakir:
 auran_genestealer:
   _package: tyranid
   armor: {all: 6}
-  characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
+  skills: {awareness: 10, concealment: 10, dodge: 10, silent_move: 0}
+  characteristics: {strength: 60, toughness: 60, weapon_skill: 65, agility: 60}
   name: Auran Genestealer
   species: tyranid
   talents: {ambidextrous: true, crushing_blow: true, fearless: true, hard_target: true,
@@ -103,7 +104,7 @@ dire_avenger:
   talents: {ambidextrous: true, catfall: true, foresight: true, hard_target: true,
     hip_shooting: true, jaded: true, leap_up: true, lightning_reflexes: true, mighty_shot: true,
     nerves_of_steel: true, quick_draw: true, rapid_reaction: true, sprint: true, step_aside: true}
-  traits: {dark_sight: true, unnatural_agility: 2}
+  traits: {dark_sight: true, unnatural_agility: 2, signum_link: true}
   weapons: [avenger_shuriken_catapult, shuriken_pistol, eldar_monoblade]
   wounds: 15
 dire_avenger_exarch:
@@ -123,7 +124,7 @@ dire_avenger_exarch:
     wall_of_steel: true}
   traits: {dark_sight: true, exarch: 5, exarch_fast_shot: true, exarch_fighting_fury: true,
     touched_by_the_fates: 1, unnatural_agility: 2, xenos_tactics_bladestorm: true,
-    xenos_tactics_defend: true}
+    xenos_tactics_defend: true, signum: true}
   weapons: [mc_avenger_shuriken_catapult, shuriken_pistol, eldar_monoblade, diresword,
     mc_power_glaive]
   wounds: 25
@@ -178,7 +179,7 @@ eldar_warlock:
   species: eldar
   talents: {ambidextrous: true, catfall: true, foresight: true, hard_target: true,
     hip_shooting: true, psy_rating: 5, quick_draw: true, rapid_reaction: true, sprint: true,
-    swift_attack: true, warp_sense: true}
+    swift_attack: true, warp_sense: true, psy_power_augment: true, psy_power_conceal: true, psy_power_destructor: true, psy_power_embolden: true, psy_power_enhance: true}
   traits: {dark_sight: true, unnatural_agility: 2, war_leader: true}
   weapons: [shuriken_pistol, witchblade, eldar_monoblade]
   wounds: 15
@@ -287,6 +288,7 @@ gilmech:
   name: Gilmech
   talents: {deathwatch_training: true, mighty_shot: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [storm_bolter, heavy_bolter]
 hierodule:
   _package: tyranid
   armor: {all: 12}

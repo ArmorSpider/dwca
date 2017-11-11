@@ -2,12 +2,14 @@ import unittest
 
 from definitions import PROTECTION_MAX, OVERLOAD_MAX
 from src.situational.force_field import ForceField
+from src.situational.state_manager import StateManager
 
 
 class Test(unittest.TestCase):
 
     def setUp(self):
         self.force_field = ForceField({PROTECTION_MAX: 25, OVERLOAD_MAX: 10})
+        StateManager.reset()
 
     def test_above_protection_max_should_hit(self):
         self.assertFalse(self.force_field.is_hit_blocked(26))

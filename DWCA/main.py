@@ -30,6 +30,8 @@ def _cleanup_event(event):
     for key, value in event.items():
         if not value:
             event.pop(key)
+        elif key.startswith('_'):
+            event.pop(key)
 
 
 def main():

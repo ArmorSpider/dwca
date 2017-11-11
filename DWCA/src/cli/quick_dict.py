@@ -14,8 +14,17 @@ def quick_dict_parse(input_string, match_map=None):
     pairs = input_string.split(PAIR_SEPARATOR)
     output_dict = {}
     for key, value in _pair_parser(pairs, match_map):
+        value = _try_int_convert(value)
         output_dict[key] = value
     return output_dict
+
+
+def _try_int_convert(value):
+    try:
+        value = int(value)
+    except ValueError:
+        pass
+    return value
 
 
 def _pair_parser(pairs, match_map):

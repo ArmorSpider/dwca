@@ -41,6 +41,16 @@ class MasterLibrary(object):
     available_packages = [DEFAULT_PACKAGE]
 
     @staticmethod
+    def add_character(char_key, char_def):
+        LOG.debug('Manually added "%s" to character library.', char_key)
+        MasterLibrary.character_library[char_key] = char_def
+
+    @staticmethod
+    def add_weapon(weapon_key, weapon_def):
+        LOG.debug('Manually added "%s" to weapon library.', weapon_key)
+        MasterLibrary.weapon_library[weapon_key] = weapon_def
+
+    @staticmethod
     def load_all_packages():
         for package in MasterLibrary.get_known_packages():
             MasterLibrary.add_package(package)

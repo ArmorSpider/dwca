@@ -1,3 +1,4 @@
+from definitions import ATTACKER, TARGET, WEAPON
 from src.action.action import Action
 from src.action.hit import Hit
 from src.dwca_log.log import get_log
@@ -22,6 +23,10 @@ class Attack(Action):
         self.penetration = None
         self.flat_damage = None
         self.num_hits = None
+        self.ad_hoc_modifiers = {}
+        self.metadata[WEAPON] = self.weapon.get_name()
+        self.metadata[ATTACKER] = self.attacker.get_name()
+        self.metadata[TARGET] = self.target.get_name()
 
     def hits_generator(self):
         num_hits = self._get_num_hits()
@@ -109,6 +114,11 @@ class Attack(Action):
     def get_target(self):
         return self.target
 
+    def get_modifier(self, modifier_key, default=None):
+        offensive_modifiers = self._combine_offensive_modifiers()
+        modifier_value = offensive_modifiers.get(modifier_key, default)
+        return modifier_value
+
     def _offensive_modifiers(self):
         modifiers = self._combine_offensive_modifiers()
         modifiers_iterator = get_modifiers_iterator(modifiers)
@@ -168,6 +178,7 @@ class Attack(Action):
         modifiers.update(self.get_weapon_stat(QUALITIES, default={}))
         modifiers.update(self.get_attacker_stat(TRAITS, default={}))
         modifiers.update(self.get_attacker_stat(TALENTS, default={}))
+        modifiers.update(self.ad_hoc_modifiers)
         LOG.debug('Found %s offensive modifiers.', len(modifiers))
         return modifiers
 
@@ -185,10 +196,19 @@ class Attack(Action):
             return attacker.get_num_ranged_attacks()
 
     def get_target_stat(self, stat_name, default=None):
-        return self.get_target().get_stat(stat_name, default)
+        try:
+            return self.get_target().get_stat(stat_name, default)
+        except AttributeError:
+            return default
 
     def get_attacker_stat(self, stat_name, default=None):
-        return self.get_attacker().get_stat(stat_name, default)
+        try:
+            return self.get_attacker().get_stat(stat_name, default)
+        except AttributeError:
+            return default
 
     def get_weapon_stat(self, stat_name, default=None):
-        return self.get_weapon().get_stat(stat_name, default)
+        try:
+            return self.get_weapon().get_stat(stat_name, default)
+        except AttributeError:
+            return default

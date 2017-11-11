@@ -1,0 +1,128 @@
+
+import unittest
+
+from definitions import ATTACKER, WEAPON, TARGET, ROLL_TARGET, ROLL_RESULT,\
+    DEGREES_OF_SUCCESS, WEAPONS, CLASS
+from src.cli.commands import process_command
+from src.dice import queue_d100_rolls
+from src.entities import NAME, TRAITS, CHARACTERISTICS, DAMAGE_TYPE, DICE,\
+    DAMAGE, PENETRATION, SINGLE_SHOT
+from src.entities.char_stats import STAT_AGI, STAT_STR, STAT_TGH, STAT_WS,\
+    STAT_BS
+from src.entities.libraries import MasterLibrary
+from src.handler import construct_attack
+from src.situational.state_manager import StateManager
+
+
+class Test(unittest.TestCase):
+
+    def setUp(self):
+        StateManager.reset()
+        self.automan_def = {NAME: 'Automan',
+                            TRAITS: {'power_armour': True,
+                                     'unnatural_toughness': 2,
+                                     'unnatural_strength': 2},
+                            WEAPONS: ['boltgun'],
+                            CHARACTERISTICS: {STAT_STR: 40,
+                                              STAT_TGH: 54,
+                                              STAT_WS: 50,
+                                              STAT_BS: 50,
+                                              STAT_AGI: 40}}
+        MasterLibrary.add_character('automan', self.automan_def)
+        self.business_gun_def = {NAME: 'Business Gun',
+                                 CLASS: 'Basic',
+                                 DAMAGE_TYPE: 'I',
+                                 DICE: 1,
+                                 DAMAGE: 10,
+                                 PENETRATION: 10,
+                                 SINGLE_SHOT: 1}
+        self.business_fist_def = {NAME: 'Business Fist',
+                                  CLASS: 'Melee',
+                                  DAMAGE_TYPE: 'I',
+                                  DICE: 1,
+                                  DAMAGE: 10,
+                                  PENETRATION: 10}
+        MasterLibrary.add_weapon('business_gun', self.business_gun_def)
+        MasterLibrary.add_weapon('business_fist', self.business_fist_def)
+
+    def tearDown(self):
+        pass
+
+    def test_metadata_minimum_should_contain_attacker_weapon_target_and_roll_target(self):
+        event = {ATTACKER: 'automan',
+                 WEAPON: 'business_fist',
+                 TARGET: 'dummy',
+                 ROLL_TARGET: 100}
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_roll_result(self):
+        event = {ATTACKER: 'automan',
+                 WEAPON: 'business_fist',
+                 TARGET: 'dummy',
+                 ROLL_TARGET: 100}
+        queue_d100_rolls([50])
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_degrees_of_success(self):
+        event = {ATTACKER: 'automan',
+                 WEAPON: 'business_fist',
+                 TARGET: 'dummy',
+                 ROLL_TARGET: 100}
+        queue_d100_rolls([50])
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50,
+                    DEGREES_OF_SUCCESS: 5}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_penetration(self):
+        event = {ATTACKER: 'automan',
+                 WEAPON: 'business_fist',
+                 TARGET: 'dummy',
+                 ROLL_TARGET: 100}
+        queue_d100_rolls([50])
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50,
+                    DEGREES_OF_SUCCESS: 5}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def run_cli_commands(self, command_strings):
+        event = {}
+        for command_string in command_strings:
+            event = process_command(command_string, event)
+        return event
+
+    def get_attack_metadata(self, event):
+        attack = construct_attack(event)
+        attack.apply_hits(custom_hits=None)
+        return attack.metadata
+
+    def assert_dict_contains(self, expected, actual):
+        for key, value in expected.iteritems():
+            self.assertEqual(value, actual[key])
+
+
+if __name__ == "__main__":
+    #import sys;sys.argv = ['', 'Test.testName']
+    unittest.main()

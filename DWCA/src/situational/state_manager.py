@@ -9,6 +9,10 @@ class StateManager(object):
     cover = 0
 
     @staticmethod
+    def reset():
+        StateManager.update({})
+
+    @staticmethod
     def update(event):
         StateManager.aimed = bool(event.get(AIMED))
         StateManager.overloaded = bool(event.get(OVERLOADED))

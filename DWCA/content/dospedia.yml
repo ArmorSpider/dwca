@@ -203,3 +203,10 @@ xenos_tactics_skyleap: Action-Full, Cost-2, Sustained-No. Exarch and squad may i
 exarch_elusive: Gain AGI_MOD/2 extra reactions each turn. May only be used for Parry & Dodge.
 exarch_sustained_assault: After incapacitating an enemy, may move AGI_MOD meters and continue making attacks. 
 reaper_rangefinder: +10 BS for semi/full-auto. Dodging attacks from this weapon gets -10. Called shot is half action.
+psy_power_augment: Another Eldar psyker wihtin 10m gainst +1 Psy Rating after pushing etc.
+psy_power_conceal: Ranged attacks against Warlock or followers gain -20. Immune to Aiming.
+psy_power_destructor: Flamer, 30m. 1d10+12 E, Penetration=PRx2 (so 10)
+psy_power_embolden: Warlock and followers gain +20 to WP testa against Fear, Pinning and Breaking.
+psy_power_enchance: Warlock and follwers gain +10 WS and +2 initative.
+signum_link: All friends in squad mode may benefit fram ganging up on opponents, even with ranged attacks.
+signum: All squaddies gain +5 BS. Full action tech-use test to increase to +10 until end of next round.

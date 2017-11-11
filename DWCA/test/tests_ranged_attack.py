@@ -2,7 +2,7 @@ import unittest
 
 from src.action.ranged_attack import RangedAttack
 from src.cli.message_queue import log_messages
-from src.dice import queue_rolls
+from src.dice import queue_d10_rolls
 from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO, QUALITIES, NAME
 from src.entities.weapon import Weapon
 from src.modifiers.qualities import Reliable, NeverJams, OverHeats
@@ -21,7 +21,7 @@ class Test(unittest.TestCase):
 
     def test_single_shot_roll_result_96_reliable_1_should_return_false(self):
         qualities = {Reliable.name: True}
-        queue_rolls([1])
+        queue_d10_rolls([1])
         attack = self._build_attack(roll_result=96,
                                     firemode=SINGLE_SHOT,
                                     qualities=qualities)
@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
 
     def test_single_shot_roll_result_96_never_jams_should_return_false(self):
         qualities = {NeverJams.name: True}
-        queue_rolls([1])
+        queue_d10_rolls([1])
         attack = self._build_attack(roll_result=96,
                                     firemode=SINGLE_SHOT,
                                     qualities=qualities)
@@ -41,7 +41,7 @@ class Test(unittest.TestCase):
 
     def test_single_shot_roll_result_91_overheats_should_return_false(self):
         qualities = {OverHeats.name: True}
-        queue_rolls([1])
+        queue_d10_rolls([1])
         attack = self._build_attack(roll_result=91,
                                     firemode=SINGLE_SHOT,
                                     qualities=qualities)

@@ -34,7 +34,7 @@ class FleshRender(Modifier):
     name = 'flesh_render'
 
     def modify_tearing_dice(self, attack, current_tearing_dice):
-        if attack.is_melee() and attack.get_weapon().get_quality(Tearing.name):
+        if attack.is_melee() and attack.get_modifier(Tearing.name):
             LOG.debug('+1 tearing dice from FleshRender.')
             return current_tearing_dice + 1
 

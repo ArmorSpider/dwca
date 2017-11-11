@@ -4,18 +4,23 @@ from src.util.rand_util import roll_die
 
 LOG = get_log(__name__)
 
-QUEUED_ROLLS = []
+QUEUED_ROLLS_D10 = []
+QUEUED_ROLLS_D100 = []
 
 
 def roll_action_dice():
-    return roll_die(100)
+    if len(QUEUED_ROLLS_D100) > 0:
+        result = QUEUED_ROLLS_D100.pop()
+    else:
+        result = roll_die(100)
+    return result
 
 
 def roll_damage_dice(num_dice):
     results = []
     for _ in range(num_dice):
-        if len(QUEUED_ROLLS) > 0:
-            result = QUEUED_ROLLS.pop(0)
+        if len(QUEUED_ROLLS_D10) > 0:
+            result = QUEUED_ROLLS_D10.pop(0)
         else:
             result = roll_die(10)
         results.append(result)
@@ -23,6 +28,11 @@ def roll_damage_dice(num_dice):
     return results
 
 
-def queue_rolls(list_of_ints):
-    del QUEUED_ROLLS[:]
-    QUEUED_ROLLS.extend(list_of_ints)
+def queue_d10_rolls(list_of_ints):
+    del QUEUED_ROLLS_D10[:]
+    QUEUED_ROLLS_D10.extend(list_of_ints)
+
+
+def queue_d100_rolls(list_of_ints):
+    del QUEUED_ROLLS_D100[:]
+    QUEUED_ROLLS_D100.extend(list_of_ints)

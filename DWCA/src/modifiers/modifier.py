@@ -33,8 +33,8 @@ class Modifier(object):
 
 
 def register_modifiers():
-    known_modifiers = [cls() for cls in Modifier.__subclasses__()
-                       ]  # pylint: disable=E1101
+    known_modifiers = [cls()
+                       for cls in Modifier.__subclasses__()]  # pylint: disable=E1101
 
     for modifier in known_modifiers:
         add_to_register(modifier)

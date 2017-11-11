@@ -1,5 +1,5 @@
 from definitions import FIREMODE, ROLL_TARGET, WEAPON, ATTACKER, ATTACKER_MAG,\
-    TARGET, TARGET_MAG, NUM_ATTACKS
+    TARGET, TARGET_MAG, NUM_ATTACKS, AD_HOC
 from src.dwca_log.log import get_log
 from src.entities.character import get_char
 from src.entities.horde import get_horde
@@ -30,7 +30,9 @@ def construct_attack(event):
     target = build_target(event)
     weapon = build_weapon(event)
     firemode = event.get(FIREMODE)
+    ad_hoc_modifiers = event.get(AD_HOC, {})
     attack = attacker.attack(weapon, target, firemode)
+    attack.ad_hoc_modifiers = ad_hoc_modifiers
     roll_target = event[ROLL_TARGET]
     attack.try_action(roll_target=roll_target,
                       roll_result=None)
