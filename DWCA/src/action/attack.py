@@ -1,8 +1,14 @@
-from definitions import ATTACKER, TARGET, WEAPON
+from time import sleep
+
+from lazy.lazy import lazy
+
+from definitions import ATTACKER, TARGET, WEAPON, NUM_HITS, ROLLED_DAMAGE
 from src.action.action import Action
 from src.action.hit import Hit
 from src.dwca_log.log import get_log
-from src.entities import TRAITS, TALENTS, QUALITIES, DICE, PENETRATION, DAMAGE
+from src.entities import TRAITS, TALENTS, QUALITIES, DICE, PENETRATION, DAMAGE,\
+    TEARING_DICE
+from src.entities.entity import Entity
 from src.hitloc_series import get_hit_locations
 from src.modifiers.modifier import get_modifiers_iterator
 from src.roll_damage import roll_normal_damage, roll_righteous_fury
@@ -15,27 +21,22 @@ class Attack(Action):
 
     def __init__(self, weapon, attacker, target):
         Action.__init__(self)
-        self.weapon = weapon
-        self.attacker = attacker
-        self.target = target
-        self.num_dice = None
-        self.tearing_dice = None
-        self.penetration = None
-        self.flat_damage = None
-        self.num_hits = None
+        self.weapon = weapon if weapon is not None else Entity()
+        self.attacker = attacker if attacker is not None else Entity()
+        self.target = target if target is not None else Entity()
         self.ad_hoc_modifiers = {}
         self.metadata[WEAPON] = self.weapon.get_name()
         self.metadata[ATTACKER] = self.attacker.get_name()
         self.metadata[TARGET] = self.target.get_name()
 
     def hits_generator(self):
-        num_hits = self._get_num_hits()
+        num_hits = self.num_hits
         LOG.info('Attack scored %s hits.', num_hits)
         hit_locations = get_hit_locations(self.get_hit_location(), num_hits)
         for hit_location in hit_locations:
             hit = Hit(hit_location=hit_location,
                       damage=self._roll_damage(),
-                      penetration=self._get_penetration())
+                      penetration=self.penetration)
             yield hit
 
     def apply_hits(self, custom_hits=None):
@@ -60,50 +61,35 @@ class Attack(Action):
                      ' + '.join([str(hit_damage) for hit_damage in hit_damages]))
         return attack_total_damage
 
-    def _get_num_hits(self):
-        if self.num_hits is not None:
-            num_hits = self.num_hits
-        else:
-            num_hits = self._calculate_num_hits()
-            self.num_hits = num_hits
-        LOG.debug('Num hits is %s.', num_hits)
-        return num_hits
+    @lazy
+    def tearing_dice(self):
+        num_tearing_dice = self._calculate_tearing_dice()
+        self._update_metadata({TEARING_DICE: num_tearing_dice})
+        return num_tearing_dice
 
-    def _get_num_dice(self):
-        if self.num_dice is not None:
-            num_dice = self.num_dice
-        else:
-            num_dice = self._calculate_num_dice()
-            self.num_dice = num_dice
-        LOG.debug('Num dice is %s.', num_dice)
+    @lazy
+    def num_dice(self):
+        num_dice = self._calculate_num_dice()
+        self._update_metadata({DICE: num_dice})
         return num_dice
 
-    def _get_tearing_dice(self):
-        if self.tearing_dice is not None:
-            tearing_dice = self.tearing_dice
-        else:
-            tearing_dice = self._calculate_tearing_dice()
-            self.tearing_dice = tearing_dice
-        LOG.debug('Tearing dice is %s.', tearing_dice)
-        return tearing_dice
-
-    def _get_penetration(self):
-        if self.penetration is not None:
-            penetration = self.penetration
-        else:
-            penetration = self._calculate_penetration()
-            self.penetration = penetration
-        LOG.debug('Penetration is %s.', penetration)
+    @lazy
+    def penetration(self):
+        penetration = self._calculate_penetration()
+        self._update_metadata({PENETRATION: penetration})
         return penetration
 
-    def _get_flat_damage(self):
-        if self.flat_damage is not None:
-            flat_damage = self.flat_damage
-        else:
-            flat_damage = self._calculate_flat_damage()
-            self.flat_damage = flat_damage
-        LOG.debug('Flat damage is %s.', flat_damage)
+    @lazy
+    def flat_damage(self):
+        flat_damage = self._calculate_flat_damage()
+        self._update_metadata({DAMAGE: flat_damage})
         return flat_damage
+
+    @lazy
+    def num_hits(self):
+        num_hits = self._calculate_num_hits()
+        self._update_metadata({NUM_HITS: num_hits})
+        return num_hits
 
     def get_weapon(self):
         return self.weapon
@@ -154,19 +140,19 @@ class Attack(Action):
             num_hits = modifier.modify_num_hits(self, num_hits)
         return num_hits
 
-    def _roll_raw_damage(self):
-        real_dice = self._get_num_dice()
-        tearing_dice = self._get_tearing_dice()
-        results = roll_normal_damage(real_dice, tearing_dice, self)
+    @property
+    def rolled_damage(self):
+        results = roll_normal_damage(self.num_dice, self.tearing_dice, self)
         results = roll_righteous_fury(results, self)
         raw_rolled_damage = sum(results)
         LOG.info('Rolled %s raw damage. (Rolls: %s)',
                  raw_rolled_damage, results)
+        self._append_to_metadata(ROLLED_DAMAGE, raw_rolled_damage)
         return raw_rolled_damage
 
     def _roll_damage(self):
-        rolled_damage = self._roll_raw_damage()
-        flat_damage = self._get_flat_damage()
+        rolled_damage = self.rolled_damage
+        flat_damage = self.flat_damage
         total_damage = rolled_damage + flat_damage
         LOG.debug('Total damage: %s. (Rolled: %s, Flat: %s)',
                   total_damage, rolled_damage, flat_damage)
@@ -183,10 +169,10 @@ class Attack(Action):
         return modifiers
 
     def is_melee(self):
-        return self.get_weapon().is_melee()
+        return self.weapon.is_melee()
 
     def is_ranged(self):
-        return self.get_weapon().is_melee() is not True
+        return self.weapon.is_melee() is not True
 
     def get_num_attacks(self):
         attacker = self.get_attacker()

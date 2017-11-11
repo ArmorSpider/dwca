@@ -56,3 +56,8 @@ class Action(object):
 
     def _update_metadata(self, dict_):
         self.metadata.update(dict_)
+
+    def _append_to_metadata(self, metadata_key, value):
+        current_list = self.metadata.get(metadata_key, [])
+        current_list.append(value)
+        self.metadata[metadata_key] = current_list

@@ -2,11 +2,11 @@
 import unittest
 
 from definitions import ATTACKER, WEAPON, TARGET, ROLL_TARGET, ROLL_RESULT,\
-    DEGREES_OF_SUCCESS, WEAPONS, CLASS
+    DEGREES_OF_SUCCESS, WEAPONS, CLASS, NUM_HITS, ROLLED_DAMAGE
 from src.cli.commands import process_command
-from src.dice import queue_d100_rolls
+from src.dice import queue_d100_rolls, queue_d10_rolls
 from src.entities import NAME, TRAITS, CHARACTERISTICS, DAMAGE_TYPE, DICE,\
-    DAMAGE, PENETRATION, SINGLE_SHOT
+    DAMAGE, PENETRATION, SINGLE_SHOT, TEARING_DICE
 from src.entities.char_stats import STAT_AGI, STAT_STR, STAT_TGH, STAT_WS,\
     STAT_BS
 from src.entities.libraries import MasterLibrary
@@ -44,15 +44,16 @@ class Test(unittest.TestCase):
                                   PENETRATION: 10}
         MasterLibrary.add_weapon('business_gun', self.business_gun_def)
         MasterLibrary.add_weapon('business_fist', self.business_fist_def)
+        self.basic_melee_event = {ATTACKER: 'automan',
+                                  WEAPON: 'business_fist',
+                                  TARGET: 'dummy',
+                                  ROLL_TARGET: 100}
 
     def tearDown(self):
         pass
 
     def test_metadata_minimum_should_contain_attacker_weapon_target_and_roll_target(self):
-        event = {ATTACKER: 'automan',
-                 WEAPON: 'business_fist',
-                 TARGET: 'dummy',
-                 ROLL_TARGET: 100}
+        event = self.basic_melee_event
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummy',
@@ -61,10 +62,7 @@ class Test(unittest.TestCase):
         self.assert_dict_contains(expected, actual)
 
     def test_metadata_should_contain_roll_result(self):
-        event = {ATTACKER: 'automan',
-                 WEAPON: 'business_fist',
-                 TARGET: 'dummy',
-                 ROLL_TARGET: 100}
+        event = self.basic_melee_event
         queue_d100_rolls([50])
 
         expected = {ATTACKER: 'Automan',
@@ -76,10 +74,7 @@ class Test(unittest.TestCase):
         self.assert_dict_contains(expected, actual)
 
     def test_metadata_should_contain_degrees_of_success(self):
-        event = {ATTACKER: 'automan',
-                 WEAPON: 'business_fist',
-                 TARGET: 'dummy',
-                 ROLL_TARGET: 100}
+        event = self.basic_melee_event
         queue_d100_rolls([50])
 
         expected = {ATTACKER: 'Automan',
@@ -92,10 +87,7 @@ class Test(unittest.TestCase):
         self.assert_dict_contains(expected, actual)
 
     def test_metadata_should_contain_penetration(self):
-        event = {ATTACKER: 'automan',
-                 WEAPON: 'business_fist',
-                 TARGET: 'dummy',
-                 ROLL_TARGET: 100}
+        event = self.basic_melee_event
         queue_d100_rolls([50])
 
         expected = {ATTACKER: 'Automan',
@@ -103,7 +95,79 @@ class Test(unittest.TestCase):
                     TARGET: 'Dummy',
                     ROLL_TARGET: 100,
                     ROLL_RESULT: 50,
-                    DEGREES_OF_SUCCESS: 5}
+                    DEGREES_OF_SUCCESS: 5,
+                    PENETRATION: 10}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_flat_damage(self):
+        event = self.basic_melee_event
+        queue_d100_rolls([50])
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50,
+                    DEGREES_OF_SUCCESS: 5,
+                    DAMAGE: 20}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_num_dice(self):
+        event = self.basic_melee_event
+        queue_d100_rolls([50])
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50,
+                    DEGREES_OF_SUCCESS: 5,
+                    DICE: 1}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_num_tearing_dice(self):
+        event = self.basic_melee_event
+        queue_d100_rolls([50])
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50,
+                    DEGREES_OF_SUCCESS: 5,
+                    TEARING_DICE: 0}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_num_hits(self):
+        event = self.basic_melee_event
+        queue_d100_rolls([50])
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50,
+                    DEGREES_OF_SUCCESS: 5,
+                    NUM_HITS: 1}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_rolled_damage(self):
+        event = self.basic_melee_event
+        queue_d100_rolls([50])
+        queue_d10_rolls([5] * 10)
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50,
+                    DEGREES_OF_SUCCESS: 5,
+                    ROLLED_DAMAGE: [5]}
         actual = self.get_attack_metadata(event)
         self.assert_dict_contains(expected, actual)
 
@@ -121,8 +185,3 @@ class Test(unittest.TestCase):
     def assert_dict_contains(self, expected, actual):
         for key, value in expected.iteritems():
             self.assertEqual(value, actual[key])
-
-
-if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
-    unittest.main()

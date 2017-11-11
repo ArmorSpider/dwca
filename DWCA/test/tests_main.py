@@ -21,7 +21,7 @@ class Test(unittest.TestCase):
         weapon = get_weapon('astartes_chainsword')
         attack = attacker._melee_attack(weapon, target)
         expected = 2
-        actual = attack._get_tearing_dice()
+        actual = attack.tearing_dice
         self.assertEqual(expected, actual)
 
     def test_no_auto_confirm_should_not_trigger_fury_if_confirming_is_impossible(self):
@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
         queue_d10_rolls([10])
-        flat_damage = attack._get_flat_damage()
+        flat_damage = attack.flat_damage
         expected_damage = 10 + flat_damage
 
         actual_damage = attack._roll_damage()
@@ -44,7 +44,7 @@ class Test(unittest.TestCase):
         attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
         queue_d10_rolls([10, 0, 0, 5])  # two tearing dice
-        flat_damage = attack._get_flat_damage()
+        flat_damage = attack.flat_damage
         expected_damage = 10 + 5 + flat_damage
         actual_damage = attack._roll_damage()
         self.assertEqual(expected_damage, actual_damage)
@@ -56,7 +56,7 @@ class Test(unittest.TestCase):
         attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
         queue_d10_rolls([10])
-        flat_damage = attack._get_flat_damage()
+        flat_damage = attack.flat_damage
         expected_damage = 10 + flat_damage
         actual_damage = attack._roll_damage()
         self.assertEqual(expected_damage, actual_damage)
@@ -87,7 +87,7 @@ class Test(unittest.TestCase):
         attack.try_action(100, 1)
 
         expected = 1
-        actual = attack._get_num_hits()
+        actual = attack.num_hits
         self.assertEqual(expected, actual)
 
     def test_semi_auto(self):
@@ -98,7 +98,7 @@ class Test(unittest.TestCase):
         attack.try_action(100, 1)
 
         expected = 3
-        actual = attack._get_num_hits()
+        actual = attack.num_hits
         self.assertEqual(expected, actual)
 
     def test_full_auto(self):
@@ -109,5 +109,5 @@ class Test(unittest.TestCase):
         attack.try_action(100, 1)
 
         expected = 5
-        actual = attack._get_num_hits()
+        actual = attack.num_hits
         self.assertEqual(expected, actual)
