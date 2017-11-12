@@ -18,7 +18,7 @@ bestial: Is an animal. Will probably just run.
 blademaster: May reroll one missed attack with a bladed weapon per round.
 blind: Auto fail tests based on vision and BS tests. -30 to WS and other vision-things.
 blind_fighting: Sight penalties are halved.
-bload_soaked_tide: When this horde breaks, gain Fearless and Frenzy instead.
+blood_soaked_tide: When this horde breaks, gain Fearless and Frenzy instead.
 bolter_drill: +1 RoF for bolters on semi/full-auto
 brutal_charge: +3 damage when charging. +1d10 damage if is a horde.
 bulging_biceps: Can fire heavy weapons on semi/full-auto w/o bracing. No penalty for
@@ -46,7 +46,7 @@ deflect_shot: Can parry primitive ranged weapons
 die_hard: If blood loss, roll twice to avoid death.
 disarm: Full action to disarm. Opposed WS check. If win, enemy drops weapon. If DoS>=3,
   you may take weapon.
-disciplined: Horde does not sugger -10 to WP if below 50%. Does not auto-break at
+disciplined: Horde does not suffer -10 to WP if below 50%. Does not auto-break at
   25%.
 distrubing_voice: +10 Intimidate/Interrogate. -10 other Fellowship.
 double_team: When ganging up, additional +10. If outnumber-friend also has this, +20.
@@ -208,5 +208,6 @@ psy_power_conceal: Ranged attacks against Warlock or followers gain -20. Immune 
 psy_power_destructor: Flamer, 30m. 1d10+12 E, Penetration=PRx2 (so 10)
 psy_power_embolden: Warlock and followers gain +20 to WP testa against Fear, Pinning and Breaking.
 psy_power_enchance: Warlock and follwers gain +10 WS and +2 initative.
-signum_link: All friends in squad mode may benefit fram ganging up on opponents, even with ranged attacks.
+signum_link: All squaddies may benefit from ganging up on opponents, even with ranged attacks.
 signum: All squaddies gain +5 BS. Full action tech-use test to increase to +10 until end of next round.
+daemonic_presence: Nearby enemies get -10 to WP tests (-20 if master daemon)

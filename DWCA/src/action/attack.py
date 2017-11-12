@@ -1,8 +1,7 @@
-from time import sleep
-
 from lazy.lazy import lazy
 
-from definitions import ATTACKER, TARGET, WEAPON, NUM_HITS, ROLLED_DAMAGE
+from definitions import ATTACKER, TARGET, WEAPON, NUM_HITS, ROLLED_DAMAGE,\
+    TOTAL_DAMAGE, OFFENSIVE_MODIFIERS
 from src.action.action import Action
 from src.action.hit import Hit
 from src.dwca_log.log import get_log
@@ -35,7 +34,7 @@ class Attack(Action):
         hit_locations = get_hit_locations(self.get_hit_location(), num_hits)
         for hit_location in hit_locations:
             hit = Hit(hit_location=hit_location,
-                      damage=self._roll_damage(),
+                      damage=self.total_damage,
                       penetration=self.penetration)
             yield hit
 
@@ -101,12 +100,12 @@ class Attack(Action):
         return self.target
 
     def get_modifier(self, modifier_key, default=None):
-        offensive_modifiers = self._combine_offensive_modifiers()
+        offensive_modifiers = self.offensive_modifiers
         modifier_value = offensive_modifiers.get(modifier_key, default)
         return modifier_value
 
     def _offensive_modifiers(self):
-        modifiers = self._combine_offensive_modifiers()
+        modifiers = self.offensive_modifiers
         modifiers_iterator = get_modifiers_iterator(modifiers)
         return modifiers_iterator
 
@@ -150,15 +149,18 @@ class Attack(Action):
         self._append_to_metadata(ROLLED_DAMAGE, raw_rolled_damage)
         return raw_rolled_damage
 
-    def _roll_damage(self):
+    @property
+    def total_damage(self):
         rolled_damage = self.rolled_damage
         flat_damage = self.flat_damage
         total_damage = rolled_damage + flat_damage
         LOG.debug('Total damage: %s. (Rolled: %s, Flat: %s)',
                   total_damage, rolled_damage, flat_damage)
+        self._append_to_metadata(TOTAL_DAMAGE, total_damage)
         return total_damage
 
-    def _combine_offensive_modifiers(self):
+    @lazy
+    def offensive_modifiers(self):
         LOG.debug('Getting offensive modifiers.')
         modifiers = {}
         modifiers.update(self.get_weapon_stat(QUALITIES, default={}))
@@ -166,6 +168,7 @@ class Attack(Action):
         modifiers.update(self.get_attacker_stat(TALENTS, default={}))
         modifiers.update(self.ad_hoc_modifiers)
         LOG.debug('Found %s offensive modifiers.', len(modifiers))
+        self._update_metadata({OFFENSIVE_MODIFIERS: modifiers})
         return modifiers
 
     def is_melee(self):
@@ -173,13 +176,6 @@ class Attack(Action):
 
     def is_ranged(self):
         return self.weapon.is_melee() is not True
-
-    def get_num_attacks(self):
-        attacker = self.get_attacker()
-        if self.is_melee():
-            return attacker.get_num_melee_attacks()
-        else:
-            return attacker.get_num_ranged_attacks()
 
     def get_target_stat(self, stat_name, default=None):
         try:

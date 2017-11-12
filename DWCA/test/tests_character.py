@@ -6,8 +6,8 @@ from src.entities import ARMOR, CHARACTERISTICS, TRAITS
 from src.entities.char_stats import STAT_WS, STAT_BS, STAT_STR, STAT_TGH,\
     STAT_AGI, STAT_INT, STAT_PER, STAT_WIL, STAT_FEL
 from src.entities.character import Character
-from src.situational.force_field import ForceField
 from src.hit_location import HITLOC_ALL, HITLOC_BODY, HitLocation
+from src.situational.force_field import ForceField
 
 
 class Test(unittest.TestCase):

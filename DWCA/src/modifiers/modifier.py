@@ -10,6 +10,7 @@ class Modifier(object):
 
     # pylint: disable=R0201
     name = None
+    message = 'No message.'
 
     def modify_damage(self, attack, current_damage):
         _ = attack
@@ -30,6 +31,9 @@ class Modifier(object):
     def modify_num_hits(self, attack, current_num_hits):
         _ = attack
         return current_num_hits
+
+    def add_to_metadata(self, attack):
+        attack.add_modifier_effect_to_metadata(self.name, self.message)
 
 
 def register_modifiers():

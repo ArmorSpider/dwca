@@ -1,4 +1,5 @@
-from definitions import ROLL_RESULT, ROLL_TARGET, DEGREES_OF_SUCCESS
+from definitions import ROLL_RESULT, ROLL_TARGET, DEGREES_OF_SUCCESS,\
+    MODIFIER_EFFECTS
 from src.dice import roll_action_dice
 from src.dwca_log.log import get_log
 from src.hit_location import get_hit_location
@@ -30,7 +31,7 @@ class Action(object):
 
     def is_successfull(self):
         result = self.roll_result <= self.roll_target
-        LOG.debug('Is roll_result %s vs %s successfull: %s',
+        LOG.debug('Is roll_result %s vs %s successful: %s',
                   self.roll_result, self.roll_target, result)
         return result
 
@@ -61,3 +62,8 @@ class Action(object):
         current_list = self.metadata.get(metadata_key, [])
         current_list.append(value)
         self.metadata[metadata_key] = current_list
+
+    def add_modifier_effect_to_metadata(self, key, value):
+        current_effects = self.metadata.get(MODIFIER_EFFECTS, {})
+        current_effects[key] = value
+        self.metadata[MODIFIER_EFFECTS] = current_effects

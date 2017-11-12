@@ -981,6 +981,26 @@ stranglethorn_cannon:
     tearing: true}
   range: 80
   single_shot: 1
+warpfire:
+  name: Warpfire
+  _package: chaos
+  damage_type: E
+  dice: 1
+  penetration: 6
+  flat_damage: 10
+  range: 30
+  single_shot: 1
+  semi_auto: 3
+  class: Basic
+hellblade:
+  _package: chaos
+  name: Hellblade
+  damage_type: R
+  dice: 1
+  penetration: 0
+  flat_damage: 2
+  qualities: {balanced: true, warp_weapon: true}
+  class: Melee
 sunrifle:
   _package: eldar
   class: Basic

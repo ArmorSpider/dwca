@@ -5,6 +5,35 @@ alakir:
   name: Al'akir
   talents: {deathwatch_training: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+bloodletter:
+  name: Bloodletter
+  _package: chaos
+  wounds: 25
+  skills: {climb: 20, dodge: 0, intimidate: 20, psyniscience: 0, awareness: 0}
+  talents: {battle_rage: true, combat_master: true, crushing_blow: true, fearless: true, frenzy: true, furious_assault: true, swift_attack: true}
+  characteristics: {weapon_skill: 55, ballistic_skill: 30, strength: 45, toughness: 45, agility: 40, intelligence: 30, perception: 30 ,willpower: 30, fellowship: 10}
+  traits: {brutal_charge: true, daemonic: true, daemonic_presence: true, fear: 2, from_beyond: true, strange_physiology: true, unnatural_strength: 2, warp_instability: true, horde: true, disciplined: true, blood_soaked_tide: true}
+  weapons: [hellblade, teeth_and_claws]
+pink_horror:
+  name: Pink Horror
+  _package: chaos
+  wounds: 18
+  force_field: {overload_max: 0, protection_max: 20}
+  skills: {dodge: 0, awareness: 0, psyniscience: 0}
+  characteristics: {weapon_skill: 23, ballistic_skill: 35, strength: 35, toughness: 33, agility: 30, intelligence: 30, perception: 30, willpower: 30, fellowship: 10}
+  talents: {fearless: true}
+  traits: {daemonic: true, daemonic_presence: true, fear: 2, from_beyond: true, strange_physiology: true, warp_instability: true, horde: true}
+  weapons: [warpfire, teeth_and_claws]
+blue_horror:
+  name: Blue Horror
+  _package: chaos
+  wounds: 9
+  force_field: {overload_max: 0, protection_max: 20}
+  skills: {dodge: 0, awareness: 0, psyniscience: 0}
+  characteristics: {weapon_skill: 23, ballistic_skill: 35, strength: 20, toughness: 33, agility: 30, intelligence: 30, perception: 30, willpower: 30, fellowship: 10}
+  talents: {fearless: true}
+  traits: {daemonic: true, daemonic_presence: true, fear: 2, from_beyond: true, strange_physiology: true, warp_instability: true, horde: true}
+  weapons: [warpfire, teeth_and_claws]
 auran_genestealer:
   _package: tyranid
   armor: {all: 6}

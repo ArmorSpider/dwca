@@ -120,7 +120,7 @@ class Test(unittest.TestCase):
                     'machine': 5,
                     'balanced': True,
                     'tearing': True}
-        actual = _melee_attack._combine_offensive_modifiers()
+        actual = _melee_attack.offensive_modifiers
 
         self.assertEqual(expected, actual)
 

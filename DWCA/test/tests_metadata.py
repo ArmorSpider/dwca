@@ -2,15 +2,18 @@
 import unittest
 
 from definitions import ATTACKER, WEAPON, TARGET, ROLL_TARGET, ROLL_RESULT,\
-    DEGREES_OF_SUCCESS, WEAPONS, CLASS, NUM_HITS, ROLLED_DAMAGE
+    DEGREES_OF_SUCCESS, WEAPONS, CLASS, NUM_HITS, ROLLED_DAMAGE, TOTAL_DAMAGE,\
+    OFFENSIVE_MODIFIERS, AD_HOC, MODIFIER_EFFECTS
 from src.cli.commands import process_command
 from src.dice import queue_d100_rolls, queue_d10_rolls
 from src.entities import NAME, TRAITS, CHARACTERISTICS, DAMAGE_TYPE, DICE,\
-    DAMAGE, PENETRATION, SINGLE_SHOT, TEARING_DICE
+    DAMAGE, PENETRATION, SINGLE_SHOT, TEARING_DICE, QUALITIES
 from src.entities.char_stats import STAT_AGI, STAT_STR, STAT_TGH, STAT_WS,\
     STAT_BS
 from src.entities.libraries import MasterLibrary
 from src.handler import construct_attack
+from src.modifiers.qualities import Tearing, Blast
+from src.modifiers.traits import PowerArmour
 from src.situational.state_manager import StateManager
 
 
@@ -41,7 +44,8 @@ class Test(unittest.TestCase):
                                   DAMAGE_TYPE: 'I',
                                   DICE: 1,
                                   DAMAGE: 10,
-                                  PENETRATION: 10}
+                                  PENETRATION: 10,
+                                  QUALITIES: {Tearing.name: True}}
         MasterLibrary.add_weapon('business_gun', self.business_gun_def)
         MasterLibrary.add_weapon('business_fist', self.business_fist_def)
         self.basic_melee_event = {ATTACKER: 'automan',
@@ -138,7 +142,7 @@ class Test(unittest.TestCase):
                     ROLL_TARGET: 100,
                     ROLL_RESULT: 50,
                     DEGREES_OF_SUCCESS: 5,
-                    TEARING_DICE: 0}
+                    TEARING_DICE: 1}
         actual = self.get_attack_metadata(event)
         self.assert_dict_contains(expected, actual)
 
@@ -168,6 +172,78 @@ class Test(unittest.TestCase):
                     ROLL_RESULT: 50,
                     DEGREES_OF_SUCCESS: 5,
                     ROLLED_DAMAGE: [5]}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_total_damage(self):
+        event = self.basic_melee_event
+        queue_d100_rolls([50])
+        queue_d10_rolls([5] * 10)
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50,
+                    DEGREES_OF_SUCCESS: 5,
+                    ROLLED_DAMAGE: [5],
+                    DAMAGE: 20,
+                    TOTAL_DAMAGE: [25]}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_offensive_modifiers(self):
+        event = self.basic_melee_event
+        queue_d100_rolls([50])
+        queue_d10_rolls([5] * 10)
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50,
+                    DEGREES_OF_SUCCESS: 5,
+                    OFFENSIVE_MODIFIERS: {'power_armour': True,
+                                          'unnatural_strength': 2,
+                                          'unnatural_toughness': 2,
+                                          Tearing.name: True}}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_offensive_modifiers_should_include_ad_hoc_mods(self):
+        event = self.basic_melee_event
+        event[AD_HOC] = {Blast.name: 5}
+        queue_d100_rolls([50])
+        queue_d10_rolls([5] * 10)
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50,
+                    DEGREES_OF_SUCCESS: 5,
+                    OFFENSIVE_MODIFIERS: {'power_armour': True,
+                                          'unnatural_strength': 2,
+                                          'unnatural_toughness': 2,
+                                          Tearing.name: True,
+                                          Blast.name: 5}}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_modifier_trigger(self):
+        event = self.basic_melee_event
+        event[AD_HOC] = {Blast.name: 5}
+        queue_d100_rolls([50])
+        queue_d10_rolls([5] * 10)
+
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummy',
+                    ROLL_TARGET: 100,
+                    ROLL_RESULT: 50,
+                    DEGREES_OF_SUCCESS: 5,
+                    MODIFIER_EFFECTS: {PowerArmour.name: PowerArmour.message}
+                    }
         actual = self.get_attack_metadata(event)
         self.assert_dict_contains(expected, actual)
 

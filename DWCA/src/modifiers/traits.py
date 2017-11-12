@@ -1,6 +1,6 @@
 from src.dwca_log.log import get_log
 from src.modifiers.modifier import Modifier
-from src.situational.state_manager import StateManager, has_charged
+from src.situational.state_manager import has_charged
 
 
 LOG = get_log(__name__)
@@ -56,6 +56,23 @@ class MultipleArms(Modifier):
     name = 'multiple_arms'
 
 
+class Daemonic(Modifier):
+
+    name = 'daemonic'
+
+    @staticmethod
+    def handle_daemonic(attack, tgh_multiplier):
+        from src.modifiers.qualities import Sanctified, ForceWeapon
+        daemonic_value = attack.target.get_trait(Daemonic.name)
+        bypass_daemonic = any([attack.get_modifier(Sanctified.name),
+                               attack.get_modifier(ForceWeapon.name),
+                               attack.get_modifier(Daemonic.name)])
+        if daemonic_value is not None and bypass_daemonic is False:
+            tgh_multiplier += 1
+            LOG.debug('+1 TGH mutliplier from Daemonic.')
+        return tgh_multiplier
+
+
 class BrutalCharge(Modifier):
 
     name = 'brutal_charge'
@@ -76,9 +93,11 @@ class BrutalCharge(Modifier):
 class PowerArmour(Modifier):
 
     name = 'power_armour'
+    message = '+2 flat damage from Strength.'
 
     def modify_damage(self, attack, current_damage):
         if attack.is_melee():
             LOG.debug('Added 2 flat damage from Power Armour strength bonus.')
             current_damage += 2
+            self.add_to_metadata(attack)
         return current_damage

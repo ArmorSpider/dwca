@@ -65,6 +65,15 @@ class Felling(Modifier):
 
     name = 'felling'
 
+    @staticmethod
+    def handle_felling(attack, tgh_multiplier):
+        felling_value = attack.get_modifier(Felling.name)
+        if felling_value is not None:
+            tgh_multiplier = max(tgh_multiplier - felling_value, 1)
+            LOG.debug('Toughness multiplier reduced by Felling(%s)',
+                      felling_value)
+        return tgh_multiplier
+
 
 class Volatile(Modifier):
 
@@ -122,6 +131,16 @@ class TwinLinked(Modifier):
             LOG.debug('+1 hit from TwinLinked.')
             current_num_hits += 1
         return current_num_hits
+
+
+class Sanctified(Modifier):
+
+    name = 'sanctified'
+
+
+class ForceWeapon(Modifier):
+
+    name = 'force_weapon'
 
 
 class Accurate(Modifier):
@@ -223,6 +242,19 @@ class Hellfire(Modifier):
             LOG.info('+1 magnitude damage per hit from Hellfire.')
             magnitude_damage += 1
         return magnitude_damage
+
+
+class WarpWeapon(Modifier):
+
+    name = 'warp_weapon'
+
+    @staticmethod
+    def handle_warp_weapon(attack, current_armor):
+        # TODO: check for "holy armor"
+        if attack.weapon.get_quality(WarpWeapon.name) is not None:
+            LOG.info('WarpWeapon ignores mundane armor.')
+            current_armor = 0
+        return current_armor
 
 
 class Devastating(Modifier):

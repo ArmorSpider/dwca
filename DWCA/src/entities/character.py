@@ -10,9 +10,9 @@ from src.entities.libraries import read_character
 from src.entities.species import is_alien_species
 from src.hit_location import HITLOC_ALL, get_hit_location_name
 from src.modifiers.qualities import Felling, Toxic, DrainLife, Hellfire, Snare,\
-    Flexible
+    Flexible, WarpWeapon
 from src.modifiers.talents import SwiftAttack, LightningAttack
-from src.modifiers.traits import MultipleArms
+from src.modifiers.traits import MultipleArms, Daemonic
 from src.situational.cover import get_cover_armor_for_hitloc
 from src.situational.force_field import ForceField
 from src.util.rand_util import get_tens
@@ -48,7 +48,8 @@ class Character(Entity):
         self._on_hit(attack)
         armor = self.get_armor(hit.hit_location)
         armor = Hellfire.handle_hellfire_armor(attack, armor)
-        toughness = self._get_effective_toughness_bonus(attack)
+        armor = WarpWeapon.handle_warp_weapon(attack, armor)
+        toughness = self.get_modded_toughness_bonus(attack)
         effective_damage = hit.calculate_effective_damage(
             armor, toughness)
         LOG.info('%s was hit in %s for %s damage.', self,
@@ -60,12 +61,6 @@ class Character(Entity):
     def _on_hit(self, attack):
         Snare.handle_snare(attack)
         Flexible.handle_flexible(attack)
-
-    def _get_effective_toughness_bonus(self, attack):
-        felling_value = attack.get_modifier(Felling.name, 0)
-        toughness = self.get_characteristic_bonus(
-            STAT_TGH, multiplier_penalty=felling_value)
-        return toughness
 
     def get_num_melee_attacks(self):
         num_attacks = 1
@@ -130,11 +125,24 @@ class Character(Entity):
             characteristic, UNDEFINED_CHARACTERISTIC_VALUE)
         return char_stat
 
-    def get_characteristic_bonus(self, characteristic, multiplier_penalty=0):
+    def get_raw_characteristic_bonus(self, characteristic):
         characteristic_value = self.get_characteristic(characteristic)
         characteristic_bonus = get_tens(characteristic_value)
+        return characteristic_bonus
+
+    def get_modded_toughness_bonus(self, attack):
+        raw_bonus = self.get_raw_characteristic_bonus(STAT_TGH)
+        tgh_multiplier = self.get_characteristic_multiplier(STAT_TGH)
+        tgh_multiplier = Felling.handle_felling(attack, tgh_multiplier)
+        tgh_multiplier = Daemonic.handle_daemonic(attack, tgh_multiplier)
+        final_bonus = raw_bonus * tgh_multiplier
+        return final_bonus
+
+    def get_characteristic_bonus(self, characteristic):
+        characteristic_bonus = self.get_raw_characteristic_bonus(
+            characteristic)
         characteristic_multiplier = self.get_characteristic_multiplier(
-            characteristic, multiplier_penalty)
+            characteristic)
         final_bonus = characteristic_bonus * characteristic_multiplier
         return final_bonus
 
@@ -145,18 +153,17 @@ class Character(Entity):
                 talent_value, talent_name)
         return talent_value
 
-    def get_trait(self, trait_name):
+    def get_trait(self, trait_name, default=None):
         traits = self.get_stat(TRAITS, default={})
-        trait_value = traits.get(trait_name)
+        trait_value = traits.get(trait_name, default)
         LOG.log(5, 'Found value "%s" for trait "%s"', trait_value, trait_name)
         return trait_value
 
-    def get_characteristic_multiplier(self, characteristic, multiplier_penalty):
+    def get_characteristic_multiplier(self, characteristic):
         trait_name = 'unnatural_{}'.format(characteristic)
         trait_value = self.get_trait(trait_name)
         if trait_value is not None:
-            multiplier = max(trait_value - multiplier_penalty,
-                             DEFAULT_CHARACTERISTIC_MULTIPLIER)
+            multiplier = trait_value
         else:
             multiplier = DEFAULT_CHARACTERISTIC_MULTIPLIER
         return multiplier
