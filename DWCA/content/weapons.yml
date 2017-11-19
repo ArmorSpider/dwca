@@ -305,12 +305,21 @@ eldar_chainsword:
   name: Eldar Chainsword
   penetration: 3
   qualities: {balanced: true, razor_sharp: true, tearing: true}
-eldar_executioner:
+mc_eldar_executioner:
   _package: eldar
   class: Melee
   damage_type: E
   dice: 2
   flat_damage: 5
+  name: Executioner
+  penetration: 10
+  qualities: {balanced: true, power_field: true}
+eldar_executioner:
+  _package: eldar
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 3
   name: Executioner
   penetration: 10
   qualities: {balanced: true, power_field: true}
@@ -481,6 +490,51 @@ hierophant_claw_stomp:
   name: Hierophant Claw Stomp
   penetration: 4
   qualities: {devastating: 8}
+crushing_claw:
+  _package: chaos
+  name: Crushing Claw
+  class: Melee
+  dice: 2
+  flat_damage: 6
+  penetration: 8
+  damage_type: R
+  qualities: {tearing: true, unwieldy: true}
+reaper_autocannon:
+  _package: chaos
+  name: Reaper Autocannon
+  range: 300
+  class: Heavy
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 6
+  dice: 4
+  flat_damage: 5
+  penetration: 4
+  qualities: {twin_linked: true}
+  damage_type: I
+havoc_launcher:
+  _package: chaos
+  name: Havoc Launcher
+  range: 100
+  class: Heavy
+  damage_type: X
+  dice: 2
+  flat_damage: 0
+  penetration: 2
+  qualities: {blast: 4, devastating: 2}
+  single_shot: 1
+  semi_auto: 2
+defiler_battle_cannon:
+  _package: chaos
+  name: Defiler Battle Cannon
+  range: 300
+  class: Heavy
+  single_shot: 1
+  dice: 3
+  flat_damage: 5
+  penetration: 8
+  damage_type: X
+  qualities: {blast: 8, devastating: 4}
 inferno_gun:
   _package: empire
   class: Mounted
@@ -534,6 +588,14 @@ lightning_claw:
   name: Astartes Lightning Claw
   penetration: 8
   qualities: {damage_per_dos: 1, power_field: true, proven: 4}
+marius_lightning_claw:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  name: Astartes Lightning Claw
+  penetration: 8
+  qualities: {damage_per_dos: 1, power_field: true, proven: 4, razor_sharp: true}
 mandiblaster_helm:
   _package: eldar
   class: Basic
@@ -572,14 +634,6 @@ marius_honour_blades:
   name: Marius' Honour Blades
   penetration: 6
   qualities: {power_field: true, razor_sharp: true}
-marius_lightning_claw:
-  class: Melee
-  damage_type: E
-  dice: 1
-  flat_damage: 8
-  name: Astartes Lightning Claw
-  penetration: 8
-  qualities: {damage_per_dos: 2, power_field: true, proven: 4, razor_sharp: true}
 mc_avenger_shuriken_catapult:
   _package: eldar
   class: Basic
@@ -1036,6 +1090,14 @@ thunder_hammer:
   name: Astartes Thunder Hammer
   penetration: 9
   qualities: {concussive: true, power_field: true, unwieldy: true}
+marius_thunder_hammer:
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 7
+  name: Astartes Thunder Hammer
+  penetration: 9
+  qualities: {concussive: true, power_field: true, unwieldy: true, razor_sharp: true}
 toxic_tendrils:
   _package: tyranid
   class: Melee

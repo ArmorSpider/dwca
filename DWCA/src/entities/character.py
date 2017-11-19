@@ -54,13 +54,16 @@ class Character(Entity):
             armor, toughness)
         LOG.info('%s was hit in %s for %s damage.', self,
                  hit.hit_location, effective_damage)
-        Toxic.handle_toxic(attack, effective_damage)
-        DrainLife.handle_drain_life(attack, effective_damage)
+        self._on_damage(attack, effective_damage)
         return effective_damage
 
     def _on_hit(self, attack):
         Snare.handle_snare(attack)
         Flexible.handle_flexible(attack)
+
+    def _on_damage(self, attack, effective_damage):
+        Toxic.handle_toxic(attack, effective_damage)
+        DrainLife.handle_drain_life(attack, effective_damage)
 
     def get_num_melee_attacks(self):
         num_attacks = 1

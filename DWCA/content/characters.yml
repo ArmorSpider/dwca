@@ -9,14 +9,66 @@ bloodletter:
   name: Bloodletter
   _package: chaos
   wounds: 25
+  species: daemon
   skills: {climb: 20, dodge: 0, intimidate: 20, psyniscience: 0, awareness: 0}
   talents: {battle_rage: true, combat_master: true, crushing_blow: true, fearless: true, frenzy: true, furious_assault: true, swift_attack: true}
   characteristics: {weapon_skill: 55, ballistic_skill: 30, strength: 45, toughness: 45, agility: 40, intelligence: 30, perception: 30 ,willpower: 30, fellowship: 10}
   traits: {brutal_charge: true, daemonic: true, daemonic_presence: true, fear: 2, from_beyond: true, strange_physiology: true, unnatural_strength: 2, warp_instability: true, horde: true, disciplined: true, blood_soaked_tide: true}
   weapons: [hellblade, teeth_and_claws]
+chaos_sorcerer:
+  name: Chaos Space Marine Sorcerer
+  _package: chaos
+  wounds: 29
+  armor: {all: 8, body: 10}
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true, swift_attack: true, true_grit: true}
+  traits: {dark_sight: true, unnatural_strength: 2, unnatural_toughness: 2, psy_rating: 5}
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  characteristics: {weapon_skill: 53, ballistic_skill: 43, strength: 45, toughness: 45, agility: 40, intelligence: 35, perception: 40, willpower: 50, fellowship: 27}
+  weapons: [force_sword, bolt_pistol, combat_knife]
+chaos_sorcerer_slaanesh:
+  name: Chaos Sorcerer (Slaanesh)
+  _package: chaos
+  wounds: 29
+  armor: {all: 8, body: 10}
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true, swift_attack: true, true_grit: true}
+  traits: {dark_sight: true, unnatural_strength: 2, unnatural_toughness: 2, psy_rating: 5, unnatural_agility: 2, unnatural_fellowship: 2}
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  characteristics: {weapon_skill: 53, ballistic_skill: 43, strength: 45, toughness: 45, agility: 40, intelligence: 35, perception: 40, willpower: 50, fellowship: 27}
+  weapons: [force_sword, bolt_pistol, combat_knife]
+chaos_sorcerer_nurgle:
+  name: Chaos Sorcerer (Nurgle)
+  _package: chaos
+  wounds: 36
+  armor: {all: 8, body: 10}
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true, swift_attack: true, true_grit: true}
+  traits: {dark_sight: true, unnatural_strength: 2, unnatural_toughness: 3, psy_rating: 5, stuff_of_nightmares: true}
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  characteristics: {weapon_skill: 53, ballistic_skill: 43, strength: 45, toughness: 45, agility: 40, intelligence: 35, perception: 40, willpower: 50, fellowship: 27}
+  weapons: [force_sword, bolt_pistol, combat_knife]
+chaos_sorcerer_khorne:
+  name: Chaos Sorcerer (Khorne)
+  _package: chaos
+  wounds: 29
+  armor: {all: 8, body: 10}
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true, swift_attack: true, true_grit: true, berserk_charge: true, frenzy: true, furious_assault: true, resistance_psychic: true, lightning_attack: true, whirlwind_of_death: true}
+  traits: {dark_sight: true, unnatural_strength: 2, unnatural_toughness: 2, psy_rating: 5}
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  characteristics: {weapon_skill: 53, ballistic_skill: 43, strength: 45, toughness: 45, agility: 40, intelligence: 35, perception: 40, willpower: 50, fellowship: 27}
+  weapons: [force_sword, bolt_pistol, combat_knife]
+chaos_sorcerer_tzeentch:
+  name: Chaos Sorcerer (Tzeentch)
+  _package: chaos
+  wounds: 29
+  armor: {all: 8, body: 10}
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true, swift_attack: true, true_grit: true}
+  traits: {dark_sight: true, unnatural_strength: 2, unnatural_toughness: 2, psy_rating: 7, unnatural_willpower: 2, daemonic: true}
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  characteristics: {weapon_skill: 53, ballistic_skill: 43, strength: 45, toughness: 45, agility: 40, intelligence: 35, perception: 40, willpower: 50, fellowship: 27}
+  weapons: [force_sword, bolt_pistol, combat_knife]
 pink_horror:
   name: Pink Horror
   _package: chaos
+  species: daemon
   wounds: 18
   force_field: {overload_max: 0, protection_max: 20}
   skills: {dodge: 0, awareness: 0, psyniscience: 0}
@@ -28,6 +80,7 @@ blue_horror:
   name: Blue Horror
   _package: chaos
   wounds: 9
+  species: daemon
   force_field: {overload_max: 0, protection_max: 20}
   skills: {dodge: 0, awareness: 0, psyniscience: 0}
   characteristics: {weapon_skill: 23, ballistic_skill: 35, strength: 20, toughness: 33, agility: 30, intelligence: 30, perception: 30, willpower: 30, fellowship: 10}
@@ -314,6 +367,7 @@ genestealer_broodlord:
 gilmech:
   armor: {body: 13, head: 13, left_arm: 11, left_leg: 11, right_arm: 11, right_leg: 11}
   characteristics: {strength: 43, toughness: 50}
+  force_field: {overload_max: 10, protection_max: 55}
   name: Gilmech
   talents: {deathwatch_training: true, mighty_shot: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
@@ -378,7 +432,7 @@ howling_banshee:
     sprint: true, step_aside: true, swift_attack: true, two_weapon_wielder_ballistic: true,
     two_weapon_wielder_melee: true}
   traits: {dark_sight: true, unnatural_agility: 2}
-  weapons: [eldar_power_sword, shuriken_pistol, eldar_monoblade]
+  weapons: [eldar_power_sword, shuriken_pistol, eldar_monoblade, eldar_executioner]
   wounds: 15
 howling_banshee_exarch:
   _package: eldar
@@ -400,7 +454,7 @@ howling_banshee_exarch:
     touched_by_the_fates: 1, unnatural_agility: 3, xenos_tactics_acrobatic_dodge: true,
     xenos_tactics_war_shout: true}
   weapons: [mc_eldar_power_sword, mc_shuriken_pistol, eldar_monoblade, mirrorsword,
-    executioner]
+    mc_eldar_executioner]
   wounds: 25
 land_raider:
   _package: empire
@@ -430,8 +484,7 @@ marius:
   name: Marius the Parry-God
   talents: {deathwatch_training: true, hunter_of_aliens: true, slaughter_the_swarm: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
-  weapons: [marius_honour_blades, hellfire_bolt_pistol, bolter, marius_hesh_bolter,
-    marius_lightning_claws]
+  weapons: [marius_honour_blades, hellfire_bolt_pistol, bolter, marius_executioner_axe, marius_lightning_claw, marius_thunder_hammer]
 namael:
   armor: {body: 14, head: 8, left_arm: 12, left_leg: 8, right_arm: 8, right_leg: 8}
   characteristics: {strength: 42, toughness: 43}
@@ -477,6 +530,16 @@ ripper_swarm:
   talents: {fearless: true, swift_attack: true}
   traits: {horde: true, natural_armor: true, overwhelming: true, rampage: true, relentless: true}
   weapons: [ripper_mandibles]
+defiler:
+  _package: chaos
+  armor : {all: 31}
+  wounds: 28
+  characteristics: {weapon_skill: 25, ballistic_skill: 25, strength: 75, agility: 35, toughness: 0, intelligence: 10, perception: 40, willpower: 40, fellowship: 01}
+  name: Chaos Defiler
+  species: daemon
+  talents: {lightning_attack: true, swift_attack: true}
+  traits: {walker: true, daemonic_possession: true}
+  weapons: [crushing_claw, reaper_autocannon, havoc_launcher, defiler_battle_cannon]
 stormraven:
   _package: empire
   armor: {all: 37}
@@ -517,7 +580,7 @@ striking_scorpion_exarch:
     two_weapon_wielder_melee: true, wall_of_steel: true}
   traits: {dark_sight: true, exarch: 5, exarch_crushing_blow: true, exarch_stealth: true,
     touched_by_the_fates: 1, unnatural_agility: 3, xenos_tactics_shadowstrike: true,
-    xenos_tactics_stalker: true}
+    xenos_tactics_stalker: true, unnatural_strength: 2}
   weapons: [mc_eldar_chainsword, mc_shuriken_pistol, eldar_monoblade, biting_blade,
     scorpions_claw, chainsabre, scorpions_claw_ranged]
   wounds: 25

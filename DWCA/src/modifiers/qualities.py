@@ -3,7 +3,7 @@ from src.dwca_log.log import get_log
 from src.entities import PENETRATION, DICE, DAMAGE
 from src.entities.char_stats import STAT_TGH
 from src.modifiers.modifier import Modifier
-from src.modifiers.traits import NaturalArmor
+from src.modifiers.traits import NaturalArmor, PsyRating
 from src.situational.state_manager import StateManager
 
 
@@ -19,9 +19,7 @@ class RazorSharp(Modifier):
             weapons_penetration = attack.get_weapon_stat(PENETRATION)
             current_pen += weapons_penetration
             LOG.debug('Double penetration from RazorSharp.')
-            return current_pen
-        else:
-            return current_pen
+        return current_pen
 
 
 class OverHeats(Modifier):
@@ -141,6 +139,20 @@ class Sanctified(Modifier):
 class ForceWeapon(Modifier):
 
     name = 'force_weapon'
+
+    def modify_damage(self, attack, current_damage):
+        psy_rating = attack.get_modifier(PsyRating.name, 0)
+        if psy_rating > 0:
+            current_damage += psy_rating
+            LOG.info('+%s damage from ForceWeapon + PsyRating', psy_rating)
+        return current_damage
+
+    def modify_penetration(self, attack, current_pen):
+        psy_rating = attack.get_modifier(PsyRating.name, 0)
+        if psy_rating > 0:
+            current_pen += psy_rating
+            LOG.info('+%s penetration from ForceWeapon + PsyRating', psy_rating)
+        return current_pen
 
 
 class Accurate(Modifier):

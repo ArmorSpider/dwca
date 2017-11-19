@@ -36,6 +36,11 @@ class Overwhelming(Modifier):
         return current_num_dice
 
 
+class PsyRating(Modifier):
+
+    name = 'psy_rating'
+
+
 class FireDrill(Modifier):
 
     name = 'fire_drill'

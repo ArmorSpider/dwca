@@ -211,3 +211,5 @@ psy_power_enchance: Warlock and follwers gain +10 WS and +2 initative.
 signum_link: All squaddies may benefit from ganging up on opponents, even with ranged attacks.
 signum: All squaddies gain +5 BS. Full action tech-use test to increase to +10 until end of next round.
 daemonic_presence: Nearby enemies get -10 to WP tests (-20 if master daemon)
+walker: Ignore difficult terrain, walk over shit without penalty.
+daemonic_possession: May fire all weapons as half action, even if in melee. If melee, half action to make one attack.
