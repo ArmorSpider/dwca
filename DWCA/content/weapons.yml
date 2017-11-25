@@ -389,6 +389,14 @@ fire_pike:
   qualities: {blast: 1, felling: 1, penetration_per_dos: 2}
   range: 80
   single_shot: 1
+berzerker_axe:
+  _package: chaos
+  name: Berzerker Axe
+  dice: 1
+  damage_type: R
+  flat_damage: 8
+  penetration: 4
+  qualities: {tearing: true}
 fleshborer:
   _package: tyranid
   class: Basic
