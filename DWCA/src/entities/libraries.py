@@ -85,6 +85,12 @@ class MasterLibrary(object):
         LOG.info('Added "%s" package.', package_name)
         MasterLibrary.available_packages.append(package_name)
 
+    @staticmethod
+    def reload_libraries(self):
+        LOG.info('Reloaded libraries.')
+        MasterLibrary.weapon_library = read_weapon_library()
+        MasterLibrary.character_library = read_character_library()
+
 
 def get_weapon_library():
     filtered_library = MasterLibrary.filter_library(

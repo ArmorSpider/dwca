@@ -128,6 +128,16 @@ class CommandSkills(CLICommand):
         return event
 
 
+class CommandReload(CLICommand):
+
+    keyword = 'reload'
+    help = 'Reload character & weapon libraries.'
+
+    def _process_event(self, event):
+        MasterLibrary.reload_libraries(self)
+        return event
+
+
 class CommandInfo(CLICommand):
 
     keyword = 'info'
