@@ -5,7 +5,7 @@ from definitions import ATTACKER, TARGET, WEAPON, NUM_HITS, ROLLED_DAMAGE,\
 from src.action.action import Action
 from src.action.hit import Hit
 from src.dwca_log.log import get_log
-from src.entities import DICE, PENETRATION, DAMAGE,\
+from src.entities import DICE, PENETRATION, FLAT_DAMAGE,\
     TEARING_DICE
 from src.entities.entity import Entity
 from src.hitloc_series import get_hit_locations
@@ -31,7 +31,7 @@ class Attack(Action):
     def __getattr__(self, name):
         attribute = self.offensive_modifiers.get(name)
         if attribute is None and get_modifier(name) is None:
-            raise AttributeError()
+            return super(Attack, self).__getattribute__(name)
         else:
             return attribute
 
@@ -69,73 +69,54 @@ class Attack(Action):
 
     @lazy
     def tearing_dice(self):
-        num_tearing_dice = self._calculate_tearing_dice()
-        self._update_metadata({TEARING_DICE: num_tearing_dice})
-        return num_tearing_dice
+        tearing_dice = 0
+        for modifier in self._offensive_modifiers():
+            tearing_dice = modifier.modify_tearing_dice(self, tearing_dice)
+        self._update_metadata({TEARING_DICE: tearing_dice})
+        return tearing_dice
 
     @lazy
     def num_dice(self):
-        num_dice = self._calculate_num_dice()
+        num_dice = self.weapon.dice
+        for modifier in self._offensive_modifiers():
+            num_dice = modifier.modify_num_dice(self, num_dice)
         self._update_metadata({DICE: num_dice})
         return num_dice
 
     @lazy
     def penetration(self):
-        penetration = self._calculate_penetration()
+        penetration = self.weapon.penetration
+        for modifier in self._offensive_modifiers():
+            penetration = modifier.modify_penetration(self, penetration)
         self._update_metadata({PENETRATION: penetration})
         return penetration
 
     @lazy
     def flat_damage(self):
-        flat_damage = self._calculate_flat_damage()
-        self._update_metadata({DAMAGE: flat_damage})
+        flat_damage = self.weapon.flat_damage
+        for modifier in self._offensive_modifiers():
+            flat_damage = modifier.modify_damage(self, flat_damage)
+        self._update_metadata({FLAT_DAMAGE: flat_damage})
         return flat_damage
 
     @lazy
     def num_hits(self):
-        num_hits = self._calculate_num_hits()
+        num_hits = 1
+        for modifier in self._offensive_modifiers():
+            num_hits = modifier.modify_num_hits(self, num_hits)
         self._update_metadata({NUM_HITS: num_hits})
         return num_hits
-
-    def get_modifier(self, modifier_key, default=None):
-        offensive_modifiers = self.offensive_modifiers
-        modifier_value = offensive_modifiers.get(modifier_key, default)
-        return modifier_value
 
     def _offensive_modifiers(self):
         modifiers = self.offensive_modifiers
         modifiers_iterator = get_modifiers_iterator(modifiers)
         return modifiers_iterator
 
-    def _calculate_num_dice(self):
-        num_dice = self.weapon.dice
-        for modifier in self._offensive_modifiers():
-            num_dice = modifier.modify_num_dice(self, num_dice)
-        return num_dice
-
-    def _calculate_tearing_dice(self):
-        tearing_dice = 0
-        for modifier in self._offensive_modifiers():
-            tearing_dice = modifier.modify_tearing_dice(self, tearing_dice)
-        return tearing_dice
-
-    def _calculate_penetration(self):
-        penetration = self.weapon.penetration
-        for modifier in self._offensive_modifiers():
-            penetration = modifier.modify_penetration(self, penetration)
-        return penetration
-
     def _calculate_flat_damage(self):
         flat_damage = self.weapon.flat_damage
         for modifier in self._offensive_modifiers():
             flat_damage = modifier.modify_damage(self, flat_damage)
         return flat_damage
-
-    def _calculate_num_hits(self):
-        num_hits = 1
-        for modifier in self._offensive_modifiers():
-            num_hits = modifier.modify_num_hits(self, num_hits)
-        return num_hits
 
     @property
     def rolled_damage(self):

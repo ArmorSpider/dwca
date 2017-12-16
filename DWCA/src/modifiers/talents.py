@@ -34,7 +34,7 @@ class FleshRender(Modifier):
     name = 'flesh_render'
 
     def modify_tearing_dice(self, attack, current_tearing_dice):
-        if attack.is_melee() and attack.get_modifier(Tearing.name):
+        if attack.is_melee() and attack.tearing is not None:
             LOG.debug('+1 tearing dice from FleshRender.')
             return current_tearing_dice + 1
 
@@ -46,8 +46,8 @@ class SlaughterTheSwarm(Modifier):
     def modify_num_hits(self, attack, current_num_hits):
         if attack.target.is_horde():
             attacker = attack.attacker
-            int_mod = attacker.get_modded_toughness_bonus(STAT_INT)
-            per_mod = attacker.get_modded_toughness_bonus(STAT_PER)
+            int_mod = attacker.get_characteristic_bonus(STAT_INT)
+            per_mod = attacker.get_characteristic_bonus(STAT_PER)
             extra_hits = max(int_mod, per_mod)
             LOG.info('+%s hits from SlaughterTheSwarm.', extra_hits)
             current_num_hits += extra_hits

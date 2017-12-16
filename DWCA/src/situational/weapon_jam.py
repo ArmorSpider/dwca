@@ -19,9 +19,9 @@ def is_attack_auto_failed(attack):
 
 def is_weapon_jammed(attack):
     if is_eligible_for_jam(attack):
-        if attack.weapon.get_quality(NeverJams.name):
+        if attack.never_jams is not None:
             return False
-        elif attack.weapon.get_quality(Reliable.name):
+        elif attack.reliable is not None:
             return _did_reliable_jam()
         else:
             return True
@@ -30,7 +30,7 @@ def is_weapon_jammed(attack):
 
 
 def get_jam_threshold(attack):
-    if attack.weapon.get_quality(OverHeats.name):
+    if attack.overheats is not None:
         jam_threshold = 91
     else:
         jam_threshold = 96 if attack.firemode == SINGLE_SHOT else 94

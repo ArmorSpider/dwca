@@ -7,7 +7,7 @@ from definitions import ATTACKER, WEAPON, TARGET, ROLL_TARGET, ROLL_RESULT,\
 from src.cli.commands import process_command
 from src.dice import queue_d100_rolls, queue_d10_rolls
 from src.entities import NAME, TRAITS, CHARACTERISTICS, DAMAGE_TYPE, DICE,\
-    DAMAGE, PENETRATION, SINGLE_SHOT, TEARING_DICE, QUALITIES
+    FLAT_DAMAGE, PENETRATION, SINGLE_SHOT, TEARING_DICE, QUALITIES
 from src.entities.char_stats import STAT_AGI, STAT_STR, STAT_TGH, STAT_WS,\
     STAT_BS
 from src.entities.character import get_char
@@ -37,14 +37,14 @@ class Test(unittest.TestCase):
                                  CLASS: 'Basic',
                                  DAMAGE_TYPE: 'I',
                                  DICE: 1,
-                                 DAMAGE: 10,
+                                 FLAT_DAMAGE: 10,
                                  PENETRATION: 10,
                                  SINGLE_SHOT: 1}
         self.business_fist_def = {NAME: 'Business Fist',
                                   CLASS: 'Melee',
                                   DAMAGE_TYPE: 'I',
                                   DICE: 1,
-                                  DAMAGE: 10,
+                                  FLAT_DAMAGE: 10,
                                   PENETRATION: 10,
                                   QUALITIES: {Tearing.name: True}}
         MasterLibrary.add_weapon('business_gun', self.business_gun_def)
@@ -121,7 +121,7 @@ class Test(unittest.TestCase):
                     ROLL_TARGET: 100,
                     ROLL_RESULT: 50,
                     DEGREES_OF_SUCCESS: 5,
-                    DAMAGE: 20}
+                    FLAT_DAMAGE: 20}
         actual = self.get_attack_metadata(event)
         self.assert_dict_contains(expected, actual)
 
@@ -194,7 +194,7 @@ class Test(unittest.TestCase):
                     ROLL_RESULT: 50,
                     DEGREES_OF_SUCCESS: 5,
                     ROLLED_DAMAGE: [5],
-                    DAMAGE: 20,
+                    FLAT_DAMAGE: 20,
                     TOTAL_DAMAGE: [25]}
         actual = self.get_attack_metadata(event)
         self.assert_dict_contains(expected, actual)

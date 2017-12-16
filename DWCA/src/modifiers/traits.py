@@ -66,14 +66,13 @@ class Daemonic(Modifier):
 
     @staticmethod
     def handle_daemonic(attack, tgh_multiplier):
-        from src.modifiers.qualities import Sanctified, ForceWeapon
-        daemonic_value = attack.target.get_trait(Daemonic.name)
-        bypass_daemonic = any([attack.get_modifier(Sanctified.name),
-                               attack.get_modifier(ForceWeapon.name),
-                               attack.get_modifier(Daemonic.name)])
+        daemonic_value = attack.target.daemonic
+        bypass_daemonic = any([attack.sanctified,
+                               attack.force_weapon,
+                               attack.daemonic])
         if daemonic_value is not None and bypass_daemonic is False:
             tgh_multiplier += 1
-            LOG.debug('+1 TGH mutliplier from Daemonic.')
+            LOG.debug('+1 TGH multiplier from Daemonic.')
         return tgh_multiplier
 
 

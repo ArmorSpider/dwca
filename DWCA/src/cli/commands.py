@@ -9,7 +9,7 @@ from src.cli.message_queue import log_messages
 from src.cli.quick_dict import quick_dict_parse
 from src.cli.table import print_table, print_entity_dict
 from src.dwca_log.log import get_log
-from src.entities import SEMI_AUTO, FULL_AUTO, TRAITS, TALENTS, CHARACTERISTICS,\
+from src.entities import SEMI_AUTO, FULL_AUTO, CHARACTERISTICS,\
     SKILLS
 from src.entities.char_stats import STAT_WS, STAT_BS
 from src.entities.libraries import get_weapon_library, get_character_library,\
@@ -18,7 +18,6 @@ from src.entities.weapon import get_weapon
 from src.handler import build_attacker, main_handler, check_required_keys,\
     build_target
 from src.hit_location import BODY
-from src.modifiers.modifier import register_modifiers
 from src.save_manager import SaveManager
 from src.situational.state_manager import StateManager
 from src.util.dict_util import pretty_print,\
@@ -108,7 +107,6 @@ class CommandRun(CLICommand):
     help = 'Roll attacks for the current event.'
 
     def _process_event(self, event):
-        register_modifiers()
         StateManager.update(event)
         main_handler(event)
         log_messages()
@@ -146,7 +144,7 @@ class CommandInfo(CLICommand):
 
     def _process_event(self, event):
         attacker = build_attacker(event)
-        modifiers = self._get_modifiers(attacker)
+        modifiers = attacker.modifiers
         modifier_names = sort_strings_by_length(modifiers.keys())
         dospedia = read_dospedia()
         table_data = []
@@ -159,12 +157,6 @@ class CommandInfo(CLICommand):
             table_data.append(row)
         print_table(table_data, attacker.name, headers=False)
         return event
-
-    def _get_modifiers(self, entity):
-        modifiers = {}
-        modifiers.update(entity.get_stat(TRAITS, {}))
-        modifiers.update(entity.get_stat(TALENTS, {}))
-        return modifiers
 
     def _build_full_modifier_name(self, modifier_name, modifier_value):
         if modifier_value is True:
@@ -320,7 +312,6 @@ class CommandDamage(CLICommand):
                 continue
             hit = Hit(BODY, damage, penetration)
             hits.append(hit)
-        register_modifiers()
         StateManager.update(event)
         target = build_target(event)
         attacker = build_attacker(event)
@@ -356,7 +347,7 @@ class CommandAuto(CLICommand):
             elif firemode == FULL_AUTO:
                 LOG.info('+20 to roll target from full auto.')
                 roll_target += 20
-            if weapon.get_quality('twin_linked', False):
+            if weapon.twin_linked is not None:
                 LOG.info('+20 to roll target from twin-linked.')
                 roll_target += 20
             event[FIREMODE] = firemode

@@ -61,7 +61,7 @@ def get_modifier(modifier_name):
     modifier = REGISTER.get(modifier_name)
     if modifier is None:
         pass
-        #LOG.info('Modifier "%s" not available in register.', modifier_name)
+        LOG.info('Modifier "%s" not available in register.', modifier_name)
         #LOG.debug('Available modifiers: {} '.format(REGISTER.keys()))
     else:
         LOG.debug('Found modifier "%s"', modifier_name)

@@ -4,7 +4,7 @@
 import unittest
 
 from src.action.attack import Attack
-from src.entities import NAME, DAMAGE, PENETRATION, DICE, QUALITIES, TALENTS,\
+from src.entities import NAME, FLAT_DAMAGE, PENETRATION, DICE, QUALITIES, TALENTS,\
     TRAITS, ARMOR, CHARACTERISTICS
 from src.entities.character import Character
 from src.entities.weapon import Weapon
@@ -18,7 +18,7 @@ class Test(unittest.TestCase):
         self.weapon = Weapon()
         chainsword_definition = {
             NAME: 'Astartes Chainsword',
-            DAMAGE: 5,
+            FLAT_DAMAGE: 5,
             PENETRATION: 3,
             DICE: 1,
             QUALITIES: {
@@ -130,7 +130,7 @@ class Test(unittest.TestCase):
         _melee_attack = entity._melee_attack(weapon)
 
         expected = 1
-        actual = _melee_attack._calculate_num_dice()
+        actual = _melee_attack.num_dice
 
         self.assertEqual(expected, actual)
 
@@ -140,7 +140,7 @@ class Test(unittest.TestCase):
         _melee_attack = entity._melee_attack(weapon)
 
         expected = 3
-        actual = _melee_attack._calculate_penetration()
+        actual = _melee_attack.penetration
 
         self.assertEqual(expected, actual)
 
@@ -150,7 +150,7 @@ class Test(unittest.TestCase):
         _melee_attack = entity._melee_attack(weapon)
 
         expected = 5
-        actual = _melee_attack._calculate_flat_damage()
+        actual = _melee_attack.weapon.flat_damage
 
         self.assertEqual(expected, actual)
 

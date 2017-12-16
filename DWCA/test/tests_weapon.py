@@ -1,7 +1,7 @@
 import unittest
 
 from definitions import CLASS
-from src.entities import NAME, DAMAGE_TYPE, DICE, DAMAGE, PENETRATION,\
+from src.entities import NAME, DAMAGE_TYPE, DICE, FLAT_DAMAGE, PENETRATION,\
     SINGLE_SHOT, QUALITIES
 from src.entities.libraries import MasterLibrary
 from src.entities.weapon import get_weapon
@@ -15,14 +15,14 @@ class Test(unittest.TestCase):
                                  CLASS: 'Basic',
                                  DAMAGE_TYPE: 'I',
                                  DICE: 1,
-                                 DAMAGE: 10,
+                                 FLAT_DAMAGE: 10,
                                  PENETRATION: 10,
                                  SINGLE_SHOT: 1}
         self.business_fist_def = {NAME: 'Business Fist',
                                   CLASS: 'Melee',
                                   DAMAGE_TYPE: 'I',
                                   DICE: 1,
-                                  DAMAGE: 10,
+                                  FLAT_DAMAGE: 10,
                                   PENETRATION: 10,
                                   QUALITIES: {Tearing.name: True,
                                               'cool_weapon': 'Absolutely'}}

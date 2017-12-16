@@ -3,7 +3,7 @@ import difflib
 from definitions import CLASS, MELEE
 from src.dwca_log.log import get_log
 from src.entities import PACKAGE, NAME, DICE, DAMAGE_TYPE, PENETRATION, RANGE,\
-    DAMAGE
+    FLAT_DAMAGE
 from src.errors import WeaponNotFoundError, NoMatchError
 from src.util.read_file import read_weapon_library, read_character_library
 from src.util.string_util import normalize_string
@@ -15,7 +15,7 @@ DEFAULT_PACKAGE = 'default'
 
 
 def verify():
-    require_all = [CLASS, NAME, DICE, DAMAGE, DAMAGE_TYPE, PENETRATION]
+    require_all = [CLASS, NAME, DICE, FLAT_DAMAGE, DAMAGE_TYPE, PENETRATION]
     ranged_only = require_all + [RANGE]
     MasterLibrary.load_all_packages()
     for weapon_name, weapon_def in get_weapon_library().iteritems():

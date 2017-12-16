@@ -1,9 +1,7 @@
 from src.cli.message_queue import queue_message
 from src.dwca_log.log import get_log
-from src.entities import PENETRATION, DICE, DAMAGE
 from src.entities.char_stats import STAT_TGH
 from src.modifiers.modifier import Modifier
-from src.modifiers.traits import NaturalArmor, PsyRating
 from src.situational.state_manager import StateManager
 
 
@@ -15,8 +13,8 @@ class RazorSharp(Modifier):
     name = 'razor_sharp'
 
     def modify_penetration(self, attack, current_pen):
-        if attack.get_degrees_of_success() >= 2:
-            weapons_penetration = attack.get_weapon_stat(PENETRATION)
+        if attack.degrees_of_success >= 2:
+            weapons_penetration = attack.weapon.penetration
             current_pen += weapons_penetration
             LOG.debug('Double penetration from RazorSharp.')
         return current_pen
@@ -28,9 +26,9 @@ class OverHeats(Modifier):
 
     @staticmethod
     def handle_overheats(attack):
-        if attack.get_modifier(OverHeats.name):
-            dice = attack.weapon.get_stat(DICE)
-            flat_damage = attack.weapon.get_stat(DAMAGE)
+        if attack.overheats is not None:
+            dice = attack.weapon.dice
+            flat_damage = attack.weapon.flat_damage
             damage_string = '{}d10+{}'.format(dice, flat_damage)
             message_base = ('OVERHEATS: {weapon} overheats! {attacker} takes {damage_string} damage to random arm. '
                             'This weapon cannot be fired for one round.')
@@ -65,7 +63,7 @@ class Felling(Modifier):
 
     @staticmethod
     def handle_felling(attack, tgh_multiplier):
-        felling_value = attack.get_modifier(Felling.name)
+        felling_value = attack.felling
         if felling_value is not None:
             tgh_multiplier = max(tgh_multiplier - felling_value, 1)
             LOG.debug('Toughness multiplier reduced by Felling(%s)',
@@ -84,7 +82,7 @@ class DrainLife(Modifier):
 
     @staticmethod
     def handle_drain_life(attack, effective_damage):
-        if attack.get_modifier(DrainLife.name) is not None \
+        if attack.drain_life is not None \
                 and effective_damage > 0:
             message = ('DRAIN_FILE: Make an opposed WP Test. '
                        'Each DoS for %s deals 1d10 true damage to %s.')
@@ -97,7 +95,7 @@ class Proven(Modifier):
 
     @staticmethod
     def handle_proven(attack, roll_results):
-        proven_value = attack.get_modifier(Proven.name)
+        proven_value = attack.proven
         if proven_value is not None:
             modified_results = [max(value, proven_value)
                                 for value in roll_results]
@@ -113,7 +111,7 @@ class Toxic(Modifier):
 
     @staticmethod
     def handle_toxic(attack, effective_damage):
-        toxic_value = attack.get_modifier(Toxic.name)
+        toxic_value = attack.toxic
         if toxic_value is not None and effective_damage > 0:
             penalty = 5 * effective_damage
             queue_message('TOXIC: %s should roll %s -%s or take %s true damage.' %
@@ -125,7 +123,7 @@ class TwinLinked(Modifier):
     name = 'twin_linked'
 
     def modify_num_hits(self, attack, current_num_hits):
-        if attack.get_degrees_of_success() >= 2:
+        if attack.degrees_of_success >= 2:
             LOG.debug('+1 hit from TwinLinked.')
             current_num_hits += 1
         return current_num_hits
@@ -141,15 +139,15 @@ class ForceWeapon(Modifier):
     name = 'force_weapon'
 
     def modify_damage(self, attack, current_damage):
-        psy_rating = attack.get_modifier(PsyRating.name, 0)
-        if psy_rating > 0:
+        psy_rating = attack.psy_rating
+        if psy_rating is not None:
             current_damage += psy_rating
             LOG.info('+%s damage from ForceWeapon + PsyRating', psy_rating)
         return current_damage
 
     def modify_penetration(self, attack, current_pen):
-        psy_rating = attack.get_modifier(PsyRating.name, 0)
-        if psy_rating > 0:
+        psy_rating = attack.psy_rating
+        if psy_rating is not None:
             current_pen += psy_rating
             LOG.info('+%s penetration from ForceWeapon + PsyRating', psy_rating)
         return current_pen
@@ -160,11 +158,11 @@ class Accurate(Modifier):
     name = 'accurate'
 
     def modify_num_dice(self, attack, current_num_dice):
-        if attack.get_degrees_of_success() >= 2:
+        if attack.degrees_of_success >= 2:
             if StateManager.aimed is True:
                 current_num_dice += 1
                 LOG.info('+1d10 from Accurate with DoS >= 2')
-                if attack.get_degrees_of_success() >= 4:
+                if attack.degrees_of_success >= 4:
                     current_num_dice += 1
                     LOG.info('+1d10 from Accurate with DoS >= 4')
         return current_num_dice
@@ -175,7 +173,7 @@ class Blast(Modifier):
     name = 'blast'
 
     def modify_num_hits(self, attack, current_num_hits):
-        blast_value = attack.get_modifier(self.name)
+        blast_value = attack.blast
         queue_message('BLAST: Everyone within %sm of %s must dodge or take damage.' % (
             blast_value, attack.target))
         if attack.target.is_horde():
@@ -213,7 +211,7 @@ class Snare(Modifier):
 
     @staticmethod
     def handle_snare(attack):
-        if attack.get_modifier(Snare.name):
+        if attack.snare:
             queue_message('SNARE: %s must make AGI test or be immobilised.')
 
 
@@ -223,12 +221,11 @@ class DeadlySnare(Modifier):
 
     @staticmethod
     def handle_deadly_snare(attack):
-        if attack.get_modifier(DeadlySnare.name):
+        if attack.deadly_snare is not None:
             damage_roll_base = '{dice}d10+{flat_damage} Pen: {pen}'
-            damage_roll = damage_roll_base.format(dice=attack.get_weapon_stat(DICE, 1),
-                                                  flat_damage=attack.get_weapon_stat(
-                                                      DAMAGE, 0),
-                                                  pen=attack.get_weapon_stat(PENETRATION, 0))
+            damage_roll = damage_roll_base.format(dice=attack.dice,
+                                                  flat_damage=attack.flat_damage,
+                                                  pen=attack.penetration)
             queue_message(
                 'DEADLY_SNARE: %s must make AGI test or be immobilised.'
                 'Take %s each turn until escape.' % damage_roll)
@@ -240,7 +237,7 @@ class Flexible(Modifier):
 
     @staticmethod
     def handle_flexible(attack):
-        if attack.get_modifier(Flexible.name):
+        if attack.flexible:
             queue_message('FLEXIBLE: Attack cannot be parried.')
 
 
@@ -250,14 +247,14 @@ class Hellfire(Modifier):
 
     @staticmethod
     def handle_hellfire_armor(attack, armor):
-        if attack.get_modifier(Hellfire.name) and attack.target.get_trait(NaturalArmor.name):
+        if attack.hellfire is not None and attack.target.natural_armor is not None:
             LOG.info('Hellfire negates natural armor.')
             armor = 0
         return armor
 
     @staticmethod
     def handle_hellfire_magnitude_damage(attack, magnitude_damage):
-        if attack.get_modifier(Hellfire.name):
+        if attack.hellfire is not None:
             LOG.info('+1 magnitude damage per hit from Hellfire.')
             magnitude_damage += 1
         return magnitude_damage
@@ -270,7 +267,7 @@ class WarpWeapon(Modifier):
     @staticmethod
     def handle_warp_weapon(attack, current_armor):
         # TODO: check for "holy armor"
-        if attack.weapon.get_quality(WarpWeapon.name) is not None:
+        if attack.warp_weapon is not None:
             LOG.info('WarpWeapon ignores mundane armor.')
             current_armor = 0
         return current_armor
@@ -282,7 +279,7 @@ class Devastating(Modifier):
 
     @staticmethod
     def handle_devastating(attack, magnitude_damage):
-        devastating_value = attack.get_modifier(Devastating.name)
+        devastating_value = attack.devastating
         if devastating_value is not None:
             LOG.info('+%s magnitude damage from Devastating.',
                      devastating_value)
@@ -295,8 +292,8 @@ class DamagePerDos(Modifier):
     name = 'damage_per_dos'
 
     def modify_damage(self, attack, current_damage):
-        dos = attack.get_degrees_of_success()
-        damage_per_dos = attack.get_modifier(DamagePerDos.name)
+        dos = attack.degrees_of_success
+        damage_per_dos = attack.damage_per_dos
         bonus_damage = max(0, damage_per_dos * dos)
         LOG.info('+%s damage from DamagePerDos(%s)',
                  bonus_damage, damage_per_dos)
@@ -309,8 +306,8 @@ class PenetrationPerDos(Modifier):
     name = 'penetration_per_dos'
 
     def modify_penetration(self, attack, current_penetration):
-        dos = attack.get_degrees_of_success()
-        penetration_per_dos = attack.get_modifier(PenetrationPerDos.name)
+        dos = attack.degrees_of_success
+        penetration_per_dos = attack.penetration_per_dos
         bonus_penetration = max(0, penetration_per_dos * dos)
         LOG.info('+%s penetration from PenetrationPerDos(%s)',
                  bonus_penetration, penetration_per_dos)

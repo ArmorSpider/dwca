@@ -9,7 +9,7 @@ class Entity(object):
     def __getattr__(self, name):
         attribute = self.modifiers.get(name)
         if attribute is None and get_modifier(name) is None:
-            raise AttributeError()
+            return super(Entity, self).__getattribute__(name)
         else:
             return attribute
 

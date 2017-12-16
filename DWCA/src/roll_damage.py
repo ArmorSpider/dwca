@@ -44,21 +44,21 @@ def roll_righteous_fury(actual_results, attack):
 
 def is_fury_triggered(actual_results, attack):
     fury_triggered = 10 in actual_results
-    if attack.weapon.get_quality(Hellfire.name):
+    if attack.hellfire is not None:
         fury_triggered = 10 in actual_results or 9 in actual_results
     return fury_triggered
 
 
 def is_fury_possible(attack):
     attacker = attack.attacker
-    return attacker.get_talent(DeathwatchTraining.name) or \
-        attacker.get_talent(TouchedByTheFates.name) or \
-        attack.weapon.get_quality(Volatile.name)
+    return attacker.deathwatch_training or \
+        attacker.touched_by_the_fates or \
+        attack.volatile
 
 
 def is_fury_auto_confirmed(attack):
-    return (attack.attacker.get_talent(DeathwatchTraining.name) and
-            attack.target.is_alien()) or attack.weapon.get_quality(Volatile.name) is not None
+    return (attack.deathwatch_training is not None and
+            attack.target.is_alien()) or attack.volatile is not None
 
 
 def righteous_fury(results, attack, auto_confirm):
