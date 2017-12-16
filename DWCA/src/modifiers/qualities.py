@@ -117,7 +117,7 @@ class Toxic(Modifier):
         if toxic_value is not None and effective_damage > 0:
             penalty = 5 * effective_damage
             queue_message('TOXIC: %s should roll %s -%s or take %s true damage.' %
-                          (attack.get_target(), STAT_TGH, penalty, toxic_value))
+                          (attack.target, STAT_TGH, penalty, toxic_value))
 
 
 class TwinLinked(Modifier):
@@ -177,8 +177,8 @@ class Blast(Modifier):
     def modify_num_hits(self, attack, current_num_hits):
         blast_value = attack.get_modifier(self.name)
         queue_message('BLAST: Everyone within %sm of %s must dodge or take damage.' % (
-            blast_value, attack.get_target()))
-        if attack.get_target().is_horde():
+            blast_value, attack.target))
+        if attack.target.is_horde():
             bonus_hits = max(1, blast_value - 1)
             current_num_hits += bonus_hits
         return current_num_hits
@@ -189,7 +189,7 @@ class PowerField(Modifier):
     name = 'power_field'
 
     def modify_num_hits(self, attack, current_num_hits):
-        if attack.get_target().is_horde():
+        if attack.target.is_horde():
             current_num_hits += 1
             LOG.debug('+1 hit from PowerField against hordes.')
         return current_num_hits
@@ -198,6 +198,13 @@ class PowerField(Modifier):
 class Storm(Modifier):
 
     name = 'storm'
+
+    @staticmethod
+    def handle_storm(attack, rof_hits):
+        if attack.storm is not None:
+            rof_hits += rof_hits
+            LOG.info('Double RoF hits from "storm" quality.')
+        return rof_hits
 
 
 class Snare(Modifier):

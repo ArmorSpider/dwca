@@ -57,7 +57,7 @@ class Test(unittest.TestCase):
         _melee_attack = entity._melee_attack(weapon)
 
         expected = weapon
-        actual = _melee_attack.get_weapon()
+        actual = _melee_attack.weapon
 
         self.assertEqual(expected, actual)
 
@@ -67,7 +67,7 @@ class Test(unittest.TestCase):
         _melee_attack = entity._melee_attack(weapon=weapon)
 
         expected = entity
-        actual = _melee_attack.get_attacker()
+        actual = _melee_attack.attacker
 
         self.assertEqual(expected, actual)
 
@@ -77,7 +77,7 @@ class Test(unittest.TestCase):
         _melee_attack = entity._melee_attack(weapon=weapon, target=entity)
 
         expected = entity
-        actual = _melee_attack.get_target()
+        actual = _melee_attack.target
 
         self.assertEqual(expected, actual)
 
@@ -87,7 +87,7 @@ class Test(unittest.TestCase):
         _melee_attack = entity._melee_attack(weapon)
 
         expected = {'balanced': True, 'tearing': True}
-        actual = _melee_attack.get_weapon_stat(QUALITIES)
+        actual = _melee_attack.weapon.qualities
 
         self.assertEqual(expected, actual)
 
@@ -97,7 +97,7 @@ class Test(unittest.TestCase):
         _melee_attack = entity._melee_attack(weapon)
 
         expected = {'machine': 5}
-        actual = _melee_attack.get_attacker_stat(TRAITS)
+        actual = _melee_attack.attacker.traits
 
         self.assertEqual(expected, actual)
 
@@ -107,7 +107,7 @@ class Test(unittest.TestCase):
         _melee_attack = entity._melee_attack(weapon)
 
         expected = {'crushing_blow': True}
-        actual = _melee_attack.get_attacker_stat(TALENTS)
+        actual = _melee_attack.attacker.talents
 
         self.assertEqual(expected, actual)
 
@@ -153,3 +153,12 @@ class Test(unittest.TestCase):
         actual = _melee_attack._calculate_flat_damage()
 
         self.assertEqual(expected, actual)
+
+    def test_get_attr_should_lookup_in_offensive_modifiers(self):
+        entity = self.space_marine
+        weapon = self.chainsword
+        _melee_attack = entity._melee_attack(weapon)
+        self.assertEqual(True, _melee_attack.crushing_blow)
+        self.assertEqual(5, _melee_attack.machine)
+        self.assertEqual(True, _melee_attack.balanced)
+        self.assertEqual(True, _melee_attack.tearing)

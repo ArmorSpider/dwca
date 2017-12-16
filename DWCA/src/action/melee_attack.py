@@ -16,7 +16,7 @@ class MeleeAttack(Attack):
 
     def _calculate_num_hits(self):
         num_hits = Attack._calculate_num_hits(self)
-        if self.get_target().is_horde():
+        if self.target.is_horde():
             dos = self.get_degrees_of_success()
             dos_hits = int(dos / 2)
             LOG.debug('DoS hits: %s (%s DoS/2)', dos_hits, dos)

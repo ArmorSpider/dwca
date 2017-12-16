@@ -2,11 +2,12 @@
 import unittest
 
 from definitions import PROTECTION_MAX, OVERLOAD_MAX
-from src.entities import ARMOR, CHARACTERISTICS, TRAITS
+from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS
 from src.entities.char_stats import STAT_WS, STAT_BS, STAT_STR, STAT_TGH,\
     STAT_AGI, STAT_INT, STAT_PER, STAT_WIL, STAT_FEL
 from src.entities.character import Character
 from src.hit_location import HITLOC_ALL, HITLOC_BODY, HitLocation
+from src.modifiers.modifier import register_modifiers
 from src.situational.force_field import ForceField
 
 
@@ -23,6 +24,7 @@ class Test(unittest.TestCase):
             TRAITS: {'unnatural_strength': 2,
                      'unnatural_toughness': 3,
                      'unnatural_agility': 4},
+            TALENTS: {'good_listener': True},
             CHARACTERISTICS: {STAT_WS: 10,
                               STAT_BS: 20,
                               STAT_STR: 29,
@@ -41,6 +43,7 @@ class Test(unittest.TestCase):
 
         self.char_with_stats = Character(character_with_characteristics)
         self.character = Character(character_definition)
+        register_modifiers()
 
     def test_get_armor_for_hitloc_should_return_all_value_if_hitloc_not_available(self):
         expected = 8
@@ -110,4 +113,27 @@ class Test(unittest.TestCase):
         expected = ForceField({PROTECTION_MAX: 65, OVERLOAD_MAX: 10})
         actual = self.char_with_force_field.force_field
 
+        self.assertEqual(expected, actual)
+
+    def test_modifers_should_include_traits_and_talents(self):
+        expected = {'unnatural_strength': 2,
+                    'unnatural_toughness': 3,
+                    'unnatural_agility': 4,
+                    'good_listener': True}
+        actual = self.char_with_stats.modifiers
+        self.assertEqual(expected, actual)
+
+    def test_getattr_should_do_lookup_in_modifiers(self):
+        self.assertEqual(2, self.char_with_stats.unnatural_strength)
+        self.assertEqual(3, self.char_with_stats.unnatural_toughness)
+        self.assertEqual(4, self.char_with_stats.unnatural_agility)
+        self.assertEqual(True, self.char_with_stats.good_listener)
+
+    def test_getting_attribute_that_does_not_exist_in_modifers_should_raise_attributeerror(self):
+        with self.assertRaises(AttributeError):
+            self.char_with_stats.THIS_IS_NOT_A_REAL_ATTRIBUTE
+
+    def test_getting_attribute_that_does_not_exist_in_modifers_but_is_a_known_modifers_should_return_none(self):
+        expected = None
+        actual = self.char_with_stats.toxic
         self.assertEqual(expected, actual)

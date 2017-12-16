@@ -10,6 +10,7 @@ from src.entities import NAME, TRAITS, CHARACTERISTICS, DAMAGE_TYPE, DICE,\
     DAMAGE, PENETRATION, SINGLE_SHOT, TEARING_DICE, QUALITIES
 from src.entities.char_stats import STAT_AGI, STAT_STR, STAT_TGH, STAT_WS,\
     STAT_BS
+from src.entities.character import get_char
 from src.entities.libraries import MasterLibrary
 from src.handler import construct_attack
 from src.modifiers.qualities import Tearing, Blast
@@ -55,6 +56,12 @@ class Test(unittest.TestCase):
 
     def tearDown(self):
         pass
+
+    def test_get_attribute_hey(self):
+        automan = get_char('automan')
+        expected = True
+        actual = automan.power_armour
+        self.assertEqual(expected, actual)
 
     def test_metadata_minimum_should_contain_attacker_weapon_target_and_roll_target(self):
         event = self.basic_melee_event

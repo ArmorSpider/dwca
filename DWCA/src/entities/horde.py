@@ -28,7 +28,7 @@ class Horde(Character):
         return self.magnitude
 
     def get_num_ranged_attacks(self):
-        num_attacks = get_tens(self.get_magnitude())
+        num_attacks = get_tens(self.magnitude)
         if self.get_trait(FireDrill.name):
             num_attacks += 1
         LOG.info('%s can make %s ranged attacks.', self, num_attacks)

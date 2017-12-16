@@ -18,6 +18,30 @@ auran_genestealer:
   traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
     tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
   weapons: [rending_claws]
+obliterator:
+  _package: chaos
+  name: Obliterator
+  species: daemon
+  armor: {all: 12}
+  skills: {awareness: 0, tech_use: 20}
+  characteristics: {weapon_skill: 45, ballistic_skill: 55, strength: 50, toughness: 55, agility: 35, intelligence: 30, perception: 40, willpower: 45, fellowship: 0}
+  wounds: 40
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, independent_targeting: true, mighty_shot: true, swift_attack: true, two_weapon_wielder_melee: true, two_weapon_wielder_ballistic: true}
+  traits: {auto_stabilised: true, daemonic: true, fear: 2, natural_armor: true, regeneration: 2, size: 10, sturdy: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [eviscerator_chainblade, lascannon, multi_melta, plasma_cannon, twin_plasma_gun]
+  force_field: {overload_max: 0, protection_max: 35}
+farseer:
+  _package: eldar
+  name: Eldar Farseer
+  armor: {all: 3, head: 5}
+  species: eldar
+  wounds: 19
+  skills: {awareness: 10, dodge: 20, invocation: 20, psyniscience: 20}
+  characteristics: {weapon_skill: 65, ballistic_skill: 60, strength: 35, toughness: 41, agility: 61, intelligence: 65, perception: 55, willpower: 73, fellowship: 52}
+  traits: {dark_sight: true, unnatural_agility: 2, unnatural_willpower: 2, touched_by_the_fates: 5, runes_of_warding: true, runes_of_witnessing: true, spirit_stones: true, ghosthelm: true}
+  talents: {catfall: true, hard_target: true, improved_warp_sense: true, lightning_reflexes: true, psy_rating: 10, resistance_psychic: true, sprint: true, step_aside: true, strong_minded: true, warp_conduit: true, warp_sense: true}
+  weapons: [mc_shuriken_pistol, witchblade]
+  force_field: {overload_max: 0, protection_max: 73}
 berzerker:
   _package: chaos
   armor: {all: 8, body: 10}

@@ -13,7 +13,7 @@ class Test(unittest.TestCase):
     def test_get_degrees_of_success_should_work(self, result, roll_target):
         action = Action()
         action.try_action(roll_target, result)
-        dos = action.get_degrees_of_success()
+        dos = action.degrees_of_success
         self.assert_dos_calculation(action, dos)
 
     def test_get_reverse_should_reverse_roll_result(self):
@@ -46,6 +46,7 @@ class Test(unittest.TestCase):
         # print 'Roll: {}, Target: {}, Diff:{} , DoS: {}'.format(roll_result, roll_target,
         # diff, dos)
         self.assertTrue(dos <= tens)
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

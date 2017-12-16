@@ -16,4 +16,4 @@ def print_entity_dict(entity, stat_key):
     for modifier_name, value in stat_dict.iteritems():
         char_row = [modifier_name, value]
         char_table.append(char_row)
-    print_table(char_table, entity.get_name(), headers=False)
+    print_table(char_table, entity.name, headers=False)

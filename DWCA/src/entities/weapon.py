@@ -1,5 +1,6 @@
 from definitions import CLASS, MELEE
-from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
+from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO,\
+    DAMAGE_TYPE, DAMAGE, PENETRATION, DICE
 from src.entities.entity import Entity
 from src.entities.libraries import read_weapon
 
@@ -26,6 +27,18 @@ class Weapon(Entity):
         return rof
 
     @property
+    def flat_damage(self):
+        return self.get_stat(DAMAGE, 0)
+
+    @property
+    def penetration(self):
+        return self.get_stat(PENETRATION, 0)
+
+    @property
+    def dice(self):
+        return self.get_stat(DICE, 1)
+
+    @property
     def firemodes(self):
         known_firemodes = [SINGLE_SHOT, SEMI_AUTO, FULL_AUTO]
         available_firemodes = {}
@@ -34,3 +47,16 @@ class Weapon(Entity):
             if rof is not None:
                 available_firemodes[firemode] = rof
         return available_firemodes
+
+    @property
+    def qualities(self):
+        qualities = self.get_stat(QUALITIES, default={})
+        return qualities
+
+    @property
+    def modifiers(self):
+        return self.qualities
+
+    @property
+    def damage_type(self):
+        return self.get_stat(DAMAGE_TYPE, None)

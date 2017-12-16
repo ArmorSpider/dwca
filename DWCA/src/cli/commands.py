@@ -157,7 +157,7 @@ class CommandInfo(CLICommand):
                 modifier, modifier_value)
             row = [full_modifier_name, dospedia_entry]
             table_data.append(row)
-        print_table(table_data, attacker.get_name(), headers=False)
+        print_table(table_data, attacker.name, headers=False)
         return event
 
     def _get_modifiers(self, entity):

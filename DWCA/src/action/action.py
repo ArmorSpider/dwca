@@ -22,12 +22,11 @@ class Action(object):
             roll_result = roll_action_dice()
         self.roll_result = int(roll_result)
         self.roll_target = int(roll_target)
-        dos = self.get_degrees_of_success()
-        LOG.info('Action has %s DoS. (%s vs. %s).', dos,
+        LOG.info('Action has %s DoS. (%s vs. %s).', self.degrees_of_success,
                  self.roll_result, self.roll_target)
         self._update_metadata({ROLL_RESULT: roll_result,
                                ROLL_TARGET: roll_target,
-                               DEGREES_OF_SUCCESS: dos})
+                               DEGREES_OF_SUCCESS: self.degrees_of_success})
 
     def is_successfull(self):
         result = self.roll_result <= self.roll_target
@@ -35,7 +34,8 @@ class Action(object):
                   self.roll_result, self.roll_target, result)
         return result
 
-    def get_degrees_of_success(self):
+    @property
+    def degrees_of_success(self):
         if self.is_successfull() is True:
             dos = get_tens(self.roll_target - self.roll_result)
         else:

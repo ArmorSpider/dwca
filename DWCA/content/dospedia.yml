@@ -174,7 +174,7 @@ unnatural_senses: Super awareness within range.
 unnatural_speed: After other factors, double movement.
 unshakeable_faith: Re-roll failed WP tests for fear.
 wall_of_steel: One free parry per turn.
-wapr_sense: Psyniscience as half action.
+warp_sense: Psyniscience as half action.
 warp_conduit: +1 Psy Rating when pushing. -10 to Phenomena roll.
 warp_instability: If take damage and not deal damage by next turn, WP check or take 1 damage per DoF.
 warp_weapon: Attacks ignore physical armor unless holy.
@@ -213,3 +213,7 @@ signum: All squaddies gain +5 BS. Full action tech-use test to increase to +10 u
 daemonic_presence: Nearby enemies get -10 to WP tests (-20 if master daemon)
 walker: Ignore difficult terrain, walk over shit without penalty.
 daemonic_possession: May fire all weapons as half action, even if in melee. If melee, half action to make one attack.
+runes_of_warding: Non-eldar psykers within 50m count their PR as 2 lower (after power level) and get +10 on both effect tables.
+runes_of_witnessing: +10 to invocation, -10 to rolls on effect tables.
+spirit_stones: Sustain powers as free action. Once per 24h, use a second PsyPower one turn.
+ghosthelm: Ignore PsyPhenomena and Perils with a successfull WP test.

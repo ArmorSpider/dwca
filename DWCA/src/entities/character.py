@@ -100,11 +100,29 @@ class Character(Entity):
                             target=target,
                             firemode=firemode)
 
-    def _get_species(self):
+    @property
+    def species(self):
         return self.get_stat(SPECIES, 'N/A')
 
+    @property
+    def traits(self):
+        traits = self.get_stat(TRAITS, default={})
+        return traits
+
+    @property
+    def talents(self):
+        talents = self.get_stat(TALENTS, default={})
+        return talents
+
+    @property
+    def modifiers(self):
+        modifiers = {}
+        modifiers.update(self.traits)
+        modifiers.update(self.talents)
+        return modifiers
+
     def is_alien(self):
-        return is_alien_species(self._get_species())
+        return is_alien_species(self.species)
 
     def get_armor(self, hit_location):
         armor_dict = self._get_armor_definition()

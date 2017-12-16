@@ -23,7 +23,7 @@ def roll_normal_damage(real_dice, tearing_dice, attack=None):
 
 
 def handle_dos_minimum_damage(attack, roll_results):
-    dos = attack.get_degrees_of_success()
+    dos = attack.degrees_of_success
     capped_dos = min(dos, 9)  # avoid righteous fury from DoS
     sorted_results_descending = sorted(roll_results, reverse=True)
     minimum_value = sorted_results_descending.pop()
@@ -50,7 +50,7 @@ def is_fury_triggered(actual_results, attack):
 
 
 def is_fury_possible(attack):
-    attacker = attack.get_attacker()
+    attacker = attack.attacker
     return attacker.get_talent(DeathwatchTraining.name) or \
         attacker.get_talent(TouchedByTheFates.name) or \
         attack.weapon.get_quality(Volatile.name)

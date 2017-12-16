@@ -1,18 +1,27 @@
 from src.dwca_log.log import get_log
+from src.modifiers.modifier import get_modifier
 
 LOG = get_log(__name__)
 
 
 class Entity(object):
 
+    def __getattr__(self, name):
+        attribute = self.modifiers.get(name)
+        if attribute is None and get_modifier(name) is None:
+            raise AttributeError()
+        else:
+            return attribute
+
     def __init__(self, definition={}):
         self.definition = definition
 
     def __str__(self, *args, **kwargs):
-        return self.get_name()
+        return self.name
 
-    def get_name(self):
-        return str(self.get_stat('name'))
+    @property
+    def name(self):
+        return str(self.get_stat('name', 'NAME_MISSING'))
 
     def get_stat(self, stat_name, default=None):
         LOG.log(5, 'Getting stat "%s"', stat_name)
@@ -22,3 +31,7 @@ class Entity(object):
 
     def is_horde(self):
         return False
+
+    @property
+    def modifiers(self):
+        return {}

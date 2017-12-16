@@ -5,11 +5,11 @@ from definitions import ATTACKER, TARGET, WEAPON, NUM_HITS, ROLLED_DAMAGE,\
 from src.action.action import Action
 from src.action.hit import Hit
 from src.dwca_log.log import get_log
-from src.entities import TRAITS, TALENTS, QUALITIES, DICE, PENETRATION, DAMAGE,\
+from src.entities import DICE, PENETRATION, DAMAGE,\
     TEARING_DICE
 from src.entities.entity import Entity
 from src.hitloc_series import get_hit_locations
-from src.modifiers.modifier import get_modifiers_iterator
+from src.modifiers.modifier import get_modifiers_iterator, get_modifier
 from src.roll_damage import roll_normal_damage, roll_righteous_fury
 
 
@@ -24,9 +24,16 @@ class Attack(Action):
         self.attacker = attacker if attacker is not None else Entity()
         self.target = target if target is not None else Entity()
         self.ad_hoc_modifiers = {}
-        self.metadata[WEAPON] = self.weapon.get_name()
-        self.metadata[ATTACKER] = self.attacker.get_name()
-        self.metadata[TARGET] = self.target.get_name()
+        self.metadata[WEAPON] = self.weapon.name
+        self.metadata[ATTACKER] = self.attacker.name
+        self.metadata[TARGET] = self.target.name
+
+    def __getattr__(self, name):
+        attribute = self.offensive_modifiers.get(name)
+        if attribute is None and get_modifier(name) is None:
+            raise AttributeError()
+        else:
+            return attribute
 
     def hits_generator(self):
         num_hits = self.num_hits
@@ -53,7 +60,7 @@ class Attack(Action):
                     if force_field.is_hit_blocked() is True:
                         LOG.info('Blocked by force field.')
                         continue
-                hit_damage = self.get_target().mitigate_hit(self, hit)
+                hit_damage = self.target.mitigate_hit(self, hit)
                 hit_damages.append(hit_damage)
             attack_total_damage = sum(hit_damages)
             LOG.info('All hits combined damage: %s (%s)', attack_total_damage,
@@ -90,15 +97,6 @@ class Attack(Action):
         self._update_metadata({NUM_HITS: num_hits})
         return num_hits
 
-    def get_weapon(self):
-        return self.weapon
-
-    def get_attacker(self):
-        return self.attacker
-
-    def get_target(self):
-        return self.target
-
     def get_modifier(self, modifier_key, default=None):
         offensive_modifiers = self.offensive_modifiers
         modifier_value = offensive_modifiers.get(modifier_key, default)
@@ -110,7 +108,7 @@ class Attack(Action):
         return modifiers_iterator
 
     def _calculate_num_dice(self):
-        num_dice = self.get_weapon_stat(DICE, default=1)
+        num_dice = self.weapon.dice
         for modifier in self._offensive_modifiers():
             num_dice = modifier.modify_num_dice(self, num_dice)
         return num_dice
@@ -122,13 +120,13 @@ class Attack(Action):
         return tearing_dice
 
     def _calculate_penetration(self):
-        penetration = self.get_weapon_stat(PENETRATION, default=0)
+        penetration = self.weapon.penetration
         for modifier in self._offensive_modifiers():
             penetration = modifier.modify_penetration(self, penetration)
         return penetration
 
     def _calculate_flat_damage(self):
-        flat_damage = self.get_weapon_stat(DAMAGE, default=0)
+        flat_damage = self.weapon.flat_damage
         for modifier in self._offensive_modifiers():
             flat_damage = modifier.modify_damage(self, flat_damage)
         return flat_damage
@@ -163,9 +161,8 @@ class Attack(Action):
     def offensive_modifiers(self):
         LOG.debug('Getting offensive modifiers.')
         modifiers = {}
-        modifiers.update(self.get_weapon_stat(QUALITIES, default={}))
-        modifiers.update(self.get_attacker_stat(TRAITS, default={}))
-        modifiers.update(self.get_attacker_stat(TALENTS, default={}))
+        modifiers.update(self.weapon.modifiers)
+        modifiers.update(self.attacker.modifiers)
         modifiers.update(self.ad_hoc_modifiers)
         LOG.debug('Found %s offensive modifiers.', len(modifiers))
         self._update_metadata({OFFENSIVE_MODIFIERS: modifiers})
@@ -176,21 +173,3 @@ class Attack(Action):
 
     def is_ranged(self):
         return self.weapon.is_melee() is not True
-
-    def get_target_stat(self, stat_name, default=None):
-        try:
-            return self.get_target().get_stat(stat_name, default)
-        except AttributeError:
-            return default
-
-    def get_attacker_stat(self, stat_name, default=None):
-        try:
-            return self.get_attacker().get_stat(stat_name, default)
-        except AttributeError:
-            return default
-
-    def get_weapon_stat(self, stat_name, default=None):
-        try:
-            return self.get_weapon().get_stat(stat_name, default)
-        except AttributeError:
-            return default
