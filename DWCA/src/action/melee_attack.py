@@ -15,8 +15,8 @@ class MeleeAttack(Attack):
     def flat_damage(self):
         flat_damage = super(MeleeAttack, self).flat_damage
         str_bonus = self.attacker.get_characteristic_bonus(STAT_STR)
-        LOG.info('Added strength bonus (%s) to flat damage (%s).',
-                 str_bonus, flat_damage)
+        LOG.debug('Added strength bonus (%s) to flat damage (%s).',
+                  str_bonus, flat_damage)
         flat_damage += str_bonus
         self._update_metadata({FLAT_DAMAGE: flat_damage})
         return flat_damage

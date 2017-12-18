@@ -16,9 +16,9 @@ class Modifier(object):
         _ = attack
         return current_damage
 
-    def modify_penetration(self, attack, current_pen):
+    def modify_penetration(self, attack, current_penetration):
         _ = attack
-        return current_pen
+        return current_penetration
 
     def modify_num_dice(self, attack, current_num_dice):
         _ = attack
@@ -34,6 +34,18 @@ class Modifier(object):
 
     def add_to_metadata(self, attack):
         attack.add_modifier_effect_to_metadata(self.name, self.message)
+
+    def on_hit(self, attack):
+        _ = attack
+        pass
+
+    def on_damage(self, attack, effective_damage):
+        _ = attack
+        return effective_damage
+
+    def modify_armor(self, attack, current_armor):
+        _ = attack
+        return current_armor
 
 
 def register_modifiers():
@@ -60,9 +72,7 @@ def get_modifiers_iterator(modifiers_dict):
 def get_modifier(modifier_name):
     modifier = REGISTER.get(modifier_name)
     if modifier is None:
-        pass
-        LOG.info('Modifier "%s" not available in register.', modifier_name)
-        #LOG.debug('Available modifiers: {} '.format(REGISTER.keys()))
+        LOG.debug('Modifier "%s" not available in register.', modifier_name)
     else:
         LOG.debug('Found modifier "%s"', modifier_name)
     return modifier

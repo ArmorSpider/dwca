@@ -70,7 +70,7 @@ class Attack(Action):
     @lazy
     def tearing_dice(self):
         tearing_dice = 0
-        for modifier in self._offensive_modifiers():
+        for modifier in self.modifer_iterator():
             tearing_dice = modifier.modify_tearing_dice(self, tearing_dice)
         self._update_metadata({TEARING_DICE: tearing_dice})
         return tearing_dice
@@ -78,7 +78,7 @@ class Attack(Action):
     @lazy
     def num_dice(self):
         num_dice = self.weapon.dice
-        for modifier in self._offensive_modifiers():
+        for modifier in self.modifer_iterator():
             num_dice = modifier.modify_num_dice(self, num_dice)
         self._update_metadata({DICE: num_dice})
         return num_dice
@@ -86,7 +86,7 @@ class Attack(Action):
     @lazy
     def penetration(self):
         penetration = self.weapon.penetration
-        for modifier in self._offensive_modifiers():
+        for modifier in self.modifer_iterator():
             penetration = modifier.modify_penetration(self, penetration)
         self._update_metadata({PENETRATION: penetration})
         return penetration
@@ -94,7 +94,7 @@ class Attack(Action):
     @lazy
     def flat_damage(self):
         flat_damage = self.weapon.flat_damage
-        for modifier in self._offensive_modifiers():
+        for modifier in self.modifer_iterator():
             flat_damage = modifier.modify_damage(self, flat_damage)
         self._update_metadata({FLAT_DAMAGE: flat_damage})
         return flat_damage
@@ -102,21 +102,15 @@ class Attack(Action):
     @lazy
     def num_hits(self):
         num_hits = 1
-        for modifier in self._offensive_modifiers():
+        for modifier in self.modifer_iterator():
             num_hits = modifier.modify_num_hits(self, num_hits)
         self._update_metadata({NUM_HITS: num_hits})
         return num_hits
 
-    def _offensive_modifiers(self):
+    def modifer_iterator(self):
         modifiers = self.offensive_modifiers
         modifiers_iterator = get_modifiers_iterator(modifiers)
         return modifiers_iterator
-
-    def _calculate_flat_damage(self):
-        flat_damage = self.weapon.flat_damage
-        for modifier in self._offensive_modifiers():
-            flat_damage = modifier.modify_damage(self, flat_damage)
-        return flat_damage
 
     @property
     def rolled_damage(self):
@@ -148,6 +142,20 @@ class Attack(Action):
         LOG.debug('Found %s offensive modifiers.', len(modifiers))
         self._update_metadata({OFFENSIVE_MODIFIERS: modifiers})
         return modifiers
+
+    def get_effective_armor(self, hit_location):
+        armor = self.target.get_armor(hit_location)
+        for modifier in self.modifer_iterator():
+            armor = modifier.modify_armor(self, armor)
+        return armor
+
+    def on_hit_effects(self):
+        for modifier in self.modifer_iterator():
+            modifier.on_hit(self)
+
+    def on_damage_effects(self, effective_damage):
+        for modifier in self.modifer_iterator():
+            modifier.on_damage(self, effective_damage)
 
     def is_melee(self):
         return self.weapon.is_melee()

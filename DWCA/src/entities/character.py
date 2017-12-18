@@ -1,5 +1,3 @@
-from __builtin__ import property
-
 from definitions import WEAPONS, FORCE_FIELD
 from src.action.melee_attack import MeleeAttack
 from src.action.ranged_attack import RangedAttack
@@ -11,8 +9,7 @@ from src.entities.entity import Entity
 from src.entities.libraries import read_character
 from src.entities.species import is_alien_species
 from src.hit_location import HITLOC_ALL, get_hit_location_name
-from src.modifiers.qualities import Felling, Toxic, DrainLife, Hellfire, Snare,\
-    Flexible, WarpWeapon
+from src.modifiers.qualities import Felling
 from src.modifiers.traits import Daemonic
 from src.situational.cover import get_cover_armor_for_hitloc
 from src.situational.force_field import ForceField
@@ -33,45 +30,23 @@ def get_char(char_name):
 
 class Character(Entity):
 
-    @property
-    def force_field(self):
-        force_field_definition = self.get_stat(FORCE_FIELD)
-        if force_field_definition is None:
-            return None
-        else:
-            return ForceField(force_field_definition)
-
-    @property
-    def weapons(self):
-        return self.get_stat(WEAPONS, [])
-
     def mitigate_hit(self, attack, hit):
-        self._on_hit(attack)
-        armor = self.get_armor(hit.hit_location)
-        armor = Hellfire.handle_hellfire_armor(attack, armor)
-        armor = WarpWeapon.handle_warp_weapon(attack, armor)
+        attack.on_hit_effects()
+        armor = attack.get_effective_armor(hit.hit_location)
         toughness = self.get_modded_toughness_bonus(attack)
         effective_damage = hit.calculate_effective_damage(
             armor, toughness)
         LOG.info('%s was hit in %s for %s damage.', self,
                  hit.hit_location, effective_damage)
-        self._on_damage(attack, effective_damage)
+        attack.on_damage_effects(effective_damage)
         return effective_damage
-
-    def _on_hit(self, attack):
-        Snare.handle_snare(attack)
-        Flexible.handle_flexible(attack)
-
-    def _on_damage(self, attack, effective_damage):
-        Toxic.handle_toxic(attack, effective_damage)
-        DrainLife.handle_drain_life(attack, effective_damage)
 
     def get_num_melee_attacks(self):
         num_attacks = 1
         if self.swift_attack is not None:
             num_attacks += 1
-        if self.lightning_attack is not None:
-            num_attacks += 1
+            if self.lightning_attack is not None:
+                num_attacks += 1
         if self.multiple_arms is not None:
             num_attacks += 1
         LOG.info('%s can make %s melee attacks.', self, num_attacks)
@@ -100,38 +75,6 @@ class Character(Entity):
                             attacker=self,
                             target=target,
                             firemode=firemode)
-
-    @property
-    def species(self):
-        return self.get_stat(SPECIES, 'N/A')
-
-    @property
-    def traits(self):
-        traits = self.get_stat(TRAITS, default={})
-        return traits
-
-    @property
-    def talents(self):
-        talents = self.get_stat(TALENTS, default={})
-        return talents
-
-    @property
-    def modifiers(self):
-        modifiers = {}
-        modifiers.update(self.traits)
-        modifiers.update(self.talents)
-        return modifiers
-
-    @property
-    def characteristics(self):
-        return self.get_stat(CHARACTERISTICS, default={})
-
-    @property
-    def armor(self):
-        return self.get_stat(ARMOR, default={})
-
-    def is_alien(self):
-        return is_alien_species(self.species)
 
     def get_armor(self, hit_location):
         hitloc_name = get_hit_location_name(hit_location)
@@ -176,3 +119,47 @@ class Character(Entity):
         else:
             multiplier = DEFAULT_CHARACTERISTIC_MULTIPLIER
         return multiplier
+
+    @property
+    def force_field(self):
+        force_field_definition = self.get_stat(FORCE_FIELD)
+        if force_field_definition is None:
+            return None
+        else:
+            return ForceField(force_field_definition)
+
+    @property
+    def weapons(self):
+        return self.get_stat(WEAPONS, ['N/A'])
+
+    @property
+    def species(self):
+        return self.get_stat(SPECIES, 'N/A')
+
+    @property
+    def traits(self):
+        traits = self.get_stat(TRAITS, default={})
+        return traits
+
+    @property
+    def talents(self):
+        talents = self.get_stat(TALENTS, default={})
+        return talents
+
+    @property
+    def modifiers(self):
+        modifiers = {}
+        modifiers.update(self.traits)
+        modifiers.update(self.talents)
+        return modifiers
+
+    @property
+    def characteristics(self):
+        return self.get_stat(CHARACTERISTICS, default={})
+
+    @property
+    def armor(self):
+        return self.get_stat(ARMOR, default={})
+
+    def is_alien(self):
+        return is_alien_species(self.species)

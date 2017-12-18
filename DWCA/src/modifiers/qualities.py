@@ -12,12 +12,11 @@ class RazorSharp(Modifier):
 
     name = 'razor_sharp'
 
-    def modify_penetration(self, attack, current_pen):
+    def modify_penetration(self, attack, current_penetration):
         if attack.degrees_of_success >= 2:
-            weapons_penetration = attack.weapon.penetration
-            current_pen += weapons_penetration
+            current_penetration += attack.weapon.penetration
             LOG.debug('Double penetration from RazorSharp.')
-        return current_pen
+        return current_penetration
 
 
 class OverHeats(Modifier):
@@ -53,8 +52,9 @@ class Tearing(Modifier):
     name = 'tearing'
 
     def modify_tearing_dice(self, attack, current_tearing_dice):
+        current_tearing_dice += 1
         LOG.debug('+1 tearing dice from Tearing.')
-        return current_tearing_dice + 1
+        return current_tearing_dice
 
 
 class Felling(Modifier):
@@ -80,11 +80,10 @@ class DrainLife(Modifier):
 
     name = 'drain_life'
 
-    @staticmethod
-    def handle_drain_life(attack, effective_damage):
+    def on_damage(self, attack, effective_damage):
         if attack.drain_life is not None \
                 and effective_damage > 0:
-            message = ('DRAIN_FILE: Make an opposed WP Test. '
+            message = ('DRAIN_LIFE: Make an opposed WP Test. '
                        'Each DoS for %s deals 1d10 true damage to %s.')
             queue_message(message % (attack.attacker, attack.target))
 
@@ -109,8 +108,7 @@ class Toxic(Modifier):
 
     name = 'toxic'
 
-    @staticmethod
-    def handle_toxic(attack, effective_damage):
+    def on_damage(self, attack, effective_damage):
         toxic_value = attack.toxic
         if toxic_value is not None and effective_damage > 0:
             penalty = 5 * effective_damage
@@ -145,12 +143,12 @@ class ForceWeapon(Modifier):
             LOG.info('+%s damage from ForceWeapon + PsyRating', psy_rating)
         return current_damage
 
-    def modify_penetration(self, attack, current_pen):
+    def modify_penetration(self, attack, current_penetration):
         psy_rating = attack.psy_rating
         if psy_rating is not None:
-            current_pen += psy_rating
+            current_penetration += psy_rating
             LOG.info('+%s penetration from ForceWeapon + PsyRating', psy_rating)
-        return current_pen
+        return current_penetration
 
 
 class Accurate(Modifier):
@@ -172,14 +170,15 @@ class Blast(Modifier):
 
     name = 'blast'
 
-    def modify_num_hits(self, attack, current_num_hits):
+    @staticmethod
+    def handle_blast(attack, num_hits):
         blast_value = attack.blast
-        queue_message('BLAST: Everyone within %sm of %s must dodge or take damage.' % (
-            blast_value, attack.target))
-        if attack.target.is_horde():
-            bonus_hits = max(1, blast_value - 1)
-            current_num_hits += bonus_hits
-        return current_num_hits
+        if blast_value is not None:
+            queue_message('BLAST: Everyone within %sm of %s must dodge or take damage.' % (
+                blast_value, attack.target))
+            if attack.target.is_horde():
+                num_hits = num_hits * blast_value
+        return num_hits
 
 
 class PowerField(Modifier):
@@ -209,9 +208,8 @@ class Snare(Modifier):
 
     name = 'snare'
 
-    @staticmethod
-    def handle_snare(attack):
-        if attack.snare:
+    def on_hit(self, attack):
+        if attack.snare is not None:
             queue_message('SNARE: %s must make AGI test or be immobilised.')
 
 
@@ -219,8 +217,7 @@ class DeadlySnare(Modifier):
 
     name = 'deadly_snare'
 
-    @staticmethod
-    def handle_deadly_snare(attack):
+    def on_hit(self, attack):
         if attack.deadly_snare is not None:
             damage_roll_base = '{dice}d10+{flat_damage} Pen: {pen}'
             damage_roll = damage_roll_base.format(dice=attack.dice,
@@ -235,22 +232,20 @@ class Flexible(Modifier):
 
     name = 'flexible'
 
-    @staticmethod
-    def handle_flexible(attack):
-        if attack.flexible:
-            queue_message('FLEXIBLE: Attack cannot be parried.')
+    def on_hit(self, attack):
+        _ = attack
+        queue_message('FLEXIBLE: Attack cannot be parried.')
 
 
 class Hellfire(Modifier):
 
     name = 'hellfire'
 
-    @staticmethod
-    def handle_hellfire_armor(attack, armor):
-        if attack.hellfire is not None and attack.target.natural_armor is not None:
+    def modify_armor(self, attack, current_armor):
+        if attack.target.natural_armor is not None:
             LOG.info('Hellfire negates natural armor.')
-            armor = 0
-        return armor
+            current_armor = 0
+        return current_armor
 
     @staticmethod
     def handle_hellfire_magnitude_damage(attack, magnitude_damage):
@@ -264,18 +259,19 @@ class WarpWeapon(Modifier):
 
     name = 'warp_weapon'
 
-    @staticmethod
-    def handle_warp_weapon(attack, current_armor):
-        # TODO: check for "holy armor"
-        if attack.warp_weapon is not None:
-            LOG.info('WarpWeapon ignores mundane armor.')
-            current_armor = 0
+    def modify_armor(self, attack, current_armor):
+        LOG.info('WarpWeapon ignores mundane armor.')
+        current_armor = 0
         return current_armor
 
 
 class Devastating(Modifier):
 
     name = 'devastating'
+
+    def on_hit(self, attack):
+        queue_message('DEVASTATING: %s takes one cohesion damage.' %
+                      attack.target)
 
     @staticmethod
     def handle_devastating(attack, magnitude_damage):

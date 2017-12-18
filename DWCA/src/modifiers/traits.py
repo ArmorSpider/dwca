@@ -1,6 +1,5 @@
 from src.dwca_log.log import get_log
 from src.modifiers.modifier import Modifier
-from src.situational.state_manager import has_charged
 
 
 LOG = get_log(__name__)
@@ -81,13 +80,13 @@ class BrutalCharge(Modifier):
     name = 'brutal_charge'
 
     def modify_damage(self, attack, current_damage):
-        if attack.attacker.is_horde() is False and has_charged() is True:
+        if attack.attacker.is_horde() is False and attack.charged is not None:
             LOG.info('+3 damage from BrutalCharge')
             current_damage += 3
         return current_damage
 
     def modify_num_dice(self, attack, current_num_dice):
-        if attack.attacker.is_horde() is True and has_charged() is True:
+        if attack.attacker.is_horde() is True and attack.charged is not None:
             LOG.info('+1 dice from BrutalCharge for hordes.')
             current_num_dice += 1
         return current_num_dice

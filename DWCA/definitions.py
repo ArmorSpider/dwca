@@ -27,7 +27,7 @@ MODIFIER_EFFECTS = 'modifier_effects'
 # States
 AIMED = 'aimed'
 OVERLOADED = 'overloaded'
-CHARGE = 'charge'
+CHARGED = 'charged'
 COVER = 'cover'
 
 # Commands

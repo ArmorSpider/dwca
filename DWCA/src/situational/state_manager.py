@@ -1,4 +1,4 @@
-from definitions import AIMED, OVERLOADED, CHARGE, COVER
+from definitions import AIMED, OVERLOADED, CHARGED, COVER
 
 
 class StateManager(object):
@@ -16,7 +16,7 @@ class StateManager(object):
     def update(event):
         StateManager.aimed = bool(event.get(AIMED))
         StateManager.overloaded = bool(event.get(OVERLOADED))
-        StateManager.charge = bool(event.get(CHARGE))
+        StateManager.charge = bool(event.get(CHARGED))
         StateManager.cover = int(event.get(COVER, 0))
 
 

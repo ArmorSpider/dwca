@@ -1,7 +1,7 @@
 import sys
 
 from definitions import FIREMODE, WEAPON, NUM_ATTACKS, ROLL_TARGET, ATTACKER,\
-    TARGET, OVERLOADED, CHARGE, AIMED, COVER, AD_HOC
+    TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC
 from src.action.attack import Attack
 from src.action.hit import Hit
 from src.cli.match_map import get_default_match_map
@@ -73,6 +73,15 @@ class CLICommand(object):
             event[key] = True
         return event
 
+    def _toggle_adhoc_key(self, key, event):
+        ad_hoc = event.get(AD_HOC, {})
+        if key in ad_hoc:
+            ad_hoc.pop(key)
+        else:
+            ad_hoc[key] = True
+        event[AD_HOC] = ad_hoc
+        return event
+
 
 class CommandHelp(CLICommand):
 
@@ -96,7 +105,12 @@ class ComandAdHoc(CLICommand):
     def _process_event(self, event):
         input_string = raw_input('Enter ad-hoc dict string: ')
         ad_hoc_dict = quick_dict_parse(input_string)
-        event[AD_HOC] = ad_hoc_dict
+        if ad_hoc_dict == {}:
+            event[AD_HOC] = ad_hoc_dict
+        else:
+            ad_hoc_state = event.get(AD_HOC, {})
+            ad_hoc_state.update(ad_hoc_dict)
+            event[AD_HOC] = ad_hoc_state
         return event
 
 
@@ -254,7 +268,7 @@ class CommandCharge(CLICommand):
     help = 'Toggle charge TRUE/FALSE for current event.'
 
     def _process_event(self, event):
-        event = self._toggle_key(CHARGE, event)
+        event = self._toggle_adhoc_key(CHARGED, event)
         return event
 
 
