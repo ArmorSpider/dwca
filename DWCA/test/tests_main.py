@@ -34,7 +34,7 @@ class Test(unittest.TestCase):
         flat_damage = attack.flat_damage
         expected_damage = 10 + flat_damage
 
-        actual_damage = attack.total_damage
+        actual_damage = attack.raw_damage
         self.assertEqual(expected_damage, actual_damage)
 
     def test_deathwatch_training_should_auto_confirm_against_aliens(self):
@@ -46,7 +46,7 @@ class Test(unittest.TestCase):
         queue_d10_rolls([10, 0, 0, 5])  # two tearing dice
         flat_damage = attack.flat_damage
         expected_damage = 10 + 5 + flat_damage
-        actual_damage = attack.total_damage
+        actual_damage = attack.raw_damage
         self.assertEqual(expected_damage, actual_damage)
 
     def test_deathwatch_training_should_not_auto_confirm_against_non_aliens(self):
@@ -58,7 +58,7 @@ class Test(unittest.TestCase):
         queue_d10_rolls([10])
         flat_damage = attack.flat_damage
         expected_damage = 10 + flat_damage
-        actual_damage = attack.total_damage
+        actual_damage = attack.raw_damage
         self.assertEqual(expected_damage, actual_damage)
 
     def test_felling_should_reduce_toughness_multiplier_but_not_below_1(self):

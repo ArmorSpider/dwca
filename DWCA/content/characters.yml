@@ -551,8 +551,7 @@ marius:
   name: Marius the Parry-God
   talents: {deathwatch_training: true, hunter_of_aliens: true, slaughter_the_swarm: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
-  weapons: [marius_honour_blades, hellfire_bolt_pistol, bolter, marius_executioner_axe,
-    marius_lightning_claw, marius_thunder_hammer]
+  weapons: [marius_honour_blades, hellfire_bolt_pistol, bolter, marius_executioner_axe]
 namael:
   armor: {body: 14, head: 8, left_arm: 12, left_leg: 8, right_arm: 8, right_leg: 8}
   characteristics: {strength: 42, toughness: 43}

@@ -50,7 +50,8 @@ class Action(object):
             reversed_string += '0'
         return int(reversed_string)
 
-    def get_hit_location(self):
+    @property
+    def hit_location(self):
         reversed_roll = self.get_reverse()
         hit_location = get_hit_location(reversed_roll)
         return hit_location

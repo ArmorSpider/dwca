@@ -43,8 +43,9 @@ class Modifier(object):
         _ = attack
         return effective_damage
 
-    def modify_armor(self, attack, current_armor):
+    def modify_armor(self, attack, current_armor, hit_location):
         _ = attack
+        _ = hit_location
         return current_armor
 
 

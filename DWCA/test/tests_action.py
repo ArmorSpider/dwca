@@ -33,7 +33,7 @@ class Test(unittest.TestCase):
         for input_value, expected_hitloc in zip(input_values, expected):
             action = Action()
             action.try_action(roll_target=100, roll_result=input_value)
-            actual = action.get_hit_location()
+            actual = action.hit_location
             self.assertEqual(expected_hitloc, actual)
 
     def assert_dos_calculation(self, action, dos):

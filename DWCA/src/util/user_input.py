@@ -1,4 +1,5 @@
 from src.dwca_log.log import get_log
+from src.errors import ChooseFromListFailedError
 
 LOG = get_log(__name__)
 
@@ -20,12 +21,20 @@ def ask_user(prompt):
     return result
 
 
+def try_user_choose_from_list(list_):
+    try:
+        return user_choose_from_list(list_)
+    except (SyntaxError, IndexError):
+        raise ChooseFromListFailedError('Choose from list failed.')
+
+
 def user_choose_from_list(list_):
     if len(list_) == 1:
         user_choice = list_[0]
     else:
-        for index, string_ in enumerate(list_):
-            LOG.info('%s: %s', index + 1, string_)
+        list_.sort()
+        for index, string_ in enumerate(list_, start=1):
+            LOG.info('%s: %s', index, string_)
         index = input('Enter a number: (1-%s) ' % len(list_))
         user_choice = list_[index - 1]
     return user_choice

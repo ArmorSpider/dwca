@@ -95,11 +95,9 @@ class BrutalCharge(Modifier):
 class PowerArmour(Modifier):
 
     name = 'power_armour'
-    message = '+2 flat damage from Strength.'
 
     def modify_damage(self, attack, current_damage):
         if attack.is_melee():
             LOG.debug('Added 2 flat damage from Power Armour strength bonus.')
             current_damage += 2
-            self.add_to_metadata(attack)
         return current_damage

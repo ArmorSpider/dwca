@@ -20,9 +20,12 @@ AD_HOC = 'ad_hoc'
 DEGREES_OF_SUCCESS = 'degrees_of_success'
 NUM_HITS = 'num_hits'
 ROLLED_DAMAGE = 'rolled_damage'
-TOTAL_DAMAGE = 'total_damage'
+RAW_DAMAGE = 'raw_damage'
 OFFENSIVE_MODIFIERS = 'offensive_modifiers'
+DEFENSIVE_MODIFIERS = 'defensive_modifiers'
 MODIFIER_EFFECTS = 'modifier_effects'
+EFFECTIVE_DAMAGE = 'effective_damage'
+HIT_LOCATIONS = 'hit_locations'
 
 # States
 AIMED = 'aimed'

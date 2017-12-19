@@ -1,8 +1,6 @@
 from src.dice import roll_damage_dice, roll_action_dice
 from src.dwca_log.log import get_log
-from src.modifiers.qualities import Volatile, Proven, Hellfire
-from src.modifiers.talents import DeathwatchTraining
-from src.modifiers.traits import TouchedByTheFates
+from src.modifiers.qualities import Proven
 
 
 LOG = get_log(__name__)
@@ -18,13 +16,12 @@ def roll_normal_damage(real_dice, tearing_dice, attack=None):
     LOG.debug('Rolled normal damage: %s', actual_results)
     if attack is not None:
         actual_results = Proven.handle_proven(attack, actual_results)
-        actual_results = handle_dos_minimum_damage(attack, actual_results)
     return actual_results
 
 
 def handle_dos_minimum_damage(attack, roll_results):
     dos = attack.degrees_of_success
-    capped_dos = min(dos, 9)  # avoid righteous fury from DoS
+    capped_dos = min(dos, 10)
     sorted_results_descending = sorted(roll_results, reverse=True)
     minimum_value = sorted_results_descending.pop()
     updated_value = max(capped_dos, minimum_value)

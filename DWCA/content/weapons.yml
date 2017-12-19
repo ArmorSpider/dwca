@@ -620,17 +620,6 @@ marius_executioner_axe:
   name: Astartes Executioner Axe
   penetration: 8
   qualities: {felling: 1, power_field: true, razor_sharp: true, unwieldy: true}
-marius_hesh_bolter:
-  class: Basic
-  damage_type: X
-  dice: 1
-  flat_damage: 7
-  name: Marius' Hesh Bolter
-  penetration: 4
-  qualities: {accurate: true, reliable: true, tearing: true, toxic: 1d10}
-  range: 50
-  semi_auto: 3
-  single_shot: 1
 marius_honour_blades:
   class: Melee
   damage_type: E
@@ -639,22 +628,6 @@ marius_honour_blades:
   name: Marius' Honour Blades
   penetration: 6
   qualities: {power_field: true, razor_sharp: true}
-marius_lightning_claw:
-  class: Melee
-  damage_type: E
-  dice: 1
-  flat_damage: 8
-  name: Astartes Lightning Claw
-  penetration: 8
-  qualities: {damage_per_dos: 1, power_field: true, proven: 4, razor_sharp: true}
-marius_thunder_hammer:
-  class: Melee
-  damage_type: E
-  dice: 2
-  flat_damage: 7
-  name: Astartes Thunder Hammer
-  penetration: 9
-  qualities: {concussive: true, power_field: true, razor_sharp: true, unwieldy: true}
 mc_avenger_shuriken_catapult:
   _package: eldar
   class: Basic

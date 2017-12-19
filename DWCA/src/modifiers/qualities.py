@@ -2,7 +2,6 @@ from src.cli.message_queue import queue_message
 from src.dwca_log.log import get_log
 from src.entities.char_stats import STAT_TGH
 from src.modifiers.modifier import Modifier
-from src.situational.state_manager import StateManager
 
 
 LOG = get_log(__name__)
@@ -157,7 +156,7 @@ class Accurate(Modifier):
 
     def modify_num_dice(self, attack, current_num_dice):
         if attack.degrees_of_success >= 2:
-            if StateManager.aimed is True:
+            if attack.aimed is True:
                 current_num_dice += 1
                 LOG.info('+1d10 from Accurate with DoS >= 2')
                 if attack.degrees_of_success >= 4:
@@ -241,7 +240,7 @@ class Hellfire(Modifier):
 
     name = 'hellfire'
 
-    def modify_armor(self, attack, current_armor):
+    def modify_armor(self, attack, current_armor, hit_location):
         if attack.target.natural_armor is not None:
             LOG.info('Hellfire negates natural armor.')
             current_armor = 0
@@ -259,7 +258,7 @@ class WarpWeapon(Modifier):
 
     name = 'warp_weapon'
 
-    def modify_armor(self, attack, current_armor):
+    def modify_armor(self, attack, current_armor, hit_location):
         LOG.info('WarpWeapon ignores mundane armor.')
         current_armor = 0
         return current_armor

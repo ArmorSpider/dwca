@@ -1,5 +1,6 @@
 from lazy.lazy import lazy
 
+from definitions import FIREMODE
 from src.action.attack import Attack
 from src.dwca_log.log import get_log
 from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
@@ -44,6 +45,7 @@ class RangedAttack(Attack):
         else:
             raise NoFiremodeError(
                 '"%s" did not match any known firemode.' % self.firemode)
+        self._update_metadata({FIREMODE: self.firemode})
         LOG.debug('Max hits: %s. RoF cap: %s', num_shots, self.rate_of_fire)
         num_shots = min(num_shots, self.rate_of_fire)
         num_shots = Storm.handle_storm(self, num_shots)

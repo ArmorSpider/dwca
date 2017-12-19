@@ -1,30 +1,29 @@
 import sys
 
-from definitions import FIREMODE, WEAPON, NUM_ATTACKS, ROLL_TARGET, ATTACKER,\
-    TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC
-from src.action.attack import Attack
+from definitions import WEAPON, ROLL_TARGET, ATTACKER,\
+    TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC, ROLL_RESULT
 from src.action.hit import Hit
+from src.cli.auto_module import auto_assemble
 from src.cli.match_map import get_default_match_map
 from src.cli.message_queue import log_messages
 from src.cli.quick_dict import quick_dict_parse
 from src.cli.table import print_table, print_entity_dict
 from src.dwca_log.log import get_log
-from src.entities import SEMI_AUTO, FULL_AUTO, CHARACTERISTICS,\
+from src.entities import CHARACTERISTICS,\
     SKILLS
-from src.entities.char_stats import STAT_WS, STAT_BS
+from src.entities.character import get_char
 from src.entities.libraries import get_weapon_library, get_character_library,\
     MasterLibrary
-from src.entities.weapon import get_weapon
-from src.handler import build_attacker, main_handler, check_required_keys,\
-    build_target
-from src.hit_location import BODY
+from src.handler import main_handler, check_required_keys,\
+    construct_attack
+from src.hitloc_series import build_hitloc_iterator
 from src.save_manager import SaveManager
 from src.situational.state_manager import StateManager
 from src.util.dict_util import pretty_print,\
     sort_strings_by_length
 from src.util.read_file import read_dospedia
 from src.util.string_util import normalize_string
-from src.util.user_input import user_choose_from_list, user_input_int
+from src.util.user_input import try_user_choose_from_list, user_input_int
 
 
 LOG = get_log(__name__)
@@ -73,12 +72,12 @@ class CLICommand(object):
             event[key] = True
         return event
 
-    def _toggle_adhoc_key(self, key, event):
+    def _toggle_adhoc_key(self, key, event, value=True):
         ad_hoc = event.get(AD_HOC, {})
         if key in ad_hoc:
             ad_hoc.pop(key)
         else:
-            ad_hoc[key] = True
+            ad_hoc[key] = value
         event[AD_HOC] = ad_hoc
         return event
 
@@ -127,19 +126,6 @@ class CommandRun(CLICommand):
         return event
 
 
-class CommandSkills(CLICommand):
-
-    keyword = 'skills'
-    required_keys = [ATTACKER]
-    help = 'Show characteristics and skills for attacker.'
-
-    def _process_event(self, event):
-        attacker = build_attacker(event)
-        print_entity_dict(attacker, SKILLS)
-        print_entity_dict(attacker, CHARACTERISTICS)
-        return event
-
-
 class CommandReload(CLICommand):
 
     keyword = 'reload'
@@ -153,12 +139,14 @@ class CommandReload(CLICommand):
 class CommandInfo(CLICommand):
 
     keyword = 'info'
-    required_keys = [ATTACKER]
-    help = 'Show talents & traits for attacker.'
+    required_keys = []
+    help = 'Show talents & traits for character.'
 
     def _process_event(self, event):
-        attacker = build_attacker(event)
-        modifiers = attacker.modifiers
+        available_characters = get_character_library().keys()
+        character_name = try_user_choose_from_list(available_characters)
+        character = get_char(character_name)
+        modifiers = character.modifiers
         modifier_names = sort_strings_by_length(modifiers.keys())
         dospedia = read_dospedia()
         table_data = []
@@ -169,7 +157,9 @@ class CommandInfo(CLICommand):
                 modifier, modifier_value)
             row = [full_modifier_name, dospedia_entry]
             table_data.append(row)
-        print_table(table_data, attacker.name, headers=False)
+        print_table(table_data, character.name, headers=False)
+        print_entity_dict(character, SKILLS)
+        print_entity_dict(character, CHARACTERISTICS)
         return event
 
     def _build_full_modifier_name(self, modifier_name, modifier_value):
@@ -200,19 +190,38 @@ class CommandPackage(CLICommand):
         loaded_packages = MasterLibrary.get_loaded_packages()
         non_loaded_packages = [
             package for package in known_packages if package not in loaded_packages]
-        package_name = user_choose_from_list(non_loaded_packages)
+        package_name = try_user_choose_from_list(non_loaded_packages)
         MasterLibrary.add_package(package_name)
         return event
 
 
-class CommandWeapon(CLICommand):
+class CommandEquip(CLICommand):
 
-    keyword = 'weapon'
+    keyword = 'equip'
     help = 'Choose weapon from a list of available weapons.'
 
     def _process_event(self, event):
-        weapon_name = user_choose_from_list(get_weapon_library().keys())
+        weapon_name = try_user_choose_from_list(get_weapon_library().keys())
         event[WEAPON] = weapon_name
+        return event
+
+
+class CommandNew(CLICommand):
+
+    keyword = 'new'
+    help = 'Configure new attack.'
+
+    def _process_event(self, event):
+        event.clear()
+        LOG.info('Select attacker: ')
+        character_name = try_user_choose_from_list(
+            get_character_library().keys())
+        event[ATTACKER] = character_name
+        LOG.info('Select target: ')
+        character_name = try_user_choose_from_list(
+            get_character_library().keys())
+        event[TARGET] = character_name
+        event = auto_assemble(event)
         return event
 
 
@@ -222,7 +231,8 @@ class CommandAttacker(CLICommand):
     help = 'Choose attacker from a list of available characters.'
 
     def _process_event(self, event):
-        character_name = user_choose_from_list(get_character_library().keys())
+        character_name = try_user_choose_from_list(
+            get_character_library().keys())
         event[ATTACKER] = character_name
         return event
 
@@ -233,7 +243,8 @@ class CommandTarget(CLICommand):
     help = 'Choose target from a list of available characters.'
 
     def _process_event(self, event):
-        character_name = user_choose_from_list(get_character_library().keys())
+        character_name = try_user_choose_from_list(
+            get_character_library().keys())
         event[TARGET] = character_name
         return event
 
@@ -255,10 +266,7 @@ class CommandCover(CLICommand):
 
     def _process_event(self, event):
         armor_value = user_input_int('Enter cover armor value: ')
-        if armor_value:
-            event[COVER] = armor_value
-        else:
-            event.pop(COVER, None)
+        event = self._toggle_adhoc_key(COVER, event, armor_value)
         return event
 
 
@@ -278,7 +286,7 @@ class CommandAim(CLICommand):
     help = 'Toggle aim TRUE/FALSE for the current event'
 
     def _process_event(self, event):
-        event = self._toggle_key(AIMED, event)
+        event = self._toggle_adhoc_key(AIMED, event)
         return event
 
 
@@ -313,27 +321,26 @@ class CommandDamage(CLICommand):
 
     keyword = 'damage'
     help = 'Manually enter the total damage of hits and calculate effective damage.'
-    required_keys = [ATTACKER, TARGET]
+    required_keys = [ATTACKER, TARGET, WEAPON]
 
     def _process_event(self, event):
         damage = 0
         hits = []
         penetration = user_input_int('Enter penetration: ')
+        roll_result = user_input_int('Enter roll result: ')
+        event[ROLL_RESULT] = roll_result
+        attack = construct_attack(event)
+        hitloc_iterator = build_hitloc_iterator(attack.hit_location)
 
         while damage != 'done':
             damage = raw_input('Enter damage: ')
             if damage == 'done':
                 continue
-            hit = Hit(BODY, damage, penetration)
+            hit = Hit(hitloc_iterator.next(), damage, penetration)
             hits.append(hit)
         StateManager.update(event)
-        target = build_target(event)
-        attacker = build_attacker(event)
-        dummy_weapon = get_weapon('dummy')
-        attack = Attack(weapon=dummy_weapon,
-                        attacker=attacker,
-                        target=target)
-        attack.apply_hits(custom_hits=hits)
+        attack.apply_hits(hits=hits)
+        log_messages()
         return event
 
 
@@ -344,30 +351,7 @@ class CommandAuto(CLICommand):
     required_keys = [ATTACKER]
 
     def _process_event(self, event):
-        attacker = build_attacker(event)
-        weapon_name = user_choose_from_list(attacker.weapons)
-        weapon = get_weapon(weapon_name)
-        if weapon.is_melee():
-            num_attacks = attacker.get_num_melee_attacks()
-            roll_target = attacker.get_characteristic(STAT_WS)
-        else:
-            num_attacks = attacker.get_num_ranged_attacks()
-            roll_target = attacker.get_characteristic(STAT_BS)
-            firemodes = weapon.firemodes.keys()
-            firemode = user_choose_from_list(firemodes)
-            if firemode == SEMI_AUTO:
-                LOG.info('+10 to roll target from semi auto.')
-                roll_target += 10
-            elif firemode == FULL_AUTO:
-                LOG.info('+20 to roll target from full auto.')
-                roll_target += 20
-            if weapon.twin_linked is not None:
-                LOG.info('+20 to roll target from twin-linked.')
-                roll_target += 20
-            event[FIREMODE] = firemode
-        event[WEAPON] = weapon_name
-        event[NUM_ATTACKS] = num_attacks
-        event[ROLL_TARGET] = roll_target
+        event = auto_assemble(event)
         return event
 
 

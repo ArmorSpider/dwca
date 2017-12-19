@@ -21,3 +21,7 @@ class CharNotFoundError(LibraryError):
 
 class NoFiremodeError(CLIError):
     pass
+
+
+class ChooseFromListFailedError(CLIError):
+    pass

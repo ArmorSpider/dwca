@@ -1,9 +1,10 @@
 from definitions import FIREMODE, ROLL_TARGET, WEAPON, ATTACKER, ATTACKER_MAG,\
-    TARGET, TARGET_MAG, NUM_ATTACKS, AD_HOC
+    TARGET, TARGET_MAG, NUM_ATTACKS, AD_HOC, ROLL_RESULT
 from src.dwca_log.log import get_log
 from src.entities.character import get_char
 from src.entities.horde import get_horde
 from src.entities.weapon import get_weapon
+from src.util.dict_util import pretty_print
 
 
 LOG = get_log(__name__)
@@ -11,12 +12,9 @@ LOG = get_log(__name__)
 
 def main_handler(event):
     attack_damages = multiple_attacks(event)
-    num_damages = len(attack_damages)
-    total_damage = sum(attack_damages)
-    dps = total_damage / num_damages
-    LOG.info('All attacks combined damage: %s (%s)', total_damage,
+    raw_damage = sum(attack_damages)
+    LOG.info('All attacks combined damage: %s (%s)', raw_damage,
              ' + '.join([str(attack_damage) for attack_damage in attack_damages]))
-    LOG.info('Average Damage/attack: %s', dps)
 
 
 def check_required_keys(event, required_keys):
@@ -37,8 +35,9 @@ def construct_attack(event):
     attack = attacker.attack(weapon, target, firemode)
     attack.ad_hoc_modifiers = ad_hoc_modifiers
     roll_target = event[ROLL_TARGET]
+    roll_result = event.get(ROLL_RESULT, None)
     attack.try_action(roll_target=roll_target,
-                      roll_result=None)
+                      roll_result=roll_result)
     return attack
 
 
@@ -69,7 +68,8 @@ def build_target(event):
 def single_attack(event, attack_number):
     LOG.info('________[ATTACK %s]________', attack_number)
     attack = construct_attack(event)
-    attack_damage = attack.apply_hits()
+    attack_damage = attack.apply_attack()
+    # pretty_print(attack.metadata)
     return attack_damage
 
 
