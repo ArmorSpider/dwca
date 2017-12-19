@@ -764,6 +764,132 @@ omnissian_axe:
   name: Omnissian Axe (AstartesPattern)
   penetration: 6
   qualities: {power_field: true, unbalanced: true}
+plasma_rifle:
+  _package: tau
+  class: Basic
+  name: Plasma Rifle
+  damage_type: E
+  range: 90
+  dice: 2
+  flat_damage: 9
+  penetration: 10
+  single_shot: 1
+  semi_auto: 2
+  qualities: {arm_weapon_mounting: true, tearing: true}
+twin_plasma_rifle:
+  _package: tau
+  class: Basic
+  name: Twin-Linked Plasma Rifle
+  damage_type: E
+  range: 90
+  dice: 2
+  flat_damage: 9
+  penetration: 10
+  single_shot: 1
+  semi_auto: 2
+  qualities: {arm_weapon_mounting: true, tearing: true, twin_linked: true}
+missile_pod:
+  _package: tau
+  name: Missile Pod
+  class: Basic
+  damage_type: X
+  range: 90
+  single_shot: 1
+  semi_auto: 2
+  dice: 3
+  flat_damage: 8
+  penetration: 6
+  qualities: {arm_weapon_mounting: true}
+burst_cannon:
+  _package: tau
+  name: Burst Cannon
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  penetration: 4
+  range: 60
+  full_auto: 10
+  qualities: {arm_weapon_mounting: true}
+pulse_rifle:
+  _package: tau
+  name: Pulse Rifle
+  class: Basic
+  damage_type: E
+  range: 150
+  single_shot: 1
+  semi_auto: 3
+  dice: 1
+  flat_damage: 12
+  penetration: 4
+  qualities: {gyro_stabilised: true}
+pulse_carbine:
+  _package: tau
+  class: Basic
+  name: Pulse Carbine
+  damage_type: E
+  range: 60
+  single_shot: 1
+  dice: 1
+  flat_damage: 12
+  penetration: 4
+  qualities: {devastating: 1, gyro_stabilised: true}
+twin_pulse_carbine:
+  _package: tau
+  class: Basic
+  name: Twin-Linked Pulse Carbine
+  damage_type: E
+  range: 60
+  single_shot: 1
+  dice: 1
+  flat_damage: 12
+  penetration: 4
+  qualities: {devastating: 1, gyro_stabilised: true, twin_linked: true}
+twin_broadside_railgun:
+  _package: tau
+  name: Twin-Linked Broadside Railgun
+  damage_type: I
+  class: Mounted
+  range: 500
+  single_shot: 1
+  dice: 3
+  flat_damage: 30
+  penetration: 15
+  qualities: {twin_linked: true}
+twin_ion_cannon:
+  _package: tau
+  class: Mounted
+  damage_type: E
+  range: 200
+  name: Twin-Linked Ion Cannon
+  dice: 3
+  flat_damage: 10
+  penetration: 9
+  single_shot: 1
+  full_auto: 3
+  qualities: {twin_linked: true}
+smart_missile_system:
+  _package: tau
+  class: Mounted
+  name: Smart Missile System
+  damage_type: X
+  range: 90
+  full_auto: 4
+  dice: 1
+  flat_damage: 12
+  penetration: 4
+  qualities: {arm_weapon_mounting: true}
+pulse_pistol:
+  _package: tau
+  class: Pistol
+  name: Pulse Pistol
+  damage_type: E
+  range: 30
+  single_shot: 1
+  semi_auto: 2
+  dice: 1
+  flat_damage: 12
+  penetration: 4
 plasma_blastgun:
   _package: empire
   class: Mounted

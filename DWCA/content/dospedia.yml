@@ -38,6 +38,9 @@ crippling_strike: If crit damage on melee, +4 damage.
 crushing_blow: +2 melee damage.
 daemonic: Like unnatural toughness, but ignored by force weapons, psychic powers,
   holy attacks or other daemonic things. Immune to poison and disease.
+daemonic_possession: May fire all weapons as half action, even if in melee. If melee,
+  half action to make one attack.
+daemonic_presence: Nearby enemies get -10 to WP tests (-20 if master daemon)
 dark_sight: Can see in darkness. No penalties for bad lighting.
 deadeye_shot: Make Called Shot at -10
 death_from_above: If charge w/ jump pack, +1d10 damage per DoS/2. Max 2d10.
@@ -59,6 +62,23 @@ enhanced_bionic_frame: Heavy weapons always count as braced and may fire semi/fu
   as half action.
 exarch: Considered in Squad mode with Aspect Warriors. Cohsion based on FEL_MOD and
   Command skill.
+exarch_banshees_wail: When Charging, gain Fear(1) until next turn.
+exarch_bounding_leap: When making Full Move, Charge or Run. May parkour over things.
+exarch_crushing_blow: Add STR_MOD (again) to melee damage.
+exarch_elusive: Gain AGI_MOD/2 extra reactions each turn. May only be used for Parry
+  & Dodge.
+exarch_exceptional_resilience: Gain unnatural tougness 2.
+exarch_fast_shot: As Full Action, make two separate ranged attacks. Can be semi/full-auto.
+  Stacks with TWW.
+exarch_fighting_fury: +1 Melee attack when using Mutiple Attacks. Stacks with others.
+exarch_mighty_strike: As Full Action, roll all attacks. For each hit beyond first,
+  add +1d10 to damage to first attack.
+exarch_peerless_marksman: Increase weapon range by half. All BS test are one level
+  easier, and any BS test gains +2 DoS.
+exarch_stealth: Awareness tests VS Exarch get -30. Can attempt Concealment as half
+  action, even when being observed.
+exarch_sustained_assault: After incapacitating an enemy, may move AGI_MOD meters and
+  continue making attacks.
 exemplar_of_honour: Spend fate point to gain cohesion equal to FEL_MOD
 eye_of_vengeance: Ignore one armor per DoS. Auto-confirm Righteous Fury. NO to Blast,
   semi/full-auto or flame.
@@ -75,6 +95,7 @@ frenzy: Enter frenzy as full action. +10 WS, STR, TGH and WP. -20 BS and INT. Mu
   Stunning. May not Parry, use Psy Powers, retreat or flee.
 from_beyond: Immune to fear, pinning, insanity, and mind-affecting psychic powers.
 furious_assault: If All Out Attack hits, can spend reaction to make identical attack.
+ghosthelm: Ignore PsyPhenomena and Perils with a successfull WP test.
 gun_blessing: Full action INT check to un-jam INT_MOD guns within 10 m.
 gunslinger: With two pistols, reduce penalty for TWF by -10. Penalty is 0 if also
   Ambidextrous.
@@ -84,6 +105,7 @@ hard_target: If Charge or Run. Opponents get -20 to BS until characters next tur
 hardy: Heal as if lightly wounded from First Aid. Always.
 hatred: +10 WS against hated things.
 heightened_senses: +10 to specifed sense.
+hello: {more_hello: hello}
 hip_shooting: As full action, full move and single shot with ranged weapon.
 hoverer: Like flying, but max 2 meters above the ground.
 hunter_of_aliens: +10 WS and +2 damage in melee against aliens.
@@ -123,23 +145,42 @@ paranoia: +2 to initiative rolls.
 phase: Half action to become incorporeal.
 precise_blow: Can make Called Shot in melee without penalty.
 preternatural_speed: Can use multiple attacks as half action and as part of a charge.
+psy_power_augment: Another Eldar psyker wihtin 10m gainst +1 Psy Rating after pushing
+  etc.
+psy_power_conceal: Ranged attacks against Warlock or followers gain -20. Immune to
+  Aiming.
+psy_power_destructor: Flamer, 30m. 1d10+12 E, Penetration=PRx2 (so 10)
+psy_power_embolden: Warlock and followers gain +20 to WP testa against Fear, Pinning
+  and Breaking.
+psy_power_enchance: Warlock and follwers gain +10 WS and +2 initative.
 quadruped: Movement based on 2xAGI_MOD.
 quick_draw: Can Ready weapons as Free Action.
 rapid_reaction: When surpised, AGI check to negate.
 rapid_reload: Halve reload times.
+reaper_rangefinder: +10 BS for semi/full-auto. Dodging attacks from this weapon gets
+  -10. Called shot is half action.
 regeneration: At start of turn, TGH check to heal.
 resistance: +10 to resist the specified thing.
 rite_of_pure_though: Char is immune to Fear, Pinning and any emotion.
 rite_of_sanctioning: Choose Psychic Phenomena. If not perils, you can choose that
   instead.
+runes_of_warding: Non-eldar psykers within 50m count their PR as 2 lower (after power
+  level) and get +10 on both effect tables.
+runes_of_witnessing: +10 to invocation, -10 to rolls on effect tables.
 scourge_of_heretics: +10 WS and +2 damage against HERETICS.
 shadow_in_the_warp: Non-tyranid psykers nearby get -20 for using Psychic Powers
 sharpshooter: Make Called Shot without penalty.
+signum: All squaddies gain +5 BS. Full action tech-use test to increase to +10 until
+  end of next round.
+signum_link: All squaddies may benefit from ganging up on opponents, even with ranged
+  attacks.
 skirmishers: No penalties to concealement, no hit bonus to attackers for size. Horde
   may Dodge/Parry.
 slayer_of_daemons: +10 WS and +2 damage against daemons.
 soul_bound: Roll twice on Perils of the Warp. Choose best result.
 sound_constitution: Get more wounds.
+spirit_stones: Sustain powers as free action. Once per 24h, use a second PsyPower
+  one turn.
 sprint: When doing Full move, move AGI_MOD meters extra. If Run, double movement for
   one round. Gain fatigue if used two turns in a row.
 stalwart_defence: Spend fate point to gain 2 damage resist and infinite parries, cannot
@@ -166,54 +207,53 @@ total_recall: Super memory.
 touched_by_the_fates: Has fate points. Can trigger righteous fury.
 toxic: All attacks gain toxic trait.
 true_grit: Halve critical damage taken.
-two_weapon_wielder_melee: Full action to attack with 2 held melee weapons. -20 to both attacks.
-two_weapon_wielder_ballistic: Full action to attack with 2 held ranged weapons. -20 to both attacks.
+two_weapon_wielder_ballistic: Full action to attack with 2 held ranged weapons. -20
+  to both attacks.
+two_weapon_wielder_melee: Full action to attack with 2 held melee weapons. -20 to
+  both attacks.
 tyranid: Immune to pinning, mind-affecting, cold, heat, diseases, poisons, toxic quality.
 undying: Immune to diseases, poisons, toxic. No breathing, can live in vacuum.
 unnatural_senses: Super awareness within range.
 unnatural_speed: After other factors, double movement.
 unshakeable_faith: Re-roll failed WP tests for fear.
+walker: Ignore difficult terrain, walk over shit without penalty.
 wall_of_steel: One free parry per turn.
-warp_sense: Psyniscience as half action.
 warp_conduit: +1 Psy Rating when pushing. -10 to Phenomena roll.
-warp_instability: If take damage and not deal damage by next turn, WP check or take 1 damage per DoF.
+warp_instability: If take damage and not deal damage by next turn, WP check or take
+  1 damage per DoF.
+warp_sense: Psyniscience as half action.
 warp_weapon: Attacks ignore physical armor unless holy.
 whirlwind_of_death: Double magnitude damage done in melee.
-xenos_tactics_bladestorm: Action-Free, Cost-3, Sustained-No, Squad may full move and FAB w/ Shuriken Catapult or Shriken Pistol. If +1 cost, gain storm or razor-sharp for this attack.
-xenos_tactics_defend: Action-Free, Cost-1, Sustained-Yes, Squad may share reactions. If +1 cost, gain counter_attack, disarm and wall_of_steel
-exarch_fast_shot: As Full Action, make two separate ranged attacks. Can be semi/full-auto. Stacks with TWW.
-exarch_fighting_fury: +1 Melee attack when using Mutiple Attacks. Stacks with others.
-xenos_tactics_war_shout: Action-Free, Cost-3, Sustained-No. Activate during Charge attack. Until start of Exarchs next turn, Banshee Masks cause helpless for one round instead of stunned.
-xenos_tactics_acrobatic_dodge: Action-Free, Cost-2, Sustained-Yes. While active, any squaddie who dodges succesfully may half move. (Once per round)
-exarch_bounding_leap: When making Full Move, Charge or Run. May parkour over things.
-exarch_banshees_wail: When Charging, gain Fear(1) until next turn.
-xenos_tactics_shadowstrike: Action-Free, Cost-2, Sustained-No. (Only available if hidden.) Exarch and squad may make Charge Attack immediately. If cost +1, squaddies attacks against unaware enemies deal +5 damage until exarchs next turn
-xenos_tactics_stalker: Action-Free, Cost-1, Sustained-Yes. Squad gets no penalties for terrain and may reroll Silent Move. If +2 cost, make -30 Concealment test as reaction to dodge ranged attack.
-exarch_stealth: Awareness tests VS Exarch get -30. Can attempt Concealment as half action, even when being observed.
-exarch_crushing_blow: Add STR_MOD (again) to melee damage.
-xenos_tactics_tank_hunter: Action-Half, Cost-2, Sustained-No. Mark one enemy vehicle, squad gains + PER_MOD to penetration against that. If cost +1, any Fusion Gun/Fire Pike gain +1d10 damage against thing if DoS>=2
-xenos_tactics_serpents_scales: Action-Free, Cost-1, Sustained-Yes. Sqauad gains +4 armor. If +1 cost, bonus +8 armor instead.
-exarch_mighty_strike: As Full Action, roll all attacks. For each hit beyond first, add +1d10 to damage to first attack.
-xenos_tactics_inescapable_devastation: Action-Free, Cost-1, Sustained-No. Until start of Exarchs next turn, squad gains either Storm or Felling(1). If +1 cost, may sustain this ability.
-xenos_tactics_immovable: Action-Free, Cost-3, Sustained-Yes. Squad gains unnatural toughness 2.
-exarch_exceptional_resilience: Gain unnatural tougness 2.
-exarch_peerless_marksman: Increase weapon range by half. All BS test are one level easier, and any BS test gains +2 DoS.
-xenos_tactics_intercept: Action-Free; Cost-1, Sustained-No. All squaddies may make immediate Charge Move and use grenade pack/throw grenade. If cost +1, the attacks gain +20.
-xenos_tactics_skyleap: Action-Full, Cost-2, Sustained-No. Exarch and squad may immediately move to high altitude w/o provoking AOOs.
-exarch_elusive: Gain AGI_MOD/2 extra reactions each turn. May only be used for Parry & Dodge.
-exarch_sustained_assault: After incapacitating an enemy, may move AGI_MOD meters and continue making attacks. 
-reaper_rangefinder: +10 BS for semi/full-auto. Dodging attacks from this weapon gets -10. Called shot is half action.
-psy_power_augment: Another Eldar psyker wihtin 10m gainst +1 Psy Rating after pushing etc.
-psy_power_conceal: Ranged attacks against Warlock or followers gain -20. Immune to Aiming.
-psy_power_destructor: Flamer, 30m. 1d10+12 E, Penetration=PRx2 (so 10)
-psy_power_embolden: Warlock and followers gain +20 to WP testa against Fear, Pinning and Breaking.
-psy_power_enchance: Warlock and follwers gain +10 WS and +2 initative.
-signum_link: All squaddies may benefit from ganging up on opponents, even with ranged attacks.
-signum: All squaddies gain +5 BS. Full action tech-use test to increase to +10 until end of next round.
-daemonic_presence: Nearby enemies get -10 to WP tests (-20 if master daemon)
-walker: Ignore difficult terrain, walk over shit without penalty.
-daemonic_possession: May fire all weapons as half action, even if in melee. If melee, half action to make one attack.
-runes_of_warding: Non-eldar psykers within 50m count their PR as 2 lower (after power level) and get +10 on both effect tables.
-runes_of_witnessing: +10 to invocation, -10 to rolls on effect tables.
-spirit_stones: Sustain powers as free action. Once per 24h, use a second PsyPower one turn.
-ghosthelm: Ignore PsyPhenomena and Perils with a successfull WP test.
+xenos_tactics_acrobatic_dodge: Action-Free, Cost-2, Sustained-Yes. While active, any
+  squaddie who dodges succesfully may half move. (Once per round)
+xenos_tactics_bladestorm: Action-Free, Cost-3, Sustained-No, Squad may full move and
+  FAB w/ Shuriken Catapult or Shriken Pistol. If +1 cost, gain storm or razor-sharp
+  for this attack.
+xenos_tactics_defend: Action-Free, Cost-1, Sustained-Yes, Squad may share reactions.
+  If +1 cost, gain counter_attack, disarm and wall_of_steel
+xenos_tactics_immovable: Action-Free, Cost-3, Sustained-Yes. Squad gains unnatural
+  toughness 2.
+xenos_tactics_inescapable_devastation: Action-Free, Cost-1, Sustained-No. Until start
+  of Exarchs next turn, squad gains either Storm or Felling(1). If +1 cost, may sustain
+  this ability.
+xenos_tactics_intercept: Action-Free; Cost-1, Sustained-No. All squaddies may make
+  immediate Charge Move and use grenade pack/throw grenade. If cost +1, the attacks
+  gain +20.
+xenos_tactics_serpents_scales: Action-Free, Cost-1, Sustained-Yes. Sqauad gains +4
+  armor. If +1 cost, bonus +8 armor instead.
+xenos_tactics_shadowstrike: Action-Free, Cost-2, Sustained-No. (Only available if
+  hidden.) Exarch and squad may make Charge Attack immediately. If cost +1, squaddies
+  attacks against unaware enemies deal +5 damage until exarchs next turn
+xenos_tactics_skyleap: Action-Full, Cost-2, Sustained-No. Exarch and squad may immediately
+  move to high altitude w/o provoking AOOs.
+xenos_tactics_stalker: Action-Free, Cost-1, Sustained-Yes. Squad gets no penalties
+  for terrain and may reroll Silent Move. If +2 cost, make -30 Concealment test as
+  reaction to dodge ranged attack.
+xenos_tactics_tank_hunter: Action-Half, Cost-2, Sustained-No. Mark one enemy vehicle,
+  squad gains + PER_MOD to penetration against that. If cost +1, any Fusion Gun/Fire
+  Pike gain +1d10 damage against thing if DoS>=2
+xenos_tactics_war_shout: Action-Free, Cost-3, Sustained-No. Activate during Charge
+  attack. Until start of Exarchs next turn, Banshee Masks cause helpless for one round
+  instead of stunned.
+stealth_suit: Choose mode each turn. Passive- -10 to BS attacks. Active- -30 to WS & BS attacks.
+networked_machine_intelligence: +2 BS, INT & PER for each nearby Gun Drone

@@ -18,30 +18,6 @@ auran_genestealer:
   traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
     tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
   weapons: [rending_claws]
-obliterator:
-  _package: chaos
-  name: Obliterator
-  species: daemon
-  armor: {all: 12}
-  skills: {awareness: 0, tech_use: 20}
-  characteristics: {weapon_skill: 45, ballistic_skill: 55, strength: 50, toughness: 55, agility: 35, intelligence: 30, perception: 40, willpower: 45, fellowship: 0}
-  wounds: 40
-  talents: {ambidextrous: true, crushing_blow: true, fearless: true, independent_targeting: true, mighty_shot: true, swift_attack: true, two_weapon_wielder_melee: true, two_weapon_wielder_ballistic: true}
-  traits: {auto_stabilised: true, daemonic: true, fear: 2, natural_armor: true, regeneration: 2, size: 10, sturdy: true, unnatural_strength: 2, unnatural_toughness: 2}
-  weapons: [eviscerator_chainblade, lascannon, multi_melta, plasma_cannon, twin_plasma_gun]
-  force_field: {overload_max: 0, protection_max: 35}
-farseer:
-  _package: eldar
-  name: Eldar Farseer
-  armor: {all: 3, head: 5}
-  species: eldar
-  wounds: 19
-  skills: {awareness: 10, dodge: 20, invocation: 20, psyniscience: 20}
-  characteristics: {weapon_skill: 65, ballistic_skill: 60, strength: 35, toughness: 41, agility: 61, intelligence: 65, perception: 55, willpower: 73, fellowship: 52}
-  traits: {dark_sight: true, unnatural_agility: 2, unnatural_willpower: 2, touched_by_the_fates: 5, runes_of_warding: true, runes_of_witnessing: true, spirit_stones: true, ghosthelm: true}
-  talents: {catfall: true, hard_target: true, improved_warp_sense: true, lightning_reflexes: true, psy_rating: 10, resistance_psychic: true, sprint: true, step_aside: true, strong_minded: true, warp_conduit: true, warp_sense: true}
-  weapons: [mc_shuriken_pistol, witchblade]
-  force_field: {overload_max: 0, protection_max: 73}
 berzerker:
   _package: chaos
   armor: {all: 8, body: 10}
@@ -82,6 +58,18 @@ blue_horror:
     strange_physiology: true, warp_instability: true}
   weapons: [warpfire, teeth_and_claws]
   wounds: 9
+broadside_battlesuit:
+  _package: tau
+  armor: {all: 12}
+  characteristics: {agility: 20, ballistic_skill: 39, fellowship: 30, intelligence: 30,
+    perception: 40, strength: 50, toughness: 55, weapon_skill: 25, willpower: 40}
+  name: XV-88 Broadside Battlesuit
+  skills: {awareness: 0}
+  species: tau
+  traits: {auto_stabilised: true, dark_sight: true, size: 20, sturdy: true, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  wounds: 30
+  weapons: [twin_broadside_railgun, twin_ion_cannon, smart_missile_system, twin_plasma_rifle]
 carnifex:
   _package: tyranid
   armor: {all: 10}
@@ -375,6 +363,22 @@ eldar_warlock:
   traits: {dark_sight: true, unnatural_agility: 2, war_leader: true}
   weapons: [shuriken_pistol, witchblade, eldar_monoblade]
   wounds: 15
+farseer:
+  _package: eldar
+  armor: {all: 3, head: 5}
+  characteristics: {agility: 61, ballistic_skill: 60, fellowship: 52, intelligence: 65,
+    perception: 55, strength: 35, toughness: 41, weapon_skill: 65, willpower: 73}
+  force_field: {overload_max: 0, protection_max: 73}
+  name: Eldar Farseer
+  skills: {awareness: 10, dodge: 20, invocation: 20, psyniscience: 20}
+  species: eldar
+  talents: {catfall: true, hard_target: true, improved_warp_sense: true, lightning_reflexes: true,
+    psy_rating: 10, resistance_psychic: true, sprint: true, step_aside: true, strong_minded: true,
+    warp_conduit: true, warp_sense: true}
+  traits: {dark_sight: true, ghosthelm: true, runes_of_warding: true, runes_of_witnessing: true,
+    spirit_stones: true, touched_by_the_fates: 5, unnatural_agility: 2, unnatural_willpower: 2}
+  weapons: [mc_shuriken_pistol, witchblade]
+  wounds: 19
 fire_dragon:
   _package: eldar
   armor: {all: 6}
@@ -410,6 +414,16 @@ fire_dragon_exarch:
     xenos_tactics_tank_hunter: true}
   weapons: [mc_fusion_gun, mc_shuriken_pistol, eldar_monoblade, fire_pike]
   wounds: 25
+fire_warrior:
+  _package: tau
+  armor: {all: 6}
+  characteristics: {agility: 25, ballistic_skill: 35, fellowship: 30, intelligence: 30,
+    perception: 20, strength: 30, toughness: 30, weapon_skill: 25, willpower: 30}
+  name: Tau Fire Warrior
+  species: tau
+  traits: {fighting_withdrawal: true, fire_drill: true, horde: true}
+  weapons: [pulse_rifle, pulse_carbine]
+  wounds: 12
 gargoyle:
   _package: tyranid
   armor: {all: 3}
@@ -439,6 +453,18 @@ gilmech:
   talents: {deathwatch_training: true, mighty_shot: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [storm_bolter, heavy_bolter]
+gun_drone:
+  _package: tau
+  armor: {all: 5}
+  characteristics: {agility: 40, ballistic_skill: 25, fellowship: 10, intelligence: 15,
+    perception: 25, strength: 20, toughness: 40, weapon_skill: 20, willpower: 20}
+  name: Tau Gun Drone
+  skills: {acrobatics: 0, awareness: 0, dodge: 0}
+  species: machine
+  talents: {fearless: true}
+  traits: {fire_drill: true, flight: 12, horde: true, machine: 5, networked_machine_intelligence: true}
+  weapons: [twin_pulse_carbine]
+  wounds: 15
 hierodule:
   _package: tyranid
   armor: {all: 12}
@@ -559,6 +585,21 @@ namael:
   name: Namael
   talents: {deathwatch_training: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+obliterator:
+  _package: chaos
+  armor: {all: 12}
+  characteristics: {agility: 35, ballistic_skill: 55, fellowship: 0, intelligence: 30,
+    perception: 40, strength: 50, toughness: 55, weapon_skill: 45, willpower: 45}
+  force_field: {overload_max: 0, protection_max: 35}
+  name: Obliterator
+  skills: {awareness: 0, tech_use: 20}
+  species: daemon
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, independent_targeting: true,
+    mighty_shot: true, swift_attack: true, two_weapon_wielder_ballistic: true, two_weapon_wielder_melee: true}
+  traits: {auto_stabilised: true, daemonic: true, fear: 2, natural_armor: true, regeneration: 2,
+    size: 10, sturdy: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [eviscerator_chainblade, lascannon, multi_melta, plasma_cannon, twin_plasma_gun]
+  wounds: 40
 pink_horror:
   _package: chaos
   characteristics: {agility: 30, ballistic_skill: 35, fellowship: 10, intelligence: 30,
@@ -610,6 +651,20 @@ ripper_swarm:
   talents: {fearless: true, swift_attack: true}
   traits: {horde: true, natural_armor: true, overwhelming: true, rampage: true, relentless: true}
   weapons: [ripper_mandibles]
+stealth_suit:
+  _package: tau
+  armor: {all: 7, body: 8, head: 8}
+  characteristics: {agility: 38, ballistic_skill: 42, fellowship: 40, intelligence: 30,
+    perception: 40, strength: 42, toughness: 47, weapon_skill: 30, willpower: 40}
+  name: Tau Stealth Suit
+  skills: {acrobatics: 10, awareness: 20, concealment: 20, dodge: 10, shadowing: 20,
+    tracking: 10}
+  species: tau
+  talents: {hard_target: true, rapid_reaction: true, sprint: true}
+  traits: {auto_stabilised: true, dark_sight: true, flight: 12, stealth_suit: true,
+    unnatural_strength: 2}
+  weapons: [burst_cannon]
+  wounds: 30
 stormraven:
   _package: empire
   armor: {all: 37}
@@ -688,6 +743,20 @@ swooping_hawk_exarch:
   weapons: [mc_lasblaster, mc_shuriken_pistol, eldar_monoblade, hawks_talon, sunrifle,
     mc_eldar_power_sword]
   wounds: 25
+tau_commander:
+  _package: tau
+  armor: {all: 9}
+  characteristics: {agility: 45, ballistic_skill: 55, fellowship: 30, intelligence: 40,
+    perception: 55, strength: 50, toughness: 57, weapon_skill: 35, willpower: 55}
+  name: Tau Commander
+  skills: {acrobatics: 0, command: 20, dodge: 0}
+  species: tau
+  talents: {air_of_authority: true, ambidextrous: true, independent_targeting: true,
+    meditation: true, rapid_reaction: true, sprint: true, two_weapon_wielder_ballistic: true}
+  traits: {auto_stabilised: true, dark_sight: true, flight: 12, size: 20, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [plasma_rifle, missile_pod]
+  wounds: 90
 termagant:
   _package: tyranid
   armor: {all: 3}
