@@ -12,9 +12,12 @@ LOG = get_log(__name__)
 
 def main_handler(event):
     attack_damages = multiple_attacks(event)
+    num_damages = len(attack_damages)
     raw_damage = sum(attack_damages)
+    dps = raw_damage / num_damages
     LOG.info('All attacks combined damage: %s (%s)', raw_damage,
              ' + '.join([str(attack_damage) for attack_damage in attack_damages]))
+    LOG.info('DPS: %s', dps)
 
 
 def check_required_keys(event, required_keys):
