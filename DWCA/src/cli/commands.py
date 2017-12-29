@@ -1,9 +1,9 @@
 import sys
 
 from definitions import WEAPON, ROLL_TARGET, ATTACKER,\
-    TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC, ROLL_RESULT
+    TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC, ROLL_RESULT, RANGE
 from src.action.hit import Hit
-from src.cli.auto_module import auto_assemble
+from src.cli.auto_module import auto_assemble, range_module
 from src.cli.match_map import get_default_match_map
 from src.cli.message_queue import log_messages
 from src.cli.quick_dict import quick_dict_parse
@@ -15,8 +15,9 @@ from src.entities.character import get_char
 from src.entities.libraries import get_weapon_library, get_character_library,\
     MasterLibrary
 from src.handler import main_handler, check_required_keys,\
-    construct_attack
+    construct_attack, build_attacker, build_weapon
 from src.hitloc_series import build_hitloc_iterator
+from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod
 from src.save_manager import SaveManager
 from src.situational.state_manager import StateManager
 from src.util.dict_util import pretty_print,\
@@ -259,6 +260,19 @@ class CommandOverload(CLICommand):
         return event
 
 
+class CommandRange(CLICommand):
+
+    keyword = 'range'
+    help = 'Set range to target and update hit modifiers.'
+    required_keys = [WEAPON]
+
+    def _process_event(self, event):
+        range_ = user_input_int('Enter range to target: ')
+        event[RANGE] = range_
+        event = range_module(event)
+        return event
+
+
 class CommandCover(CLICommand):
 
     keyword = 'cover'
@@ -277,6 +291,12 @@ class CommandCharge(CLICommand):
 
     def _process_event(self, event):
         event = self._toggle_adhoc_key(CHARGED, event)
+        attacker = build_attacker(event)
+        charge_bonus = 10
+        if attacker.berserk_charge is not None:
+            LOG.debug('+20 when charging from BerserkCharge.')
+            charge_bonus = 20
+        event = add_roll_mod(event, charge_bonus, CHARGE_MOD)
         return event
 
 
@@ -287,6 +307,12 @@ class CommandAim(CLICommand):
 
     def _process_event(self, event):
         event = self._toggle_adhoc_key(AIMED, event)
+        weapon = build_weapon(event)
+        aim_bonus = 10
+        if weapon.accurate is not None:
+            LOG.debug('Additional +10 when aiming from Accurate.')
+            aim_bonus += 10
+        event = add_roll_mod(event, aim_bonus, AIM_MOD)
         return event
 
 

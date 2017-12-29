@@ -58,19 +58,18 @@ class Character(Entity):
         return num_attacks
 
     def attack(self, weapon, target=None, firemode=SINGLE_SHOT):
+        LOG.info('%s attacks %s with a(n) %s.', self, target, weapon)
         if weapon.is_melee():
             return self._melee_attack(weapon, target)
         else:
             return self._ranged_attack(weapon, target, firemode)
 
     def _melee_attack(self, weapon, target=None):
-        LOG.info('%s attacks %s with a(n) %s.', self, target, weapon)
         return MeleeAttack(weapon=weapon,
                            attacker=self,
                            target=target)
 
     def _ranged_attack(self, weapon, target=None, firemode=SINGLE_SHOT):
-        LOG.info('%s attacks %s with a(n) %s.', self, target, weapon)
         return RangedAttack(weapon=weapon,
                             attacker=self,
                             target=target,
@@ -119,6 +118,10 @@ class Character(Entity):
         else:
             multiplier = DEFAULT_CHARACTERISTIC_MULTIPLIER
         return multiplier
+
+    @property
+    def size_bonus(self):
+        return self.size if self.size is not None else 0
 
     @property
     def force_field(self):

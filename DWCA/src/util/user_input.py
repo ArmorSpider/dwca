@@ -32,7 +32,10 @@ def user_choose_from_list(list_):
     if len(list_) == 1:
         user_choice = list_[0]
     else:
-        list_.sort()
+        try:
+            list_.sort()
+        except TypeError:
+            LOG.debug('List was not orderable.')
         for index, string_ in enumerate(list_, start=1):
             LOG.info('%s: %s', index, string_)
         index = input('Enter a number: (1-%s) ' % len(list_))

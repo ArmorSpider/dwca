@@ -1,6 +1,6 @@
 from src.cli.message_queue import queue_message
 from src.dwca_log.log import get_log
-from src.entities.char_stats import STAT_TGH
+from src.entities.char_stats import STAT_TGH, STAT_STR
 from src.modifiers.modifier import Modifier
 
 
@@ -280,6 +280,52 @@ class Devastating(Modifier):
                      devastating_value)
             magnitude_damage += devastating_value
         return magnitude_damage
+
+
+class Concussive(Modifier):
+
+    name = 'concussive'
+
+    def on_hit(self, attack):
+        test_difficulty = -10 * attack.degrees_of_success
+        queue_message('CONCUSSIVE: %s must make TGH test (%s) or be Stunned for 1 round.' %
+                      (attack.target, test_difficulty))
+
+    def on_damage(self, attack, effective_damage):
+        str_bonus = attack.target.get_characteristic_bonus(STAT_STR)
+        if effective_damage > str_bonus:
+            queue_message('CONCUSSIVE: Damage was > STR bonus. (%s > %s). %s is knocked down.' % (
+                effective_damage, str_bonus, attack.target))
+
+
+class MultiplyStrength(Modifier):
+
+    name = 'multiply_strength'
+
+    def modify_damage(self, attack, current_damage):
+        strength_multiplier = attack.multiply_strength
+        raw_str_bonus = attack.attacker.get_raw_characteristic_bonus(STAT_STR)
+        if strength_multiplier is not None:
+            current_damage += (strength_multiplier * raw_str_bonus)
+            LOG.info('Added extra strength multiplier. (%s * %s)',
+                     strength_multiplier, raw_str_bonus)
+        return current_damage
+
+
+class Markerlight(Modifier):
+
+    name = 'markerlight'
+
+    def on_hit(self, attack):
+        queue_message('MARKERLIGHT: +10 to all BS tests against %s. (Cumulative)' %
+                      attack.target)
+        queue_message(
+            'MARKERLIGHT: %s can be targeted with seeker missiles (BS 80) for one round.' % attack.target)
+
+
+class NonDamaging(Modifier):
+
+    name = 'non_damaging'
 
 
 class DamagePerDos(Modifier):

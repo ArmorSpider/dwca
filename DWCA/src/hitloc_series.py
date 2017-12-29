@@ -1,5 +1,5 @@
 from src.hit_location import HitLocation, HEAD, BODY, LEFT_ARM, RIGHT_ARM,\
-    LEFT_LEG, RIGHT_LEG
+    LEFT_LEG, RIGHT_LEG, FRONT, SIDE, REAR
 from src.util.iterator_util import build_repeating_iterator, combine_iterators,\
     extract_list_from_iterable
 from src.util.rand_util import select_randomly
@@ -33,7 +33,10 @@ def build_hit_series_dict():
             LEFT_ARM: build_left_arm_hit_series(),
             RIGHT_ARM: build_right_arm_hit_series(),
             LEFT_LEG: build_left_leg_hit_series(),
-            RIGHT_LEG: build_right_leg_hit_series()}
+            RIGHT_LEG: build_right_leg_hit_series(),
+            FRONT: [FRONT],
+            SIDE: [SIDE],
+            REAR: [REAR]}
 
 
 def build_head_hit_series():

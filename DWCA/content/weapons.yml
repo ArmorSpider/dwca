@@ -10,15 +10,6 @@ autocannon:
   range: 300
   semi_auto: 2
   single_shot: 1
-eviscerator_chainblade:
-  class: Melee
-  _package: chaos
-  name: Eviscerator Chainblade
-  dice: 1
-  flat_damage: 10
-  penetration: 5
-  qualities: {tearing: true, unbalanced: true}
-  damage_type: R
 autogun:
   class: Basic
   damage_type: I
@@ -186,6 +177,17 @@ bulkhead_shears:
   name: Bulkhead Shears
   penetration: 6
   qualities: {tearing: true, unwieldy: true}
+burst_cannon:
+  _package: tau
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  full_auto: 10
+  name: Burst Cannon
+  penetration: 4
+  qualities: {arm_weapon_mounting: true}
+  range: 60
 ceremonial_sword:
   class: Melee
   damage_type: R
@@ -407,6 +409,15 @@ eldar_power_sword:
   name: Eldar Power Sword
   penetration: 8
   qualities: {balanced: 2, power_field: true}
+eviscerator_chainblade:
+  _package: chaos
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 10
+  name: Eviscerator Chainblade
+  penetration: 5
+  qualities: {tearing: true, unbalanced: true}
 executioner_axe:
   class: Melee
   damage_type: E
@@ -559,6 +570,8 @@ inferno_gun:
   qualities: {flame: true, reliable: true}
   range: 50
   single_shot: 1
+ion_cannon: {_package: tau, class: Mounted, damage_type: E, dice: 3, flat_damage: 10,
+  full_auto: 3, name: Ion Cannon, penetration: 9, range: 200, single_shot: 1}
 krak_grenade_melee: {class: Melee, damage_type: E, dice: 3, flat_damage: 4, name: Krak
     Grenade (Melee), penetration: 6}
 krak_missile:
@@ -628,6 +641,16 @@ marius_honour_blades:
   name: Marius' Honour Blades
   penetration: 6
   qualities: {power_field: true, razor_sharp: true}
+markerlight:
+  _package: tau
+  class: Basic
+  dice: 0
+  flat_damage: 0
+  name: Tau Markerlight
+  penetration: 0
+  qualities: {markerlight: true, never_jams: true, non_damaging: true}
+  range: 200
+  single_shot: 1
 mc_avenger_shuriken_catapult:
   _package: eldar
   class: Basic
@@ -745,6 +768,18 @@ mirrorsword:
   name: Mirrorsword
   penetration: 10
   qualities: {balanced: 2, power_field: true}
+missile_pod:
+  _package: tau
+  class: Basic
+  damage_type: X
+  dice: 3
+  flat_damage: 8
+  name: Missile Pod
+  penetration: 6
+  qualities: {arm_weapon_mounting: true}
+  range: 90
+  semi_auto: 2
+  single_shot: 1
 multi_melta:
   class: Heavy
   damage_type: E
@@ -764,132 +799,6 @@ omnissian_axe:
   name: Omnissian Axe (AstartesPattern)
   penetration: 6
   qualities: {power_field: true, unbalanced: true}
-plasma_rifle:
-  _package: tau
-  class: Basic
-  name: Plasma Rifle
-  damage_type: E
-  range: 90
-  dice: 2
-  flat_damage: 9
-  penetration: 10
-  single_shot: 1
-  semi_auto: 2
-  qualities: {arm_weapon_mounting: true, tearing: true}
-twin_plasma_rifle:
-  _package: tau
-  class: Basic
-  name: Twin-Linked Plasma Rifle
-  damage_type: E
-  range: 90
-  dice: 2
-  flat_damage: 9
-  penetration: 10
-  single_shot: 1
-  semi_auto: 2
-  qualities: {arm_weapon_mounting: true, tearing: true, twin_linked: true}
-missile_pod:
-  _package: tau
-  name: Missile Pod
-  class: Basic
-  damage_type: X
-  range: 90
-  single_shot: 1
-  semi_auto: 2
-  dice: 3
-  flat_damage: 8
-  penetration: 6
-  qualities: {arm_weapon_mounting: true}
-burst_cannon:
-  _package: tau
-  name: Burst Cannon
-  class: Basic
-  damage_type: E
-  dice: 1
-  flat_damage: 12
-  penetration: 4
-  range: 60
-  full_auto: 10
-  qualities: {arm_weapon_mounting: true}
-pulse_rifle:
-  _package: tau
-  name: Pulse Rifle
-  class: Basic
-  damage_type: E
-  range: 150
-  single_shot: 1
-  semi_auto: 3
-  dice: 1
-  flat_damage: 12
-  penetration: 4
-  qualities: {gyro_stabilised: true}
-pulse_carbine:
-  _package: tau
-  class: Basic
-  name: Pulse Carbine
-  damage_type: E
-  range: 60
-  single_shot: 1
-  dice: 1
-  flat_damage: 12
-  penetration: 4
-  qualities: {devastating: 1, gyro_stabilised: true}
-twin_pulse_carbine:
-  _package: tau
-  class: Basic
-  name: Twin-Linked Pulse Carbine
-  damage_type: E
-  range: 60
-  single_shot: 1
-  dice: 1
-  flat_damage: 12
-  penetration: 4
-  qualities: {devastating: 1, gyro_stabilised: true, twin_linked: true}
-twin_broadside_railgun:
-  _package: tau
-  name: Twin-Linked Broadside Railgun
-  damage_type: I
-  class: Mounted
-  range: 500
-  single_shot: 1
-  dice: 3
-  flat_damage: 30
-  penetration: 15
-  qualities: {twin_linked: true}
-twin_ion_cannon:
-  _package: tau
-  class: Mounted
-  damage_type: E
-  range: 200
-  name: Twin-Linked Ion Cannon
-  dice: 3
-  flat_damage: 10
-  penetration: 9
-  single_shot: 1
-  full_auto: 3
-  qualities: {twin_linked: true}
-smart_missile_system:
-  _package: tau
-  class: Mounted
-  name: Smart Missile System
-  damage_type: X
-  range: 90
-  full_auto: 4
-  dice: 1
-  flat_damage: 12
-  penetration: 4
-  qualities: {arm_weapon_mounting: true}
-pulse_pistol:
-  _package: tau
-  class: Pistol
-  name: Pulse Pistol
-  damage_type: E
-  range: 30
-  single_shot: 1
-  semi_auto: 2
-  dice: 1
-  flat_damage: 12
-  penetration: 4
 plasma_blastgun:
   _package: empire
   class: Mounted
@@ -923,17 +832,6 @@ plasma_cannon:
   qualities: {blast: 3, volatile: true}
   range: 150
   single_shot: 1
-twin_plasma_gun:
-  class: Basic
-  damage_type: E
-  dice: 1
-  flat_damage: 12
-  name: Twin-Linked Plasma Gun
-  penetration: 10
-  qualities: {volatile: true, twin_linked: true}
-  range: 100
-  semi_auto: 2
-  single_shot: 1
 plasma_gun:
   class: Basic
   damage_type: E
@@ -943,6 +841,18 @@ plasma_gun:
   penetration: 10
   qualities: {volatile: true}
   range: 100
+  semi_auto: 2
+  single_shot: 1
+plasma_rifle:
+  _package: tau
+  class: Basic
+  damage_type: E
+  dice: 2
+  flat_damage: 9
+  name: Plasma Rifle
+  penetration: 10
+  qualities: {arm_weapon_mounting: true, tearing: true}
+  range: 90
   semi_auto: 2
   single_shot: 1
 power_axe:
@@ -976,7 +886,7 @@ power_fist:
   flat_damage: 0
   name: Astartes Power Fist
   penetration: 9
-  qualities: {power_field: true, unwieldy: true}
+  qualities: {power_field: true, unwieldy: true, multiply_strength: 1}
 power_spear:
   class: Melee
   damage_type: E
@@ -993,6 +903,53 @@ power_sword:
   name: Astartes Power Sword
   penetration: 6
   qualities: {balanced: true, power_field: true}
+pulse_carbine:
+  _package: tau
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  name: Pulse Carbine
+  penetration: 4
+  qualities: {devastating: 1, gyro_stabilised: true}
+  range: 60
+  single_shot: 1
+pulse_pistol: {_package: tau, class: Pistol, damage_type: E, dice: 1, flat_damage: 12,
+  name: Pulse Pistol, penetration: 4, range: 30, semi_auto: 2, single_shot: 1}
+pulse_rifle:
+  _package: tau
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  name: Pulse Rifle
+  penetration: 4
+  qualities: {gyro_stabilised: true}
+  range: 150
+  semi_auto: 3
+  single_shot: 1
+rail_rifle:
+  _package: tau
+  class: Basic
+  damage_type: I
+  dice: 2
+  flat_damage: 10
+  name: Rail Rifle
+  penetration: 9
+  qualities: {devastating: 1, overheats: true}
+  range: 150
+  single_shot: 1
+railgun_ap: {_package: tau, class: Heavy, dice: 3, flat_damage: 30, name: Tau Railgun
+    (Armour Piercing), penetration: 15, range: 500, single_shot: 1}
+railgun_sub:
+  _package: tau
+  dice: 2
+  flat_damage: 5
+  name: Tau Railgun (Submunition)
+  penetration: 5
+  qualities: {blast: 6}
+  range: 500
+  single_shot: 1
 ravener_spine_fists: {_package: tyranid, class: Basic, damage_type: R, dice: 1, flat_damage: 12,
   full_auto: 4, name: Spine Fists, penetration: 2, range: 20, semi_auto: 2, single_shot: 1}
 reaper_autocannon:
@@ -1087,6 +1044,17 @@ scything_talons:
   name: Scything Talons
   penetration: 3
   qualities: {}
+seeker_missile:
+  _package: tau
+  class: Mounted
+  damage_type: X
+  dice: 4
+  flat_damage: 6
+  name: Seeker Missile
+  penetration: 8
+  qualities: {blast: 1}
+  range: 25000
+  single_shot: 1
 shadow_weaver:
   _package: eldar
   class: Mounted
@@ -1145,6 +1113,17 @@ shuriken_pistol:
   range: 20
   semi_auto: 3
   single_shot: 1
+smart_missile_system:
+  _package: tau
+  class: Mounted
+  damage_type: X
+  dice: 1
+  flat_damage: 12
+  full_auto: 4
+  name: Smart Missile System
+  penetration: 4
+  qualities: {arm_weapon_mounting: true}
+  range: 90
 starcannon:
   _package: eldar
   class: Heavy
@@ -1213,7 +1192,7 @@ thunder_hammer:
   flat_damage: 5
   name: Astartes Thunder Hammer
   penetration: 9
-  qualities: {concussive: true, power_field: true, unwieldy: true}
+  qualities: {concussive: true, power_field: true, unwieldy: true, multiply_strength: 1}
 toxic_tendrils:
   _package: tyranid
   class: Melee
@@ -1257,6 +1236,28 @@ twin_biocannons:
   qualities: {blast: 4, devastating: 3, felling: 2, toxic: 1d10, twin_linked: true}
   range: 200
   single_shot: 1
+twin_broadside_railgun:
+  _package: tau
+  class: Mounted
+  damage_type: I
+  dice: 3
+  flat_damage: 30
+  name: Twin-Linked Broadside Railgun
+  penetration: 15
+  qualities: {twin_linked: true}
+  range: 500
+  single_shot: 1
+twin_burst_cannon:
+  _package: tau
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  full_auto: 10
+  name: Twin-Linked Burst Cannon
+  penetration: 4
+  qualities: {arm_weapon_mounting: true, twin_linked: true}
+  range: 60
 twin_devourer:
   _package: tyranid
   class: Basic
@@ -1278,6 +1279,18 @@ twin_heavy_bolter:
   penetration: 5
   qualities: {tearing: true, twin_linked: true}
   range: 150
+twin_ion_cannon:
+  _package: tau
+  class: Mounted
+  damage_type: E
+  dice: 3
+  flat_damage: 10
+  full_auto: 3
+  name: Twin-Linked Ion Cannon
+  penetration: 9
+  qualities: {twin_linked: true}
+  range: 200
+  single_shot: 1
 twin_lascannon:
   _package: empire
   class: Heavy
@@ -1288,6 +1301,52 @@ twin_lascannon:
   penetration: 10
   qualities: {proven: 3, twin_linked: true}
   range: 300
+  single_shot: 1
+twin_missile_pod:
+  _package: tau
+  class: Basic
+  damage_type: X
+  dice: 3
+  flat_damage: 8
+  name: Twin-Linked Missile Pod
+  penetration: 6
+  qualities: {arm_weapon_mounting: true}
+  range: 90
+  semi_auto: 2
+  single_shot: 1
+twin_plasma_gun:
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  name: Twin-Linked Plasma Gun
+  penetration: 10
+  qualities: {twin_linked: true, volatile: true}
+  range: 100
+  semi_auto: 2
+  single_shot: 1
+twin_plasma_rifle:
+  _package: tau
+  class: Basic
+  damage_type: E
+  dice: 2
+  flat_damage: 9
+  name: Twin-Linked Plasma Rifle
+  penetration: 10
+  qualities: {arm_weapon_mounting: true, tearing: true, twin_linked: true}
+  range: 90
+  semi_auto: 2
+  single_shot: 1
+twin_pulse_carbine:
+  _package: tau
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  name: Twin-Linked Pulse Carbine
+  penetration: 4
+  qualities: {devastating: 1, gyro_stabilised: true, twin_linked: true}
+  range: 60
   single_shot: 1
 twin_turbo_laser:
   _package: empire

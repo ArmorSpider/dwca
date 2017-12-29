@@ -2,7 +2,7 @@ import json
 
 from src.cli.commands import process_command
 from src.dwca_log.log import get_log
-from src.errors import NoMatchError, ChooseFromListFailedError
+from src.errors import NoMatchError, ChooseFromListFailedError, MechanicsError
 
 LOG = get_log(__name__)
 
@@ -17,7 +17,7 @@ def cli_loop():
         command_string = raw_input('Enter commands: \n')
         try:
             event = process_command(command_string, event)
-        except (ValueError, NoMatchError, ChooseFromListFailedError) as error:
+        except (ValueError, NoMatchError, ChooseFromListFailedError, MechanicsError) as error:
             LOG.error(error.message)
 
 

@@ -255,5 +255,6 @@ xenos_tactics_tank_hunter: Action-Half, Cost-2, Sustained-No. Mark one enemy veh
 xenos_tactics_war_shout: Action-Free, Cost-3, Sustained-No. Activate during Charge
   attack. Until start of Exarchs next turn, Banshee Masks cause helpless for one round
   instead of stunned.
-stealth_suit: Choose mode each turn. Passive- -10 to BS attacks. Active- -30 to WS & BS attacks.
+stealth_field: Choose mode each turn. Passive- -10 to BS attacks. Active- -30 to WS & BS attacks.
 networked_machine_intelligence: +2 BS, INT & PER for each nearby Gun Drone
+seeker_missile: Unit is armed with a number of seeker missiles.

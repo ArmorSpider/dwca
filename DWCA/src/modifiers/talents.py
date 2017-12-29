@@ -1,3 +1,4 @@
+from src.cli.message_queue import queue_message
 from src.dwca_log.log import get_log
 from src.entities.char_stats import STAT_INT, STAT_PER
 from src.modifiers.modifier import Modifier
@@ -68,6 +69,33 @@ class HunterOfAliens(Modifier):
             LOG.debug('+2 damage from HunterOfAliens against aliens.')
             current_damage += 2
         return current_damage
+
+
+class WarpConduit(Modifier):
+
+    name = 'warp_conduit'
+
+    def modify_psy_rating(self, attack, psy_rating):
+        if attack.push is not None:
+            psy_rating += 1
+            LOG.debug('+1 Psy Rating from WarpConduit when pushing.')
+        return psy_rating
+
+
+class BerserkCharge(Modifier):
+
+    name = 'berserk_charge'
+
+
+class HardTarget(Modifier):
+
+    name = 'hard_target'
+
+    def modify_num_dice(self, attack, current_num_dice):
+        if attack.charged is not None:
+            queue_message(
+                'HARD TARGET: BS attacks against %s have -40 until %s\'s next turn.' % (attack.attacker, attack.attacker))
+        return current_num_dice
 
 
 class SwiftAttack(Modifier):

@@ -39,3 +39,16 @@ class Horde(Character):
             attack, magnitude_damage)
         LOG.info('Magnitude damage: %s', magnitude_damage)
         return magnitude_damage
+
+    @property
+    def size_bonus(self):
+        size_bonus = super(Horde, self).size_bonus
+        if self.magnitude >= 30:
+            size_bonus += 30
+        if self.magnitude >= 60:
+            size_bonus += 10
+        if self.magnitude >= 90:
+            size_bonus += 10
+        if self.magnitude >= 120:
+            size_bonus += 10
+        return size_bonus

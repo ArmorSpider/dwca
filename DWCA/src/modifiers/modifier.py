@@ -13,40 +13,34 @@ class Modifier(object):
     message = 'No message.'
 
     def modify_damage(self, attack, current_damage):
-        _ = attack
         return current_damage
 
     def modify_penetration(self, attack, current_penetration):
-        _ = attack
         return current_penetration
 
     def modify_num_dice(self, attack, current_num_dice):
-        _ = attack
         return current_num_dice
 
     def modify_tearing_dice(self, attack, current_tearing_dice):
-        _ = attack
         return current_tearing_dice
 
     def modify_num_hits(self, attack, current_num_hits):
-        _ = attack
         return current_num_hits
 
     def add_to_metadata(self, attack):
         attack.add_modifier_effect_to_metadata(self.name, self.message)
 
     def on_hit(self, attack):
-        _ = attack
         pass
 
     def on_damage(self, attack, effective_damage):
-        _ = attack
         return effective_damage
 
     def modify_armor(self, attack, current_armor, hit_location):
-        _ = attack
-        _ = hit_location
         return current_armor
+
+    def modify_psy_rating(self, attack, psy_rating):
+        return psy_rating
 
 
 def register_modifiers():

@@ -9,13 +9,22 @@ from src.dwca_log.log import get_log
 from src.entities import DICE, PENETRATION, FLAT_DAMAGE,\
     TEARING_DICE
 from src.entities.entity import Entity
+from src.hit_location import FRONT, SIDE, REAR
 from src.hitloc_series import get_hit_locations
 from src.modifiers.modifier import get_modifiers_iterator, get_modifier
 from src.roll_damage import roll_normal_damage, roll_righteous_fury,\
     handle_dos_minimum_damage
+from src.util.user_input import try_user_choose_from_list
 
 
 LOG = get_log(__name__)
+
+
+def select_vehicle_hitloc():
+    hit_locations = [FRONT, SIDE, REAR]
+    LOG.info('Select vehicle hit location: ')
+    hit_location = try_user_choose_from_list(hit_locations)
+    return hit_location
 
 
 class Attack(Action):
@@ -43,10 +52,16 @@ class Attack(Action):
         hit_locations = get_hit_locations(self.hit_location, num_hits)
         for hit_location in hit_locations:
             self._append_to_metadata(HIT_LOCATIONS, str(hit_location))
-            hit = Hit(hit_location=hit_location,
+            yield Hit(hit_location=hit_location,
                       damage=self.raw_damage,
                       penetration=self.penetration)
-            yield hit
+
+    @property
+    def hit_location(self):
+        if self.target.is_vehicle() is True:
+            return select_vehicle_hitloc()
+        else:
+            return super(Attack, self).hit_location
 
     @property
     def hits(self):
@@ -90,11 +105,23 @@ class Attack(Action):
 
     def is_hit_blocked(self):
         force_field = self.target.force_field
+        if self.non_damaging is not None:
+            return False
         if force_field is not None and force_field.is_hit_blocked() is True:
             LOG.info('Hit was blocked by force field.')
             return True
         else:
             return False
+
+    @lazy
+    def effective_psy_rating(self):
+        psy_rating = self.psy_rating
+        if psy_rating is not None:
+            for modifier in self.modifer_iterator():
+                psy_rating = modifier.modify_psy_rating(self, psy_rating)
+            return psy_rating
+        else:
+            return None
 
     @lazy
     def tearing_dice(self):

@@ -2,73 +2,62 @@
 import unittest
 
 from definitions import ATTACKER, WEAPON, TARGET, ROLL_TARGET, ROLL_RESULT,\
-    DEGREES_OF_SUCCESS, WEAPONS, CLASS, NUM_HITS, ROLLED_DAMAGE, RAW_DAMAGE,\
+    DEGREES_OF_SUCCESS, NUM_HITS, ROLLED_DAMAGE, RAW_DAMAGE,\
     OFFENSIVE_MODIFIERS, AD_HOC, DEFENSIVE_MODIFIERS, FIREMODE, EFFECTIVE_DAMAGE,\
     HIT_LOCATIONS
 from src.cli.commands import process_command
 from src.dice import queue_d100_rolls, queue_d10_rolls
-from src.entities import NAME, TRAITS, CHARACTERISTICS, DAMAGE_TYPE, DICE,\
-    FLAT_DAMAGE, PENETRATION, SINGLE_SHOT, TEARING_DICE, QUALITIES, SEMI_AUTO,\
-    FULL_AUTO
+from src.entities import DICE,\
+    FLAT_DAMAGE, PENETRATION, SINGLE_SHOT, TEARING_DICE, FULL_AUTO
 from src.entities.char_stats import STAT_AGI, STAT_STR, STAT_TGH, STAT_WS,\
     STAT_BS
-from src.entities.libraries import MasterLibrary
 from src.handler import construct_attack
 from src.modifiers.qualities import Tearing, Blast
 from src.situational.state_manager import StateManager
 from src.util.dict_util import pretty_print
+from test.test_util import load_mock_entity, load_mock_weapon
 
 
 class Test(unittest.TestCase):
 
     def setUp(self):
         StateManager.reset()
-        self.automan_def = {NAME: 'Automan',
-                            TRAITS: {'power_armour': True,
-                                     'unnatural_toughness': 2,
-                                     'unnatural_strength': 2},
-                            WEAPONS: ['boltgun'],
-                            CHARACTERISTICS: {STAT_STR: 40,
-                                              STAT_TGH: 54,
-                                              STAT_WS: 50,
-                                              STAT_BS: 50,
-                                              STAT_AGI: 40}}
-        self.dummyman_def = {NAME: 'Dummyman',
-                             TRAITS: {'natural_armor': True},
-                             WEAPONS: [],
-                             CHARACTERISTICS: {}}
-        MasterLibrary.add_character('automan', self.automan_def)
-        MasterLibrary.add_character('dummyman', self.dummyman_def)
-        self.business_gun_def = {NAME: 'Business Gun',
-                                 CLASS: 'Basic',
-                                 DAMAGE_TYPE: 'I',
-                                 DICE: 2,
-                                 FLAT_DAMAGE: 10,
-                                 PENETRATION: 10,
-                                 SINGLE_SHOT: 1,
-                                 SEMI_AUTO: 3,
-                                 FULL_AUTO: 5}
-        self.business_fist_def = {NAME: 'Business Fist',
-                                  CLASS: 'Melee',
-                                  DAMAGE_TYPE: 'I',
-                                  DICE: 1,
-                                  FLAT_DAMAGE: 10,
-                                  PENETRATION: 10,
-                                  QUALITIES: {Tearing.name: True}}
-        MasterLibrary.add_weapon('business_gun', self.business_gun_def)
-        MasterLibrary.add_weapon('business_fist', self.business_fist_def)
-        self.basic_melee_event = {ATTACKER: 'automan',
-                                  WEAPON: 'business_fist',
-                                  TARGET: 'dummyman',
+        self.automan_name = load_mock_entity('Automan',
+                                             traits={'power_armour': True,
+                                                     'unnatural_toughness': 2,
+                                                     'unnatural_strength': 2},
+                                             characteristics={STAT_STR: 40,
+                                                              STAT_TGH: 54,
+                                                              STAT_WS: 50,
+                                                              STAT_BS: 50,
+                                                              STAT_AGI: 40})
+        self.dummyman_name = load_mock_entity('Dummyman',
+                                              traits={'natural_armor': True})
+        self.business_gun_name = load_mock_weapon('Business Gun', False,
+                                                  dice=2,
+                                                  flat_damage=10,
+                                                  penetration=10,
+                                                  single_shot=1,
+                                                  semi_auto=3,
+                                                  full_auto=5)
+        self.business_fist_name = load_mock_weapon('Business Fist', True,
+                                                   dice=1,
+                                                   flat_damage=10,
+                                                   penetration=10,
+                                                   qualities={Tearing.name: True})
+
+        self.basic_melee_event = {ATTACKER: self.automan_name,
+                                  WEAPON: self.business_fist_name,
+                                  TARGET: self.dummyman_name,
                                   ROLL_TARGET: 100}
-        self.single_shot_event = {ATTACKER: 'automan',
-                                  WEAPON: 'business_gun',
-                                  TARGET: 'dummyman',
+        self.single_shot_event = {ATTACKER: self.automan_name,
+                                  WEAPON: self.business_gun_name,
+                                  TARGET: self.dummyman_name,
                                   FIREMODE: SINGLE_SHOT,
                                   ROLL_TARGET: 100}
-        self.full_auto_event = {ATTACKER: 'automan',
-                                WEAPON: 'business_gun',
-                                TARGET: 'dummyman',
+        self.full_auto_event = {ATTACKER: self.automan_name,
+                                WEAPON: self.business_gun_name,
+                                TARGET: self.dummyman_name,
                                 FIREMODE: FULL_AUTO,
                                 ROLL_TARGET: 100}
 
@@ -335,23 +324,6 @@ class Test(unittest.TestCase):
                                           Blast.name: 5}}
         actual = self.get_attack_metadata(event)
         self.assert_dict_contains(expected, actual)
-
-#     def test_metadata_should_contain_modifier_trigger(self):
-#         event = self.basic_melee_event
-#         event[AD_HOC] = {Blast.name: 5}
-#         queue_d100_rolls([50])
-#         queue_d10_rolls([5] * 10)
-#
-#         expected = {ATTACKER: 'Automan',
-#                     WEAPON: 'Business Fist',
-#                     TARGET: 'Dummyman',
-#                     ROLL_TARGET: 100,
-#                     ROLL_RESULT: 50,
-#                     DEGREES_OF_SUCCESS: 5,
-#                     MODIFIER_EFFECTS: {PowerArmour.name: PowerArmour.message}
-#                     }
-#         actual = self.get_attack_metadata(event)
-#         self.assert_dict_contains(expected, actual)
 
     def run_cli_commands(self, command_strings):
         event = {}

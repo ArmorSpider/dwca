@@ -230,7 +230,8 @@ dark_reaper_exarch:
   wounds: 28
 defiler:
   _package: chaos
-  armor: {all: 31}
+  armor: {all: 31, rear: 20}
+  vehicle: true
   characteristics: {agility: 35, ballistic_skill: 25, fellowship: 1, intelligence: 10,
     perception: 40, strength: 75, toughness: 0, weapon_skill: 25, willpower: 40}
   name: Chaos Defiler
@@ -347,6 +348,10 @@ eldar_platform:
   weapons: [shuriken_cannon, scatter_laser, starcannon, bright_lance, eldar_plasma_missile,
     eldar_krak_missile]
   wounds: 10
+air_caste_pilot:
+  _package: tau
+  wounds: 11
+  characteristics: {weapon_skill: 25, ballistic_skill: 35, strength: 20, toughness: 30, agility: 35, intelligence: 30, perception: 30, willpower: 30, fellowship: 30}
 eldar_warlock:
   _package: eldar
   armor: {all: 3, head: 5}
@@ -363,6 +368,46 @@ eldar_warlock:
   traits: {dark_sight: true, unnatural_agility: 2, war_leader: true}
   weapons: [shuriken_pistol, witchblade, eldar_monoblade]
   wounds: 15
+barracuda:
+  _package: tau
+  name: Barracuda Fighter
+  species: machine
+  vehicle: true
+  wounds: 30
+  traits: {size: 20}
+  armor: {all: 25, rear: 20}
+  weapons: [ion_cannon, twin_missile_pod, burst_cannon]
+hammerhead_gunship:
+  _package: tau
+  name: Hammerhead Gunship
+  species: machine
+  vehicle: true
+  wounds: 35
+  traits: {size: 20}
+  characteristics: {ballistic_skill: 55}
+  armor: {front: 40, side: 32, rear: 24}
+  traits: {size: 20}
+  weapons: [burst_cannon, railgun_ap, railgun_sub]
+sky_ray_gunship:
+  _package: tau
+  name: Sky Ray Missile Defence Gunship
+  characteristics: {ballistic_skill: 35}
+  traits: {seeker_missile: 6, size: 20}
+  wounds: 35
+  species: machine
+  vehicle: true
+  armor: {front: 40, side: 32, rear: 24}
+  weapons: [burst_cannon, markerlight, seeker_missile]
+stealth_drone:
+  _package: tau
+  vehicle: true
+  species: machine
+  name: Remora Stealth Drone Fighter
+  wounds: 20
+  characteristics: {ballistic_skill: 25}
+  armor: {all: 25, rear: 20}
+  traits: {size: 10, seeker_missile: 2, stealth_field: true, networked_machine_intelligence: true}
+  weapons: [twin_burst_cannons, seeker_missile, markerlight]
 farseer:
   _package: eldar
   armor: {all: 3, head: 5}
@@ -414,6 +459,16 @@ fire_dragon_exarch:
     xenos_tactics_tank_hunter: true}
   weapons: [mc_fusion_gun, mc_shuriken_pistol, eldar_monoblade, fire_pike]
   wounds: 25
+pathfinder:
+  _package: tau
+  armor: {all: 7}
+  name: Pathfinder
+  species: tau
+  characteristics: {weapon_skill: 25, ballistic_skill: 35, strength: 30, toughness: 30, agility: 25, intelligence: 35, perception: 30, willpower: 30, fellowship: 30}
+  wounds: 12
+  skills: {awareness: 20, concealment: 10, dodge: 10, shadowing: 0, tracking: 0}
+  traits: {horde: true, fighting_withdrawal: true, fire_drill: true}
+  weapons: [pulse_carbine, markerlight, rail_rifle]
 fire_warrior:
   _package: tau
   armor: {all: 6}
@@ -422,7 +477,7 @@ fire_warrior:
   name: Tau Fire Warrior
   species: tau
   traits: {fighting_withdrawal: true, fire_drill: true, horde: true}
-  weapons: [pulse_rifle, pulse_carbine]
+  weapons: [pulse_rifle, pulse_carbine, markerlight]
   wounds: 12
 gargoyle:
   _package: tyranid
@@ -463,8 +518,18 @@ gun_drone:
   species: machine
   talents: {fearless: true}
   traits: {fire_drill: true, flight: 12, horde: true, machine: 5, networked_machine_intelligence: true}
-  weapons: [twin_pulse_carbine]
+  weapons: [twin_pulse_carbine, markerlight, missile_pod]
   wounds: 15
+shield_drone:
+  _package: tau
+  name: Tau Shield Drone
+  armor: {all: 5}
+  species: machine
+  talents: {fearless: true}
+  wounds: 15
+  characteristics: {weapon_skill: 20, ballistic_skill: 20, strength: 20, toughness: 40, agility: 40, intelligence: 15, perception: 25, willpower: 20, fellowship: 10}
+  weapons: [markerlight]
+  force_field: {overload_max: 10, protection_max: 45}
 hierodule:
   _package: tyranid
   armor: {all: 12}
@@ -551,6 +616,7 @@ howling_banshee_exarch:
   wounds: 25
 land_raider:
   _package: empire
+  vehicle: true
   armor: {all: 50}
   characteristics: {ballistic_skill: 50}
   name: Land Raider (Tank)
@@ -661,12 +727,13 @@ stealth_suit:
     tracking: 10}
   species: tau
   talents: {hard_target: true, rapid_reaction: true, sprint: true}
-  traits: {auto_stabilised: true, dark_sight: true, flight: 12, stealth_suit: true,
+  traits: {auto_stabilised: true, dark_sight: true, flight: 12, stealth_field: true,
     unnatural_strength: 2}
   weapons: [burst_cannon]
   wounds: 30
 stormraven:
   _package: empire
+  vehicle: true
   armor: {all: 37}
   characteristics: {ballistic_skill: 50}
   name: Stormraven
@@ -830,18 +897,10 @@ venomthrope:
       Test is -30, toxic_miasma: true, unnatural_strength: true, unnatural_toughness: true}
   weapons: [lashwhip]
   wounds: 40
-volter:
-  _package: empire
-  armor: {all: 20}
-  characteristics: {ballistic_skill: 50, strength: 50, toughness: 50, weapon_skill: 60}
-  name: Forge Master Volter
-  species: human
-  talents: {touched_by_the_fates: 2}
-  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
-  weapons: [plasma_pistol, multi_melta, bulkhead_shears]
 warhound_titan:
   _package: empire
-  armor: {all: 45}
+  vehicle: true
+  armor: {all: 45, front: 50}
   characteristics: {ballistic_skill: 50}
   name: Warhound Titan
   weapons: [vulcan_mega_bolter, twin_turbo_laser, plasma_blastgun, plasma_blastgun_max]

@@ -20,6 +20,8 @@ def roll_normal_damage(real_dice, tearing_dice, attack=None):
 
 
 def handle_dos_minimum_damage(attack, roll_results):
+    if roll_results == []:
+        return roll_results
     dos = attack.degrees_of_success
     capped_dos = min(dos, 10)
     sorted_results_descending = sorted(roll_results, reverse=True)

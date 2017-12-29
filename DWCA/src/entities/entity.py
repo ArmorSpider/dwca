@@ -32,6 +32,9 @@ class Entity(object):
     def is_horde(self):
         return False
 
+    def is_vehicle(self):
+        return False
+
     @property
     def modifiers(self):
         return {}

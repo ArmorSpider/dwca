@@ -7,6 +7,10 @@ class CLIError(Exception):
     pass
 
 
+class MechanicsError(Exception):
+    pass
+
+
 class NoMatchError(CLIError):
     pass
 
@@ -24,4 +28,8 @@ class NoFiremodeError(CLIError):
 
 
 class ChooseFromListFailedError(CLIError):
+    pass
+
+
+class OutOfRangeError(MechanicsError):
     pass

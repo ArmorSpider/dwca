@@ -23,7 +23,8 @@ class Test(unittest.TestCase):
         character_with_characteristics = {
             TRAITS: {'unnatural_strength': 2,
                      'unnatural_toughness': 3,
-                     'unnatural_agility': 4},
+                     'unnatural_agility': 4,
+                     'size': 20},
             TALENTS: {'good_listener': True},
             CHARACTERISTICS: {STAT_WS: 10,
                               STAT_BS: 20,
@@ -119,8 +120,19 @@ class Test(unittest.TestCase):
         expected = {'unnatural_strength': 2,
                     'unnatural_toughness': 3,
                     'unnatural_agility': 4,
-                    'good_listener': True}
+                    'good_listener': True,
+                    'size': 20}
         actual = self.char_with_stats.modifiers
+        self.assertEqual(expected, actual)
+
+    def test_size_bonus_should_return_size_trait_value(self):
+        expected = 20
+        actual = self.char_with_stats.size_bonus
+        self.assertEqual(expected, actual)
+
+    def test_size_bonus_with_no_size_specified_should_return_zero(self):
+        expected = 0
+        actual = self.char_with_force_field.size_bonus
         self.assertEqual(expected, actual)
 
     def test_getattr_should_do_lookup_in_modifiers(self):

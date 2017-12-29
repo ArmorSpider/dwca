@@ -1,6 +1,6 @@
 from definitions import CLASS, MELEE
 from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO,\
-    DAMAGE_TYPE, FLAT_DAMAGE, PENETRATION, DICE
+    DAMAGE_TYPE, FLAT_DAMAGE, PENETRATION, DICE, RANGE
 from src.entities.entity import Entity
 from src.entities.libraries import read_weapon
 
@@ -20,6 +20,24 @@ class Weapon(Entity):
     def get_rof(self, firemode):
         rate_of_fire = self.get_stat(firemode)
         return rate_of_fire
+
+    @property
+    def range_options(self):
+        base_range = self.base_range
+        extreme_range = base_range * 3
+        long_range = base_range * 2
+        short_range = int(base_range * 0.5)
+        point_blank = 2
+        range_options = {extreme_range: -30,
+                         long_range: -10,
+                         base_range: 0,
+                         short_range: 10,
+                         point_blank: 30}
+        return range_options
+
+    @property
+    def base_range(self):
+        return self.get_stat(RANGE, 0)
 
     @property
     def flat_damage(self):
