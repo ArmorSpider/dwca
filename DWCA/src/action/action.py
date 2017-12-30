@@ -1,3 +1,5 @@
+from lazy.lazy import lazy
+
 from definitions import ROLL_RESULT, ROLL_TARGET, DEGREES_OF_SUCCESS,\
     MODIFIER_EFFECTS
 from src.dice import roll_action_dice
@@ -34,7 +36,7 @@ class Action(object):
                   self.roll_result, self.roll_target, result)
         return result
 
-    @property
+    @lazy
     def degrees_of_success(self):
         if self.is_successfull() is True:
             dos = get_tens(self.roll_target - self.roll_result)

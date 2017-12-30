@@ -23,7 +23,7 @@ class Test(unittest.TestCase):
 
     def test_non_matching_hit_location_should_raise_value_error(self):
         with self.assertRaises(ValueError):
-            get_hit_location(125)
+            get_hit_location(9000)
 
     def test_get_hit_locations_for_right_arm_should_match_expectations(self):
         expected = [RIGHT_ARM, RIGHT_ARM, BODY, HEAD,

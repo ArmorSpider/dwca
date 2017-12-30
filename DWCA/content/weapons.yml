@@ -519,6 +519,33 @@ heavy_bolter:
   penetration: 5
   qualities: {tearing: true}
   range: 150
+smite:
+  class: Psychic
+  damage_type: E
+  dice: 1
+  flat_damage: 0
+  penetration: 1
+  name: Smite
+  range: 10
+  qualities: {psychic_scaling: true}
+warp_blast:
+  class: Psychic
+  damage_type: E
+  dice: 1
+  flat_damage: 0
+  penetration: 2
+  name: Warp Blast
+  range: 50
+  qualities: {psychic_scaling: true}
+warp_lance:
+  class: Psychic
+  damage_type: E
+  dice: 2
+  flat_damage: 0
+  penetration: 5
+  name: Warp Lance
+  range: 50
+  qualities: {psychic_scaling: true}
 heavy_venom_cannon:
   _package: tyranid
   class: Heavy

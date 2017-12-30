@@ -119,6 +119,7 @@ class Attack(Action):
         if psy_rating is not None:
             for modifier in self.modifer_iterator():
                 psy_rating = modifier.modify_psy_rating(self, psy_rating)
+            LOG.info('Effective psy rating is %s.', psy_rating)
             return psy_rating
         else:
             return None

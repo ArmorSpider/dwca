@@ -7,7 +7,7 @@ from src.util.dict_util import pretty_print
 from src.util.rand_util import get_random_string
 
 
-def load_mock_entity(entity_name, **kwargs):
+def add_mock_entity(entity_name, **kwargs):
     definition_name = get_random_string()
     base_definition = {NAME: entity_name,
                        TALENTS: {},
@@ -23,10 +23,10 @@ def load_mock_entity(entity_name, **kwargs):
     return definition_name
 
 
-def load_mock_weapon(weapon_name, is_melee, **kwargs):
+def add_mock_weapon(weapon_name, weapon_class, **kwargs):
     definition_name = get_random_string()
     base_definition = {NAME: weapon_name,
-                       CLASS: 'Melee' if is_melee else 'Basic',
+                       CLASS: weapon_class,
                        DAMAGE_TYPE: 'I',
                        DICE: 1,
                        FLAT_DAMAGE: 10,

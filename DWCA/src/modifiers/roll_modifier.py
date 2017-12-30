@@ -8,6 +8,7 @@ CHARGE_MOD = 'charge_mod'
 AIM_MOD = 'aim_mod'
 TWIN_LINKED_MOD = 'twin_linked_mod'
 ROF_MOD = 'rof_mod'
+PSY_RATING_MOD = 'psy_rating_mod'
 
 
 LOG = get_log(__name__)
@@ -33,6 +34,7 @@ def add_roll_modifier(event, roll_modifier):
     if roll_modifier.key == OTHER_MODS:
         modifier_values.extend(roll_modifiers.get(roll_modifier.key, []))
     modifier_values.append(roll_modifier.value)
+
     if roll_modifiers.get(roll_modifier.key) == modifier_values:
         roll_modifiers.pop(roll_modifier.key)
     else:

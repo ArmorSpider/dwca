@@ -19,4 +19,5 @@ FULL_AUTO = 'full_auto'
 RANGE = 'range'
 PACKAGE = '_package'
 VEHICLE = 'vehicle'
+PSYCHIC = 'psychic'
 WOUNDS = 0

@@ -4,16 +4,16 @@ from src.action.attack import Attack
 from src.entities.entity_factory import build_entity
 from src.modifiers.states import Unfettered, Push, Fettered
 from src.modifiers.talents import WarpConduit
-from test.test_util import load_mock_entity
+from test.test_util import add_mock_entity
 
 
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self.non_psyker = build_entity(load_mock_entity('Non-psyker'))
-        self.psyker = build_entity(load_mock_entity('Pskyer',
+        self.non_psyker = build_entity(add_mock_entity('Non-psyker'))
+        self.psyker = build_entity(add_mock_entity('Pskyer',
                                                     traits={'psy_rating': 3}))
-        self.unnatural_psyker = build_entity(load_mock_entity('Pskyer',
+        self.unnatural_psyker = build_entity(add_mock_entity('Pskyer',
                                                               traits={'psy_rating': 3,
                                                                       'unnatural_willpower': 2}))
 

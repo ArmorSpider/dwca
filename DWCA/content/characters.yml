@@ -1,10 +1,11 @@
 alakir:
   armor: {body: 14, head: 8, left_arm: 12, left_leg: 8, right_arm: 8, right_leg: 8}
-  characteristics: {strength: 42, toughness: 54}
+  characteristics: {strength: 42, toughness: 54, willpower: 50}
   force_field: {overload_max: 10, protection_max: 55}
   name: Al'akir
   talents: {deathwatch_training: true}
-  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2, psy_rating: 5, unnatural_willpower: 2}
+  weapons: [smite]
 auran_genestealer:
   _package: tyranid
   armor: {all: 6}
@@ -918,11 +919,11 @@ warrior_prime:
 zoanthrope:
   _package: tyranid
   armor: {all: 6}
-  characteristics: {ballistic_skill: 45, strength: 45, toughness: 45, weapon_skill: 30}
+  characteristics: {ballistic_skill: 45, strength: 45, toughness: 45, weapon_skill: 30, willpower: 60}
   force_field: {overload_max: 5, protection_max: 65}
   name: Zoanthrope
   species: tyranid
   talents: {fearless: true, psy_rating: 6}
   traits: {natural_armor: true, unnatural_strength: 2, unnatural_toughness: 2}
-  weapons: [teeth_and_claws]
+  weapons: [teeth_and_claws, warp_lance, warp_blast]
   wounds: 32

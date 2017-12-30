@@ -1,5 +1,6 @@
 from definitions import WEAPONS, FORCE_FIELD
 from src.action.melee_attack import MeleeAttack
+from src.action.psychic_attack import PsychicAttack
 from src.action.ranged_attack import RangedAttack
 from src.dwca_log.log import get_log
 from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
@@ -61,6 +62,8 @@ class Character(Entity):
         LOG.info('%s attacks %s with a(n) %s.', self, target, weapon)
         if weapon.is_melee():
             return self._melee_attack(weapon, target)
+        elif weapon.is_psychic():
+            return self._psychic_attack(weapon, target)
         else:
             return self._ranged_attack(weapon, target, firemode)
 
@@ -74,6 +77,11 @@ class Character(Entity):
                             attacker=self,
                             target=target,
                             firemode=firemode)
+
+    def _psychic_attack(self, weapon, target=None):
+        return PsychicAttack(weapon=weapon,
+                             attacker=self,
+                             target=target)
 
     def get_armor(self, hit_location):
         hitloc_name = get_hit_location_name(hit_location)

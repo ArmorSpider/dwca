@@ -7,6 +7,21 @@ from src.modifiers.modifier import Modifier
 LOG = get_log(__name__)
 
 
+class PsychicScaling(Modifier):
+
+    name = 'psychic_scaling'
+
+    def modify_num_dice(self, attack, current_num_dice):
+        return self.scale_with_pr(attack, current_num_dice)
+
+    def modify_penetration(self, attack, current_penetration):
+        return self.scale_with_pr(attack, current_penetration)
+
+    def scale_with_pr(self, attack, current_value):
+        scaled_value = current_value * attack.effective_psy_rating
+        return scaled_value
+
+
 class RazorSharp(Modifier):
 
     name = 'razor_sharp'
@@ -171,13 +186,13 @@ class Blast(Modifier):
 
     @staticmethod
     def handle_blast(attack, num_hits):
-        blast_value = attack.blast
-        if blast_value is not None:
-            queue_message('BLAST: Everyone within %sm of %s must dodge or take damage.' % (
-                blast_value, attack.target))
-            if attack.target.is_horde():
-                num_hits = num_hits * blast_value
+        if attack.blast is not None and attack.target.is_horde():
+            num_hits = num_hits * attack.blast
         return num_hits
+
+    def on_hit(self, attack):
+        queue_message('BLAST: Everyone within %sm of %s must dodge or take damage.' % (
+            attack.blast, attack.target))
 
 
 class PowerField(Modifier):

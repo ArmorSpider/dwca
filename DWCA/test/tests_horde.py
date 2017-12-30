@@ -1,13 +1,13 @@
 import unittest
 
 from src.entities.entity_factory import build_entity
-from test.test_util import load_mock_entity
+from test.test_util import add_mock_entity
 
 
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self.hulking_person = load_mock_entity(
+        self.hulking_person = add_mock_entity(
             'Hulking Person', traits={'size': 10})
 
     def test_magnitude_below_30_should_return_standard_size_bonus(self):

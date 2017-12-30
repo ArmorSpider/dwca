@@ -15,13 +15,14 @@ from src.entities.character import get_char
 from src.entities.libraries import get_weapon_library, get_character_library,\
     MasterLibrary
 from src.handler import main_handler, check_required_keys,\
-    construct_attack, build_attacker, build_weapon
+    build_attack, build_attacker, build_weapon
 from src.hitloc_series import build_hitloc_iterator
 from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod
 from src.save_manager import SaveManager
 from src.situational.state_manager import StateManager
 from src.util.dict_util import pretty_print,\
     sort_strings_by_length
+from src.util.event_util import update_adhoc_dict
 from src.util.read_file import read_dospedia
 from src.util.string_util import normalize_string
 from src.util.user_input import try_user_choose_from_list, user_input_int
@@ -105,12 +106,7 @@ class ComandAdHoc(CLICommand):
     def _process_event(self, event):
         input_string = raw_input('Enter ad-hoc dict string: ')
         ad_hoc_dict = quick_dict_parse(input_string)
-        if ad_hoc_dict == {}:
-            event[AD_HOC] = ad_hoc_dict
-        else:
-            ad_hoc_state = event.get(AD_HOC, {})
-            ad_hoc_state.update(ad_hoc_dict)
-            event[AD_HOC] = ad_hoc_state
+        event = update_adhoc_dict(event, ad_hoc_dict)
         return event
 
 
@@ -355,7 +351,7 @@ class CommandDamage(CLICommand):
         penetration = user_input_int('Enter penetration: ')
         roll_result = user_input_int('Enter roll result: ')
         event[ROLL_RESULT] = roll_result
-        attack = construct_attack(event)
+        attack = build_attack(event)
         hitloc_iterator = build_hitloc_iterator(attack.hit_location)
 
         while damage != 'done':

@@ -11,18 +11,18 @@ from src.entities import DICE,\
     FLAT_DAMAGE, PENETRATION, SINGLE_SHOT, TEARING_DICE, FULL_AUTO
 from src.entities.char_stats import STAT_AGI, STAT_STR, STAT_TGH, STAT_WS,\
     STAT_BS
-from src.handler import construct_attack
+from src.handler import build_attack
 from src.modifiers.qualities import Tearing, Blast
 from src.situational.state_manager import StateManager
 from src.util.dict_util import pretty_print
-from test.test_util import load_mock_entity, load_mock_weapon
+from test.test_util import add_mock_entity, add_mock_weapon
 
 
 class Test(unittest.TestCase):
 
     def setUp(self):
         StateManager.reset()
-        self.automan_name = load_mock_entity('Automan',
+        self.automan_name = add_mock_entity('Automan',
                                              traits={'power_armour': True,
                                                      'unnatural_toughness': 2,
                                                      'unnatural_strength': 2},
@@ -31,16 +31,18 @@ class Test(unittest.TestCase):
                                                               STAT_WS: 50,
                                                               STAT_BS: 50,
                                                               STAT_AGI: 40})
-        self.dummyman_name = load_mock_entity('Dummyman',
+        self.dummyman_name = add_mock_entity('Dummyman',
                                               traits={'natural_armor': True})
-        self.business_gun_name = load_mock_weapon('Business Gun', False,
+        self.business_gun_name = add_mock_weapon('Business Gun',
+                                                  'Basic',
                                                   dice=2,
                                                   flat_damage=10,
                                                   penetration=10,
                                                   single_shot=1,
                                                   semi_auto=3,
                                                   full_auto=5)
-        self.business_fist_name = load_mock_weapon('Business Fist', True,
+        self.business_fist_name = add_mock_weapon('Business Fist',
+                                                   'Melee',
                                                    dice=1,
                                                    flat_damage=10,
                                                    penetration=10,
@@ -332,7 +334,7 @@ class Test(unittest.TestCase):
         return event
 
     def get_attack_metadata(self, event):
-        attack = construct_attack(event)
+        attack = build_attack(event)
         attack.apply_attack()
         attack_metadata = attack.metadata
         pretty_print(attack_metadata)

@@ -1,6 +1,6 @@
 from definitions import CLASS, MELEE
 from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO,\
-    DAMAGE_TYPE, FLAT_DAMAGE, PENETRATION, DICE, RANGE
+    DAMAGE_TYPE, FLAT_DAMAGE, PENETRATION, DICE, RANGE, PSYCHIC
 from src.entities.entity import Entity
 from src.entities.libraries import read_weapon
 
@@ -13,13 +13,19 @@ def get_weapon(weapon_name):
 
 class Weapon(Entity):
 
+    def is_psychic(self):
+        return self.weapon_class.lower() == PSYCHIC
+
     def is_melee(self):
-        weapon_class = self.get_stat(CLASS, 'Melee')
-        return weapon_class.lower() == MELEE
+        return self.weapon_class.lower() == MELEE
 
     def get_rof(self, firemode):
         rate_of_fire = self.get_stat(firemode)
         return rate_of_fire
+
+    @property
+    def weapon_class(self):
+        return self.get_stat(CLASS, 'Melee')
 
     @property
     def range_options(self):

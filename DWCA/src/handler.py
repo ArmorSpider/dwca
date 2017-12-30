@@ -29,7 +29,7 @@ def check_required_keys(event, required_keys):
         raise ValueError('Missing keys: %s' % missing_keys)
 
 
-def construct_attack(event):
+def build_attack(event):
     attacker = build_attacker(event)
     target = build_target(event)
     weapon = build_weapon(event)
@@ -37,7 +37,7 @@ def construct_attack(event):
     ad_hoc_modifiers = event.get(AD_HOC, {})
     attack = attacker.attack(weapon, target, firemode)
     attack.ad_hoc_modifiers = ad_hoc_modifiers
-    roll_target = event[ROLL_TARGET]
+    roll_target = event.get(ROLL_TARGET, 0)
     roll_target += get_effective_modifier(event)
     roll_result = event.get(ROLL_RESULT, None)
     attack.try_action(roll_target=roll_target,
@@ -67,7 +67,7 @@ def build_target(event):
 
 def single_attack(event, attack_number):
     LOG.info('________[ATTACK %s]________', attack_number)
-    attack = construct_attack(event)
+    attack = build_attack(event)
     attack_damage = attack.apply_attack()
     # pretty_print(attack.metadata)
     return attack_damage
