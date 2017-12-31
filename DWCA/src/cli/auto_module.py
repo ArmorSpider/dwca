@@ -20,6 +20,12 @@ def auto_assemble(event):
     attacker = build_attacker(event)
     weapon_name = try_user_choose_from_list(attacker.weapons)
     event[WEAPON] = weapon_name
+    event = equip_weapon(event)
+    return event
+
+
+def equip_weapon(event):
+    attacker = build_attacker(event)
     weapon = build_weapon(event)
     if weapon.is_melee():
         num_attacks = attacker.get_num_melee_attacks()
@@ -50,9 +56,10 @@ def pr_bonus_module(event):
     event = update_adhoc_dict(event, {power_level: True})
 
     attack = build_attack(event)
-    pr_bonus = attack.effective_psy_rating * 5
+    psy_rating = attack.effective_psy_rating if attack.effective_psy_rating is not None else 0
+    pr_bonus = psy_rating * 5
     LOG.info('+%s from effective psy rating. (%s)',
-             pr_bonus, attack.effective_psy_rating)
+             pr_bonus, psy_rating)
     event = add_roll_mod(event, pr_bonus, PSY_RATING_MOD)
     return event
 

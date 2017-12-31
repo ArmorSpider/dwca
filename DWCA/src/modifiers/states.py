@@ -29,10 +29,11 @@ class Fettered(Modifier):
     name = 'fettered'
 
     def modify_psy_rating(self, attack, psy_rating):
-        base_psy_rating = attack.psy_rating
-        fettered_penalty = int(
-            base_psy_rating - (math.ceil(base_psy_rating * 0.5)))
-        psy_rating -= fettered_penalty
+        if psy_rating > 0:
+            base_psy_rating = attack.psy_rating
+            fettered_penalty = int(
+                base_psy_rating - (math.ceil(base_psy_rating * 0.5)))
+            psy_rating -= fettered_penalty
         return psy_rating
 
 
@@ -46,5 +47,6 @@ class Push(Modifier):
     name = 'push'
 
     def modify_psy_rating(self, attack, psy_rating):
-        psy_rating += 3
+        if psy_rating > 0:
+            psy_rating += 3
         return psy_rating

@@ -18,6 +18,7 @@ markerlight:
   flat_damage: 0
   name: Tau Markerlight
   penetration: 0
+  damage_type: E
   qualities: {markerlight: true, never_jams: true, non_damaging: true}
   range: 200
   single_shot: 1
@@ -82,9 +83,11 @@ rail_rifle:
   range: 150
   single_shot: 1
 railgun_ap: {_package: tau, class: Heavy, dice: 3, flat_damage: 30, name: Tau Railgun
-    (Armour Piercing), penetration: 15, range: 500, single_shot: 1}
+    (Armour Piercing), penetration: 15, range: 500, single_shot: 1, damage_type: I}
 railgun_sub:
   _package: tau
+  class: Heavy
+  damage_type: X
   dice: 2
   flat_damage: 5
   name: Tau Railgun (Submunition)

@@ -14,7 +14,7 @@ LOG = get_log(__name__)
 DEFAULT_PACKAGE = 'default'
 
 
-def verify():
+def verify_weapons():
     require_all = [CLASS, NAME, DICE, FLAT_DAMAGE, DAMAGE_TYPE, PENETRATION]
     ranged_only = require_all + [RANGE]
     MasterLibrary.load_all_packages()
@@ -30,6 +30,7 @@ def verify():
                 missing_keys.append(key)
         if missing_keys != []:
             print '______[%s]______' % weapon_name
+            print weapon_def.get('_package', DEFAULT_PACKAGE)
             for key in missing_keys:
                 print '%s is missing %s' % (weapon_name, key)
 

@@ -10,6 +10,13 @@ autocannon:
   range: 300
   semi_auto: 2
   single_shot: 1
+unarmed:
+  class: Melee
+  damage_type: I
+  dice: 1
+  penetration: 0
+  flat_damage: 0
+  name: Unarmed
 autogun:
   class: Basic
   damage_type: I
@@ -159,6 +166,7 @@ force_sword:
 frag_missile:
   class: Basic
   damage_type: X
+  single_shot: 1
   dice: 2
   flat_damage: 0
   name: Astartes Frag Missile

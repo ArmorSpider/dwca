@@ -141,7 +141,7 @@ class Character(Entity):
 
     @property
     def weapons(self):
-        return self.get_stat(WEAPONS, ['N/A'])
+        return self.get_stat(WEAPONS, ['unarmed'])
 
     @property
     def species(self):

@@ -334,7 +334,9 @@ scorpions_claw:
   name: Scorpion's Claw
   penetration: 10
   qualities: {power_field: true, unwieldy: true}
+  damage_type: R
 scorpions_claw_ranged:
+  damage_type: E
   _package: eldar
   class: Basic
   dice: 1

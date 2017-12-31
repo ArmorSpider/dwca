@@ -3,27 +3,25 @@ import sys
 from definitions import WEAPON, ROLL_TARGET, ATTACKER,\
     TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC, ROLL_RESULT, RANGE
 from src.action.hit import Hit
-from src.cli.auto_module import auto_assemble, range_module
+from src.cli.auto_module import auto_assemble, range_module, equip_weapon
+from src.cli.info_module import info_module
 from src.cli.match_map import get_default_match_map
 from src.cli.message_queue import log_messages
+from src.cli.new_module import new_module
 from src.cli.quick_dict import quick_dict_parse
-from src.cli.table import print_table, print_entity_dict
+from src.cli.run_module import run_module
+from src.cli.table import print_table
 from src.dwca_log.log import get_log
-from src.entities import CHARACTERISTICS,\
-    SKILLS
-from src.entities.character import get_char
 from src.entities.libraries import get_weapon_library, get_character_library,\
     MasterLibrary
-from src.handler import main_handler, check_required_keys,\
+from src.handler import check_required_keys,\
     build_attack, build_attacker, build_weapon
 from src.hitloc_series import build_hitloc_iterator
 from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod
 from src.save_manager import SaveManager
 from src.situational.state_manager import StateManager
-from src.util.dict_util import pretty_print,\
-    sort_strings_by_length
+from src.util.dict_util import pretty_print
 from src.util.event_util import update_adhoc_dict
-from src.util.read_file import read_dospedia
 from src.util.string_util import normalize_string
 from src.util.user_input import try_user_choose_from_list, user_input_int
 
@@ -139,9 +137,7 @@ class CommandRun(CLICommand):
     help = 'Roll attacks for the current event.'
 
     def _process_event(self, event):
-        StateManager.update(event)
-        main_handler(event)
-        log_messages()
+        event = run_module(event)
         return event
 
 
@@ -162,31 +158,8 @@ class CommandInfo(CLICommand):
     help = 'Show talents & traits for character.'
 
     def _process_event(self, event):
-        available_characters = get_character_library().keys()
-        character_name = try_user_choose_from_list(available_characters)
-        character = get_char(character_name)
-        modifiers = character.modifiers
-        modifier_names = sort_strings_by_length(modifiers.keys())
-        dospedia = read_dospedia()
-        table_data = []
-        for modifier in modifier_names:
-            modifier_value = modifiers.get(modifier)
-            dospedia_entry = dospedia.get(modifier, 'No entry.')
-            full_modifier_name = self._build_full_modifier_name(
-                modifier, modifier_value)
-            row = [full_modifier_name, dospedia_entry]
-            table_data.append(row)
-        print_table(table_data, character.name, headers=False)
-        print_entity_dict(character, SKILLS)
-        print_entity_dict(character, CHARACTERISTICS)
+        event = info_module(event)
         return event
-
-    def _build_full_modifier_name(self, modifier_name, modifier_value):
-        if modifier_value is True:
-            full_modifier_name = modifier_name
-        else:
-            full_modifier_name = modifier_name + '(%s)' % modifier_value
-        return full_modifier_name
 
 
 class CommandQuit(CLICommand):
@@ -222,6 +195,7 @@ class CommandEquip(CLICommand):
     def _process_event(self, event):
         weapon_name = try_user_choose_from_list(get_weapon_library().keys())
         event[WEAPON] = weapon_name
+        event = equip_weapon(event)
         return event
 
 
@@ -231,16 +205,7 @@ class CommandNew(CLICommand):
     help = 'Configure new attack.'
 
     def _process_event(self, event):
-        event.clear()
-        LOG.info('Select attacker: ')
-        character_name = try_user_choose_from_list(
-            get_character_library().keys())
-        event[ATTACKER] = character_name
-        LOG.info('Select target: ')
-        character_name = try_user_choose_from_list(
-            get_character_library().keys())
-        event[TARGET] = character_name
-        event = auto_assemble(event)
+        event = new_module(event)
         return event
 
 

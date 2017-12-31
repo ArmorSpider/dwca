@@ -18,8 +18,9 @@ class PsychicScaling(Modifier):
         return self.scale_with_pr(attack, current_penetration)
 
     def scale_with_pr(self, attack, current_value):
-        scaled_value = current_value * attack.effective_psy_rating
-        return scaled_value
+        if attack.effective_psy_rating is not None:
+            current_value = current_value * attack.effective_psy_rating
+        return current_value
 
 
 class RazorSharp(Modifier):
@@ -249,12 +250,12 @@ class DeadlySnare(Modifier):
     def on_hit(self, attack):
         if attack.deadly_snare is not None:
             damage_roll_base = '{dice}d10+{flat_damage} Pen: {pen}'
-            damage_roll = damage_roll_base.format(dice=attack.dice,
+            damage_roll = damage_roll_base.format(dice=attack.num_dice,
                                                   flat_damage=attack.flat_damage,
                                                   pen=attack.penetration)
             queue_message(
                 'DEADLY_SNARE: %s must make AGI test or be immobilised.'
-                'Take %s each turn until escape.' % damage_roll)
+                'Take %s each turn until escape.' % (attack.target, damage_roll))
 
 
 class Flexible(Modifier):

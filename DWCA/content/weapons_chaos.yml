@@ -1,5 +1,6 @@
 berzerker_axe:
   _package: chaos
+  class: Melee
   damage_type: R
   dice: 1
   flat_damage: 8
