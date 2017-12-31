@@ -118,6 +118,16 @@ class Proven(Modifier):
             return roll_results
 
 
+class Shocking(Modifier):
+
+    name = 'shocking'
+
+    def on_damage(self, attack, effective_damage):
+        if effective_damage > 0:
+            queue_message('SHOCKING: %s must make TGH test +10*(location AP) or be stunned for %s rounds.' %
+                          (attack.target, int(effective_damage * 0.5)))
+
+
 class Toxic(Modifier):
 
     name = 'toxic'
@@ -139,6 +149,11 @@ class TwinLinked(Modifier):
             LOG.debug('+1 hit from TwinLinked.')
             current_num_hits += 1
         return current_num_hits
+
+
+class LivingAmmunition(Modifier):
+
+    name = 'living_ammunition'
 
 
 class Sanctified(Modifier):

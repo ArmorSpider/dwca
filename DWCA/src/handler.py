@@ -69,7 +69,8 @@ def single_attack(event, attack_number):
     LOG.info('________[ATTACK %s]________', attack_number)
     attack = build_attack(event)
     attack_damage = attack.apply_attack()
-    # pretty_print(attack.metadata)
+    if event.get('debug') is not None:
+        pretty_print(attack.metadata)
     return attack_damage
 
 

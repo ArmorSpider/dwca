@@ -1,7 +1,9 @@
 from lazy.lazy import lazy
 
+from definitions import NUM_HITS
 from src.action.attack import Attack
 from src.dwca_log.log import get_log
+from src.util.rand_util import roll_die
 
 
 LOG = get_log(__name__)
@@ -13,6 +15,16 @@ class PsychicAttack(Attack):
         success = Attack.is_successfull(self)
         auto_fail = 91 <= self.roll_result <= 100
         return success is True and auto_fail is False
+
+    @lazy
+    def num_hits(self):
+        num_hits = 1
+        if self.target.is_horde() is True:
+            num_hits = self.effective_psy_rating
+            aoe_bonus_hits = roll_die(10)
+            num_hits += aoe_bonus_hits
+        self._update_metadata({NUM_HITS: num_hits})
+        return num_hits
 
     @lazy
     def degrees_of_success(self):

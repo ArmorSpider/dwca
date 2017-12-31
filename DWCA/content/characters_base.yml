@@ -1,0 +1,41 @@
+alakir:
+  armor: {body: 14, head: 8, left_arm: 12, left_leg: 8, right_arm: 8, right_leg: 8}
+  characteristics: {strength: 42, toughness: 54, willpower: 50}
+  force_field: {overload_max: 10, protection_max: 55}
+  name: Al'akir
+  talents: {deathwatch_training: true}
+  traits: {power_armour: true, psy_rating: 5, unnatural_strength: 2, unnatural_toughness: 2,
+    unnatural_willpower: 2}
+  weapons: [smite]
+damocles:
+  armor: {all: 8, body: 14, left_arm: 12}
+  characteristics: {strength: 54, toughness: 61}
+  force_field: {overload_max: 10, protection_max: 55}
+  name: Damocles
+  species: human
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+dummy: {name: Dummy}
+gilmech:
+  armor: {body: 13, head: 13, left_arm: 11, left_leg: 11, right_arm: 11, right_leg: 11}
+  characteristics: {strength: 43, toughness: 50}
+  force_field: {overload_max: 10, protection_max: 55}
+  name: Gilmech
+  talents: {deathwatch_training: true, mighty_shot: true}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [storm_bolter, heavy_bolter]
+marius:
+  armor: {all: 8, body: 10}
+  characteristics: {ballistic_skill: 44, intelligence: 54, perception: 38, strength: 43,
+    toughness: 50, weapon_skill: 81}
+  force_field: {overload_max: 10, protection_max: 25}
+  name: Marius the Parry-God
+  talents: {deathwatch_training: true, hunter_of_aliens: true, slaughter_the_swarm: true}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [marius_honour_blades, hellfire_bolt_pistol, bolter, marius_executioner_axe]
+namael:
+  armor: {body: 14, head: 8, left_arm: 12, left_leg: 8, right_arm: 8, right_leg: 8}
+  characteristics: {strength: 42, toughness: 43}
+  force_field: {overload_max: 10, protection_max: 55}
+  name: Namael
+  talents: {deathwatch_training: true}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}

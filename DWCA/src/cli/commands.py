@@ -98,6 +98,28 @@ class CommandHelp(CLICommand):
         return event
 
 
+class CommandBonus(CLICommand):
+
+    keyword = 'bonus'
+    help = 'Add a to-hit bonus'
+
+    def _process_event(self, event):
+        bonus_value = user_input_int('Enter bonus: ')
+        event = add_roll_mod(event, bonus_value)
+        return event
+
+
+class CommandMalus(CLICommand):
+
+    keyword = 'malus'
+    help = 'Add a to-hit malus'
+
+    def _process_event(self, event):
+        malus_value = -user_input_int('Enter malus: ')
+        event = add_roll_mod(event, malus_value)
+        return event
+
+
 class ComandAdHoc(CLICommand):
 
     keyword = 'adhoc'

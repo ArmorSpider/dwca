@@ -29,6 +29,7 @@ MODIFIER_EFFECTS = 'modifier_effects'
 EFFECTIVE_DAMAGE = 'effective_damage'
 HIT_LOCATIONS = 'hit_locations'
 ROLL_MODIFIERS = 'roll_modifiers'
+DEBUG = 'debug'
 
 # States
 AIMED = 'aimed'

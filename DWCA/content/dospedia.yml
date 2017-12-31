@@ -258,3 +258,5 @@ xenos_tactics_war_shout: Action-Free, Cost-3, Sustained-No. Activate during Char
 stealth_field: Choose mode each turn. Passive- -10 to BS attacks. Active- -30 to WS & BS attacks.
 networked_machine_intelligence: +2 BS, INT & PER for each nearby Gun Drone
 seeker_missile: Unit is armed with a number of seeker missiles.
+spawn_termagants: As free action each turn, spawn 2d10 termagants horde. If roll is a double, no more spawning.
+limited_synapse_creature: Squadsight from other tyranids, can shot without LoS. Ignore penalties for range, prone, targets in melee, weather & concealment.

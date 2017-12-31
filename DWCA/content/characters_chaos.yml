@@ -1,0 +1,182 @@
+berzerker:
+  _package: chaos
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 40, fellowship: 20, intelligence: 30,
+    perception: 40, strength: 45, toughness: 45, weapon_skill: 69, willpower: 45}
+  name: Khorne Berzerker
+  skills: {awareness: 0, dodge: 10}
+  talents: {ambidextrous: true, berserk_charge: true, die_hard: true, fearless: true,
+    frenzy: true, furious_assault: true, hatred: loyalist space marines, jaded: true,
+    lightning_attack: true, swift_attack: true, true_grit: true, two_weapon_wielder_melee: true,
+    whirlwind_of_death: true}
+  traits: {dark_sight: true, power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [chainsword, plasma_pistol, berzerker_axe]
+bloodletter:
+  _package: chaos
+  characteristics: {agility: 40, ballistic_skill: 30, fellowship: 10, intelligence: 30,
+    perception: 30, strength: 45, toughness: 45, weapon_skill: 55, willpower: 30}
+  name: Bloodletter
+  skills: {awareness: 0, climb: 20, dodge: 0, intimidate: 20, psyniscience: 0}
+  species: daemon
+  talents: {battle_rage: true, combat_master: true, crushing_blow: true, fearless: true,
+    frenzy: true, furious_assault: true, swift_attack: true}
+  traits: {blood_soaked_tide: true, brutal_charge: true, daemonic: true, daemonic_presence: true,
+    disciplined: true, fear: 2, from_beyond: true, horde: true, strange_physiology: true,
+    unnatural_strength: 2, warp_instability: true}
+  weapons: [hellblade, teeth_and_claws]
+  wounds: 25
+blue_horror:
+  _package: chaos
+  characteristics: {agility: 30, ballistic_skill: 35, fellowship: 10, intelligence: 30,
+    perception: 30, strength: 20, toughness: 33, weapon_skill: 23, willpower: 30}
+  force_field: {overload_max: 0, protection_max: 20}
+  name: Blue Horror
+  skills: {awareness: 0, dodge: 0, psyniscience: 0}
+  species: daemon
+  talents: {fearless: true}
+  traits: {daemonic: true, daemonic_presence: true, fear: 2, from_beyond: true, horde: true,
+    strange_physiology: true, warp_instability: true}
+  weapons: [warpfire, teeth_and_claws]
+  wounds: 9
+chaos_marine:
+  _package: chaos
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
+    perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
+  name: Chaos Space Marine
+  skills: {awareness: 0, climb: 0, dodge: 10}
+  talents: {bolter_drill: true, fearless: true, hatred: loyalist space marines, jaded: true,
+    killing_strike: true, swift_attack: true, true_grit: true}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [bolt_pistol, bolter, chainsword, heavy_bolter]
+chaos_sorcerer:
+  _package: chaos
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
+    perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
+  name: Chaos Space Marine Sorcerer
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space
+      marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
+    swift_attack: true, true_grit: true}
+  traits: {dark_sight: true, power_armour: true, psy_rating: 5, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
+  wounds: 29
+chaos_sorcerer_khorne:
+  _package: chaos
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
+    perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
+  name: Chaos Sorcerer (Khorne)
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  talents: {berserk_charge: true, bolter_drill: true, die_hard: true, fearless: true,
+    frenzy: true, furious_assault: true, hatred: loyalist space marines, jaded: true,
+    killing_strike: true, lightning_attack: true, quick_draw: true, rapid_reload: true,
+    resistance_psychic: true, swift_attack: true, true_grit: true, whirlwind_of_death: true}
+  traits: {dark_sight: true, power_armour: true, psy_rating: 5, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
+  wounds: 29
+chaos_sorcerer_nurgle:
+  _package: chaos
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
+    perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
+  name: Chaos Sorcerer (Nurgle)
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space
+      marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
+    swift_attack: true, true_grit: true}
+  traits: {dark_sight: true, power_armour: true, psy_rating: 5, stuff_of_nightmares: true,
+    unnatural_strength: 2, unnatural_toughness: 3}
+  weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
+  wounds: 36
+chaos_sorcerer_slaanesh:
+  _package: chaos
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
+    perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
+  name: Chaos Sorcerer (Slaanesh)
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space
+      marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
+    swift_attack: true, true_grit: true}
+  traits: {dark_sight: true, power_armour: true, psy_rating: 5, unnatural_agility: 2,
+    unnatural_fellowship: 2, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
+  wounds: 29
+chaos_sorcerer_tzeentch:
+  _package: chaos
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
+    perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
+  name: Chaos Sorcerer (Tzeentch)
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space
+      marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
+    swift_attack: true, true_grit: true}
+  traits: {daemonic: true, dark_sight: true, power_armour: true, psy_rating: 7, unnatural_strength: 2,
+    unnatural_toughness: 2, unnatural_willpower: 2}
+  weapons: [force_sword, bolt_pistol, combat_knife]
+  wounds: 29
+daemon_prince:
+  _package: chaos
+  armor: {all: 12}
+  characteristics: {strength: 66, toughness: 45, weapon_skill: 75}
+  name: Daemon Prince
+  species: daemon
+  talents: {crippling_strike: true, crushing_blow: true, hammer_blow: true, killing_strike: true,
+    swift_attack: true, thunder_charge: true}
+  traits: {brutal_charge: true, daemonic: true, fear: 4, touched_by_the_fates: 3,
+    unnatural_strength: 3, unnatural_toughness: 2}
+  weapons: [chaos_sword]
+defiler:
+  _package: chaos
+  armor: {all: 31, rear: 20}
+  characteristics: {agility: 35, ballistic_skill: 25, fellowship: 1, intelligence: 10,
+    perception: 40, strength: 75, toughness: 0, weapon_skill: 25, willpower: 40}
+  name: Chaos Defiler
+  species: daemon
+  talents: {lightning_attack: true, swift_attack: true}
+  traits: {daemonic_possession: true, size: 20, walker: true}
+  vehicle: true
+  weapons: [crushing_claw, reaper_autocannon, havoc_launcher, defiler_battle_cannon]
+  wounds: 28
+obliterator:
+  _package: chaos
+  armor: {all: 12}
+  characteristics: {agility: 35, ballistic_skill: 55, fellowship: 0, intelligence: 30,
+    perception: 40, strength: 50, toughness: 55, weapon_skill: 45, willpower: 45}
+  force_field: {overload_max: 0, protection_max: 35}
+  name: Obliterator
+  skills: {awareness: 0, tech_use: 20}
+  species: daemon
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, independent_targeting: true,
+    mighty_shot: true, swift_attack: true, two_weapon_wielder_ballistic: true, two_weapon_wielder_melee: true}
+  traits: {auto_stabilised: true, daemonic: true, fear: 2, natural_armor: true, regeneration: 2,
+    size: 10, sturdy: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [eviscerator_chainblade, lascannon, multi_melta, plasma_cannon, twin_plasma_gun]
+  wounds: 40
+pink_horror:
+  _package: chaos
+  characteristics: {agility: 30, ballistic_skill: 35, fellowship: 10, intelligence: 30,
+    perception: 30, strength: 35, toughness: 33, weapon_skill: 23, willpower: 30}
+  force_field: {overload_max: 0, protection_max: 20}
+  name: Pink Horror
+  skills: {awareness: 0, dodge: 0, psyniscience: 0}
+  species: daemon
+  talents: {fearless: true}
+  traits: {daemonic: true, daemonic_presence: true, fear: 2, from_beyond: true, horde: true,
+    strange_physiology: true, warp_instability: true}
+  weapons: [warpfire, teeth_and_claws]
+  wounds: 18
+renegade_militia:
+  _package: chaos
+  armor: {all: 4}
+  characteristics: {ballistic_skill: 35, strength: 35, toughness: 35, weapon_skill: 35}
+  name: Renegade Militia
+  species: human
+  talents: {}
+  traits: {disciplined: true, horde: true}
+  weapons: [autogun]

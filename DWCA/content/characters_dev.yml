@@ -1,0 +1,34 @@
+dev_bohn_jobb:
+  _package: dev
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
+  force_field: {overload_max: 10, protection_max: 65}
+  name: Bohn-Jobb
+  species: human
+  talents: {ambidextrous: true, astartes_weapon_training: true, bulging_biceps: true,
+    flesh_render: true, heightened_hearing: true, heightened_sight: true, killing_strike: true,
+    nerves_of_steel: true, quick_draw: true, resistance_psychic: true, touched_by_the_fates: true,
+    unarmed_master: true}
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+dev_genestealer:
+  _package: dev
+  armor: {all: 6}
+  characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
+  name: Dev Genestealer
+  species: tyranid
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, hard_target: true,
+    leap_up: true, lightning_attack: true, lightning_reflexes: true, preternatural_speed: true,
+    step_aside: true, swift_attack: true}
+  traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
+    tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
+dev_john_bobb:
+  _package: dev
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
+  name: John-Bobb
+  species: human
+  talents: {ambidextrous: true, astartes_weapon_training: true, bulging_biceps: true,
+    deathwatch_training: true, flesh_render: true, heightened_hearing: true, heightened_sight: true,
+    killing_strike: true, nerves_of_steel: true, quick_draw: true, resistance_psychic: true,
+    unarmed_master: true}
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}

@@ -1,7 +1,7 @@
 from src.dice import roll_damage_dice
 from src.dwca_log.log import get_log
 from src.entities import SINGLE_SHOT
-from src.modifiers.qualities import Reliable, NeverJams, OverHeats
+from src.modifiers.qualities import OverHeats
 
 
 LOG = get_log(__name__)
@@ -19,7 +19,7 @@ def is_attack_auto_failed(attack):
 
 def is_weapon_jammed(attack):
     if is_eligible_for_jam(attack):
-        if attack.never_jams is not None:
+        if attack.never_jams is not None or attack.living_ammunition is not None:
             return False
         elif attack.reliable is not None:
             return _did_reliable_jam()

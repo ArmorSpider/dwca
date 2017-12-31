@@ -1,6 +1,6 @@
 from lazy.lazy import lazy
 
-from definitions import FIREMODE
+from definitions import FIREMODE, NUM_HITS
 from src.action.attack import Attack
 from src.dwca_log.log import get_log
 from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
@@ -60,4 +60,5 @@ class RangedAttack(Attack):
             num_hits += 1
         for modifier in self.modifer_iterator():
             num_hits = modifier.modify_num_hits(self, num_hits)
+        self._update_metadata({NUM_HITS: num_hits})
         return num_hits

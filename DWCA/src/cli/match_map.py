@@ -1,6 +1,6 @@
 from definitions import ATTACKER, TARGET, WEAPON, FIREMODE, NUM_ATTACKS,\
     ROLL_TARGET, ATTACKER_MAG, TARGET_MAG, OVERLOADED,\
-    ROLL_RESULT, ROLL_MODIFIERS, RANGE
+    ROLL_RESULT, ROLL_MODIFIERS, RANGE, DEBUG
 from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
 from src.entities.libraries import get_character_library, get_weapon_library
 
@@ -17,5 +17,6 @@ def get_default_match_map():
                  ATTACKER_MAG: None,
                  TARGET_MAG: None,
                  OVERLOADED: None,
-                 RANGE: None}
+                 RANGE: None,
+                 DEBUG: None}
     return match_map

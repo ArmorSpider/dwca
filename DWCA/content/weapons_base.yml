@@ -1,0 +1,393 @@
+autocannon:
+  class: Heavy
+  damage_type: I
+  dice: 4
+  flat_damage: 5
+  full_auto: 5
+  name: Autocannon
+  penetration: 4
+  qualities: {}
+  range: 300
+  semi_auto: 2
+  single_shot: 1
+autogun:
+  class: Basic
+  damage_type: I
+  dice: 1
+  flat_damage: 3
+  name: Autogun
+  penetration: 0
+  qualities: {}
+  range: 100
+  semi_auto: 3
+  single_shot: 1
+bloodstrike_missile: {class: Basic, damage_type: X, dice: 4, flat_damage: 6, name: Bloodstrike
+    Missile, penetration: 14, range: 750, single_shot: 1}
+bolt_pistol:
+  class: Pistol
+  damage_type: X
+  dice: 1
+  flat_damage: 9
+  name: Astartes Bolt Pistol
+  penetration: 4
+  qualities: {tearing: true}
+  range: 30
+  semi_auto: 2
+  single_shot: 1
+bolter:
+  class: Basic
+  damage_type: X
+  dice: 1
+  flat_damage: 9
+  name: Astartes Bolter (Godwyn)
+  penetration: 4
+  qualities: {tearing: true}
+  range: 100
+  semi_auto: 3
+  single_shot: 1
+boltgun:
+  class: Basic
+  damage_type: X
+  dice: 1
+  flat_damage: 9
+  name: Astartes Boltgun (Stalker)
+  penetration: 4
+  qualities: {accurate: true, tearing: true}
+  range: 200
+  single_shot: 1
+breaching_augur:
+  class: Melee
+  damage_type: R
+  dice: 2
+  flat_damage: 11
+  name: Breaching Augur
+  penetration: 7
+  qualities: {power_field: true, tearing: true, unwieldy: true}
+bulkhead_shears:
+  class: Melee
+  damage_type: R
+  dice: 2
+  flat_damage: 13
+  name: Bulkhead Shears
+  penetration: 6
+  qualities: {tearing: true, unwieldy: true}
+ceremonial_sword:
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 3
+  name: Ceremonial Sword
+  penetration: 2
+  qualities: {balanced: true}
+chainfist:
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 0
+  name: Astartes Chainfist
+  penetration: 10
+  qualities: {power_field: true, tearing: true, unwieldy: true}
+chainsword:
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 3
+  name: Astartes Chainsword
+  penetration: 3
+  qualities: {balanced: true, tearing: true}
+combat_knife:
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Astartes Combat Knife
+  penetration: 0
+  qualities: {}
+crozius_arcanum:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 7
+  name: Crozius Arcanum
+  penetration: 7
+  qualities: {balanced: true, power_field: true}
+dual_lightning_claw:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 6
+  name: Astartes Lightning Claw
+  penetration: 8
+  qualities: {damage_per_dos: 2, power_field: true, proven: 4}
+dummy: {class: Melee, damage_type: I, dice: 1, flat_damage: 0, name: Dummy Weapon,
+  penetration: 0}
+dummy_ranged: {class: Basic, damage_type: I, dice: 1, flat_damage: 0, name: Dummy
+    Ranged, penetration: 0, range: 100, single_shot: 1}
+executioner_axe:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 13
+  name: Astartes Executioner Axe
+  penetration: 8
+  qualities: {felling: 1, power_field: true, unwieldy: true}
+focus_test:
+  class: Psychic
+  damage_type: E
+  dice: 0
+  flat_damage: 0
+  name: Focus Power Test
+  penetration: 0
+  qualities: {non_damaging: true}
+  range: 100
+force_staff:
+  class: Melee
+  damage_type: I
+  dice: 1
+  flat_damage: 1
+  name: Astartes Force Staff
+  penetration: 0
+  qualities: {balanced: true, force_weapon: true}
+force_sword:
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 2
+  name: Astartes Force Sword
+  penetration: 2
+  qualities: {balanced: true, force_weapon: true}
+frag_missile:
+  class: Basic
+  damage_type: X
+  dice: 2
+  flat_damage: 0
+  name: Astartes Frag Missile
+  penetration: 4
+  qualities: {blast: 5, devastating: 1}
+  range: 250
+heavy_bolter:
+  class: Heavy
+  damage_type: X
+  dice: 1
+  flat_damage: 12
+  full_auto: 6
+  name: Astartes Heavy Bolter
+  penetration: 5
+  qualities: {tearing: true}
+  range: 150
+hellfire_bolt_pistol:
+  class: Pistol
+  damage_type: X
+  dice: 1
+  flat_damage: 9
+  name: Astartes Bolt Pistol
+  penetration: 4
+  qualities: {hellfire: true, tearing: true}
+  range: 30
+  semi_auto: 2
+  single_shot: 1
+krak_grenade_melee: {class: Melee, damage_type: E, dice: 3, flat_damage: 4, name: Krak
+    Grenade (Melee), penetration: 6}
+krak_missile:
+  class: Basic
+  damage_type: X
+  dice: 3
+  flat_damage: 10
+  name: Astartes Krak Missile
+  penetration: 8
+  qualities: {blast: 1}
+  range: 250
+  single_shot: 1
+lightning_claw:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 6
+  name: Astartes Lightning Claw
+  penetration: 8
+  qualities: {damage_per_dos: 1, power_field: true, proven: 4}
+marius_executioner_axe:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 15
+  name: Astartes Executioner Axe
+  penetration: 8
+  qualities: {felling: 1, power_field: true, razor_sharp: true, unwieldy: true}
+marius_honour_blades:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 7
+  name: Marius' Honour Blades
+  penetration: 6
+  qualities: {power_field: true, razor_sharp: true}
+multi_melta:
+  class: Heavy
+  damage_type: E
+  dice: 2
+  flat_damage: 20
+  name: Firestorm Multi-melta
+  penetration: 14
+  qualities: {blast: 2, recharge: true, volatile: true}
+  range: 100
+  semi_auto: 2
+  single_shot: 1
+omnissian_axe:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 11
+  name: Omnissian Axe (AstartesPattern)
+  penetration: 6
+  qualities: {power_field: true, unbalanced: true}
+plasma_cannon:
+  class: Heavy
+  damage_type: E
+  dice: 2
+  flat_damage: 12
+  name: Astartes Plasma Cannon
+  penetration: 10
+  qualities: {blast: 3, volatile: true}
+  range: 150
+  single_shot: 1
+plasma_gun:
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  name: Astartes Plasma Gun (Ragefire)
+  penetration: 10
+  qualities: {volatile: true}
+  range: 100
+  semi_auto: 2
+  single_shot: 1
+power_axe:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  name: Astartes Power Axe
+  penetration: 7
+  qualities: {power_field: true, unbalanced: true}
+power_claymore:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 11
+  name: Astartes Power Claymore
+  penetration: 8
+  qualities: {devastating: 1, power_field: true, unwieldy: true}
+power_falchion:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 4
+  name: Astartes Power Falchion
+  penetration: 6
+  qualities: {power_field: true, razor sharp: true}
+power_fist:
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 0
+  name: Astartes Power Fist
+  penetration: 9
+  qualities: {multiply_strength: 1, power_field: true, unwieldy: true}
+power_spear:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 6
+  name: Astartes Power Spear
+  penetration: 7
+  qualities: {power_field: true}
+power_sword:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 6
+  name: Astartes Power Sword
+  penetration: 6
+  qualities: {balanced: true, power_field: true}
+sacris_claymore:
+  class: Melee
+  damage_type: R
+  dice: 2
+  flat_damage: 2
+  name: Sacris Claymore
+  penetration: 2
+  qualities: {unbalanced: true}
+sharpshooter_rifle:
+  class: Basic
+  damage_type: R
+  dice: 1
+  flat_damage: 4
+  name: Mk.IX Ultra-Pattern Sharpshooter's Rifle
+  penetration: 2
+  qualities: {accurate: true, felling: 1, toxic: 1d10}
+  range: 250
+  single_shot: 1
+smite:
+  class: Psychic
+  damage_type: E
+  dice: 1
+  flat_damage: 0
+  name: Smite
+  penetration: 1
+  qualities: {psychic_scaling: true}
+  range: 10
+storm_bolter:
+  class: Basic
+  damage_type: X
+  dice: 1
+  flat_damage: 9
+  name: Astartes Storm Bolter
+  penetration: 4
+  qualities: {storm: true, tearing: true}
+  range: 100
+  semi_auto: 4
+  single_shot: 1
+teeth_and_claws: {class: Melee, damage_type: R, dice: 1, flat_damage: 4, name: Teeth
+    and Claws, penetration: 3}
+thunder_hammer:
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 5
+  name: Astartes Thunder Hammer
+  penetration: 9
+  qualities: {concussive: true, multiply_strength: 1, power_field: true, unwieldy: true}
+twin_autocannons:
+  class: Heavy
+  damage_type: I
+  dice: 4
+  flat_damage: 5
+  full_auto: 5
+  name: Twin-Linked Autocannons
+  penetration: 4
+  qualities: {twin_linked: true}
+  range: 300
+  semi_auto: 2
+  single_shot: 1
+twin_heavy_bolter:
+  class: Heavy
+  damage_type: X
+  dice: 1
+  flat_damage: 12
+  full_auto: 6
+  name: Astartes Heavy Bolter
+  penetration: 5
+  qualities: {tearing: true, twin_linked: true}
+  range: 150
+twin_plasma_gun:
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  name: Twin-Linked Plasma Gun
+  penetration: 10
+  qualities: {twin_linked: true, volatile: true}
+  range: 100
+  semi_auto: 2
+  single_shot: 1

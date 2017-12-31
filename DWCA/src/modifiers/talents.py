@@ -37,7 +37,8 @@ class FleshRender(Modifier):
     def modify_tearing_dice(self, attack, current_tearing_dice):
         if attack.is_melee() and attack.tearing is not None:
             LOG.debug('+1 tearing dice from FleshRender.')
-            return current_tearing_dice + 1
+            current_tearing_dice += 1
+        return current_tearing_dice
 
 
 class SlaughterTheSwarm(Modifier):
