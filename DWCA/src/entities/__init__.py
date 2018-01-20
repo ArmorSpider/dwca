@@ -1,5 +1,6 @@
 QUALITIES = 'qualities'
 TRAITS = 'traits'
+SKILLS = 'skills'
 TALENTS = 'talents'
 DICE = 'dice'
 TEARING_DICE = 'tearing_dice'
@@ -20,4 +21,5 @@ RANGE = 'range'
 PACKAGE = '_package'
 VEHICLE = 'vehicle'
 PSYCHIC = 'psychic'
-WOUNDS = 0
+ENTITY = 'entity'
+WOUNDS = 'wounds'

@@ -37,6 +37,15 @@ chaos_sword:
   name: Chaos-Forged Sword
   penetration: 6
   qualities: {felling: 1, unwieldy: true}
+dreadnought_melee:
+  _package: chaos
+  name: Dreadnought Close Combat Weapon
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 10
+  penetration: 6
+  qualities: {power_field: true}
 crushing_claw:
   _package: chaos
   class: Melee

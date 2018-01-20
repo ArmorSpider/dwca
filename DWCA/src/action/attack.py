@@ -213,10 +213,14 @@ class Attack(Action):
 
     def on_damage_effects(self, effective_damage):
         for modifier in self.modifer_iterator():
-            modifier.on_damage(self, effective_damage)
+            effective_damage = modifier.on_damage(self, effective_damage)
+        return effective_damage
 
     def is_melee(self):
         return self.weapon.is_melee()
 
     def is_ranged(self):
-        return self.weapon.is_melee() is not True
+        return self.weapon.is_ranged()
+
+    def is_psychic(self):
+        return self.weapon.is_psychic()

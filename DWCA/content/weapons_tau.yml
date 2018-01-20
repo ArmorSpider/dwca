@@ -9,7 +9,18 @@ burst_cannon:
   penetration: 4
   qualities: {arm_weapon_mounting: true}
   range: 60
-ion_cannon: {_package: tau, class: Mounted, damage_type: E, dice: 3, flat_damage: 10,
+heavy_burst_cannon:
+  _package: tau
+  class: Heavy
+  damage_type: E
+  dice: 1
+  flat_damage: 16
+  full_auto: 20
+  name: Heavy Burst Cannon
+  penetration: 6
+  qualities: {arm_weapon_mounting: true, tearing: true}
+  range: 80
+ion_cannon: {_package: tau, class: Heavy, damage_type: E, dice: 3, flat_damage: 10,
   full_auto: 3, name: Ion Cannon, penetration: 9, range: 200, single_shot: 1}
 markerlight:
   _package: tau
@@ -45,6 +56,17 @@ plasma_rifle:
   qualities: {arm_weapon_mounting: true, tearing: true}
   range: 90
   semi_auto: 2
+  single_shot: 1
+twin_fusion_blaster:
+  _package: tau
+  class: Basic
+  damage_type: E
+  dice: 2
+  flat_damage: 13
+  name: Plasma Rifle
+  penetration: 12
+  qualities: {arm_weapon_mounting: true, twin_linked: true}
+  range: 20
   single_shot: 1
 pulse_carbine:
   _package: tau
@@ -97,7 +119,7 @@ railgun_sub:
   single_shot: 1
 seeker_missile:
   _package: tau
-  class: Mounted
+  class: Heavy
   damage_type: X
   dice: 4
   flat_damage: 6
@@ -108,7 +130,7 @@ seeker_missile:
   single_shot: 1
 smart_missile_system:
   _package: tau
-  class: Mounted
+  class: Heavy
   damage_type: X
   dice: 1
   flat_damage: 12
@@ -117,9 +139,20 @@ smart_missile_system:
   penetration: 4
   qualities: {arm_weapon_mounting: true}
   range: 90
+twin_smart_missile_system:
+  _package: tau
+  class: Heavy
+  damage_type: X
+  dice: 1
+  flat_damage: 12
+  full_auto: 4
+  name: Twin-Linked Smart Missile System
+  penetration: 4
+  qualities: {arm_weapon_mounting: true, twin_linked: true}
+  range: 90
 twin_broadside_railgun:
   _package: tau
-  class: Mounted
+  class: Heavy
   damage_type: I
   dice: 3
   flat_damage: 30
@@ -141,7 +174,7 @@ twin_burst_cannon:
   range: 60
 twin_ion_cannon:
   _package: tau
-  class: Mounted
+  class: Heavy
   damage_type: E
   dice: 3
   flat_damage: 10

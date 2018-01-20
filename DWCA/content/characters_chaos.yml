@@ -38,6 +38,14 @@ blue_horror:
     strange_physiology: true, warp_instability: true}
   weapons: [warpfire, teeth_and_claws]
   wounds: 9
+chaos_dreadnought:
+  _package: chaos
+  armor: {all: 37, rear: 20}
+  characteristics: {agility: 25, ballistic_skill: 50, fellowship: 6, intelligence: 34,
+    perception: 33, strength: 70, toughness: 0, weapon_skill: 50, willpower: 30}
+  name: Chaos Dreadnought
+  weapons: [twin_autocannons, twin_lascannon, dreadnought_melee]
+  wounds: 35
 chaos_marine:
   _package: chaos
   armor: {all: 8, body: 10}

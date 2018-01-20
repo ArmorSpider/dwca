@@ -46,6 +46,19 @@ gun_drone:
   traits: {fire_drill: true, flight: 12, horde: true, machine: 5, networked_machine_intelligence: true}
   weapons: [twin_pulse_carbine, markerlight, missile_pod]
   wounds: 15
+shielded_missile_drone:
+  _package: tau
+  armor: {all: 5}
+  characteristics: {agility: 40, ballistic_skill: 25, fellowship: 10, intelligence: 15,
+    perception: 25, strength: 20, toughness: 40, weapon_skill: 20, willpower: 20}
+  name: Tau Shielded Missile Drone
+  skills: {acrobatics: 0, awareness: 0, dodge: 0}
+  species: machine
+  talents: {fearless: true}
+  force_field: {overload_max: 10, protection_max: 45}
+  traits: {fire_drill: true, flight: 12, horde: true, machine: 5, networked_machine_intelligence: true}
+  weapons: [missile_pod]
+  wounds: 15
 hammerhead_gunship:
   _package: tau
   armor: {front: 40, rear: 24, side: 32}
@@ -127,3 +140,18 @@ tau_commander:
     unnatural_toughness: 2}
   weapons: [plasma_rifle, missile_pod]
   wounds: 90
+riptide:
+  _package: tau
+  armor: {all: 14}
+  characteristics: {agility: 45, ballistic_skill: 60, fellowship: 30, intelligence: 40,
+    perception: 55, strength: 80, toughness: 67, weapon_skill: 35, willpower: 55}
+  name: XV104 Riptide
+  skills: {acrobatics: 0, command: 20, dodge: 0}
+  species: tau
+  talents: {air_of_authority: true, ambidextrous: true, independent_targeting: true,
+    meditation: true, rapid_reaction: true, sprint: true, two_weapon_wielder_ballistic: true}
+  traits: {auto_stabilised: true, dark_sight: true, flight: 12, size: 30, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  force_field: {overload_max: 1, protection_max: 30}
+  weapons: [heavy_burst_cannon, twin_smart_missile_system, twin_fusion_blaster]
+  wounds: 120

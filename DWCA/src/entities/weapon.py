@@ -1,4 +1,4 @@
-from definitions import CLASS, MELEE
+from definitions import CLASS, MELEE, RANGED_CLASSES
 from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO,\
     DAMAGE_TYPE, FLAT_DAMAGE, PENETRATION, DICE, RANGE, PSYCHIC
 from src.entities.entity import Entity
@@ -18,6 +18,9 @@ class Weapon(Entity):
 
     def is_melee(self):
         return self.weapon_class.lower() == MELEE
+
+    def is_ranged(self):
+        return self.weapon_class.lower() in RANGED_CLASSES
 
     def get_rof(self, firemode):
         rate_of_fire = self.get_stat(firemode)

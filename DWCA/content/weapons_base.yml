@@ -147,6 +147,15 @@ focus_test:
   penetration: 0
   qualities: {non_damaging: true}
   range: 100
+emperors_wrath:
+  class: Psychic
+  damage_type: E
+  dice: 0
+  flat_damage: 2
+  name: Emperor's Wrath
+  penetration: 1
+  qualities: {psychic_scaling: true}
+  range: 100
 force_staff:
   class: Melee
   damage_type: I
@@ -229,7 +238,15 @@ marius_honour_blades:
   flat_damage: 7
   name: Marius' Honour Blades
   penetration: 6
-  qualities: {power_field: true, razor_sharp: true}
+  qualities: {power_field: true, razor_sharp: true, skill_bonus: 15}
+morgan_power_claymore:
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 11
+  name: Morgan's Power Claymore
+  penetration: 8
+  qualities: {devastating: 1, power_field: true, unwieldy: true, skill_bonus: 20}
 multi_melta:
   class: Heavy
   damage_type: E
@@ -366,6 +383,14 @@ thunder_hammer:
   name: Astartes Thunder Hammer
   penetration: 9
   qualities: {concussive: true, multiply_strength: 1, power_field: true, unwieldy: true}
+furios_thunder_hammer:
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 5
+  name: Furios' Thunder Hammer
+  penetration: 9
+  qualities: {concussive: true, multiply_strength: 1, power_field: true, unwieldy: true, skill_bonus: 10}
 twin_autocannons:
   class: Heavy
   damage_type: I
@@ -398,4 +423,14 @@ twin_plasma_gun:
   qualities: {twin_linked: true, volatile: true}
   range: 100
   semi_auto: 2
+  single_shot: 1
+twin_lascannon:
+  class: Heavy
+  damage_type: E
+  dice: 5
+  flat_damage: 10
+  name: Twin-Linked Lascannons
+  penetration: 10
+  qualities: {proven: 3, twin_linked: true}
+  range: 300
   single_shot: 1

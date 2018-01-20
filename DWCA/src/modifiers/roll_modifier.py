@@ -9,6 +9,9 @@ AIM_MOD = 'aim_mod'
 TWIN_LINKED_MOD = 'twin_linked_mod'
 ROF_MOD = 'rof_mod'
 PSY_RATING_MOD = 'psy_rating_mod'
+SKILL_BONUS_MOD = 'skill_bonus_mod'
+HUNTER_OF_ALIENS_MOD = 'hunter_of_aliens_mod'
+SLAYER_OF_DAEMONS_MOD = 'slayer_of_daemons_mod'
 
 
 LOG = get_log(__name__)

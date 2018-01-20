@@ -26,7 +26,7 @@ gilmech:
 marius:
   armor: {all: 8, body: 10}
   characteristics: {ballistic_skill: 44, intelligence: 54, perception: 38, strength: 43,
-    toughness: 50, weapon_skill: 81}
+    toughness: 50, weapon_skill: 66}
   force_field: {overload_max: 10, protection_max: 25}
   name: Marius the Parry-God
   talents: {deathwatch_training: true, hunter_of_aliens: true, slaughter_the_swarm: true}
@@ -39,3 +39,25 @@ namael:
   name: Namael
   talents: {deathwatch_training: true}
   traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+morgan:
+  armor: {all: 8, body: 10}
+  name: Morgan
+  species: human
+  characteristics: {weapon_skill: 60, ballistic_skill: 44, strength: 59, toughness: 41, agility: 51, intelligence: 39, perception: 33, willpower: 48, fellowship: 33}
+  traits: {unnatural_toughness: 2, unnatural_strength: 2, ambidextrous: true, power_armour: true}
+  talents: {deathwatch_training: true, swift_attack: true, lightning_attack: true, thunder_charge: true, duty_unto_death: true, hunter_of_aliens: true, crushing_blow: true, wall_of_steel: true, berserk_charge: true, double_team: true}
+  weapons: [morgan_power_claymore]
+furios:
+  armor: {all: 9, left_arm: 8, right_arm: 8, body: 11}
+  name: Furios
+  species: human
+  characteristics: {weapon_skill: 73, ballistic_skill: 46, strength: 52, toughness: 54, agility: 40, intelligence: 48, perception: 34, willpower: 64, fellowship: 36}
+  wounds: 22
+  fate_points: 5
+  psy_powers: [smite, short_range_telepathy, inspire, compel, force_dome, null_zone, emperors_wrath]
+  traits: {unnatural_strength: 2, unnatural_toughness: 2, power_armour: true, size: 0, psy_rating: 5}
+  talents: {rite_of_sanctioning: true, the_flesh_is_weak: 1}
+  skills: {dodge: 0}
+  force_field: {overload_max: 5, protection_max: 25}
+  weapons: [smite, focus_test, furios_thunder_hammer, emperors_wrath]
+

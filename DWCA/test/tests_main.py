@@ -4,7 +4,7 @@ import unittest
 from src.dice import queue_d10_rolls
 from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
 from src.entities.char_stats import STAT_TGH
-from src.entities.character import get_char
+from src.entities.character import build_character
 from src.entities.weapon import get_weapon
 from src.modifiers.modifier import register_modifiers
 
@@ -16,8 +16,8 @@ class Test(unittest.TestCase):
         register_modifiers()
 
     def test_tearing_and_flesh_render_should_give_2_tearing_dice(self):
-        target = get_char('dev_genestealer')
-        attacker = get_char('dev_john_bobb')
+        target = build_character('dev_genestealer')
+        attacker = build_character('dev_john_bobb')
         weapon = get_weapon('astartes_chainsword')
         attack = attacker._melee_attack(weapon, target)
         expected = 2
@@ -25,8 +25,8 @@ class Test(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_no_auto_confirm_should_not_trigger_fury_if_confirming_is_impossible(self):
-        target = get_char('dev_genestealer')
-        attacker = get_char('dev_bohn_jobb')
+        target = build_character('dev_genestealer')
+        attacker = build_character('dev_bohn_jobb')
         weapon = get_weapon('astartes_chainsword')
         attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
@@ -38,8 +38,8 @@ class Test(unittest.TestCase):
         self.assertEqual(expected_damage, actual_damage)
 
     def test_deathwatch_training_should_auto_confirm_against_aliens(self):
-        target = get_char('dev_genestealer')
-        attacker = get_char('dev_john_bobb')
+        target = build_character('dev_genestealer')
+        attacker = build_character('dev_john_bobb')
         weapon = get_weapon('astartes_chainsword')
         attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
@@ -50,8 +50,8 @@ class Test(unittest.TestCase):
         self.assertEqual(expected_damage, actual_damage)
 
     def test_deathwatch_training_should_not_auto_confirm_against_non_aliens(self):
-        target = get_char('dev_bohn_jobb')
-        attacker = get_char('dev_john_bobb')
+        target = build_character('dev_bohn_jobb')
+        attacker = build_character('dev_john_bobb')
         weapon = get_weapon('astartes_chainsword')
         attack = attacker._melee_attack(weapon, target)
         attack.try_action(0)
@@ -62,8 +62,8 @@ class Test(unittest.TestCase):
         self.assertEqual(expected_damage, actual_damage)
 
     def test_felling_should_reduce_toughness_multiplier_but_not_below_1(self):
-        target = get_char('dev_bohn_jobb')
-        attacker = get_char('dev_john_bobb')
+        target = build_character('dev_bohn_jobb')
+        attacker = build_character('dev_john_bobb')
         weapon = get_weapon('dev_felling_chainsword')
         attack = attacker._melee_attack(weapon, target)
         attack.try_action(100, 1)
@@ -80,8 +80,8 @@ class Test(unittest.TestCase):
                          actual_raw_toughness)
 
     def test_single_shot(self):
-        target = get_char('dev_bohn_jobb')
-        attacker = get_char('dev_john_bobb')
+        target = build_character('dev_bohn_jobb')
+        attacker = build_character('dev_john_bobb')
         weapon = get_weapon('dev_bolter')
         attack = attacker._ranged_attack(weapon, target, firemode=SINGLE_SHOT)
         attack.try_action(100, 1)
@@ -91,8 +91,8 @@ class Test(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_semi_auto(self):
-        target = get_char('dev_bohn_jobb')
-        attacker = get_char('dev_john_bobb')
+        target = build_character('dev_bohn_jobb')
+        attacker = build_character('dev_john_bobb')
         weapon = get_weapon('dev_bolter')
         attack = attacker._ranged_attack(weapon, target, firemode=SEMI_AUTO)
         attack.try_action(100, 1)
@@ -102,8 +102,8 @@ class Test(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_full_auto(self):
-        target = get_char('dev_bohn_jobb')
-        attacker = get_char('dev_john_bobb')
+        target = build_character('dev_bohn_jobb')
+        attacker = build_character('dev_john_bobb')
         weapon = get_weapon('dev_bolter')
         attack = attacker._ranged_attack(weapon, target, firemode=FULL_AUTO)
         attack.try_action(100, 1)

@@ -4,7 +4,7 @@ from src.action.psychic_attack import PsychicAttack
 from src.action.ranged_attack import RangedAttack
 from src.dwca_log.log import get_log
 from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
-    SINGLE_SHOT
+    SINGLE_SHOT, WOUNDS, SKILLS
 from src.entities.char_stats import STAT_TGH
 from src.entities.entity import Entity
 from src.entities.libraries import read_character
@@ -14,6 +14,8 @@ from src.modifiers.qualities import Felling
 from src.modifiers.traits import Daemonic
 from src.situational.cover import get_cover_armor_for_hitloc
 from src.situational.force_field import ForceField
+from src.skills import get_skill_characteristic, BasicSkills, get_all_skills,\
+    AdvancedSkills, get_advanced_skills
 from src.util.rand_util import get_tens
 
 
@@ -23,10 +25,10 @@ UNDEFINED_CHARACTERISTIC_VALUE = 0
 DEFAULT_CHARACTERISTIC_MULTIPLIER = 1
 
 
-def get_char(char_name):
-    char_definition = read_character(char_name)
-    char = Character(char_definition)
-    return char
+def build_character(char_name):
+    character_definition = read_character(char_name)
+    character = Character(character_definition)
+    return character
 
 
 class Character(Entity):
@@ -37,9 +39,9 @@ class Character(Entity):
         toughness = self.get_modded_toughness_bonus(attack)
         effective_damage = hit.calculate_effective_damage(
             armor, toughness)
+        effective_damage = attack.on_damage_effects(effective_damage)
         LOG.info('%s was hit in %s for %s damage.', self,
                  hit.hit_location, effective_damage)
-        attack.on_damage_effects(effective_damage)
         return effective_damage
 
     def get_num_melee_attacks(self):
@@ -66,6 +68,30 @@ class Character(Entity):
             return self._psychic_attack(weapon, target)
         else:
             return self._ranged_attack(weapon, target, firemode)
+
+    @property
+    def available_skills(self):
+        available_skills = {}
+        for skill in get_all_skills():
+            available_skills[skill] = self._get_effective_skill_rating(skill)
+        for skill in get_advanced_skills():
+            if skill not in self.skills:
+                available_skills.pop(skill, None)
+        return available_skills
+
+    def _get_effective_skill_rating(self, skill):
+        characteristic_value = self.get_skill_characteristic(skill)
+        trained_value = self.skills.get(skill)
+        if trained_value is not None:
+            effective_skill_rating = characteristic_value + trained_value
+        else:
+            effective_skill_rating = characteristic_value / 2
+        return effective_skill_rating
+
+    def get_skill_characteristic(self, skill):
+        char_stat = get_skill_characteristic(skill)
+        characteristic_value = self.get_characteristic(char_stat)
+        return characteristic_value
 
     def _melee_attack(self, weapon, target=None):
         return MeleeAttack(weapon=weapon,
@@ -145,7 +171,7 @@ class Character(Entity):
 
     @property
     def species(self):
-        return self.get_stat(SPECIES, 'N/A')
+        return self.get_stat(SPECIES, 'NO_SPECIES')
 
     @property
     def traits(self):
@@ -153,9 +179,19 @@ class Character(Entity):
         return traits
 
     @property
+    def skills(self):
+        skills = self.get_stat(SKILLS, default={})
+        return skills
+
+    @property
     def talents(self):
         talents = self.get_stat(TALENTS, default={})
         return talents
+
+    @property
+    def wounds(self):
+        wounds = self.get_stat(WOUNDS, default=0)
+        return wounds
 
     @property
     def modifiers(self):
@@ -174,3 +210,6 @@ class Character(Entity):
 
     def is_alien(self):
         return is_alien_species(self.species)
+
+    def is_daemon(self):
+        return self.species == 'daemon'

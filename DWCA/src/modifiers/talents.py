@@ -72,6 +72,17 @@ class HunterOfAliens(Modifier):
         return current_damage
 
 
+class SlayerOfDaemons(Modifier):
+
+    name = 'slayer_of_daemons'
+
+    def modify_damage(self, attack, current_damage):
+        if attack.target.is_daemon() and attack.is_melee():
+            LOG.debug('+2 damage from SlayerOfDaemons against daemons.')
+            current_damage += 2
+        return current_damage
+
+
 class WarpConduit(Modifier):
 
     name = 'warp_conduit'

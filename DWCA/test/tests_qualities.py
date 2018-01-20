@@ -1,7 +1,7 @@
 import unittest
 
 from src.action.attack import Attack
-from src.entities.character import get_char
+from src.entities.character import build_character
 from src.entities.weapon import Weapon, get_weapon
 from src.modifiers.qualities import Proven
 
@@ -9,7 +9,7 @@ from src.modifiers.qualities import Proven
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self.dummy = get_char('dummy')
+        self.dummy = build_character('dummy')
         self.dummy_weapon = get_weapon('dummy')
         self.proven_5_weapon = Weapon({'name': 'proven_weapon',
                                        'qualities': {Proven.name: 5}})

@@ -8,6 +8,7 @@ TARGET = 'target'
 FIREMODE = 'firemode'
 CLASS = 'class'
 MELEE = 'melee'
+RANGED_CLASSES = ['pistol', 'basic', 'heavy']
 NUM_ATTACKS = 'num_attacks'
 ATTACKER_MAG = 'attacker_mag'
 TARGET_MAG = 'target_mag'

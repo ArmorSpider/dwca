@@ -17,6 +17,9 @@ class PsychicScaling(Modifier):
     def modify_penetration(self, attack, current_penetration):
         return self.scale_with_pr(attack, current_penetration)
 
+    def modify_damage(self, attack, current_damage):
+        return self.scale_with_pr(attack, current_damage)
+
     def scale_with_pr(self, attack, current_value):
         if attack.effective_psy_rating is not None:
             current_value = current_value * attack.effective_psy_rating
@@ -101,6 +104,7 @@ class DrainLife(Modifier):
             message = ('DRAIN_LIFE: Make an opposed WP Test. '
                        'Each DoS for %s deals 1d10 true damage to %s.')
             queue_message(message % (attack.attacker, attack.target))
+        return effective_damage
 
 
 class Proven(Modifier):
@@ -127,6 +131,7 @@ class Shocking(Modifier):
         if effective_damage > 0:
             queue_message('SHOCKING: %s must make TGH test +10*(location AP) or be stunned for %s rounds.' %
                           (attack.target, int(effective_damage * 0.5)))
+        return effective_damage
 
 
 class Toxic(Modifier):
@@ -139,6 +144,7 @@ class Toxic(Modifier):
             penalty = 5 * effective_damage
             queue_message('TOXIC: %s should roll %s -%s or take %s true damage.' %
                           (attack.target, STAT_TGH, penalty, toxic_value))
+        return effective_damage
 
 
 class TwinLinked(Modifier):
@@ -327,6 +333,7 @@ class Concussive(Modifier):
         if effective_damage > str_bonus:
             queue_message('CONCUSSIVE: Damage was > STR bonus. (%s > %s). %s is knocked down.' % (
                 effective_damage, str_bonus, attack.target))
+        return effective_damage
 
 
 class MultiplyStrength(Modifier):
@@ -385,3 +392,8 @@ class PenetrationPerDos(Modifier):
                  bonus_penetration, penetration_per_dos)
         current_penetration += bonus_penetration
         return current_penetration
+
+
+class SkillBonus(Modifier):
+
+    name = 'skill_bonus'

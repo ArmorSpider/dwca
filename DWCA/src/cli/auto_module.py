@@ -6,7 +6,8 @@ from src.entities.char_stats import STAT_WS, STAT_BS, STAT_WIL
 from src.errors import OutOfRangeError
 from src.handler import build_attacker, build_weapon, build_target, build_attack
 from src.modifiers.roll_modifier import ROF_MOD,\
-    TWIN_LINKED_MOD, RANGE_MOD, add_roll_mod, SIZE_MOD, PSY_RATING_MOD
+    TWIN_LINKED_MOD, RANGE_MOD, add_roll_mod, SIZE_MOD, PSY_RATING_MOD,\
+    SKILL_BONUS_MOD, HUNTER_OF_ALIENS_MOD, SLAYER_OF_DAEMONS_MOD
 from src.modifiers.states import Push, Fettered, Unfettered
 from src.util.event_util import update_adhoc_dict
 from src.util.user_input import try_user_choose_from_list
@@ -30,22 +31,39 @@ def equip_weapon(event):
     if weapon.is_melee():
         num_attacks = attacker.get_num_melee_attacks()
         roll_target = attacker.get_characteristic(STAT_WS)
-        event = size_module(event)
     elif weapon.is_psychic():
         num_attacks = 1
         roll_target = attacker.get_characteristic(STAT_WIL)
-        event = pr_bonus_module(event)
     else:
         num_attacks = attacker.get_num_ranged_attacks()
         roll_target = attacker.get_characteristic(STAT_BS)
-        event = firemode_module(event)
-        event = range_module(event)
-        if weapon.twin_linked is not None:
-            event = add_roll_mod(event, 20, TWIN_LINKED_MOD)
-            LOG.info('+20 to hit from twin-linked.')
-        event = size_module(event)
+    event = calculate_hit_bonuses(event)
     event[NUM_ATTACKS] = num_attacks
     event[ROLL_TARGET] = roll_target
+    return event
+
+
+def calculate_hit_bonuses(event):
+    attack = build_attack(event)
+    if attack.is_psychic():
+        event = pr_bonus_module(event)
+    else:
+        if attack.is_melee():
+            if attack.hunter_of_aliens is not None and attack.target.is_alien():
+                event = add_roll_mod(event, 10, HUNTER_OF_ALIENS_MOD)
+            if attack.slayer_of_daemons is not None and attack.target.is_daemon():
+                event = add_roll_mod(event, 10, SLAYER_OF_DAEMONS_MOD)
+        if attack.is_ranged():
+            if attack.weapon.twin_linked is not None:
+                event = add_roll_mod(event, 20, TWIN_LINKED_MOD)
+                LOG.info('+20 to hit from twin-linked.')
+            event = firemode_module(event)
+            event = range_module(event)
+
+        event = size_module(event)
+        if attack.weapon.skill_bonus is not None:
+            event = add_roll_mod(
+                event, attack.weapon.skill_bonus, SKILL_BONUS_MOD)
     return event
 
 

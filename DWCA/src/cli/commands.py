@@ -19,6 +19,7 @@ from src.handler import check_required_keys,\
 from src.hitloc_series import build_hitloc_iterator
 from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod
 from src.save_manager import SaveManager
+from src.situational.scatter import scatter
 from src.situational.state_manager import StateManager
 from src.util.dict_util import pretty_print
 from src.util.event_util import update_adhoc_dict
@@ -79,6 +80,16 @@ class CLICommand(object):
         else:
             ad_hoc[key] = value
         event[AD_HOC] = ad_hoc
+        return event
+
+
+class CommandScatter(CLICommand):
+
+    keyword = 'scatter'
+    help = 'Roll on scatter diagram.'
+
+    def _process_event(self, event):
+        scatter()
         return event
 
 
@@ -147,7 +158,7 @@ class CommandReload(CLICommand):
     help = 'Reload character & weapon libraries.'
 
     def _process_event(self, event):
-        MasterLibrary.reload_libraries(self)
+        MasterLibrary.reload_libraries()
         return event
 
 

@@ -87,7 +87,7 @@ class MasterLibrary(object):
         MasterLibrary.available_packages.append(package_name)
 
     @staticmethod
-    def reload_libraries(self):
+    def reload_libraries():
         LOG.info('Reloaded libraries.')
         MasterLibrary.weapon_library = read_weapon_library()
         MasterLibrary.character_library = read_character_library()

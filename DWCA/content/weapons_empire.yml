@@ -43,17 +43,6 @@ twin_assault_cannons:
   penetration: 6
   qualities: {devastating: 1, tearing: true, twin_linked: true}
   range: 150
-twin_lascannon:
-  _package: empire
-  class: Heavy
-  damage_type: E
-  dice: 5
-  flat_damage: 10
-  name: Twin-Linked Lascannons
-  penetration: 10
-  qualities: {proven: 3, twin_linked: true}
-  range: 300
-  single_shot: 1
 twin_turbo_laser:
   _package: empire
   class: Mounted

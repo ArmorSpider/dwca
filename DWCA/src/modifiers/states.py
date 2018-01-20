@@ -4,6 +4,58 @@ from src.modifiers.modifier import Modifier
 from src.situational.cover import is_hitloc_eligible_for_cover
 
 
+class BonusArmor(Modifier):
+
+    name = 'bonus_armor'
+
+    def modify_armor(self, attack, current_armor, hit_location):
+        if attack.bonus_armor is not None:
+            current_armor += attack.bonus_armor
+        return current_armor
+
+
+class BonusDamage(Modifier):
+
+    name = 'bonus_damage'
+
+    def modify_damage(self, attack, current_damage):
+        if attack.bonus_damage is not None:
+            current_damage += attack.bonus_damage
+        return current_damage
+
+
+class BonusPenetration(Modifier):
+
+    name = 'bonus_penetration'
+
+    def modify_penetration(self, attack, current_penetration):
+        if attack.bonus_penetration is not None:
+            current_penetration += attack.bonus_penetration
+        return current_penetration
+
+
+class ReducePenetration(Modifier):
+
+    name = 'reduce_penetration'
+
+    def modify_penetration(self, attack, current_penetration):
+        if attack.negate_penetration is not None:
+            current_penetration -= attack.negate_penetration
+            current_penetration = max(current_penetration, 0)
+        return current_penetration
+
+
+class ReduceDamage(Modifier):
+
+    name = 'reduce_damage'
+
+    def on_damage(self, attack, effective_damage):
+        if attack.reduce_damage is not None:
+            effective_damage -= attack.reduce_damage
+            effective_damage = max(effective_damage, 0)
+        return effective_damage
+
+
 class Charged(Modifier):
 
     name = 'charged'
@@ -20,7 +72,7 @@ class Cover(Modifier):
 
     def modify_armor(self, attack, current_armor, hit_location):
         if is_hitloc_eligible_for_cover(hit_location):
-            current_armor = attack.cover
+            current_armor += attack.cover
         return current_armor
 
 

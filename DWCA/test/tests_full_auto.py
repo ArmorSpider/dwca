@@ -24,6 +24,7 @@ def return_number(prompt):
 class Test(unittest.TestCase):
 
     def setUp(self):
+        MasterLibrary.reload_libraries()
         MasterLibrary.load_all_packages()
         self.random_commands = ['info',
                                 'bonus',
@@ -53,7 +54,7 @@ class Test(unittest.TestCase):
 
     def _run_random_command(self, event):
         command = choice(self.random_commands)
-        print 'RAN "%s"' % command
+        print 'Ran command "%s"' % command
         try:
             event = process_command(command, event)
         except OutOfRangeError:
