@@ -238,7 +238,7 @@ marius_honour_blades:
   flat_damage: 7
   name: Marius' Honour Blades
   penetration: 6
-  qualities: {power_field: true, razor_sharp: true, skill_bonus: 15}
+  qualities: {power_field: true, razor_sharp: true, skill_bonus: 15, balanced: 30}
 morgan_power_claymore:
   class: Melee
   damage_type: E

@@ -1,6 +1,6 @@
 from lazy.lazy import lazy
 
-from definitions import FIREMODE, NUM_HITS
+from definitions import FIREMODE, NUM_HITS, RATE_OF_FIRE
 from src.action.attack import Attack
 from src.dwca_log.log import get_log
 from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
@@ -17,6 +17,8 @@ class RangedAttack(Attack):
     def __init__(self, weapon, attacker, target, firemode):
         Attack.__init__(self, weapon, attacker, target)
         self.firemode = firemode
+        self.update_metadata({FIREMODE: self.firemode})
+        self.update_metadata({RATE_OF_FIRE: self.rate_of_fire})
 
     @property
     def rate_of_fire(self):
@@ -30,7 +32,7 @@ class RangedAttack(Attack):
 
     @property
     def _num_shots(self):
-        LOG.info('Firemode is "%s".', self.firemode)
+        LOG.debug('Firemode is "%s".', self.firemode)
         num_shots = 1
         if self.firemode == SINGLE_SHOT:
             num_shots = 1
@@ -45,7 +47,6 @@ class RangedAttack(Attack):
         else:
             raise NoFiremodeError(
                 '"%s" did not match any known firemode.' % self.firemode)
-        self._update_metadata({FIREMODE: self.firemode})
         LOG.debug('Max hits: %s. RoF cap: %s', num_shots, self.rate_of_fire)
         num_shots = min(num_shots, self.rate_of_fire)
         num_shots = Storm.handle_storm(self, num_shots)
@@ -60,5 +61,5 @@ class RangedAttack(Attack):
             num_hits += 1
         for modifier in self.modifer_iterator():
             num_hits = modifier.modify_num_hits(self, num_hits)
-        self._update_metadata({NUM_HITS: num_hits})
+        self.update_metadata({NUM_HITS: num_hits})
         return num_hits

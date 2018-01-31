@@ -1,5 +1,6 @@
 abhor_the_witch: spend fate point before mission to gain chance to ignore psychic
   powers
+psychic_cacophony: Enemies within 75m get -10 to WIL. Make WIL test each turn. If fail, -10 to all tests that turn. If DoS >= 2 suffer 1 fatigue. Psyker that fail may not use powers that turn.
 ambidextrous: No penalty for using off-hand. For TWW penalty becomes -10
 amorphous: Can change size +/- 1 category. Movement based on half AGI_MOD
 armour_monger: Can apply +2 armor to all locations
@@ -260,3 +261,4 @@ networked_machine_intelligence: +2 BS, INT & PER for each nearby Gun Drone
 seeker_missile: Unit is armed with a number of seeker missiles.
 spawn_termagants: As free action each turn, spawn 2d10 termagants horde. If roll is a double, no more spawning.
 limited_synapse_creature: Squadsight from other tyranids, can shot without LoS. Ignore penalties for range, prone, targets in melee, weather & concealment.
+cloud_of_flies: Enemies within 5m get -10 to WS & BS.

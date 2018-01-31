@@ -18,7 +18,7 @@ class MeleeAttack(Attack):
         LOG.debug('Added strength bonus (%s) to flat damage (%s).',
                   str_bonus, flat_damage)
         flat_damage += str_bonus
-        self._update_metadata({FLAT_DAMAGE: flat_damage})
+        self.update_metadata({FLAT_DAMAGE: flat_damage})
         return flat_damage
 
     @lazy

@@ -9,17 +9,6 @@ class Horde(Modifier):
 
     name = 'horde'
 
-    def modify_num_dice(self, attack, current_num_dice):
-        attacker = attack.attacker
-        if attacker.is_horde():
-            if attacker.magnitude >= 10:
-                LOG.debug('+1d10 from Horde with Magnitude >= 10.')
-                current_num_dice += 1
-            if attacker.magnitude >= 20:
-                LOG.debug('+1d10 from Horde with Magnitude >= 20.')
-                current_num_dice += 1
-        return current_num_dice
-
 
 class Overwhelming(Modifier):
 

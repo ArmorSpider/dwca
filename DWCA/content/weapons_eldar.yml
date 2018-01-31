@@ -125,7 +125,7 @@ eldar_power_sword:
   flat_damage: 4
   name: Eldar Power Sword
   penetration: 8
-  qualities: {balanced: 2, power_field: true}
+  qualities: {balanced: 20, power_field: true}
 fire_pike:
   _package: eldar
   class: Basic
@@ -224,7 +224,7 @@ mc_eldar_power_sword:
   flat_damage: 6
   name: Mastercrafted Eldar Power Sword
   penetration: 8
-  qualities: {balanced: 2, power_field: true}
+  qualities: {balanced: 20, power_field: true}
 mc_fusion_gun:
   _package: eldar
   class: Basic
@@ -301,7 +301,7 @@ mirrorsword:
   flat_damage: 8
   name: Mirrorsword
   penetration: 10
-  qualities: {balanced: 2, power_field: true}
+  qualities: {balanced: 20, power_field: true}
 reaper_launcher:
   _package: eldar
   class: Heavy

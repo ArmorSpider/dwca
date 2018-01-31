@@ -23,3 +23,6 @@ VEHICLE = 'vehicle'
 PSYCHIC = 'psychic'
 ENTITY = 'entity'
 WOUNDS = 'wounds'
+
+
+DUMMY = 'dummy'

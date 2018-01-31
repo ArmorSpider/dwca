@@ -26,6 +26,21 @@ class PsychicScaling(Modifier):
         return current_value
 
 
+class Balanced(Modifier):
+
+    name = 'balanced'
+
+
+class Unbalanced(Modifier):
+
+    name = 'unbalanced'
+
+
+class Unwieldy(Modifier):
+
+    name = 'unwieldy'
+
+
 class RazorSharp(Modifier):
 
     name = 'razor_sharp'
@@ -285,7 +300,7 @@ class Hellfire(Modifier):
 
     @staticmethod
     def handle_hellfire_magnitude_damage(attack, magnitude_damage):
-        if attack.hellfire is not None:
+        if attack.hellfire is not None and magnitude_damage > 0:
             LOG.info('+1 magnitude damage per hit from Hellfire.')
             magnitude_damage += 1
         return magnitude_damage

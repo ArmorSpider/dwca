@@ -124,7 +124,7 @@ stealth_suit:
   talents: {hard_target: true, rapid_reaction: true, sprint: true}
   traits: {auto_stabilised: true, dark_sight: true, flight: 12, stealth_field: true,
     unnatural_strength: 2}
-  weapons: [burst_cannon]
+  weapons: [burst_cannon, fusion_blaster]
   wounds: 30
 tau_commander:
   _package: tau
@@ -135,11 +135,25 @@ tau_commander:
   skills: {acrobatics: 0, command: 20, dodge: 0}
   species: tau
   talents: {air_of_authority: true, ambidextrous: true, independent_targeting: true,
-    meditation: true, rapid_reaction: true, sprint: true, two_weapon_wielder_ballistic: true}
+    meditation: true, rapid_reaction: true, sprint: true, two_weapon_wielder_ballistic: true, touched_by_the_fates: 2}
   traits: {auto_stabilised: true, dark_sight: true, flight: 12, size: 20, unnatural_strength: 2,
     unnatural_toughness: 2}
   weapons: [plasma_rifle, missile_pod]
   wounds: 90
+xv8_battlesuit:
+  _package: tau
+  armor: {all: 9}
+  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 30, intelligence: 40,
+    perception: 55, strength: 50, toughness: 52, weapon_skill: 35, willpower: 50}
+  name: Tau Commander
+  skills: {acrobatics: 0, dodge: 0}
+  species: tau
+  talents: {ambidextrous: true, independent_targeting: true,
+    meditation: true, rapid_reaction: true, sprint: true, two_weapon_wielder_ballistic: true}
+  traits: {auto_stabilised: true, dark_sight: true, flight: 12, size: 20, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [twin_plasma_rifle, missile_pod, cyclic_ion_blaster, burst_cannon]
+  wounds: 40
 riptide:
   _package: tau
   armor: {all: 14}

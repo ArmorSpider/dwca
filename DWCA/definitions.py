@@ -8,7 +8,7 @@ TARGET = 'target'
 FIREMODE = 'firemode'
 CLASS = 'class'
 MELEE = 'melee'
-RANGED_CLASSES = ['pistol', 'basic', 'heavy']
+RANGED_CLASSES = ['pistol', 'basic', 'heavy', 'mounted']
 NUM_ATTACKS = 'num_attacks'
 ATTACKER_MAG = 'attacker_mag'
 TARGET_MAG = 'target_mag'
@@ -28,15 +28,23 @@ OFFENSIVE_MODIFIERS = 'offensive_modifiers'
 DEFENSIVE_MODIFIERS = 'defensive_modifiers'
 MODIFIER_EFFECTS = 'modifier_effects'
 EFFECTIVE_DAMAGE = 'effective_damage'
+MAGNITUDE_DAMAGE = 'magnitude_damage'
 HIT_LOCATIONS = 'hit_locations'
 ROLL_MODIFIERS = 'roll_modifiers'
 DEBUG = 'debug'
+RAW_WEAPON_STATS = 'raw_weapon_stats'
+EFFECTIVE_ARMOR = 'effective_armor'
+EFFECTIVE_TOUGHNESS = 'effective_toughness'
+EFFECTIVE_PSY_RATING = 'effective_psy_rating'
+BLOCKED = 'blocked'
+RATE_OF_FIRE = 'rate_of_fire'
 
 # States
 AIMED = 'aimed'
 OVERLOADED = 'overloaded'
 CHARGED = 'charged'
 COVER = 'cover'
+JAMMED = 'jammed'
 
 # Commands
 RUN = 'run'

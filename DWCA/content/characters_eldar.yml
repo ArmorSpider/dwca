@@ -177,7 +177,7 @@ howling_banshee:
   _package: eldar
   armor: {all: 6}
   characteristics: {ballistic_skill: 48, fellowship: 34, intelligence: 38, perception: 40,
-    strength: 43, toughness: 35, weapon_skill: 62, willpower: 52}
+    strength: 43, toughness: 35, weapon_skill: 62, willpower: 52, agility: 63}
   name: Howling Banshee Aspect Warrior
   skills: {acrobatics: 10, awareness: 10, dodge: 20, silent_move: 0}
   species: eldar
@@ -193,7 +193,7 @@ howling_banshee_exarch:
   _package: eldar
   armor: {all: 9}
   characteristics: {ballistic_skill: 55, fellowship: 37, intelligence: 43, perception: 53,
-    strength: 49, toughness: 46, weapon_skill: 70, willpower: 58}
+    strength: 49, toughness: 46, weapon_skill: 70, willpower: 58, agility: 66}
   name: Howling Banshee Exarch
   skills: {acrobatics: 20, awareness: 20, command: 10, dodge: 20, silent_move: 0}
   species: eldar

@@ -46,12 +46,14 @@ def add_roll_modifier(event, roll_modifier):
     return event
 
 
-def get_effective_modifier(event):
+def get_effective_modifier(event, manual_only=False):
     roll_modifiers = event.get(ROLL_MODIFIERS, {})
     effective_modifier = 0
     for key, modifier_values in roll_modifiers.iteritems():
+        if manual_only is True and key != OTHER_MODS:
+            continue
         key_total = sum(modifier_values)
-        LOG.info('%s from "%s".', key_total, key)
+        LOG.debug('%s from "%s".', key_total, key)
         effective_modifier += key_total
     effective_modifier = enforce_modifier_cap(effective_modifier)
     return effective_modifier

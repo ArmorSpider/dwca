@@ -64,7 +64,7 @@ def righteous_fury(results, attack, auto_confirm):
     result = -1
     while result == 10 or result == -1:
         if auto_confirm or confirm_righteous_fury(attack):
-            LOG.info('Triggered righteous fury!')
+            LOG.debug('Triggered righteous fury!')
             result = roll_damage_dice(1).pop()
             results.append(result)
         else:

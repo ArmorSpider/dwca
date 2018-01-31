@@ -1,3 +1,4 @@
+from definitions import JAMMED
 from src.dice import roll_damage_dice
 from src.dwca_log.log import get_log
 from src.entities import SINGLE_SHOT
@@ -10,10 +11,12 @@ LOG = get_log(__name__)
 def is_attack_auto_failed(attack):
     if is_eligible_for_jam(attack):
         if is_weapon_jammed(attack):
-            LOG.info('%s has jammed!', attack.weapon)
+            LOG.debug('%s has jammed!', attack.weapon)
+            attack.update_metadata({JAMMED: True})
             OverHeats.handle_overheats(attack)
         return True
     else:
+        attack.update_metadata({JAMMED: False})
         return False
 
 

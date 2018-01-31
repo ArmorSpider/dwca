@@ -17,13 +17,21 @@ def get_horde(creature_name, magnitude):
 class Horde(Character):
 
     def __init__(self, definition=None, magnitude=1):
-        Character.__init__(self, definition=definition)
+        super(Horde, self).__init__(definition=definition)
         self.magnitude = int(magnitude)
 
     def is_horde(self):
         return True
 
-    def get_num_ranged_attacks(self):
+    @property
+    def name(self):
+        base_name = super(Horde, self).name
+        horde_name = 'Horde of {mag} {name}s'.format(
+            mag=self.magnitude, name=base_name)
+        return horde_name
+
+    @property
+    def num_ranged_attacks(self):
         num_attacks = get_tens(self.magnitude)
         if self.fire_drill is not None:
             num_attacks += 1

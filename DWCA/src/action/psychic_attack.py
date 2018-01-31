@@ -23,7 +23,7 @@ class PsychicAttack(Attack):
             num_hits = self.effective_psy_rating
             aoe_bonus_hits = roll_die(10)
             num_hits += aoe_bonus_hits
-        self._update_metadata({NUM_HITS: num_hits})
+        self.update_metadata({NUM_HITS: num_hits})
         return num_hits
 
     @lazy

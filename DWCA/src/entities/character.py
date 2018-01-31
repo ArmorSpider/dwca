@@ -1,4 +1,5 @@
-from definitions import WEAPONS, FORCE_FIELD
+from definitions import WEAPONS, FORCE_FIELD, EFFECTIVE_ARMOR,\
+    EFFECTIVE_TOUGHNESS
 from src.action.melee_attack import MeleeAttack
 from src.action.psychic_attack import PsychicAttack
 from src.action.ranged_attack import RangedAttack
@@ -7,22 +8,28 @@ from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
     SINGLE_SHOT, WOUNDS, SKILLS
 from src.entities.char_stats import STAT_TGH
 from src.entities.entity import Entity
-from src.entities.libraries import read_character
+from src.entities.libraries import read_character, get_character_library
 from src.entities.species import is_alien_species
 from src.hit_location import HITLOC_ALL, get_hit_location_name
 from src.modifiers.qualities import Felling
 from src.modifiers.traits import Daemonic
 from src.situational.cover import get_cover_armor_for_hitloc
 from src.situational.force_field import ForceField
-from src.skills import get_skill_characteristic, BasicSkills, get_all_skills,\
-    AdvancedSkills, get_advanced_skills
+from src.skills import get_skill_characteristic, get_all_skills, get_advanced_skills
 from src.util.rand_util import get_tens
+from src.util.user_input import try_user_choose_from_list
 
 
 LOG = get_log(__name__)
 UNDEFINED_ARMOR_VALUE = 0
 UNDEFINED_CHARACTERISTIC_VALUE = 0
 DEFAULT_CHARACTERISTIC_MULTIPLIER = 1
+
+
+def choose_character():
+    available_characters = get_character_library().keys()
+    character_name = try_user_choose_from_list(available_characters)
+    return character_name
 
 
 def build_character(char_name):
@@ -33,18 +40,8 @@ def build_character(char_name):
 
 class Character(Entity):
 
-    def mitigate_hit(self, attack, hit):
-        attack.on_hit_effects()
-        armor = attack.get_effective_armor(hit.hit_location)
-        toughness = self.get_modded_toughness_bonus(attack)
-        effective_damage = hit.calculate_effective_damage(
-            armor, toughness)
-        effective_damage = attack.on_damage_effects(effective_damage)
-        LOG.info('%s was hit in %s for %s damage.', self,
-                 hit.hit_location, effective_damage)
-        return effective_damage
-
-    def get_num_melee_attacks(self):
+    @property
+    def num_melee_attacks(self):
         num_attacks = 1
         if self.swift_attack is not None:
             num_attacks += 1
@@ -55,13 +52,14 @@ class Character(Entity):
         LOG.info('%s can make %s melee attacks.', self, num_attacks)
         return num_attacks
 
-    def get_num_ranged_attacks(self):
+    @property
+    def num_ranged_attacks(self):
         num_attacks = 1
         LOG.info('%s can make %s ranged attacks.', self, num_attacks)
         return num_attacks
 
     def attack(self, weapon, target=None, firemode=SINGLE_SHOT):
-        LOG.info('%s attacks %s with a(n) %s.', self, target, weapon)
+        LOG.debug('%s attacks %s with a(n) %s.', self, target, weapon)
         if weapon.is_melee():
             return self._melee_attack(weapon, target)
         elif weapon.is_psychic():
@@ -74,6 +72,11 @@ class Character(Entity):
         available_skills = {}
         for skill in get_all_skills():
             available_skills[skill] = self._get_effective_skill_rating(skill)
+        available_skills = self._remove_untrained_advanced_skills(
+            available_skills)
+        return available_skills
+
+    def _remove_untrained_advanced_skills(self, available_skills):
         for skill in get_advanced_skills():
             if skill not in self.skills:
                 available_skills.pop(skill, None)
@@ -145,13 +148,17 @@ class Character(Entity):
         return final_bonus
 
     def get_characteristic_multiplier(self, characteristic):
-        trait_name = 'unnatural_{}'.format(characteristic)
-        trait_value = self.traits.get(trait_name)
+        trait_value = self.get_unnatural_characteristic(characteristic)
         if trait_value is not None:
             multiplier = trait_value
         else:
             multiplier = DEFAULT_CHARACTERISTIC_MULTIPLIER
         return multiplier
+
+    def get_unnatural_characteristic(self, characteristic):
+        trait_name = 'unnatural_{}'.format(characteristic)
+        trait_value = self.modifiers.get(trait_name)
+        return trait_value
 
     @property
     def size_bonus(self):

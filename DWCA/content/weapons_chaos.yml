@@ -7,6 +7,14 @@ berzerker_axe:
   name: Berzerker Axe
   penetration: 4
   qualities: {tearing: true}
+plague_longsword:
+  _package: chaos
+  class: Melee
+  dice: 2
+  damage_type: R
+  flat_damage: 6
+  qualities: {toxic: 1d10, unbalanced: true, warp_weapon: true}
+  penetration: 0
 bolt_of_change:
   _package: chaos
   class: Psychic
@@ -17,6 +25,67 @@ bolt_of_change:
   penetration: 0
   qualities: {psychic_scaling: true}
   range: 50
+plaguesword:
+  _package: chaos
+  name: Plaguesword
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 5
+  penetration: 1
+  qualities: {felling: 1, toxic: true}
+plague_knife:
+  _package: chaos
+  name: Plague Knife
+  dice: 1
+  class: Melee
+  damage_type: R
+  penetration: 2
+  flat_damage: 0
+  qualities: {toxic: 1d10}
+blight_grenade:
+  _package: chaos
+  name: Blight Grenade
+  dice: 3
+  flat_damage: 5
+  penetration: 0
+  single_shot: 1
+  class: Basic
+  qualities: {blast: 3, devastating: 3, toxic: 1d10}
+blastmaster:
+  name: Noise Marine Blastmaster
+  _package: chaos
+  class: Basic
+  range: 150
+  single_shot: 1
+  semi_auto: 2
+  dice: 1
+  penetration: 6
+  flat_damage: 12
+  damage_type: E
+  qualities: {devastating: 1, storm: true}
+doom_siren:
+  name: Noise Marine Doom Siren
+  _package: chaos
+  class: Basic
+  range: 30
+  single_shot: 1
+  flat_damage: 12
+  dice: 1
+  penetration: 9
+  qualities: {flame: true}
+sonic_blaster:
+  name: Noise Marine Sonic Blaster
+  _package: chaos
+  range: 100
+  class: Basic
+  single_shot: 1
+  semi_auto: 2
+  full_auto: 4
+  dice: 1
+  flat_damage: 9
+  penetration: 4
+  qualities: {storm: true, tearing: true}
 bomb_rack:
   _package: chaos
   class: Mounted

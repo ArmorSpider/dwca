@@ -4,7 +4,8 @@ from src.dwca_log.log import get_log
 from src.entities import SEMI_AUTO, FULL_AUTO, SINGLE_SHOT
 from src.entities.char_stats import STAT_WS, STAT_BS, STAT_WIL
 from src.errors import OutOfRangeError
-from src.handler import build_attacker, build_weapon, build_target, build_attack
+from src.handler import build_attacker, build_weapon, build_target, build_base_attack,\
+    choose_or_build_attacker
 from src.modifiers.roll_modifier import ROF_MOD,\
     TWIN_LINKED_MOD, RANGE_MOD, add_roll_mod, SIZE_MOD, PSY_RATING_MOD,\
     SKILL_BONUS_MOD, HUNTER_OF_ALIENS_MOD, SLAYER_OF_DAEMONS_MOD
@@ -18,7 +19,7 @@ LOG = get_log(__name__)
 
 def auto_assemble(event):
     event.pop(ROLL_MODIFIERS, None)
-    attacker = build_attacker(event)
+    attacker = choose_or_build_attacker(event)
     weapon_name = try_user_choose_from_list(attacker.weapons)
     event[WEAPON] = weapon_name
     event = equip_weapon(event)
@@ -29,13 +30,13 @@ def equip_weapon(event):
     attacker = build_attacker(event)
     weapon = build_weapon(event)
     if weapon.is_melee():
-        num_attacks = attacker.get_num_melee_attacks()
+        num_attacks = attacker.num_melee_attacks
         roll_target = attacker.get_characteristic(STAT_WS)
     elif weapon.is_psychic():
         num_attacks = 1
         roll_target = attacker.get_characteristic(STAT_WIL)
     else:
-        num_attacks = attacker.get_num_ranged_attacks()
+        num_attacks = attacker.num_ranged_attacks
         roll_target = attacker.get_characteristic(STAT_BS)
     event = calculate_hit_bonuses(event)
     event[NUM_ATTACKS] = num_attacks
@@ -44,7 +45,7 @@ def equip_weapon(event):
 
 
 def calculate_hit_bonuses(event):
-    attack = build_attack(event)
+    attack = build_base_attack(event)
     if attack.is_psychic():
         event = pr_bonus_module(event)
     else:
@@ -73,7 +74,7 @@ def pr_bonus_module(event):
         [Push.name, Fettered.name, Unfettered.name])
     event = update_adhoc_dict(event, {power_level: True})
 
-    attack = build_attack(event)
+    attack = build_base_attack(event)
     psy_rating = attack.effective_psy_rating if attack.effective_psy_rating is not None else 0
     pr_bonus = psy_rating * 5
     LOG.info('+%s from effective psy rating. (%s)',

@@ -55,8 +55,74 @@ chaos_marine:
   skills: {awareness: 0, climb: 0, dodge: 10}
   talents: {bolter_drill: true, fearless: true, hatred: loyalist space marines, jaded: true,
     killing_strike: true, swift_attack: true, true_grit: true}
-  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2, fire_drill: true}
   weapons: [bolt_pistol, bolter, chainsword, heavy_bolter]
+  wounds: 29
+khorne_marine:
+  _package: chaos
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
+    perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
+  name: Chaos Space Marine
+  skills: {awareness: 0, climb: 0, dodge: 10}
+  talents: {bolter_drill: true, fearless: true, hatred: loyalist space marines, jaded: true,
+    killing_strike: true, swift_attack: true, true_grit: true, berserk_charge: true, frenzy: true, furious_assault: true, resistance_psychic: true, whirlwind_of_death: true, lightning_attack: true}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2, fire_drill: true}
+  weapons: [bolt_pistol, bolter, chainsword, heavy_bolter]
+  wounds: 29
+nurgle_marine:
+  _package: chaos
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
+    perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
+  name: Nurgle Marine
+  skills: {awareness: 0, climb: 0, dodge: 10}
+  talents: {bolter_drill: true, fearless: true, hatred: loyalist space marines, jaded: true,
+    killing_strike: true, swift_attack: true, true_grit: true}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 3, fire_drill: true, stuff_of_nightmares: true}
+  weapons: [bolt_pistol, bolter, chainsword, heavy_bolter]
+  wounds: 36
+plague_marine:
+  _package: chaos
+  name: Plague Marine
+  skills: {awareness: 0, command: 10, dodge: 0, intimidate: 20, survival: 0, swim: 0}
+  wounds: 36
+  characteristics: {weapon_skill: 43, ballistic_skill: 43, strength: 45, toughness: 55, agility: 40, intelligence: 30, perception: 30, willpower: 45, fellowship: 25}
+  talents: {crippling_strike: true, fearless: true, hatred: loyalist, swift_attack: true}
+  traits: {dark_sight: true, fear: 2, size: 0, stuff_of_nightmares: true, toxic: 1d10, unnatural_strength: 2, unnatural_toughness: 3, cloud_of_flies: true, power_armour: true}
+  armor: {all: 8, body: 10}
+  species: human
+  weapons: [chainsword, bolt_pistol, bolter, plague_knife, blight_grenade]
+mediphast_the_plaguereaver:
+  _package: chaos
+  name: Mediphast the Plaguereaver
+  wounds: 149
+  characteristics: {weapon_skill: 47, ballistic_skill: 50, strength: 65, toughness: 87, agility: 32, intelligence: 52, perception: 44, willpower: 71, fellowship: 66}
+  skills: {awareness: 10, deceive: 0, intimidate: 20, scrutiny: 20}
+  talents: {bulging_biceps: true, combat_master: true, crippling_strike: true, crushing_blow: true, die_hard: true, disturbing_voice: true, favoured_by_the_warp: true, hatred: loyalist, hammer_blow: true, iron_discipline: true, litany_of_hate: true, true_grit: true, resistance_psychic: true}
+  traits: {daemonic: true, dark_sight: true, fear: 4, from_beyond: true, size: 20, sturdy: true, unnatural_strength: 2, the_stuff_of_nightmares: true, touched_by_the_fates: 3, cloud_of_flies: true, psy_rating: 7}
+  armor: {all: 11}
+  weapons: [plague_longsword, focus_test]
+  force_field: {overload_max: 0, protection_max: 35}
+plaguebearer:
+  _package: chaos
+  name: Plaguebearer
+  wounds: 30
+  talents: {crippling_strike: true, fearless: true}
+  traits: {daemonic: true, fear: 2, strange_physiology: true, unnatural_strength: 2, unnatural_toughness: 2, daemonic_presence: true, cloud_of_flies: true}
+  characteristics: {weapon_skill: 45, ballistic_skill: 30, strength: 43, toughness: 55, agility: 30, intelligence: 30, perception: 30, willpower: 30, fellowship: 10}
+  weapons: [plaguesword]
+noise_marine:
+  _package: chaos
+  armor: {all: 8, body: 10}
+  wounds: 28
+  species: human
+  name: Noise Marine
+  skills: {awareness: 0, command: 10, dodge: 10, intimidate: 20, psyniscience: 0, survival: 0, swim: 0}
+  characteristics: {weapon_skill: 43, ballistic_skill: 43, strength: 45, toughness: 45, agility: 50, intelligence: 30, perception: 49, willpower: 45, fellowship: 35}
+  talents: {die_hard: true, fearless: true, feedback_screech: true, hatred: loyalist, jaded: true, lightning_reflexes: true, litany_of_hate: true, quick_draw: true, rapid_reload: true, swift_attack: true, true_grit: true}
+  traits: {size: 0, dark_sight: true, fear: 2, unnatural_toughness: 2, unnatural_strength: 2, unnatural_fellowship: 2, unnatual_perception: 2, power_armour: true, psychic_cacophony: true}
+  weapons: [chainsword, bolt_pistol, blastmaster, sonic_blaster]
 chaos_sorcerer:
   _package: chaos
   armor: {all: 8, body: 10}

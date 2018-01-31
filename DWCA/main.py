@@ -18,6 +18,7 @@ def cli_loop():
         try:
             event = process_command(command_string, event)
         except (ValueError, NoMatchError, ChooseFromListFailedError, MechanicsError) as error:
+            LOG.exception('')
             LOG.error(error.message)
 
 

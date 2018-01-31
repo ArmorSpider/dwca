@@ -9,13 +9,14 @@ from src.cli.match_map import get_default_match_map
 from src.cli.message_queue import log_messages
 from src.cli.new_module import new_module
 from src.cli.quick_dict import quick_dict_parse
+from src.cli.reaction_module import defensive_action
 from src.cli.run_module import run_module
 from src.cli.table import print_table
 from src.dwca_log.log import get_log
 from src.entities.libraries import get_weapon_library, get_character_library,\
     MasterLibrary
 from src.handler import check_required_keys,\
-    build_attack, build_attacker, build_weapon
+    build_attacker, build_weapon, build_base_attack
 from src.hitloc_series import build_hitloc_iterator
 from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod
 from src.save_manager import SaveManager
@@ -80,6 +81,17 @@ class CLICommand(object):
         else:
             ad_hoc[key] = value
         event[AD_HOC] = ad_hoc
+        return event
+
+
+class CommandDefend(CLICommand):
+
+    keyword = 'defend'
+    help = 'Attacker attempts defensive actions.'
+    required_keys = []
+
+    def _process_event(self, event):
+        defensive_action(event)
         return event
 
 
@@ -349,12 +361,13 @@ class CommandDamage(CLICommand):
         penetration = user_input_int('Enter penetration: ')
         roll_result = user_input_int('Enter roll result: ')
         event[ROLL_RESULT] = roll_result
-        attack = build_attack(event)
+        attack = build_base_attack(event)
+        attack.roll_result = roll_result
         hitloc_iterator = build_hitloc_iterator(attack.hit_location)
 
-        while damage != 'done':
+        while damage != '':
             damage = raw_input('Enter damage: ')
-            if damage == 'done':
+            if damage == '':
                 continue
             hit = Hit(hitloc_iterator.next(), damage, penetration)
             hits.append(hit)
@@ -368,7 +381,7 @@ class CommandAuto(CLICommand):
 
     keyword = 'auto'
     help = 'Auto configure event based on attacker.'
-    required_keys = [ATTACKER]
+    required_keys = []
 
     def _process_event(self, event):
         event = auto_assemble(event)

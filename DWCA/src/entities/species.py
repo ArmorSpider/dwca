@@ -14,6 +14,7 @@ class Species(Enum):
     ELDAR = 'eldar'
     NECRON = 'necron'
     XENO = 'xeno'
+    UNKNOWN = 'unknown'
 
 
 def is_alien_species(species_string):
@@ -24,7 +25,7 @@ def is_alien_species(species_string):
 
 
 def identify_species(species_string):
-    species_result = Species.XENO
+    species_result = Species.UNKNOWN
     for species in list(Species):
         if normalize_string(species_string) == species.value:
             species_result = species
