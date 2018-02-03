@@ -155,7 +155,7 @@ class ComandAdHoc(CLICommand):
 
 class CommandRun(CLICommand):
 
-    keyword = 'run'
+    keyword = ''
     required_keys = [ATTACKER, TARGET, WEAPON, ROLL_TARGET]
     help = 'Roll attacks for the current event.'
 

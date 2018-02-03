@@ -1,11 +1,11 @@
 import unittest
-from src.cli.commands import CommandRun
+from src.cli.commands import CommandRun, CommandAuto
 
 
 class Test(unittest.TestCase):
 
     def test_non_matching_strings_should_return_false(self):
-        command_strings = ['', 'auto', 'aiwhjdawpid', '721']
+        command_strings = ['skroo', 'auto', 'aiwhjdawpid', '721']
         run_command = CommandRun()
         for command_string in command_strings:
             self.assertFalse(run_command.is_this_command(command_string))
@@ -22,9 +22,9 @@ class Test(unittest.TestCase):
         for command_string in command_strings:
             self.assertFalse(run_command.is_this_command(command_string))
 
-    def test_strings_wihtin_normalization_should_match(self):
-        command_strings = ['RUN', 'Run', '     run',
-                           '   run        ', 'ruN     ']
-        run_command = CommandRun()
+    def test_strings_within_normalization_should_match(self):
+        command_strings = ['AUTO', 'Auto', '     auto',
+                           '   auto        ', 'autO     ']
+        run_command = CommandAuto()
         for command_string in command_strings:
             self.assertTrue(run_command.is_this_command(command_string))
