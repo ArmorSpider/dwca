@@ -86,6 +86,16 @@ ceremonial_sword:
   name: Ceremonial Sword
   penetration: 2
   qualities: {balanced: true}
+assault_cannon:
+  class: Mounted
+  name: Astartes Assault Cannon
+  range: 150
+  full_auto: 10
+  dice: 2
+  flat_damage: 12
+  damage_type: I
+  penetration: 6
+  qualities: {devastating: 1, tearing: true}
 chainfist:
   class: Melee
   damage_type: E
