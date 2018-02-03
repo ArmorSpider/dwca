@@ -108,7 +108,8 @@ class Attack(Action):
 
     def apply_hit(self, hit):
         self.on_hit_effects()
-        toughness = self.target.get_modded_toughness_bonus(self)
+        toughness = self.target.get_modded_toughness_bonus(
+            self, hit.hit_location)
         effective_armor = self.get_effective_armor(hit)
         effective_damage = max(hit.damage - effective_armor - toughness, 0)
         effective_damage = self.on_damage_effects(effective_damage)
