@@ -10,5 +10,5 @@ class Vehicle(Character):
     def is_vehicle(self):
         return True
 
-    def get_modded_toughness_bonus(self, attack):
+    def get_modded_toughness_bonus(self, attack, hit_location):
         return 0
