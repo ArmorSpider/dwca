@@ -1,12 +1,11 @@
-from definitions import WEAPONS, FORCE_FIELD, EFFECTIVE_ARMOR,\
-    EFFECTIVE_TOUGHNESS
+from definitions import WEAPONS, FORCE_FIELD
 from src.action.melee_attack import MeleeAttack
 from src.action.psychic_attack import PsychicAttack
 from src.action.ranged_attack import RangedAttack
 from src.dwca_log.log import get_log
 from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
-    SINGLE_SHOT, WOUNDS, SKILLS
-from src.entities.char_stats import STAT_TGH
+    SINGLE_SHOT, WOUNDS, SKILLS, HALF_MOVE, CHARGE_MOVE, RUN_MOVE, FULL_MOVE
+from src.entities.char_stats import STAT_TGH, STAT_AGI
 from src.entities.entity import Entity
 from src.entities.libraries import read_character, get_character_library
 from src.entities.species import is_alien_species
@@ -173,8 +172,40 @@ class Character(Entity):
         return trait_value
 
     @property
+    def movement(self):
+        move_mod = self.move_mod
+        half_move = move_mod
+        full_move = move_mod * 2
+        charge_move = move_mod * 3
+        run_move = move_mod * 6
+        if self.sprint is not None:
+            full_move += self.get_raw_characteristic_bonus(STAT_AGI)
+            run_move = '{}/{}*'.format(run_move, run_move * 2)
+        movement = {HALF_MOVE: half_move,
+                    FULL_MOVE: full_move,
+                    CHARGE_MOVE: charge_move,
+                    RUN_MOVE: run_move}
+        return movement
+
+    @property
+    def move_mod(self):
+        agi_mod = self.get_raw_characteristic_bonus(STAT_AGI)
+        size = self.size if self.size is not None else 0
+        move_mod = agi_mod + int(size / 10)
+        if self.quadruped is not None:
+            move_mod += agi_mod
+        if self.jump_pack is not None:
+            move_mod += agi_mod
+        if self.unnatural_speed is not None:
+            move_mod *= 2
+        return move_mod
+
+    @property
     def size_bonus(self):
-        return self.size if self.size is not None else 0
+        size_bonus = self.size if self.size is not None else 0
+        if self.black_carapace is not None:
+            size_bonus = 0
+        return size_bonus
 
     @property
     def force_field(self):

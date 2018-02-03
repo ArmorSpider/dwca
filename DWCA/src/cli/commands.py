@@ -13,10 +13,11 @@ from src.cli.reaction_module import defensive_action
 from src.cli.run_module import run_module
 from src.cli.table import print_table
 from src.dwca_log.log import get_log
+from src.entities import HALF_MOVE, FULL_MOVE, CHARGE_MOVE, RUN_MOVE
 from src.entities.libraries import get_weapon_library, get_character_library,\
     MasterLibrary
 from src.handler import check_required_keys,\
-    build_attacker, build_weapon, build_base_attack
+    build_attacker, build_weapon, build_base_attack, choose_or_build_attacker
 from src.hitloc_series import build_hitloc_iterator
 from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod
 from src.save_manager import SaveManager
@@ -81,6 +82,24 @@ class CLICommand(object):
         else:
             ad_hoc[key] = value
         event[AD_HOC] = ad_hoc
+        return event
+
+
+class CommandMove(CLICommand):
+
+    keyword = 'move'
+    help = 'Calculate movement for attacker'
+    required_keys = []
+
+    def _process_event(self, event):
+        attacker = choose_or_build_attacker(event)
+        move_opts = attacker.movement
+        LOG.info('[(%s) - Movement: %s/%s/%s/%s]',
+                 attacker.name,
+                 move_opts.get(HALF_MOVE),
+                 move_opts.get(FULL_MOVE),
+                 move_opts.get(CHARGE_MOVE),
+                 move_opts.get(RUN_MOVE))
         return event
 
 

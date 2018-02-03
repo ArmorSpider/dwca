@@ -26,3 +26,8 @@ WOUNDS = 'wounds'
 
 
 DUMMY = 'dummy'
+
+HALF_MOVE = 'half_move'
+FULL_MOVE = 'full_move'
+CHARGE_MOVE = 'charge_move'
+RUN_MOVE = 'run_move'

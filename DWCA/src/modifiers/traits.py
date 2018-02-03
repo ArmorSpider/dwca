@@ -92,6 +92,11 @@ class PowerArmour(Modifier):
         return current_damage
 
 
+class BlackCarapace(Modifier):
+
+    name = 'black_carapace'
+
+
 class UnnaturalWillpower(Modifier):
 
     name = 'unnatural_willpower'
@@ -101,6 +106,26 @@ class UnnaturalWillpower(Modifier):
         return psy_rating
 
 
+class UnnaturalAgility(Modifier):
+
+    name = 'unnatural_agility'
+
+
+class UnnaturalSpeed(Modifier):
+
+    name = 'unnatural_speed'
+
+
 class Size(Modifier):
 
     name = 'size'
+
+
+class Quadruped(Modifier):
+
+    name = 'quadruped'
+
+
+class JumpPack(Modifier):
+
+    name = 'jump_pack'

@@ -118,3 +118,8 @@ class SwiftAttack(Modifier):
 class LightningAttack(Modifier):
 
     name = 'lightning_attack'
+
+
+class Sprint(Modifier):
+
+    name = 'sprint'

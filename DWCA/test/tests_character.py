@@ -3,13 +3,15 @@ import unittest
 
 from definitions import PROTECTION_MAX, OVERLOAD_MAX
 from src.action.attack import Attack
-from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS
+from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, HALF_MOVE,\
+    FULL_MOVE, CHARGE_MOVE, RUN_MOVE
 from src.entities.char_stats import STAT_WS, STAT_BS, STAT_STR, STAT_TGH,\
     STAT_AGI, STAT_INT, STAT_PER, STAT_WIL, STAT_FEL
 from src.entities.character import Character
 from src.hit_location import HITLOC_ALL, HITLOC_BODY, HitLocation, BODY, HEAD
 from src.modifiers.modifier import register_modifiers
 from src.situational.force_field import ForceField
+from test.test_util import build_mock_entity
 
 
 class Test(unittest.TestCase):
@@ -157,6 +159,13 @@ class Test(unittest.TestCase):
         attack = Attack(None, None, None)
         actual = self.char_with_stats.get_modded_toughness_bonus(
             attack, BODY)
+        self.assertEqual(expected, actual)
+
+    def test_black_carapace_should_set_size_bonus_to_zero(self):
+        mockman = build_mock_entity('Mockman',
+                                    traits={'size': 10, 'black_carapace': True})
+        expected = 0
+        actual = mockman.size_bonus
         self.assertEqual(expected, actual)
 
     def test_getattr_should_do_lookup_in_modifiers(self):
