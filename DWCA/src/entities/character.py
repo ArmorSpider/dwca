@@ -22,6 +22,7 @@ from src.util.user_input import try_user_choose_from_list
 
 LOG = get_log(__name__)
 UNDEFINED_ARMOR_VALUE = 0
+UNDEFINED_LOCATIONAL_TOUGHNESS_VALUE = 0
 UNDEFINED_CHARACTERISTIC_VALUE = 0
 DEFAULT_CHARACTERISTIC_MULTIPLIER = 1
 
@@ -121,6 +122,14 @@ class Character(Entity):
         total_armor = armor + cover_armor
         return total_armor
 
+    def get_locational_toughness(self, hit_location):
+        hitloc_name = get_hit_location_name(hit_location)
+        toughness = self.toughness.get(hitloc_name)
+        if toughness is None:
+            toughness = self.toughness.get(
+                HITLOC_ALL, UNDEFINED_LOCATIONAL_TOUGHNESS_VALUE)
+        return toughness
+
     def get_characteristic(self, characteristic):
         char_stat = self.characteristics.get(
             characteristic, UNDEFINED_CHARACTERISTIC_VALUE)
@@ -131,12 +140,15 @@ class Character(Entity):
         characteristic_bonus = get_tens(characteristic_value)
         return characteristic_bonus
 
-    def get_modded_toughness_bonus(self, attack):
+    def get_modded_toughness_bonus(self, attack, hit_location=None):
         raw_bonus = self.get_raw_characteristic_bonus(STAT_TGH)
         tgh_multiplier = self.get_characteristic_multiplier(STAT_TGH)
         tgh_multiplier = Felling.handle_felling(attack, tgh_multiplier)
         tgh_multiplier = Daemonic.handle_daemonic(attack, tgh_multiplier)
         final_bonus = raw_bonus * tgh_multiplier
+        if hit_location is not None:
+            locational_toughness = self.get_locational_toughness(hit_location)
+            final_bonus += locational_toughness
         return final_bonus
 
     def get_characteristic_bonus(self, characteristic):
@@ -199,6 +211,11 @@ class Character(Entity):
     def wounds(self):
         wounds = self.get_stat(WOUNDS, default=0)
         return wounds
+
+    @property
+    def toughness(self):
+        toughness = self.get_stat(STAT_TGH, default={})
+        return toughness
 
     @property
     def modifiers(self):

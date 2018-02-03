@@ -2,11 +2,12 @@
 import unittest
 
 from definitions import PROTECTION_MAX, OVERLOAD_MAX
+from src.action.attack import Attack
 from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS
 from src.entities.char_stats import STAT_WS, STAT_BS, STAT_STR, STAT_TGH,\
     STAT_AGI, STAT_INT, STAT_PER, STAT_WIL, STAT_FEL
 from src.entities.character import Character
-from src.hit_location import HITLOC_ALL, HITLOC_BODY, HitLocation
+from src.hit_location import HITLOC_ALL, HITLOC_BODY, HitLocation, BODY, HEAD
 from src.modifiers.modifier import register_modifiers
 from src.situational.force_field import ForceField
 
@@ -26,6 +27,7 @@ class Test(unittest.TestCase):
                      'unnatural_agility': 4,
                      'size': 20},
             TALENTS: {'good_listener': True},
+            STAT_TGH: {'all': 2, 'head': 1},
             CHARACTERISTICS: {STAT_WS: 10,
                               STAT_BS: 20,
                               STAT_STR: 29,
@@ -133,6 +135,28 @@ class Test(unittest.TestCase):
     def test_size_bonus_with_no_size_specified_should_return_zero(self):
         expected = 0
         actual = self.char_with_force_field.size_bonus
+        self.assertEqual(expected, actual)
+
+    def test_get_modded_toughness_bonus_should_include_locational_toughness(self):
+        expected = 10
+        attack = Attack(None, None, None)
+        actual = self.char_with_stats.get_modded_toughness_bonus(
+            attack, HEAD)
+        self.assertEqual(expected, actual)
+
+    def test_locational_toughness_should_be_applied_after_multipliers(self):
+        expected = 4
+        attack = Attack(None, None, None)
+        attack.ad_hoc_modifiers = {'felling': 25}
+        actual = self.char_with_stats.get_modded_toughness_bonus(
+            attack, HEAD)
+        self.assertEqual(expected, actual)
+
+    def test_locational_toughness_should_support_all_key(self):
+        expected = 11
+        attack = Attack(None, None, None)
+        actual = self.char_with_stats.get_modded_toughness_bonus(
+            attack, BODY)
         self.assertEqual(expected, actual)
 
     def test_getattr_should_do_lookup_in_modifiers(self):
