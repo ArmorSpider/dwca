@@ -17,8 +17,10 @@ class Test(unittest.TestCase):
             self.assertTrue(run_command.is_this_command(command_string))
 
     def test_strings_with_command_as_part_should_not_match(self):
-        command_strings = ['runninger', 'run for your life', 'runes']
-        run_command = CommandRun()
+        command_strings = ['runniautonger',
+                           'runauto for your life',
+                           'runautoes']
+        run_command = CommandAuto()
         for command_string in command_strings:
             self.assertFalse(run_command.is_this_command(command_string))
 

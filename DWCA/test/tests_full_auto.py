@@ -37,7 +37,9 @@ class Test(unittest.TestCase):
                                 'cover',
                                 'charge',
                                 'aim',
-                                'auto']
+                                'auto',
+                                'move',
+                                'defend']
 
     @patch('src.util.user_input.user_choose_from_list', side_effect=return_random)
     @patch('src.util.user_input.user_input_int', side_effect=return_number)
@@ -50,7 +52,7 @@ class Test(unittest.TestCase):
         event = new_module({})
         pretty_print(event)
         event = self._run_random_command(event)
-        process_command('run', event)
+        process_command('', event)
 
     def _run_random_command(self, event):
         command = choice(self.random_commands)
