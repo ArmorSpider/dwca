@@ -9,7 +9,7 @@ berzerker:
     frenzy: true, furious_assault: true, hatred: loyalist space marines, jaded: true,
     lightning_attack: true, swift_attack: true, true_grit: true, two_weapon_wielder_melee: true,
     whirlwind_of_death: true}
-  traits: {dark_sight: true, power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
+  traits: {dark_sight: true, power_armour: true, unnatural_strength: 2, unnatural_toughness: 2, black_carapace: true, size: 10}
   weapons: [chainsword, plasma_pistol, berzerker_axe]
 bloodletter:
   _package: chaos
@@ -55,7 +55,7 @@ chaos_marine:
   skills: {awareness: 0, climb: 0, dodge: 10}
   talents: {bolter_drill: true, fearless: true, hatred: loyalist space marines, jaded: true,
     killing_strike: true, swift_attack: true, true_grit: true}
-  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2, fire_drill: true}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2, fire_drill: true, black_carapace: true, size: 10}
   weapons: [bolt_pistol, bolter, chainsword, heavy_bolter]
   wounds: 29
 khorne_marine:
@@ -67,7 +67,7 @@ khorne_marine:
   skills: {awareness: 0, climb: 0, dodge: 10}
   talents: {bolter_drill: true, fearless: true, hatred: loyalist space marines, jaded: true,
     killing_strike: true, swift_attack: true, true_grit: true, berserk_charge: true, frenzy: true, furious_assault: true, resistance_psychic: true, whirlwind_of_death: true, lightning_attack: true}
-  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2, fire_drill: true}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 2, fire_drill: true, black_carapace: true, size: 10}
   weapons: [bolt_pistol, bolter, chainsword, heavy_bolter]
   wounds: 29
 nurgle_marine:
@@ -79,7 +79,7 @@ nurgle_marine:
   skills: {awareness: 0, climb: 0, dodge: 10}
   talents: {bolter_drill: true, fearless: true, hatred: loyalist space marines, jaded: true,
     killing_strike: true, swift_attack: true, true_grit: true}
-  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 3, fire_drill: true, stuff_of_nightmares: true}
+  traits: {power_armour: true, unnatural_strength: 2, unnatural_toughness: 3, fire_drill: true, stuff_of_nightmares: true, black_carapace: true, size: 10}
   weapons: [bolt_pistol, bolter, chainsword, heavy_bolter]
   wounds: 36
 plague_marine:
@@ -89,7 +89,7 @@ plague_marine:
   wounds: 36
   characteristics: {weapon_skill: 43, ballistic_skill: 43, strength: 45, toughness: 55, agility: 40, intelligence: 30, perception: 30, willpower: 45, fellowship: 25}
   talents: {crippling_strike: true, fearless: true, hatred: loyalist, swift_attack: true}
-  traits: {dark_sight: true, fear: 2, size: 0, stuff_of_nightmares: true, toxic: 1d10, unnatural_strength: 2, unnatural_toughness: 3, cloud_of_flies: true, power_armour: true}
+  traits: {dark_sight: true, fear: 2, stuff_of_nightmares: true, toxic: 1d10, unnatural_strength: 2, unnatural_toughness: 3, cloud_of_flies: true, power_armour: true, black_carapace: true, size: 10}
   armor: {all: 8, body: 10}
   species: human
   weapons: [chainsword, bolt_pistol, bolter, plague_knife, blight_grenade]
@@ -121,7 +121,7 @@ noise_marine:
   skills: {awareness: 0, command: 10, dodge: 10, intimidate: 20, psyniscience: 0, survival: 0, swim: 0}
   characteristics: {weapon_skill: 43, ballistic_skill: 43, strength: 45, toughness: 45, agility: 50, intelligence: 30, perception: 49, willpower: 45, fellowship: 35}
   talents: {die_hard: true, fearless: true, feedback_screech: true, hatred: loyalist, jaded: true, lightning_reflexes: true, litany_of_hate: true, quick_draw: true, rapid_reload: true, swift_attack: true, true_grit: true}
-  traits: {size: 0, dark_sight: true, fear: 2, unnatural_toughness: 2, unnatural_strength: 2, unnatural_fellowship: 2, unnatual_perception: 2, power_armour: true, psychic_cacophony: true}
+  traits: {dark_sight: true, fear: 2, unnatural_toughness: 2, unnatural_strength: 2, unnatural_fellowship: 2, unnatual_perception: 2, power_armour: true, psychic_cacophony: true, black_carapace: true, size: 10}
   weapons: [chainsword, bolt_pistol, blastmaster, sonic_blaster]
 chaos_sorcerer:
   _package: chaos
@@ -134,7 +134,7 @@ chaos_sorcerer:
       marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
     swift_attack: true, true_grit: true}
   traits: {dark_sight: true, power_armour: true, psy_rating: 5, unnatural_strength: 2,
-    unnatural_toughness: 2}
+    unnatural_toughness: 2, black_carapace: true, size: 10}
   weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
   wounds: 29
 chaos_sorcerer_khorne:
@@ -149,7 +149,7 @@ chaos_sorcerer_khorne:
     killing_strike: true, lightning_attack: true, quick_draw: true, rapid_reload: true,
     resistance_psychic: true, swift_attack: true, true_grit: true, whirlwind_of_death: true}
   traits: {dark_sight: true, power_armour: true, psy_rating: 5, unnatural_strength: 2,
-    unnatural_toughness: 2}
+    unnatural_toughness: 2, black_carapace: true, size: 10}
   weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
   wounds: 29
 chaos_sorcerer_nurgle:
@@ -163,7 +163,7 @@ chaos_sorcerer_nurgle:
       marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
     swift_attack: true, true_grit: true}
   traits: {dark_sight: true, power_armour: true, psy_rating: 5, stuff_of_nightmares: true,
-    unnatural_strength: 2, unnatural_toughness: 3}
+    unnatural_strength: 2, unnatural_toughness: 3, black_carapace: true, size: 10}
   weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
   wounds: 36
 chaos_sorcerer_slaanesh:
@@ -177,7 +177,7 @@ chaos_sorcerer_slaanesh:
       marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
     swift_attack: true, true_grit: true}
   traits: {dark_sight: true, power_armour: true, psy_rating: 5, unnatural_agility: 2,
-    unnatural_fellowship: 2, unnatural_strength: 2, unnatural_toughness: 2}
+    unnatural_fellowship: 2, unnatural_strength: 2, unnatural_toughness: 2, black_carapace: true, size: 10}
   weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
   wounds: 29
 chaos_sorcerer_tzeentch:
@@ -191,7 +191,7 @@ chaos_sorcerer_tzeentch:
       marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
     swift_attack: true, true_grit: true}
   traits: {daemonic: true, dark_sight: true, power_armour: true, psy_rating: 7, unnatural_strength: 2,
-    unnatural_toughness: 2, unnatural_willpower: 2}
+    unnatural_toughness: 2, unnatural_willpower: 2, black_carapace: true, size: 10}
   weapons: [force_sword, bolt_pistol, combat_knife]
   wounds: 29
 daemon_prince:

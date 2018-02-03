@@ -9,7 +9,7 @@ auran_genestealer:
     leap_up: true, lightning_attack: true, lightning_reflexes: true, preternatural_speed: true,
     step_aside: true, swift_attack: true}
   traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
-    tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
+    tyranid: true, unnatural_agility: 3, unnatural_speed: 2, unnatural_strength: 2}
   weapons: [rending_claws]
 carnifex:
   _package: tyranid
@@ -60,13 +60,16 @@ genestealer_broodlord:
 harpy:
   _package: tyranid
   armor: {all: 6}
+  characteristics: {agility: 42, ballistic_skill: 55, fellowship: 0, intelligence: 15,
+    perception: 42, strength: 50, toughness: 50, weapon_skill: 32, willpower: 30}
   name: Harpy
   skills: {acrobatics: 0, awareness: 0, climb: 0, dodge: 0}
   species: tyranid
   talents: {death_from_above: true, fearless: true, heightened_sight: true}
   traits: {dark_sight: true, fear: 3, flight: 20, natural_armor: true, size: 20, tyranid: true,
     unnatural_toughness: true}
-  weapons: [scything_talons, twin_stranglethorn_cannon, stinger_salvo, sonic_screech]
+  weapons: [scything_talons, twin_stranglethorn_cannon, stinger_salvo, sonic_screech,
+    twin_heavy_venom_cannon]
   wounds: 95
 harridan:
   _package: tyranid

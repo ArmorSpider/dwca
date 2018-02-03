@@ -119,6 +119,17 @@ heavy_venom_cannon:
   qualities: {blast: 5, living_ammunition: true, proven: 3, toxic: 1d10}
   range: 100
   single_shot: 1
+twin_heavy_venom_cannon:
+  _package: tyranid
+  class: Heavy
+  damage_type: I
+  dice: 4
+  flat_damage: 10
+  name: Twin-Linked Heavy Venom Cannon
+  penetration: 6
+  qualities: {blast: 5, living_ammunition: true, proven: 3, toxic: 1d10, twin_linked: true}
+  range: 100
+  single_shot: 1
 hierophant_claw_stomp:
   _package: tyranid
   class: Melee
