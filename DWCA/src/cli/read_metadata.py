@@ -77,9 +77,9 @@ def log_metadata_table(metadata):
     armor_dict = metadata.get(ARMOR)
 
     table_data = [['HIT',
+                   'EFFECTIVE_DAMAGE',
                    'RAW DAMAGE',
                    'ARMOR',
-                   'EFFECTIVE_DAMAGE',
                    'BLOCKED',
                    'MAGNITUDE']]
     for hit_information in zip(range(1, num_hits + 1),
@@ -117,7 +117,9 @@ def build_row(hit_information, armor_dict, flat_damage, penetration):
                                           pen=penetration)
 
     effective_damage_base = '{effective} ({raw} Raw Damage - {armor} Armor - {toughness} Toughness)'
-    effective_damage_entry = effective_damage_base.format(effective=effective_damage,
+    effective_damage_cool = effective_damage if effective_damage == 0 else '[{}]'.format(
+        effective_damage)
+    effective_damage_entry = effective_damage_base.format(effective=effective_damage_cool,
                                                           raw=raw_damage,
                                                           armor=effective_armor,
                                                           toughness=effective_toughness)
@@ -125,6 +127,10 @@ def build_row(hit_information, armor_dict, flat_damage, penetration):
                                           hitloc=hit_location)
     blocked_entry = block_result if block_result is True else ''
     magnitude_entry = magnitude_damage
-    row = [hit_entry, raw_damage_entry,
-           armor_entry, effective_damage_entry, blocked_entry, magnitude_entry]
+    row = [hit_entry,
+           effective_damage_entry,
+           raw_damage_entry,
+           armor_entry,
+           blocked_entry,
+           magnitude_entry]
     return row
