@@ -81,7 +81,7 @@ def build_target(event):
 
 
 def single_attack(event, attack_number):
-    #LOG.info('________[ATTACK %s]________', attack_number)
+    LOG.info('________[ATTACK %s]________', attack_number)
     attack = build_attack(event)
     attack_damage = attack.apply_attack()
     try:
