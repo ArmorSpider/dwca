@@ -1,0 +1,103 @@
+compact_laspistol:
+  _package: stigmartus
+  class: Pistol
+  damage_type: E
+  dice: 1
+  flat_damage: 1
+  name: Compact Laspistol
+  penetration: 0
+  qualities: {reliable: true}
+  range: 15
+  single_shot: 1
+heavy_stubber: {_package: stigmartus, class: Heavy, damage_type: I, dice: 1, flat_damage: 5,
+  full_auto: 8, name: Heavy Stubber, penetration: 3, range: 100}
+hooked_cleaver:
+  _package: stigmartus
+  class: Melee
+  damage_type: R
+  dice: 2
+  flat_damage: 2
+  name: Massive Hooked Cleaver
+  penetration: 2
+  qualities: {concussive: true, unwieldy: true}
+huge_fists:
+  _package: stigmartus
+  class: Melee
+  damage_type: I
+  dice: 1
+  flat_damage: 0
+  name: Ogryn Huge Fists
+  penetration: 0
+  qualities: {concussive: true}
+officers_lash:
+  _package: stigmartus
+  class: Pistol
+  damage_type: R
+  dice: 1
+  flat_damage: 3
+  name: Stigmartus Officer's Lash
+  penetration: 0
+  qualities: {flexible: true, primitive: true, tearing: true}
+  range: 3
+samech_autogun: {_package: stigmartus, class: Basic, damage_type: I, dice: 1, flat_damage: 3,
+  name: Samech Pattern Autogun, penetration: 0, range: 100, semi_auto: 3, single_shot: 1}
+samech_chain_axe:
+  _package: stigmartus
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 4
+  name: Samech Pattern Chain Axe
+  penetration: 0
+  qualities: {tearing: true, unwieldy: true}
+samech_chainsword:
+  _package: stigmartus
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 6
+  name: Samech Pattern Chainsword
+  penetration: 4
+  qualities: {razor_sharp: true, tearing: true}
+samech_frag:
+  _package: stigmartus
+  class: Basic
+  damage_type: X
+  dice: 2
+  flat_damage: 0
+  name: Samech Frag Grenade
+  penetration: 0
+  qualities: {blast: 4}
+  range: 9
+  single_shot: 1
+samech_hellgun: {_package: stigmartus, class: Basic, damage_type: E, dice: 1, flat_damage: 4,
+  name: Samech Pattern Hellgun, penetration: 7, range: 110, semi_auto: 3, single_shot: 1}
+samech_multi_melta:
+  _package: stigmartus
+  class: Heavy
+  damage_type: E
+  dice: 4
+  flat_damage: 5
+  name: Samech Pattern Multi-Melta
+  penetration: 12
+  qualities: {blast: 1, overheats: true}
+  range: 60
+  single_shot: 1
+samech_lascannon:
+  _package: stigmartus
+  name: Samech Pattern Lascannon
+  range: 250
+  single_shot: 1
+  damage_type: E
+  dice: 4
+  flat_damage: 10
+  penetration: 10
+  class: Heavy
+samech_mono_sword:
+  _package: stigmartus
+  name: Samech Mono-Sword
+  class: Melee
+  dice: 1
+  flat_damage: 0
+  penetration: 2
+  damage_type: R
