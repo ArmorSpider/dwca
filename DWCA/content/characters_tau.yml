@@ -3,6 +3,11 @@ air_caste_pilot:
   characteristics: {agility: 35, ballistic_skill: 35, fellowship: 30, intelligence: 30,
     perception: 30, strength: 20, toughness: 30, weapon_skill: 25, willpower: 30}
   wounds: 11
+  name: Air Caste Pilot
+  armor: {all: 5}
+  weapons: [pulse_carbine]
+  species: tau
+  skills: {awareness: 0, dodge: 0}
 barracuda:
   _package: tau
   armor: {all: 25, rear: 20}
@@ -26,6 +31,7 @@ broadside_battlesuit:
   wounds: 30
 fire_warrior:
   _package: tau
+  skills: {awareness: 0}
   armor: {all: 6}
   characteristics: {agility: 25, ballistic_skill: 35, fellowship: 30, intelligence: 30,
     perception: 20, strength: 30, toughness: 30, weapon_skill: 25, willpower: 30}

@@ -9,6 +9,7 @@ berzerker_axe:
   qualities: {tearing: true}
 plague_longsword:
   _package: chaos
+  name: Plague Longsword
   class: Melee
   dice: 2
   damage_type: R
@@ -50,6 +51,8 @@ blight_grenade:
   flat_damage: 5
   penetration: 0
   single_shot: 1
+  range: 20
+  damage_type: E
   class: Basic
   qualities: {blast: 3, devastating: 3, toxic: 1d10}
 blastmaster:
@@ -73,12 +76,14 @@ doom_siren:
   flat_damage: 12
   dice: 1
   penetration: 9
+  damage_type: E
   qualities: {flame: true}
 sonic_blaster:
   name: Noise Marine Sonic Blaster
   _package: chaos
   range: 100
   class: Basic
+  damage_type: E
   single_shot: 1
   semi_auto: 2
   full_auto: 4

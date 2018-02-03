@@ -34,6 +34,7 @@ dark_reaper_exarch:
     eldar_plasma_missile, eldar_krak_missile, tempest_launcher]
   wounds: 28
 dire_avenger:
+  armor: {all: 6}
   _package: eldar
   characteristics: {agility: 56, ballistic_skill: 55, strength: 38, toughness: 35,
     weapon_skill: 55, willpower: 52}
@@ -84,6 +85,7 @@ eldar_guardian:
 eldar_heavy_platform:
   _package: eldar
   armor: {all: 5}
+  skills: {acrobatics: 0, awareness: 0, dodge: 0, silent_move: 0}
   characteristics: {agility: 43, ballistic_skill: 42, strength: 31, toughness: 32,
     weapon_skill: 42, willpower: 40}
   name: Eldar Guardian (Heavy Weapon Platform)
@@ -96,6 +98,7 @@ eldar_heavy_platform:
 eldar_platform:
   _package: eldar
   armor: {all: 5}
+  skills: {acrobatics: 0, awareness: 0, dodge: 0, silent_move: 0}
   characteristics: {agility: 43, ballistic_skill: 42, strength: 31, toughness: 32,
     weapon_skill: 42, willpower: 40}
   name: Eldar Guardian (Weapon Platform)
@@ -265,6 +268,7 @@ swooping_hawk:
   wounds: 15
 swooping_hawk_exarch:
   _package: eldar
+  armor: {all: 7}
   characteristics: {agility: 64, ballistic_skill: 63, fellowship: 37, intelligence: 43,
     perception: 61, strength: 44, toughness: 46, weapon_skill: 60, willpower: 58}
   name: Swopping Hawk Exarch

@@ -1,9 +1,9 @@
 import difflib
 
-from definitions import CLASS, MELEE
+from definitions import CLASS, MELEE, WEAPONS
 from src.dwca_log.log import get_log
 from src.entities import PACKAGE, NAME, DICE, DAMAGE_TYPE, PENETRATION, RANGE,\
-    FLAT_DAMAGE
+    FLAT_DAMAGE, WOUNDS, CHARACTERISTICS, SKILLS, SPECIES, ARMOR
 from src.errors import WeaponNotFoundError, NoMatchError
 from src.util.read_file import read_weapon_library, read_character_library
 from src.util.string_util import normalize_string
@@ -17,6 +17,7 @@ DEFAULT_PACKAGE = 'default'
 def verify_weapons():
     require_all = [CLASS, NAME, DICE, FLAT_DAMAGE, DAMAGE_TYPE, PENETRATION]
     ranged_only = require_all + [RANGE]
+    MasterLibrary.reload_libraries()
     MasterLibrary.load_all_packages()
     for weapon_name, weapon_def in get_weapon_library().iteritems():
         missing_keys = []
@@ -33,6 +34,27 @@ def verify_weapons():
             print weapon_def.get('_package', DEFAULT_PACKAGE)
             for key in missing_keys:
                 print '%s is missing %s' % (weapon_name, key)
+
+
+def verify_entities():
+    required_all = [NAME, WOUNDS, WEAPONS, ARMOR]
+    required_char = required_all + [SKILLS, SPECIES, CHARACTERISTICS]
+    MasterLibrary.reload_libraries()
+    MasterLibrary.load_all_packages()
+    for entity_name, entity_def in get_character_library().iteritems():
+        missing_keys = []
+        if entity_def.get('vehicle') is True:
+            required = required_all
+        else:
+            required = required_char
+        for key in required:
+            if key not in entity_def:
+                missing_keys.append(key)
+        if missing_keys != []:
+            print '______[%s]______' % entity_name
+            print entity_def.get('_package', DEFAULT_PACKAGE)
+            for key in missing_keys:
+                print '%s is missing %s' % (entity_name, key)
 
 
 class MasterLibrary(object):

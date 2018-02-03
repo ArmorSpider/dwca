@@ -187,6 +187,7 @@ cyclic_ion_blaster:
   _package: tau
   name: Cyclic Ion Blaster
   class: Heavy
+  damage_type: E
   range: 50
   single_shot: 1
   semi_auto: 3
