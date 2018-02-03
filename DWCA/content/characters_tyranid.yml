@@ -1,7 +1,8 @@
 auran_genestealer:
   _package: tyranid
   armor: {all: 6}
-  characteristics: {agility: 60, strength: 60, toughness: 60, weapon_skill: 65}
+  characteristics: {agility: 60, ballistic_skill: 0, perception: 55, strength: 60,
+    toughness: 60, weapon_skill: 65, willpower: 40}
   name: Auran Genestealer
   skills: {awareness: 10, concealment: 10, dodge: 10, silent_move: 0}
   species: tyranid
@@ -15,8 +16,8 @@ auran_genestealer:
 carnifex:
   _package: tyranid
   armor: {all: 10}
-  characteristics: {ballistic_skill: 25, strength: 70, toughness: 65, weapon_skill: 35,
-    willpower: 45}
+  characteristics: {agility: 22, ballistic_skill: 25, perception: 35, strength: 70,
+    toughness: 65, weapon_skill: 35, willpower: 45}
   name: Carnifex
   skills: {awareness: 0, climb: 0, swim: 0, tracking: 0}
   species: tyranid
@@ -28,8 +29,8 @@ carnifex:
 dagon_overlord:
   _package: tyranid
   armor: {all: 10}
-  characteristics: {ballistic_skill: 35, strength: 65, toughness: 63, weapon_skill: 81,
-    willpower: 70}
+  characteristics: {agility: 45, ballistic_skill: 35, perception: 49, strength: 65,
+    toughness: 63, weapon_skill: 81, willpower: 70}
   name: Dagon Overlord
   skills: {awareness: 0, climb: 0, swim: 0}
   species: tyranid
@@ -42,7 +43,8 @@ dagon_overlord:
 gargoyle:
   _package: tyranid
   armor: {all: 3}
-  characteristics: {ballistic_skill: 33, strength: 32, toughness: 30, weapon_skill: 30}
+  characteristics: {agility: 40, ballistic_skill: 33, perception: 40, strength: 32,
+    toughness: 30, weapon_skill: 30, willpower: 30}
   name: Gargoyle
   skills: {acrobatics: 0, awareness: 0, climb: 0, contortionist: 0, dodge: 0}
   species: tyranid
@@ -53,7 +55,8 @@ gargoyle:
 genestealer_broodlord:
   _package: tyranid
   armor: {all: 6}
-  characteristics: {strength: 45, toughness: 40, weapon_skill: 75, willpower: 55}
+  characteristics: {agility: 50, ballistic_skill: 0, perception: 40, strength: 45,
+    toughness: 40, weapon_skill: 75, willpower: 55}
   name: Genestealer Broodlord
   skills: {awareness: 10, climb: 10, dodge: 10, swim: 10}
   species: tyranid
@@ -94,8 +97,8 @@ harridan:
 hierodule:
   _package: tyranid
   armor: {all: 12}
-  characteristics: {ballistic_skill: 23, strength: 82, toughness: 81, weapon_skill: 64,
-    willpower: 45}
+  characteristics: {agility: 35, ballistic_skill: 23, perception: 35, strength: 82,
+    toughness: 81, weapon_skill: 64, willpower: 45}
   name: Hierodule
   skills: {awareness: 0, climb: 0, swim: 0, tracking: 0}
   species: tyranid
@@ -108,8 +111,8 @@ hierodule:
 hierophant:
   _package: tyranid
   armor: {all: 12}
-  characteristics: {ballistic_skill: 34, strength: 90, toughness: 84, weapon_skill: 66,
-    willpower: 45}
+  characteristics: {agility: 35, ballistic_skill: 34, perception: 35, strength: 90,
+    toughness: 84, weapon_skill: 66, willpower: 45}
   force_field: {overload_max: 5, protection_max: 65}
   name: Hierophant
   skills: {awareness: 0, climb: 0, swim: 0, tracking: 0}
@@ -137,8 +140,8 @@ hive_guard:
 hive_tyrant:
   _package: tyranid
   armor: {all: 10}
-  characteristics: {ballistic_skill: 33, strength: 60, toughness: 53, weapon_skill: 78,
-    willpower: 70}
+  characteristics: {agility: 45, ballistic_skill: 33, perception: 49, strength: 60,
+    toughness: 53, weapon_skill: 78, willpower: 70}
   name: Hive Tyrant
   skills: {awareness: 0, climb: 0, swim: 0}
   species: tyranid
@@ -151,7 +154,8 @@ hive_tyrant:
 hormagaunt:
   _package: tyranid
   armor: {all: 3}
-  characteristics: {ballistic_skill: 20, strength: 35, toughness: 30, weapon_skill: 45}
+  characteristics: {agility: 55, ballistic_skill: 20, perception: 40, strength: 35,
+    toughness: 30, weapon_skill: 45, willpower: 30}
   name: Hormagaunt
   skills: {acrobatics: 20, awareness: 0, dodge: 10, silent_move: 0, swim: 10}
   species: tyranid
@@ -162,7 +166,8 @@ hormagaunt:
 lictor:
   _package: tyranid
   armor: {all: 6}
-  characteristics: {strength: 65, toughness: 40, weapon_skill: 65}
+  characteristics: {agility: 40, ballistic_skill: 0, perception: 45, strength: 65,
+    toughness: 40, weapon_skill: 65, willpower: 45}
   name: Lictor
   skills: {acrobatics: 0, awareness: 20, climb: 20, concealment: 20, contortionist: 10,
     dodge: 10, shadowing: 20, silent_move: 20, tracking: 20}
@@ -192,7 +197,8 @@ malanthrope:
 purestrain_genestealer:
   _package: tyranid
   armor: {all: 4}
-  characteristics: {strength: 45, toughness: 40, weapon_skill: 65}
+  characteristics: {agility: 40, ballistic_skill: 0, perception: 60, strength: 45,
+    toughness: 40, weapon_skill: 65, willpower: 45}
   name: Purestrain Genestealer
   skills: {awareness: 10, climb: 10, dodge: 10, swim: 10}
   species: tyranid
@@ -205,7 +211,8 @@ purestrain_genestealer:
 ravener:
   _package: tyranid
   armor: {all: 6}
-  characteristics: {ballistic_skill: 40, strength: 45, toughness: 40, weapon_skill: 60}
+  characteristics: {agility: 50, ballistic_skill: 40, perception: 50, strength: 45,
+    toughness: 40, weapon_skill: 60, willpower: 35}
   name: Ravener
   skills: {awareness: 20, climb: 20, concealment: 0, silent_move: 0, swim: 10, tracking: 20}
   species: tyranid
@@ -217,7 +224,8 @@ ravener:
 ripper_swarm:
   _package: tyranid
   armor: {all: 2}
-  characteristics: {strength: 25, toughness: 30, weapon_skill: 35}
+  characteristics: {agility: 40, ballistic_skill: 0, intelligence: 10, perception: 30,
+    strength: 25, toughness: 30, weapon_skill: 35, willpower: 30}
   name: Ripper Swarm
   skills: {awareness: 0, climb: 0, dodge: 0, silent_move: 0, swim: 0, tracking: 10}
   species: tyranid
@@ -229,7 +237,8 @@ ripper_swarm:
 termagant:
   _package: tyranid
   armor: {all: 3}
-  characteristics: {ballistic_skill: 33, strength: 32, toughness: 30, weapon_skill: 30}
+  characteristics: {agility: 40, ballistic_skill: 33, perception: 40, strength: 32,
+    toughness: 30, weapon_skill: 30, willpower: 30}
   name: Termagant
   skills: {awareness: 0, climb: 0, dodge: 0, silent_move: 0, swim: 10}
   species: tyranid
@@ -255,8 +264,8 @@ tervigon:
 thornback:
   _package: tyranid
   armor: {all: 10}
-  characteristics: {ballistic_skill: 35, strength: 70, toughness: 65, weapon_skill: 35,
-    willpower: 45}
+  characteristics: {agility: 22, ballistic_skill: 35, perception: 35, strength: 70,
+    toughness: 65, weapon_skill: 35, willpower: 45}
   name: Carnifex (Thornback)
   skills: {awareness: 0, climb: 0, swim: 0, tracking: 0}
   species: tyranid
@@ -268,8 +277,8 @@ thornback:
 trygon:
   _package: tyranid
   armor: {all: 10}
-  characteristics: {ballistic_skill: 30, strength: 60, toughness: 60, weapon_skill: 50,
-    willpower: 45}
+  characteristics: {agility: 40, ballistic_skill: 30, perception: 25, strength: 60,
+    toughness: 60, weapon_skill: 50, willpower: 45}
   name: Trygon
   skills: {awareness: 0, swim: 0, tracking: 0}
   species: tyranid
@@ -282,7 +291,8 @@ trygon:
 tyranid_warrior:
   _package: tyranid
   armor: {all: 8}
-  characteristics: {ballistic_skill: 30, strength: 60, toughness: 50, weapon_skill: 55}
+  characteristics: {agility: 44, ballistic_skill: 30, perception: 35, strength: 60,
+    toughness: 50, weapon_skill: 55, willpower: 50}
   name: Tyranid Warror
   skills: {awareness: 0, climb: 0, swim: 10}
   species: tyranid
@@ -308,8 +318,8 @@ tyrannofex:
 tyrant_guard:
   _package: tyranid
   armor: {all: 10}
-  characteristics: {ballistic_skill: 30, strength: 50, toughness: 60, weapon_skill: 55,
-    willpower: 40}
+  characteristics: {agility: 30, ballistic_skill: 30, perception: 35, strength: 50,
+    toughness: 60, weapon_skill: 55, willpower: 40}
   name: Tyrant Guard
   skills: {awareness: 0, climb: 0, swim: 10}
   species: tyranid
@@ -320,8 +330,8 @@ tyrant_guard:
 venomspitter:
   _package: tyranid
   armor: {all: 10}
-  characteristics: {ballistic_skill: 15, strength: 70, toughness: 65, weapon_skill: 35,
-    willpower: 45}
+  characteristics: {agility: 22, ballistic_skill: 15, perception: 35, strength: 70,
+    toughness: 65, weapon_skill: 35, willpower: 45}
   name: Carnifex (Venomspitter)
   skills: {awareness: 0, climb: 0, swim: 0, tracking: 0}
   species: tyranid
@@ -333,7 +343,8 @@ venomspitter:
 venomthrope:
   _package: tyranid
   armor: {all: 4}
-  characteristics: {strength: 55, toughness: 55, weapon_skill: 48, willpower: 40}
+  characteristics: {agility: 40, ballistic_skill: 0, perception: 35, strength: 55,
+    toughness: 55, weapon_skill: 48, willpower: 40}
   name: Venomthrope
   skills: {awareness: 0, climb: 0, dodge: 10}
   species: tyranid
@@ -345,8 +356,8 @@ venomthrope:
 warrior_prime:
   _package: tyranid
   armor: {all: 10}
-  characteristics: {ballistic_skill: 40, strength: 50, toughness: 50, weapon_skill: 65,
-    willpower: 50}
+  characteristics: {agility: 50, ballistic_skill: 40, perception: 45, strength: 50,
+    toughness: 50, weapon_skill: 65, willpower: 50}
   name: Tyranid Warrior Prime
   skills: {awareness: 0, climb: 0, swim: 10}
   species: tyranid
@@ -359,8 +370,8 @@ warrior_prime:
 zoanthrope:
   _package: tyranid
   armor: {all: 6}
-  characteristics: {ballistic_skill: 45, strength: 45, toughness: 45, weapon_skill: 30,
-    willpower: 60}
+  characteristics: {agility: 10, ballistic_skill: 45, perception: 45, strength: 45,
+    toughness: 45, weapon_skill: 30, willpower: 60}
   force_field: {overload_max: 5, protection_max: 65}
   name: Zoanthrope
   skills: {awareness: 0, psyniscience: 10}

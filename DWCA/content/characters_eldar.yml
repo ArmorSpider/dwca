@@ -34,10 +34,10 @@ dark_reaper_exarch:
     eldar_plasma_missile, eldar_krak_missile, tempest_launcher]
   wounds: 28
 dire_avenger:
-  armor: {all: 6}
   _package: eldar
-  characteristics: {agility: 56, ballistic_skill: 55, strength: 38, toughness: 35,
-    weapon_skill: 55, willpower: 52}
+  armor: {all: 6}
+  characteristics: {agility: 56, ballistic_skill: 55, perception: 53, strength: 38,
+    toughness: 35, weapon_skill: 55, willpower: 52}
   name: Dire Avenger Aspect Warrior
   skills: {acrobatics: 0, awareness: 10, command: 0, dodge: 10, silent_move: 0}
   species: eldar
@@ -71,8 +71,8 @@ dire_avenger_exarch:
 eldar_guardian:
   _package: eldar
   armor: {all: 5}
-  characteristics: {agility: 43, ballistic_skill: 42, strength: 31, toughness: 32,
-    weapon_skill: 42, willpower: 40}
+  characteristics: {agility: 43, ballistic_skill: 42, perception: 40, strength: 31,
+    toughness: 32, weapon_skill: 42, willpower: 40}
   name: Eldar Guardian
   skills: {acrobatics: 0, awareness: 0, dodge: 0, silent_move: 0}
   species: eldar
@@ -85,10 +85,10 @@ eldar_guardian:
 eldar_heavy_platform:
   _package: eldar
   armor: {all: 5}
-  skills: {acrobatics: 0, awareness: 0, dodge: 0, silent_move: 0}
-  characteristics: {agility: 43, ballistic_skill: 42, strength: 31, toughness: 32,
-    weapon_skill: 42, willpower: 40}
+  characteristics: {agility: 43, ballistic_skill: 42, perception: 40, strength: 31,
+    toughness: 32, weapon_skill: 42, willpower: 40}
   name: Eldar Guardian (Heavy Weapon Platform)
+  skills: {acrobatics: 0, awareness: 0, dodge: 0, silent_move: 0}
   species: eldar
   talents: {catfall: true, foresight: true, hard_target: true, hip_shooting: true,
     sprint: true}
@@ -98,10 +98,10 @@ eldar_heavy_platform:
 eldar_platform:
   _package: eldar
   armor: {all: 5}
-  skills: {acrobatics: 0, awareness: 0, dodge: 0, silent_move: 0}
-  characteristics: {agility: 43, ballistic_skill: 42, strength: 31, toughness: 32,
-    weapon_skill: 42, willpower: 40}
+  characteristics: {agility: 43, ballistic_skill: 42, perception: 40, strength: 31,
+    toughness: 32, weapon_skill: 42, willpower: 40}
   name: Eldar Guardian (Weapon Platform)
+  skills: {acrobatics: 0, awareness: 0, dodge: 0, silent_move: 0}
   species: eldar
   talents: {catfall: true, foresight: true, hard_target: true, hip_shooting: true,
     sprint: true}
@@ -112,8 +112,8 @@ eldar_platform:
 eldar_warlock:
   _package: eldar
   armor: {all: 3, head: 5}
-  characteristics: {agility: 51, ballistic_skill: 55, strength: 38, toughness: 35,
-    weapon_skill: 55, willpower: 58}
+  characteristics: {agility: 51, ballistic_skill: 55, perception: 40, strength: 38,
+    toughness: 35, weapon_skill: 55, willpower: 58}
   force_field: {overload_max: 0, protection_max: 58}
   name: Eldar Warlock
   skills: {acrobatics: 0, awareness: 10, dodge: 10, psyniscience: 10, silent_move: 0}
@@ -179,8 +179,8 @@ fire_dragon_exarch:
 howling_banshee:
   _package: eldar
   armor: {all: 6}
-  characteristics: {ballistic_skill: 48, fellowship: 34, intelligence: 38, perception: 40,
-    strength: 43, toughness: 35, weapon_skill: 62, willpower: 52, agility: 63}
+  characteristics: {agility: 63, ballistic_skill: 48, fellowship: 34, intelligence: 38,
+    perception: 40, strength: 43, toughness: 35, weapon_skill: 62, willpower: 52}
   name: Howling Banshee Aspect Warrior
   skills: {acrobatics: 10, awareness: 10, dodge: 20, silent_move: 0}
   species: eldar
@@ -195,8 +195,8 @@ howling_banshee:
 howling_banshee_exarch:
   _package: eldar
   armor: {all: 9}
-  characteristics: {ballistic_skill: 55, fellowship: 37, intelligence: 43, perception: 53,
-    strength: 49, toughness: 46, weapon_skill: 70, willpower: 58, agility: 66}
+  characteristics: {agility: 66, ballistic_skill: 55, fellowship: 37, intelligence: 43,
+    perception: 53, strength: 49, toughness: 46, weapon_skill: 70, willpower: 58}
   name: Howling Banshee Exarch
   skills: {acrobatics: 20, awareness: 20, command: 10, dodge: 20, silent_move: 0}
   species: eldar
@@ -263,8 +263,7 @@ swooping_hawk:
     hip_shooting: true, jaded: true, leap_up: true, lightning_reflexes: true, mighty_shot: true,
     nerves_of_steel: true, quick_draw: true, rapid_reaction: true, sprint: true, step_aside: true}
   traits: {dark_reaper: true, flight: 18, unnatural_agility: 2}
-  weapons: [lasblaster, shuriken_pistol, eldar_monoblade, eldar_plasma_grenade,
-    eldar_haywire_grenade]
+  weapons: [lasblaster, shuriken_pistol, eldar_monoblade, eldar_plasma_grenade, eldar_haywire_grenade]
   wounds: 15
 swooping_hawk_exarch:
   _package: eldar

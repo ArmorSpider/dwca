@@ -33,6 +33,7 @@ officers_lash:
   _package: stigmartus
   class: Pistol
   damage_type: R
+  single_shot: 1
   dice: 1
   flat_damage: 3
   name: Stigmartus Officer's Lash

@@ -44,12 +44,22 @@ def verify_entities():
     for entity_name, entity_def in get_character_library().iteritems():
         missing_keys = []
         if entity_def.get('vehicle') is True:
+            vehicle = True
             required = required_all
         else:
+            vehicle = False
             required = required_char
         for key in required:
             if key not in entity_def:
                 missing_keys.append(key)
+        if vehicle is False:
+            chars = entity_def.get('characteristics')
+            for key in ['weapon_skill', 'ballistic_skill', 'strength', 'agility', 'toughness', 'willpower', 'perception']:
+                try:
+                    if key not in chars:
+                        missing_keys.append(key)
+                except TypeError:
+                    LOG.error(entity_def)
         if missing_keys != []:
             print '______[%s]______' % entity_name
             print entity_def.get('_package', DEFAULT_PACKAGE)

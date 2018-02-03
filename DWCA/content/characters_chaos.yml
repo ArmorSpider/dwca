@@ -1,12 +1,11 @@
 berzerker:
   _package: chaos
-  species: human
-  wounds: 30
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 40, fellowship: 20, intelligence: 30,
     perception: 40, strength: 45, toughness: 45, weapon_skill: 69, willpower: 45}
   name: Khorne Berzerker
   skills: {awareness: 0, dodge: 10}
+  species: human
   talents: {ambidextrous: true, berserk_charge: true, die_hard: true, fearless: true,
     frenzy: true, furious_assault: true, hatred: loyalist space marines, jaded: true,
     lightning_attack: true, swift_attack: true, true_grit: true, two_weapon_wielder_melee: true,
@@ -14,9 +13,10 @@ berzerker:
   traits: {black_carapace: true, dark_sight: true, power_armour: true, size: 10, unnatural_strength: 2,
     unnatural_toughness: 2}
   weapons: [chainsword, plasma_pistol, berzerker_axe]
+  wounds: 30
 bloodletter:
-  armor: {all: 0}
   _package: chaos
+  armor: {all: 0}
   characteristics: {agility: 40, ballistic_skill: 30, fellowship: 10, intelligence: 30,
     perception: 30, strength: 45, toughness: 45, weapon_skill: 55, willpower: 30}
   name: Bloodletter
@@ -54,12 +54,12 @@ chaos_dreadnought:
   wounds: 35
 chaos_marine:
   _package: chaos
-  species: human
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
     perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
   name: Chaos Space Marine
   skills: {awareness: 0, climb: 0, dodge: 10}
+  species: human
   talents: {bolter_drill: true, fearless: true, hatred: loyalist space marines, jaded: true,
     killing_strike: true, swift_attack: true, true_grit: true}
   traits: {black_carapace: true, fire_drill: true, power_armour: true, size: 10, unnatural_strength: 2,
@@ -171,12 +171,12 @@ defiler:
   wounds: 28
 khorne_marine:
   _package: chaos
-  species: human
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
     perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
   name: Chaos Space Marine
   skills: {awareness: 0, climb: 0, dodge: 10}
+  species: human
   talents: {berserk_charge: true, bolter_drill: true, fearless: true, frenzy: true,
     furious_assault: true, hatred: loyalist space marines, jaded: true, killing_strike: true,
     lightning_attack: true, resistance_psychic: true, swift_attack: true, true_grit: true,
@@ -188,12 +188,12 @@ khorne_marine:
 mediphast_the_plaguereaver:
   _package: chaos
   armor: {all: 11}
-  species: human
   characteristics: {agility: 32, ballistic_skill: 50, fellowship: 66, intelligence: 52,
     perception: 44, strength: 65, toughness: 87, weapon_skill: 47, willpower: 71}
   force_field: {overload_max: 0, protection_max: 35}
   name: Mediphast the Plaguereaver
   skills: {awareness: 10, deceive: 0, intimidate: 20, scrutiny: 20}
+  species: human
   talents: {bulging_biceps: true, combat_master: true, crippling_strike: true, crushing_blow: true,
     die_hard: true, disturbing_voice: true, favoured_by_the_warp: true, hammer_blow: true,
     hatred: loyalist, iron_discipline: true, litany_of_hate: true, resistance_psychic: true,
@@ -222,12 +222,12 @@ noise_marine:
   wounds: 28
 nurgle_marine:
   _package: chaos
-  species: human
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
     perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
   name: Nurgle Marine
   skills: {awareness: 0, climb: 0, dodge: 10}
+  species: human
   talents: {bolter_drill: true, fearless: true, hatred: loyalist space marines, jaded: true,
     killing_strike: true, swift_attack: true, true_grit: true}
   traits: {black_carapace: true, fire_drill: true, power_armour: true, size: 10, stuff_of_nightmares: true,
@@ -293,7 +293,8 @@ plaguebearer:
 renegade_militia:
   _package: chaos
   armor: {all: 4}
-  characteristics: {ballistic_skill: 35, strength: 35, toughness: 35, weapon_skill: 35}
+  characteristics: {agility: 30, ballistic_skill: 35, perception: 30, strength: 35,
+    toughness: 35, weapon_skill: 35, willpower: 35}
   name: Renegade Militia
   skills: {awareness: 0, climb: 0, survival: 0, swim: 9}
   species: human
