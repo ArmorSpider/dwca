@@ -76,7 +76,7 @@ harpy:
   species: tyranid
   talents: {death_from_above: true, fearless: true, heightened_sight: true}
   traits: {dark_sight: true, fear: 3, flight: 20, natural_armor: true, size: 20, tyranid: true,
-    unnatural_toughness: true}
+    unnatural_toughness: 2}
   weapons: [scything_talons, twin_stranglethorn_cannon, stinger_salvo, sonic_screech,
     twin_heavy_venom_cannon]
   wounds: 95
@@ -175,8 +175,8 @@ lictor:
   talents: {ambidextrous: true, assassin_strike: true, berserk_charge: true, crushing_blow: true,
     fearless: true, furious_assault: true, hard_target: true, lightning_attack: true,
     sprint: true, step_aside: true, swift_attack: true}
-  traits: {multiple_arms: true, natural_armor: true, size: 10, toxic: 1d10, unnatural_agility: true,
-    unnatural_perception: true, unnatural_strength: true, unnatural_toughness: true}
+  traits: {multiple_arms: true, natural_armor: true, size: 10, toxic: 1d10, unnatural_agility: 2,
+    unnatural_perception: 2, unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [scything_talons, rending_claws]
   wounds: 40
 malanthrope:
@@ -350,7 +350,7 @@ venomthrope:
   species: tyranid
   talents: {ambidextrous: true, swift_attack: true}
   traits: {multiple_arms: true, natural_armor: true, size: 20, spore_cloud: true,
-    toxic: 2d10 Test is -30, toxic_miasma: true, unnatural_strength: true, unnatural_toughness: true}
+    toxic: 2d10 Test is -30, toxic_miasma: true, unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [lashwhip]
   wounds: 40
 warrior_prime:
