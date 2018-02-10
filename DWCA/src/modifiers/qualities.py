@@ -279,7 +279,10 @@ class Snare(Modifier):
 
     def on_hit(self, attack):
         if attack.snare is not None:
-            queue_message('SNARE: %s must make AGI test or be immobilised.')
+            snare_value = 1 if attack.snare is True else attack.snare
+            penalty = snare_value * -10
+            queue_message(
+                'SNARE: %s must make AGI test %s or be immobilised.' % penalty)
 
 
 class DeadlySnare(Modifier):
@@ -288,13 +291,15 @@ class DeadlySnare(Modifier):
 
     def on_hit(self, attack):
         if attack.deadly_snare is not None:
+            snare_value = 1 if attack.deadly_snare is True else attack.deadly_snare
+            penalty = snare_value * -10
             damage_roll_base = '{dice}d10+{flat_damage} Pen: {pen}'
             damage_roll = damage_roll_base.format(dice=attack.num_dice,
                                                   flat_damage=attack.flat_damage,
                                                   pen=attack.penetration)
             queue_message(
-                'DEADLY_SNARE: %s must make AGI test or be immobilised.'
-                'Take %s each turn until escape.' % (attack.target, damage_roll))
+                'DEADLY_SNARE: %s must make AGI %s test or be immobilised.'
+                'Take %s each turn until escape.' % (attack.target, penalty, damage_roll))
 
 
 class Flexible(Modifier):
