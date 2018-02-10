@@ -47,7 +47,7 @@ class RazorSharp(Modifier):
     name = 'razor_sharp'
 
     def modify_penetration(self, attack, current_penetration):
-        if attack.degrees_of_success >= 2:
+        if attack.degrees_of_success >= 3:
             current_penetration += attack.weapon.penetration
             LOG.debug('Double penetration from RazorSharp.')
         return current_penetration
@@ -134,6 +134,23 @@ class Proven(Modifier):
             modified_results = [max(value, proven_value)
                                 for value in roll_results]
             LOG.debug('Proved modified roll result to %s.', modified_results)
+            return modified_results
+        else:
+            return roll_results
+
+
+class Primitive(Modifier):
+
+    name = 'primitive'
+
+    @staticmethod
+    def handle_primitive(attack, roll_results):
+        primitive_value = 8 if attack.primitive is True else attack.primitive
+        if primitive_value is not None:
+            modified_results = [min(value, primitive_value)
+                                for value in roll_results]
+            LOG.debug('Primitive modified roll result to %s.',
+                      modified_results)
             return modified_results
         else:
             return roll_results
