@@ -96,13 +96,13 @@ class Felling(Modifier):
     name = 'felling'
 
     @staticmethod
-    def handle_felling(attack, tgh_multiplier):
+    def handle_felling(attack, extra_toughness):
         felling_value = attack.felling
         if felling_value is not None:
-            tgh_multiplier = max(tgh_multiplier - felling_value, 1)
+            extra_toughness = max(extra_toughness - felling_value, 0)
             LOG.debug('Toughness multiplier reduced by Felling(%s)',
                       felling_value)
-        return tgh_multiplier
+        return extra_toughness
 
 
 class Volatile(Modifier):

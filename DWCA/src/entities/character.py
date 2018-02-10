@@ -133,10 +133,10 @@ class Character(Entity):
 
     def get_modded_toughness_bonus(self, attack, hit_location=None):
         raw_bonus = self.get_raw_characteristic_bonus(STAT_TGH)
-        tgh_multiplier = self.get_characteristic_multiplier(STAT_TGH)
-        tgh_multiplier = Felling.handle_felling(attack, tgh_multiplier)
-        tgh_multiplier = Daemonic.handle_daemonic(attack, tgh_multiplier)
-        final_bonus = raw_bonus * tgh_multiplier
+        extra_toughness = self.get_unnatural_characteristic(STAT_TGH)
+        extra_toughness = Felling.handle_felling(attack, extra_toughness)
+        extra_toughness = Daemonic.handle_daemonic(attack, extra_toughness)
+        final_bonus = raw_bonus + extra_toughness
         if hit_location is not None:
             locational_toughness = self.get_locational_toughness(hit_location)
             final_bonus += locational_toughness
@@ -145,22 +145,14 @@ class Character(Entity):
     def get_characteristic_bonus(self, characteristic):
         characteristic_bonus = self.get_raw_characteristic_bonus(
             characteristic)
-        characteristic_multiplier = self.get_characteristic_multiplier(
+        unnatural_bonus = self.get_unnatural_characteristic(
             characteristic)
-        final_bonus = characteristic_bonus * characteristic_multiplier
+        final_bonus = characteristic_bonus + unnatural_bonus
         return final_bonus
-
-    def get_characteristic_multiplier(self, characteristic):
-        trait_value = self.get_unnatural_characteristic(characteristic)
-        if trait_value is not None:
-            multiplier = trait_value
-        else:
-            multiplier = DEFAULT_CHARACTERISTIC_MULTIPLIER
-        return multiplier
 
     def get_unnatural_characteristic(self, characteristic):
         trait_name = 'unnatural_{}'.format(characteristic)
-        trait_value = self.modifiers.get(trait_name)
+        trait_value = self.modifiers.get(trait_name, 0)
         return trait_value
 
     @property

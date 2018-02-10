@@ -34,11 +34,14 @@ class Test(unittest.TestCase):
                                                              STAT_TGH: 54,
                                                              STAT_WS: 50,
                                                              STAT_BS: 50,
-                                                             STAT_AGI: 40})
+                                                             STAT_AGI: 40},
+                                            _system='deathwatch')
         self.dummyman_name = add_mock_entity('Dummyman',
-                                             traits={'natural_armor': True})
+                                             traits={'natural_armor': True},
+                                             _system='deathwatch')
         self.psyman_name = add_mock_entity('Psyman',
-                                           traits={'psy_rating': 6})
+                                           traits={'psy_rating': 6},
+                                           _system='deathwatch')
         self.armorman_name = add_mock_entity('Armorman',
                                              armor={HITLOC_LEFT_LEG: 11,
                                                     HITLOC_RIGHT_LEG: 12,
@@ -48,7 +51,8 @@ class Test(unittest.TestCase):
                                                     HITLOC_HEAD: 16},
                                              characteristics={STAT_TGH: 10},
                                              traits={'daemonic': True,
-                                                     'unnatural_toughness': 2})
+                                                     'unnatural_toughness': 2},
+                                             _system='deathwatch')
         self.business_gun_name = add_mock_weapon('Business Gun',
                                                  'Basic',
                                                  dice=2,
@@ -56,21 +60,26 @@ class Test(unittest.TestCase):
                                                  penetration=10,
                                                  single_shot=1,
                                                  semi_auto=3,
-                                                 full_auto=5)
+                                                 full_auto=5,
+                                                 _system='deathwatch')
         self.business_fist_name = add_mock_weapon('Business Fist',
                                                   'Melee',
                                                   damage_type='I',
                                                   dice=1,
                                                   flat_damage=10,
                                                   penetration=10,
-                                                  qualities={Tearing.name: True})
+                                                  qualities={
+                                                      Tearing.name: True},
+                                                  _system='deathwatch')
         self.business_psy_name = add_mock_weapon('Business Psy',
                                                  'Psychic',
                                                  damage_type='I',
                                                  dice=1,
                                                  flat_damage=10,
                                                  penetration=10,
-                                                 qualities={'psychic_scaling': True})
+                                                 qualities={
+                                                     'psychic_scaling': True},
+                                                 _system='deathwatch')
 
         self.basic_melee_event = {ATTACKER: self.automan_name,
                                   WEAPON: self.business_fist_name,
@@ -477,8 +486,8 @@ class Test(unittest.TestCase):
                     ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     OFFENSIVE_MODIFIERS: {'power_armour': True,
-                                          'unnatural_strength': 2,
-                                          'unnatural_toughness': 2,
+                                          'unnatural_strength': 4,
+                                          'unnatural_toughness': 5,
                                           Tearing.name: True}}
         actual = self.get_attack_metadata(event)
         self.assert_dict_contains(expected, actual)
@@ -504,6 +513,7 @@ class Test(unittest.TestCase):
         queue_d100_rolls([51])
         queue_d10_rolls([5] * 10)
 
+        # This will look for translated values.
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
@@ -511,8 +521,8 @@ class Test(unittest.TestCase):
                     ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     OFFENSIVE_MODIFIERS: {'power_armour': True,
-                                          'unnatural_strength': 2,
-                                          'unnatural_toughness': 2,
+                                          'unnatural_strength': 4,
+                                          'unnatural_toughness': 5,
                                           Tearing.name: True,
                                           Blast.name: 5}}
         actual = self.get_attack_metadata(event)

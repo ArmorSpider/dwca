@@ -53,15 +53,15 @@ class Daemonic(Modifier):
     name = 'daemonic'
 
     @staticmethod
-    def handle_daemonic(attack, tgh_multiplier):
+    def handle_daemonic(attack, extra_toughness):
         daemonic_value = attack.target.daemonic
         bypass_daemonic = any([attack.sanctified,
                                attack.force_weapon,
                                attack.daemonic])
         if daemonic_value is not None and bypass_daemonic is False:
-            tgh_multiplier += 1
-            LOG.debug('+1 TGH multiplier from Daemonic.')
-        return tgh_multiplier
+            extra_toughness += daemonic_value
+            LOG.debug('+%s TB from Daemonic.', daemonic_value)
+        return extra_toughness
 
 
 class BrutalCharge(Modifier):
