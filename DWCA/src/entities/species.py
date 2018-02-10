@@ -13,6 +13,7 @@ class Species(Enum):
     DAEMON = 'daemon'
     ELDAR = 'eldar'
     NECRON = 'necron'
+    DARK_ELDAR = 'dark_eldar'
     XENO = 'xeno'
     UNKNOWN = 'unknown'
 
@@ -38,4 +39,5 @@ def get_alien_species():
             Species.TAU,
             Species.ORK,
             Species.ELDAR,
+            Species.DARK_ELDAR,
             Species.XENO]
