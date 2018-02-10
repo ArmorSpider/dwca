@@ -70,8 +70,8 @@ class BrutalCharge(Modifier):
 
     def modify_damage(self, attack, current_damage):
         if attack.attacker.is_horde() is False and attack.charged is not None:
-            LOG.info('+3 damage from BrutalCharge')
-            brutal_charge_value = 3 if attack.brutal_charge is True else attack.brutal_charge
+            brutal_charge_value = attack.brutal_charge
+            LOG.info('+%s damage from BrutalCharge', brutal_charge_value)
             current_damage += brutal_charge_value
         return current_damage
 
