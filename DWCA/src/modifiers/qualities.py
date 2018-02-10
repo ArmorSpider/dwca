@@ -156,10 +156,9 @@ class Toxic(Modifier):
     def on_damage(self, attack, effective_damage):
         toxic_value = attack.toxic
         if toxic_value is not None and effective_damage > 0:
-            penalty = 5 * effective_damage
-            queue_message('TOXIC: %s should roll %s -%s or take %s true damage.' %
-                          (attack.target, STAT_TGH, penalty, toxic_value))
-        return effective_damage
+            penalty = 10 * toxic_value
+            queue_message('TOXIC: %s should roll %s -%s or take 1d10 true damage.' %
+                          (attack.target, STAT_TGH, penalty))
 
 
 class TwinLinked(Modifier):
@@ -405,6 +404,18 @@ class PenetrationPerDos(Modifier):
         bonus_penetration = max(0, penetration_per_dos * dos)
         LOG.info('+%s penetration from PenetrationPerDos(%s)',
                  bonus_penetration, penetration_per_dos)
+        current_penetration += bonus_penetration
+        return current_penetration
+
+
+class Lance(Modifier):
+
+    name = 'lance'
+
+    def modify_penetration(self, attack, current_penetration):
+        dos = attack.degrees_of_success
+        bonus_penetration = max(0, 5 * dos)
+        LOG.info('+%s penetration from Lance', bonus_penetration)
         current_penetration += bonus_penetration
         return current_penetration
 
