@@ -1,5 +1,5 @@
 from src.cli.message_queue import queue_message
-from src.dice import roll_damage_dice, roll_damage_die
+from src.dice import roll_damage_die
 from src.dwca_log.log import get_log
 from src.entities.char_stats import STAT_TGH, STAT_STR
 from src.modifiers.modifier import Modifier
@@ -145,7 +145,7 @@ class Primitive(Modifier):
 
     @staticmethod
     def handle_primitive(attack, roll_results):
-        primitive_value = 8 if attack.primitive is True else attack.primitive
+        primitive_value = attack.primitive
         if primitive_value is not None:
             modified_results = [min(value, primitive_value)
                                 for value in roll_results]
@@ -279,7 +279,7 @@ class Snare(Modifier):
 
     def on_hit(self, attack):
         if attack.snare is not None:
-            snare_value = 1 if attack.snare is True else attack.snare
+            snare_value = attack.snare
             penalty = snare_value * -10
             queue_message(
                 'SNARE: %s must make AGI test %s or be immobilised.' % penalty)
@@ -291,7 +291,7 @@ class DeadlySnare(Modifier):
 
     def on_hit(self, attack):
         if attack.deadly_snare is not None:
-            snare_value = 1 if attack.deadly_snare is True else attack.deadly_snare
+            snare_value = attack.deadly_snare
             penalty = snare_value * -10
             damage_roll_base = '{dice}d10+{flat_damage} Pen: {pen}'
             damage_roll = damage_roll_base.format(dice=attack.num_dice,
@@ -362,7 +362,7 @@ class Concussive(Modifier):
     name = 'concussive'
 
     def on_hit(self, attack):
-        concussive_value = 1 if attack.concussive is True else attack.concussive
+        concussive_value = attack.concussive
         test_difficulty = -10 * concussive_value
         queue_message('CONCUSSIVE: %s must make TGH test (%s) or be Stunned for 1 round/DoF' %
                       (attack.target, test_difficulty))
