@@ -1,4 +1,5 @@
 from src.cli.message_queue import queue_message
+from src.dice import roll_damage_dice, roll_damage_die
 from src.dwca_log.log import get_log
 from src.entities.char_stats import STAT_TGH, STAT_STR
 from src.modifiers.modifier import Modifier
@@ -205,15 +206,15 @@ class Accurate(Modifier):
 
     name = 'accurate'
 
-    def modify_num_dice(self, attack, current_num_dice):
+    def modify_damage(self, attack, current_damage):
         if attack.degrees_of_success >= 2:
             if attack.aimed is True:
-                current_num_dice += 1
-                LOG.info('+1d10 from Accurate with DoS >= 2')
+                current_damage += roll_damage_die()
+                LOG.info('+1d10 damage from Accurate with DoS >= 2')
                 if attack.degrees_of_success >= 4:
-                    current_num_dice += 1
-                    LOG.info('+1d10 from Accurate with DoS >= 4')
-        return current_num_dice
+                    current_damage += roll_damage_die()
+                    LOG.info('+1d10 damage from Accurate with DoS >= 4')
+        return current_damage
 
 
 class Blast(Modifier):
