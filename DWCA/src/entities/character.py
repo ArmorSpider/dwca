@@ -14,7 +14,7 @@ from src.modifiers.qualities import Felling
 from src.modifiers.traits import Daemonic
 from src.situational.cover import get_cover_armor_for_hitloc
 from src.situational.force_field import ForceField
-from src.skills import get_skill_characteristic, get_all_skills, get_advanced_skills
+from src.skills import get_skill_characteristic, get_all_skills
 from src.util.rand_util import get_tens
 from src.util.user_input import try_user_choose_from_list
 
@@ -72,14 +72,6 @@ class Character(Entity):
         available_skills = {}
         for skill in get_all_skills():
             available_skills[skill] = self._get_effective_skill_rating(skill)
-        available_skills = self._remove_untrained_advanced_skills(
-            available_skills)
-        return available_skills
-
-    def _remove_untrained_advanced_skills(self, available_skills):
-        for skill in get_advanced_skills():
-            if skill not in self.skills:
-                available_skills.pop(skill, None)
         return available_skills
 
     def _get_effective_skill_rating(self, skill):
@@ -88,7 +80,7 @@ class Character(Entity):
         if trained_value is not None:
             effective_skill_rating = characteristic_value + trained_value
         else:
-            effective_skill_rating = characteristic_value / 2
+            effective_skill_rating = characteristic_value - 20
         return effective_skill_rating
 
     def get_skill_characteristic(self, skill):
