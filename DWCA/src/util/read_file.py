@@ -11,18 +11,38 @@ CONTENT_PATH = os.path.join(ROOT_DIR, 'content')
 LOG = get_log(__name__)
 
 
-# def sort_content_files():
-#     char_lib = read_weapon_library()
-#     sorted_char_lib = {}
-#     for char_def_name, char_def in char_lib.iteritems():
-#         package = char_def.get('_package', 'base')
-#         if package not in sorted_char_lib:
-#             sorted_char_lib[package] = {}
-#         sorted_char_lib[package][char_def_name] = char_def
-#     for package_name, file_content in sorted_char_lib.iteritems():
-#         file_name = 'weapons_{}.yml'.format(package_name)
-#         file_path = os.path.join(CONTENT_PATH, file_name)
-#         write_dict_to_yaml_file(file_content, file_path)
+def sort_weapon_files():
+    char_lib = read_weapon_library()
+    sorted_char_lib = {}
+    for char_def_name, char_def in char_lib.iteritems():
+        package = char_def.get('_package', 'base')
+        system = char_def.get('_system', None)
+        if system is None:
+            char_def['_system'] = 'deathwatch'
+        if package not in sorted_char_lib:
+            sorted_char_lib[package] = {}
+        sorted_char_lib[package][char_def_name] = char_def
+    for package_name, file_content in sorted_char_lib.iteritems():
+        file_name = 'weapons_{}.yml'.format(package_name)
+        file_path = os.path.join(CONTENT_PATH, file_name)
+        write_dict_to_yaml_file(file_content, file_path)
+
+
+def sort_char_files():
+    char_lib = read_character_library()
+    sorted_char_lib = {}
+    for char_def_name, char_def in char_lib.iteritems():
+        package = char_def.get('_package', 'base')
+        system = char_def.get('_system', None)
+        if system is None:
+            char_def['_system'] = 'deathwatch'
+        if package not in sorted_char_lib:
+            sorted_char_lib[package] = {}
+        sorted_char_lib[package][char_def_name] = char_def
+    for package_name, file_content in sorted_char_lib.iteritems():
+        file_name = 'characters_{}.yml'.format(package_name)
+        file_path = os.path.join(CONTENT_PATH, file_name)
+        write_dict_to_yaml_file(file_content, file_path)
 
 
 def read_file(file_path):
