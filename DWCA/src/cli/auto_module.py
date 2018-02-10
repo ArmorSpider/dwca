@@ -112,9 +112,9 @@ def _get_range_modifier(range_, range_options):
 def firemode_module(event):
     event = choose_firemode(event)
     firemode = event[FIREMODE]
-    firemode_bonuses = {SINGLE_SHOT: 0,
-                        SEMI_AUTO: 10,
-                        FULL_AUTO: 20}
+    firemode_bonuses = {SINGLE_SHOT: 10,
+                        SEMI_AUTO: 0,
+                        FULL_AUTO: -10}
     firemode_bonus = firemode_bonuses[firemode]
     event = add_roll_mod(event, firemode_bonus, ROF_MOD)
     return event
