@@ -16,6 +16,10 @@ def roll_action_dice():
     return result
 
 
+def roll_damage_die():
+    return roll_die(10)
+
+
 def roll_damage_dice(num_dice):
     results = []
     for _ in range(num_dice):
