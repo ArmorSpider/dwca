@@ -339,8 +339,9 @@ class Concussive(Modifier):
     name = 'concussive'
 
     def on_hit(self, attack):
-        test_difficulty = -10 * attack.degrees_of_success
-        queue_message('CONCUSSIVE: %s must make TGH test (%s) or be Stunned for 1 round.' %
+        concussive_value = 1 if attack.concussive is True else attack.concussive
+        test_difficulty = -10 * concussive_value
+        queue_message('CONCUSSIVE: %s must make TGH test (%s) or be Stunned for 1 round/DoF' %
                       (attack.target, test_difficulty))
 
     def on_damage(self, attack, effective_damage):
