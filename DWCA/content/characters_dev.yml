@@ -1,5 +1,17 @@
+alakir:
+  _package: dev
+  _system: deathwatch
+  armor: {body: 14, head: 8, left_arm: 12, left_leg: 8, right_arm: 8, right_leg: 8}
+  characteristics: {strength: 42, toughness: 54, willpower: 50}
+  force_field: {overload_max: 10, protection_max: 55}
+  name: Al'akir
+  talents: {deathwatch_training: true}
+  traits: {black_carapace: true, power_armour: true, psy_rating: 5, size: 10, unnatural_strength: 2,
+    unnatural_toughness: 2, unnatural_willpower: 2}
+  weapons: [smite]
 dev_bohn_jobb:
   _package: dev
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
   force_field: {overload_max: 10, protection_max: 65}
@@ -12,6 +24,7 @@ dev_bohn_jobb:
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
 dev_genestealer:
   _package: dev
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
   name: Dev Genestealer
@@ -23,6 +36,7 @@ dev_genestealer:
     tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
 dev_john_bobb:
   _package: dev
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
   name: John-Bobb
@@ -32,3 +46,13 @@ dev_john_bobb:
     killing_strike: true, nerves_of_steel: true, quick_draw: true, resistance_psychic: true,
     unarmed_master: true}
   traits: {unnatural_strength: 2, unnatural_toughness: 2}
+namael:
+  _package: dev
+  _system: deathwatch
+  armor: {body: 14, head: 8, left_arm: 12, left_leg: 8, right_arm: 8, right_leg: 8}
+  characteristics: {strength: 42, toughness: 43}
+  force_field: {overload_max: 10, protection_max: 55}
+  name: Namael
+  talents: {deathwatch_training: true}
+  traits: {black_carapace: true, power_armour: true, size: 10, unnatural_strength: 2,
+    unnatural_toughness: 2}

@@ -1,5 +1,6 @@
 dark_reaper:
   _package: eldar
+  _system: deathwatch
   armor: {all: 8}
   characteristics: {agility: 51, ballistic_skill: 61, fellowship: 31, intelligence: 44,
     perception: 48, strength: 38, toughness: 41, weapon_skill: 51, willpower: 52}
@@ -16,6 +17,7 @@ dark_reaper:
   wounds: 17
 dark_reaper_exarch:
   _package: eldar
+  _system: deathwatch
   armor: {all: 9}
   characteristics: {agility: 57, ballistic_skill: 72, fellowship: 37, intelligence: 51,
     perception: 58, strength: 46, toughness: 52, weapon_skill: 60, willpower: 58}
@@ -35,6 +37,7 @@ dark_reaper_exarch:
   wounds: 28
 dire_avenger:
   _package: eldar
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 56, ballistic_skill: 55, perception: 53, strength: 38,
     toughness: 35, weapon_skill: 55, willpower: 52}
@@ -49,6 +52,7 @@ dire_avenger:
   wounds: 15
 dire_avenger_exarch:
   _package: eldar
+  _system: deathwatch
   armor: {all: 9}
   characteristics: {agility: 59, ballistic_skill: 62, strength: 44, toughness: 46,
     weapon_skill: 63, willpower: 58}
@@ -70,6 +74,7 @@ dire_avenger_exarch:
   wounds: 25
 eldar_guardian:
   _package: eldar
+  _system: deathwatch
   armor: {all: 5}
   characteristics: {agility: 43, ballistic_skill: 42, perception: 40, strength: 31,
     toughness: 32, weapon_skill: 42, willpower: 40}
@@ -84,6 +89,7 @@ eldar_guardian:
   wounds: 10
 eldar_heavy_platform:
   _package: eldar
+  _system: deathwatch
   armor: {all: 5}
   characteristics: {agility: 43, ballistic_skill: 42, perception: 40, strength: 31,
     toughness: 32, weapon_skill: 42, willpower: 40}
@@ -97,6 +103,7 @@ eldar_heavy_platform:
   wounds: 10
 eldar_platform:
   _package: eldar
+  _system: deathwatch
   armor: {all: 5}
   characteristics: {agility: 43, ballistic_skill: 42, perception: 40, strength: 31,
     toughness: 32, weapon_skill: 42, willpower: 40}
@@ -111,6 +118,7 @@ eldar_platform:
   wounds: 10
 eldar_warlock:
   _package: eldar
+  _system: deathwatch
   armor: {all: 3, head: 5}
   characteristics: {agility: 51, ballistic_skill: 55, perception: 40, strength: 38,
     toughness: 35, weapon_skill: 55, willpower: 58}
@@ -127,6 +135,7 @@ eldar_warlock:
   wounds: 15
 farseer:
   _package: eldar
+  _system: deathwatch
   armor: {all: 3, head: 5}
   characteristics: {agility: 61, ballistic_skill: 60, fellowship: 52, intelligence: 65,
     perception: 55, strength: 35, toughness: 41, weapon_skill: 65, willpower: 73}
@@ -143,6 +152,7 @@ farseer:
   wounds: 19
 fire_dragon:
   _package: eldar
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 51, ballistic_skill: 58, fellowship: 34, intelligence: 44,
     perception: 48, strength: 38, toughness: 35, weapon_skill: 51, willpower: 52}
@@ -159,6 +169,7 @@ fire_dragon:
   wounds: 15
 fire_dragon_exarch:
   _package: eldar
+  _system: deathwatch
   armor: {all: 9}
   characteristics: {agility: 57, ballistic_skill: 66, fellowship: 37, intelligence: 51,
     perception: 58, strength: 44, toughness: 46, weapon_skill: 60, willpower: 58}
@@ -178,6 +189,7 @@ fire_dragon_exarch:
   wounds: 25
 howling_banshee:
   _package: eldar
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 63, ballistic_skill: 48, fellowship: 34, intelligence: 38,
     perception: 40, strength: 43, toughness: 35, weapon_skill: 62, willpower: 52}
@@ -194,6 +206,7 @@ howling_banshee:
   wounds: 15
 howling_banshee_exarch:
   _package: eldar
+  _system: deathwatch
   armor: {all: 9}
   characteristics: {agility: 66, ballistic_skill: 55, fellowship: 37, intelligence: 43,
     perception: 53, strength: 49, toughness: 46, weapon_skill: 70, willpower: 58}
@@ -216,6 +229,7 @@ howling_banshee_exarch:
   wounds: 25
 striking_scorpion:
   _package: eldar
+  _system: deathwatch
   armor: {all: 8}
   characteristics: {agility: 58, ballistic_skill: 48, fellowship: 34, intelligence: 38,
     perception: 46, strength: 51, toughness: 3, weapon_skill: 62, willpower: 52}
@@ -232,6 +246,7 @@ striking_scorpion:
   wounds: 15
 striking_scorpion_exarch:
   _package: eldar
+  _system: deathwatch
   armor: {all: 9}
   characteristics: {agility: 58, ballistic_skill: 55, fellowship: 37, intelligence: 38,
     perception: 60, strength: 58, toughness: 49, weapon_skill: 70, willpower: 58}
@@ -253,6 +268,7 @@ striking_scorpion_exarch:
   wounds: 25
 swooping_hawk:
   _package: eldar
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 61, ballistic_skill: 56, fellowship: 34, intelligence: 38,
     perception: 48, strength: 38, toughness: 35, weapon_skill: 52, willpower: 52}
@@ -267,6 +283,7 @@ swooping_hawk:
   wounds: 15
 swooping_hawk_exarch:
   _package: eldar
+  _system: deathwatch
   armor: {all: 7}
   characteristics: {agility: 64, ballistic_skill: 63, fellowship: 37, intelligence: 43,
     perception: 61, strength: 44, toughness: 46, weapon_skill: 60, willpower: 58}

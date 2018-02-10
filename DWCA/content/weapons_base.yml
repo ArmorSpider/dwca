@@ -1,4 +1,16 @@
+assault_cannon:
+  _system: deathwatch
+  class: Mounted
+  damage_type: I
+  dice: 2
+  flat_damage: 12
+  full_auto: 10
+  name: Astartes Assault Cannon
+  penetration: 6
+  qualities: {devastating: 1, tearing: true}
+  range: 150
 autocannon:
+  _system: deathwatch
   class: Heavy
   damage_type: I
   dice: 4
@@ -10,14 +22,8 @@ autocannon:
   range: 300
   semi_auto: 2
   single_shot: 1
-unarmed:
-  class: Melee
-  damage_type: I
-  dice: 1
-  penetration: 0
-  flat_damage: 0
-  name: Unarmed
 autogun:
+  _system: deathwatch
   class: Basic
   damage_type: I
   dice: 1
@@ -28,9 +34,10 @@ autogun:
   range: 100
   semi_auto: 3
   single_shot: 1
-bloodstrike_missile: {class: Basic, damage_type: X, dice: 4, flat_damage: 6, name: Bloodstrike
-    Missile, penetration: 14, range: 750, single_shot: 1}
+bloodstrike_missile: {_system: deathwatch, class: Basic, damage_type: X, dice: 4,
+  flat_damage: 6, name: Bloodstrike Missile, penetration: 14, range: 750, single_shot: 1}
 bolt_pistol:
+  _system: deathwatch
   class: Pistol
   damage_type: X
   dice: 1
@@ -42,6 +49,7 @@ bolt_pistol:
   semi_auto: 2
   single_shot: 1
 bolter:
+  _system: deathwatch
   class: Basic
   damage_type: X
   dice: 1
@@ -53,6 +61,7 @@ bolter:
   semi_auto: 3
   single_shot: 1
 boltgun:
+  _system: deathwatch
   class: Basic
   damage_type: X
   dice: 1
@@ -63,6 +72,7 @@ boltgun:
   range: 200
   single_shot: 1
 breaching_augur:
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 2
@@ -71,6 +81,7 @@ breaching_augur:
   penetration: 7
   qualities: {power_field: true, tearing: true, unwieldy: true}
 bulkhead_shears:
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 2
@@ -79,6 +90,7 @@ bulkhead_shears:
   penetration: 6
   qualities: {tearing: true, unwieldy: true}
 ceremonial_sword:
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1
@@ -86,17 +98,8 @@ ceremonial_sword:
   name: Ceremonial Sword
   penetration: 2
   qualities: {balanced: true}
-assault_cannon:
-  class: Mounted
-  name: Astartes Assault Cannon
-  range: 150
-  full_auto: 10
-  dice: 2
-  flat_damage: 12
-  damage_type: I
-  penetration: 6
-  qualities: {devastating: 1, tearing: true}
 chainfist:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 2
@@ -105,6 +108,7 @@ chainfist:
   penetration: 10
   qualities: {power_field: true, tearing: true, unwieldy: true}
 chainsword:
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1
@@ -113,6 +117,7 @@ chainsword:
   penetration: 3
   qualities: {balanced: true, tearing: true}
 combat_knife:
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1
@@ -121,6 +126,7 @@ combat_knife:
   penetration: 0
   qualities: {}
 crozius_arcanum:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
@@ -129,6 +135,7 @@ crozius_arcanum:
   penetration: 7
   qualities: {balanced: true, power_field: true}
 dual_lightning_claw:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
@@ -136,28 +143,12 @@ dual_lightning_claw:
   name: Astartes Lightning Claw
   penetration: 8
   qualities: {damage_per_dos: 2, power_field: true, proven: 4}
-dummy: {class: Melee, damage_type: I, dice: 1, flat_damage: 0, name: Dummy Weapon,
-  penetration: 0}
-dummy_ranged: {class: Basic, damage_type: I, dice: 1, flat_damage: 0, name: Dummy
-    Ranged, penetration: 0, range: 100, single_shot: 1}
-executioner_axe:
-  class: Melee
-  damage_type: E
-  dice: 1
-  flat_damage: 13
-  name: Astartes Executioner Axe
-  penetration: 8
-  qualities: {felling: 1, power_field: true, unwieldy: true}
-focus_test:
-  class: Psychic
-  damage_type: E
-  dice: 0
-  flat_damage: 0
-  name: Focus Power Test
-  penetration: 0
-  qualities: {non_damaging: true}
-  range: 100
+dummy: {_system: deathwatch, class: Melee, damage_type: I, dice: 1, flat_damage: 0,
+  name: Dummy Weapon, penetration: 0}
+dummy_ranged: {_system: deathwatch, class: Basic, damage_type: I, dice: 1, flat_damage: 0,
+  name: Dummy Ranged, penetration: 0, range: 100, single_shot: 1}
 emperors_wrath:
+  _system: deathwatch
   class: Psychic
   damage_type: E
   dice: 0
@@ -166,7 +157,27 @@ emperors_wrath:
   penetration: 1
   qualities: {psychic_scaling: true}
   range: 100
+executioner_axe:
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 13
+  name: Astartes Executioner Axe
+  penetration: 8
+  qualities: {felling: 1, power_field: true, unwieldy: true}
+focus_test:
+  _system: deathwatch
+  class: Psychic
+  damage_type: E
+  dice: 0
+  flat_damage: 0
+  name: Focus Power Test
+  penetration: 0
+  qualities: {non_damaging: true}
+  range: 100
 force_staff:
+  _system: deathwatch
   class: Melee
   damage_type: I
   dice: 1
@@ -175,6 +186,7 @@ force_staff:
   penetration: 0
   qualities: {balanced: true, force_weapon: true}
 force_sword:
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1
@@ -183,16 +195,28 @@ force_sword:
   penetration: 2
   qualities: {balanced: true, force_weapon: true}
 frag_missile:
+  _system: deathwatch
   class: Basic
   damage_type: X
-  single_shot: 1
   dice: 2
   flat_damage: 0
   name: Astartes Frag Missile
   penetration: 4
   qualities: {blast: 5, devastating: 1}
   range: 250
+  single_shot: 1
+furios_thunder_hammer:
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 5
+  name: Furios' Thunder Hammer
+  penetration: 9
+  qualities: {concussive: true, multiply_strength: 1, power_field: true, skill_bonus: 10,
+    unwieldy: true}
 heavy_bolter:
+  _system: deathwatch
   class: Heavy
   damage_type: X
   dice: 1
@@ -203,6 +227,7 @@ heavy_bolter:
   qualities: {tearing: true}
   range: 150
 hellfire_bolt_pistol:
+  _system: deathwatch
   class: Pistol
   damage_type: X
   dice: 1
@@ -213,9 +238,10 @@ hellfire_bolt_pistol:
   range: 30
   semi_auto: 2
   single_shot: 1
-krak_grenade_melee: {class: Melee, damage_type: E, dice: 3, flat_damage: 4, name: Krak
-    Grenade (Melee), penetration: 6}
+krak_grenade_melee: {_system: deathwatch, class: Melee, damage_type: E, dice: 3, flat_damage: 4,
+  name: Krak Grenade (Melee), penetration: 6}
 krak_missile:
+  _system: deathwatch
   class: Basic
   damage_type: X
   dice: 3
@@ -226,6 +252,7 @@ krak_missile:
   range: 250
   single_shot: 1
 lightning_claw:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
@@ -234,6 +261,7 @@ lightning_claw:
   penetration: 8
   qualities: {damage_per_dos: 1, power_field: true, proven: 4}
 marius_executioner_axe:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
@@ -242,22 +270,25 @@ marius_executioner_axe:
   penetration: 8
   qualities: {felling: 1, power_field: true, razor_sharp: true, unwieldy: true}
 marius_honour_blades:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
   flat_damage: 7
   name: Marius' Honour Blades
   penetration: 6
-  qualities: {power_field: true, razor_sharp: true, skill_bonus: 15, balanced: 30}
+  qualities: {balanced: 30, power_field: true, razor_sharp: true, skill_bonus: 15}
 morgan_power_claymore:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
   flat_damage: 11
   name: Morgan's Power Claymore
   penetration: 8
-  qualities: {devastating: 1, power_field: true, unwieldy: true, skill_bonus: 20}
+  qualities: {devastating: 1, power_field: true, skill_bonus: 20, unwieldy: true}
 multi_melta:
+  _system: deathwatch
   class: Heavy
   damage_type: E
   dice: 2
@@ -269,6 +300,7 @@ multi_melta:
   semi_auto: 2
   single_shot: 1
 omnissian_axe:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
@@ -277,6 +309,7 @@ omnissian_axe:
   penetration: 6
   qualities: {power_field: true, unbalanced: true}
 plasma_cannon:
+  _system: deathwatch
   class: Heavy
   damage_type: E
   dice: 2
@@ -287,6 +320,7 @@ plasma_cannon:
   range: 150
   single_shot: 1
 plasma_gun:
+  _system: deathwatch
   class: Basic
   damage_type: E
   dice: 1
@@ -298,6 +332,7 @@ plasma_gun:
   semi_auto: 2
   single_shot: 1
 power_axe:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
@@ -306,6 +341,7 @@ power_axe:
   penetration: 7
   qualities: {power_field: true, unbalanced: true}
 power_claymore:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
@@ -314,6 +350,7 @@ power_claymore:
   penetration: 8
   qualities: {devastating: 1, power_field: true, unwieldy: true}
 power_falchion:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
@@ -322,6 +359,7 @@ power_falchion:
   penetration: 6
   qualities: {power_field: true, razor sharp: true}
 power_fist:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 2
@@ -330,6 +368,7 @@ power_fist:
   penetration: 9
   qualities: {multiply_strength: 1, power_field: true, unwieldy: true}
 power_spear:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
@@ -338,6 +377,7 @@ power_spear:
   penetration: 7
   qualities: {power_field: true}
 power_sword:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 1
@@ -346,6 +386,7 @@ power_sword:
   penetration: 6
   qualities: {balanced: true, power_field: true}
 sacris_claymore:
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 2
@@ -354,6 +395,7 @@ sacris_claymore:
   penetration: 2
   qualities: {unbalanced: true}
 sharpshooter_rifle:
+  _system: deathwatch
   class: Basic
   damage_type: R
   dice: 1
@@ -364,6 +406,7 @@ sharpshooter_rifle:
   range: 250
   single_shot: 1
 smite:
+  _system: deathwatch
   class: Psychic
   damage_type: E
   dice: 1
@@ -373,6 +416,7 @@ smite:
   qualities: {psychic_scaling: true}
   range: 10
 storm_bolter:
+  _system: deathwatch
   class: Basic
   damage_type: X
   dice: 1
@@ -383,9 +427,10 @@ storm_bolter:
   range: 100
   semi_auto: 4
   single_shot: 1
-teeth_and_claws: {class: Melee, damage_type: R, dice: 1, flat_damage: 4, name: Teeth
-    and Claws, penetration: 3}
+teeth_and_claws: {_system: deathwatch, class: Melee, damage_type: R, dice: 1, flat_damage: 4,
+  name: Teeth and Claws, penetration: 3}
 thunder_hammer:
+  _system: deathwatch
   class: Melee
   damage_type: E
   dice: 2
@@ -393,15 +438,8 @@ thunder_hammer:
   name: Astartes Thunder Hammer
   penetration: 9
   qualities: {concussive: true, multiply_strength: 1, power_field: true, unwieldy: true}
-furios_thunder_hammer:
-  class: Melee
-  damage_type: E
-  dice: 2
-  flat_damage: 5
-  name: Furios' Thunder Hammer
-  penetration: 9
-  qualities: {concussive: true, multiply_strength: 1, power_field: true, unwieldy: true, skill_bonus: 10}
 twin_autocannons:
+  _system: deathwatch
   class: Heavy
   damage_type: I
   dice: 4
@@ -414,6 +452,7 @@ twin_autocannons:
   semi_auto: 2
   single_shot: 1
 twin_heavy_bolter:
+  _system: deathwatch
   class: Heavy
   damage_type: X
   dice: 1
@@ -423,7 +462,19 @@ twin_heavy_bolter:
   penetration: 5
   qualities: {tearing: true, twin_linked: true}
   range: 150
+twin_lascannon:
+  _system: deathwatch
+  class: Heavy
+  damage_type: E
+  dice: 5
+  flat_damage: 10
+  name: Twin-Linked Lascannons
+  penetration: 10
+  qualities: {proven: 3, twin_linked: true}
+  range: 300
+  single_shot: 1
 twin_plasma_gun:
+  _system: deathwatch
   class: Basic
   damage_type: E
   dice: 1
@@ -434,13 +485,5 @@ twin_plasma_gun:
   range: 100
   semi_auto: 2
   single_shot: 1
-twin_lascannon:
-  class: Heavy
-  damage_type: E
-  dice: 5
-  flat_damage: 10
-  name: Twin-Linked Lascannons
-  penetration: 10
-  qualities: {proven: 3, twin_linked: true}
-  range: 300
-  single_shot: 1
+unarmed: {_system: deathwatch, class: Melee, damage_type: I, dice: 1, flat_damage: 0,
+  name: Unarmed, penetration: 0}

@@ -1,5 +1,6 @@
 inferno_gun:
   _package: empire
+  _system: deathwatch
   class: Mounted
   damage_type: E
   dice: 2
@@ -11,6 +12,7 @@ inferno_gun:
   single_shot: 1
 plasma_blastgun:
   _package: empire
+  _system: deathwatch
   class: Mounted
   damage_type: E
   dice: 2
@@ -23,6 +25,7 @@ plasma_blastgun:
   single_shot: 1
 plasma_blastgun_max:
   _package: empire
+  _system: deathwatch
   class: Mounted
   damage_type: E
   dice: 3
@@ -34,6 +37,7 @@ plasma_blastgun_max:
   single_shot: 1
 twin_assault_cannons:
   _package: empire
+  _system: deathwatch
   class: Mounted
   damage_type: I
   dice: 2
@@ -45,6 +49,7 @@ twin_assault_cannons:
   range: 150
 twin_turbo_laser:
   _package: empire
+  _system: deathwatch
   class: Mounted
   damage_type: E
   dice: 4
@@ -56,6 +61,7 @@ twin_turbo_laser:
   single_shot: 1
 vulcan_mega_bolter:
   _package: empire
+  _system: deathwatch
   class: Mounted
   damage_type: X
   dice: 2

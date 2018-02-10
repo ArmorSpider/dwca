@@ -1,5 +1,6 @@
 dev_bolter:
   _package: dev
+  _system: deathwatch
   class: Basic
   damage_type: R
   dice: 1
@@ -13,6 +14,7 @@ dev_bolter:
   single_shot: 1
 dev_felling_chainsword:
   _package: dev
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1

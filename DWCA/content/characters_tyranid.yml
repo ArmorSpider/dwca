@@ -1,5 +1,6 @@
 auran_genestealer:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 60, ballistic_skill: 0, perception: 55, strength: 60,
     toughness: 60, weapon_skill: 65, willpower: 40}
@@ -15,6 +16,7 @@ auran_genestealer:
   wounds: 20
 carnifex:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 10}
   characteristics: {agility: 22, ballistic_skill: 25, perception: 35, strength: 70,
     toughness: 65, weapon_skill: 35, willpower: 45}
@@ -28,6 +30,7 @@ carnifex:
   wounds: 100
 dagon_overlord:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 10}
   characteristics: {agility: 45, ballistic_skill: 35, perception: 49, strength: 65,
     toughness: 63, weapon_skill: 81, willpower: 70}
@@ -42,6 +45,7 @@ dagon_overlord:
   wounds: 180
 gargoyle:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 3}
   characteristics: {agility: 40, ballistic_skill: 33, perception: 40, strength: 32,
     toughness: 30, weapon_skill: 30, willpower: 30}
@@ -54,6 +58,7 @@ gargoyle:
   wounds: 9
 genestealer_broodlord:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 50, ballistic_skill: 0, perception: 40, strength: 45,
     toughness: 40, weapon_skill: 75, willpower: 55}
@@ -68,6 +73,7 @@ genestealer_broodlord:
   wounds: 50
 harpy:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 42, ballistic_skill: 55, fellowship: 0, intelligence: 15,
     perception: 42, strength: 50, toughness: 50, weapon_skill: 32, willpower: 30}
@@ -82,6 +88,7 @@ harpy:
   wounds: 95
 harridan:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 45, ballistic_skill: 32, intelligence: 35, perception: 42,
     strength: 68, toughness: 70, weapon_skill: 60, willpower: 50}
@@ -96,6 +103,7 @@ harridan:
   wounds: 175
 hierodule:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 12}
   characteristics: {agility: 35, ballistic_skill: 23, perception: 35, strength: 82,
     toughness: 81, weapon_skill: 64, willpower: 45}
@@ -110,6 +118,7 @@ hierodule:
   wounds: 180
 hierophant:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 12}
   characteristics: {agility: 35, ballistic_skill: 34, perception: 35, strength: 90,
     toughness: 84, weapon_skill: 66, willpower: 45}
@@ -125,6 +134,7 @@ hierophant:
   wounds: 220
 hive_guard:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 25, ballistic_skill: 52, intelligence: 25, perception: 45,
     strength: 62, toughness: 64, weapon_skill: 40, willpower: 45}
@@ -139,6 +149,7 @@ hive_guard:
   wounds: 46
 hive_tyrant:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 10}
   characteristics: {agility: 45, ballistic_skill: 33, perception: 49, strength: 60,
     toughness: 53, weapon_skill: 78, willpower: 70}
@@ -153,6 +164,7 @@ hive_tyrant:
   wounds: 120
 hormagaunt:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 3}
   characteristics: {agility: 55, ballistic_skill: 20, perception: 40, strength: 35,
     toughness: 30, weapon_skill: 45, willpower: 30}
@@ -165,6 +177,7 @@ hormagaunt:
   wounds: 9
 lictor:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 40, ballistic_skill: 0, perception: 45, strength: 65,
     toughness: 40, weapon_skill: 65, willpower: 45}
@@ -181,6 +194,7 @@ lictor:
   wounds: 40
 malanthrope:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 10}
   characteristics: {agility: 35, ballistic_skill: 36, intelligence: 38, perception: 42,
     strength: 62, toughness: 64, weapon_skill: 62, willpower: 54}
@@ -196,6 +210,7 @@ malanthrope:
   wounds: 124
 purestrain_genestealer:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 4}
   characteristics: {agility: 40, ballistic_skill: 0, perception: 60, strength: 45,
     toughness: 40, weapon_skill: 65, willpower: 45}
@@ -210,6 +225,7 @@ purestrain_genestealer:
   wounds: 20
 ravener:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 50, ballistic_skill: 40, perception: 50, strength: 45,
     toughness: 40, weapon_skill: 60, willpower: 35}
@@ -223,6 +239,7 @@ ravener:
   wounds: 40
 ripper_swarm:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 2}
   characteristics: {agility: 40, ballistic_skill: 0, intelligence: 10, perception: 30,
     strength: 25, toughness: 30, weapon_skill: 35, willpower: 30}
@@ -236,6 +253,7 @@ ripper_swarm:
   wounds: 10
 termagant:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 3}
   characteristics: {agility: 40, ballistic_skill: 33, perception: 40, strength: 32,
     toughness: 30, weapon_skill: 30, willpower: 30}
@@ -247,6 +265,7 @@ termagant:
   wounds: 9
 tervigon:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 10}
   characteristics: {agility: 15, ballistic_skill: 38, intelligence: 40, perception: 35,
     strength: 60, toughness: 65, weapon_skill: 38, willpower: 65}
@@ -263,6 +282,7 @@ tervigon:
   wounds: 180
 thornback:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 10}
   characteristics: {agility: 22, ballistic_skill: 35, perception: 35, strength: 70,
     toughness: 65, weapon_skill: 35, willpower: 45}
@@ -276,6 +296,7 @@ thornback:
   wounds: 100
 trygon:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 10}
   characteristics: {agility: 40, ballistic_skill: 30, perception: 25, strength: 60,
     toughness: 60, weapon_skill: 50, willpower: 45}
@@ -290,6 +311,7 @@ trygon:
   wounds: 160
 tyranid_warrior:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 8}
   characteristics: {agility: 44, ballistic_skill: 30, perception: 35, strength: 60,
     toughness: 50, weapon_skill: 55, willpower: 50}
@@ -303,6 +325,7 @@ tyranid_warrior:
   wounds: 48
 tyrannofex:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 10}
   characteristics: {agility: 25, ballistic_skill: 37, intelligence: 28, perception: 35,
     strength: 65, toughness: 64, weapon_skill: 35, willpower: 48}
@@ -317,6 +340,7 @@ tyrannofex:
   wounds: 128
 tyrant_guard:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 10}
   characteristics: {agility: 30, ballistic_skill: 30, perception: 35, strength: 50,
     toughness: 60, weapon_skill: 55, willpower: 40}
@@ -329,6 +353,7 @@ tyrant_guard:
   wounds: 45
 venomspitter:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 10}
   characteristics: {agility: 22, ballistic_skill: 15, perception: 35, strength: 70,
     toughness: 65, weapon_skill: 35, willpower: 45}
@@ -342,6 +367,7 @@ venomspitter:
   wounds: 100
 venomthrope:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 4}
   characteristics: {agility: 40, ballistic_skill: 0, perception: 35, strength: 55,
     toughness: 55, weapon_skill: 48, willpower: 40}
@@ -355,6 +381,7 @@ venomthrope:
   wounds: 40
 warrior_prime:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 10}
   characteristics: {agility: 50, ballistic_skill: 40, perception: 45, strength: 50,
     toughness: 50, weapon_skill: 65, willpower: 50}
@@ -369,6 +396,7 @@ warrior_prime:
   wounds: 80
 zoanthrope:
   _package: tyranid
+  _system: deathwatch
   armor: {all: 6}
   characteristics: {agility: 10, ballistic_skill: 45, perception: 45, strength: 45,
     toughness: 45, weapon_skill: 30, willpower: 60}
