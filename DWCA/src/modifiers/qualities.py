@@ -177,6 +177,7 @@ class Toxic(Modifier):
             penalty = 10 * toxic_value
             queue_message('TOXIC: %s should roll %s -%s or take 1d10 true damage.' %
                           (attack.target, STAT_TGH, penalty))
+        return effective_damage
 
 
 class TwinLinked(Modifier):
