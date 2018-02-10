@@ -1,7 +1,6 @@
 from unittest import TestCase
 
 from src.action.ranged_attack import RangedAttack
-from src.cli.message_queue import log_messages
 from src.dice import queue_d10_rolls
 from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
 from src.entities.weapon import Weapon, get_weapon
@@ -87,10 +86,9 @@ class Test(TestCase):
         actual = is_weapon_jammed(attack)
         self.assertEqual(expected, actual)
 
-    def test_single_shot_roll_result_96_and_reliable_10_should_return_true(self):
-        queue_d10_rolls([10])
+    def test_single_shot_roll_result_100_and_reliable_should_return_true(self):
         qualities = {Reliable.name: True}
-        attack = self._build_attack(roll_result=96,
+        attack = self._build_attack(roll_result=100,
                                     firemode=SINGLE_SHOT,
                                     qualities=qualities)
         expected = True
