@@ -10,14 +10,16 @@ FELLING_FACTOR = 4
 
 
 def translate_entity(entity_def):
-    entity_def = translate_unnatural_characteristics(entity_def)
-    entity_def = translate_entity_traits(entity_def)
-    entity_def = translate_skills(entity_def)
+    if entity_def.get('_system') == 'deathwatch':
+        entity_def = translate_unnatural_characteristics(entity_def)
+        entity_def = translate_entity_traits(entity_def)
+        entity_def = translate_skills(entity_def)
     return entity_def
 
 
 def translate_weapon(weapon_def):
-    weapon_def = translate_weapon_qualities(weapon_def)
+    if weapon_def.get('_system') == 'deathwatch':
+        weapon_def = translate_weapon_qualities(weapon_def)
     return weapon_def
 
 
