@@ -162,8 +162,8 @@ class Shocking(Modifier):
 
     def on_damage(self, attack, effective_damage):
         if effective_damage > 0:
-            queue_message('SHOCKING: %s must make TGH test +10*(location AP) or be stunned for %s rounds.' %
-                          (attack.target, int(effective_damage * 0.5)))
+            queue_message(
+                'SHOCKING: %s must make TGH test or be stunned for DoF rounds.')
         return effective_damage
 
 
