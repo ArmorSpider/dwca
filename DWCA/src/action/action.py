@@ -13,6 +13,8 @@ LOG = get_log(__name__)
 def try_action(roll_target, roll_result=None):
     action = Action()
     action.try_action(roll_target, roll_result)
+    LOG.info('Action has %s DoS. (%s vs. %s).', action.degrees_of_success,
+             action.roll_result, action.roll_target)
     return action
 
 
@@ -31,8 +33,8 @@ class Action(object):
         LOG.debug('Action has %s DoS. (%s vs. %s).', self.degrees_of_success,
                   self.roll_result, self.roll_target)
         self.update_metadata({ROLL_RESULT: roll_result,
-                               ROLL_TARGET: roll_target,
-                               DEGREES_OF_SUCCESS: self.degrees_of_success})
+                              ROLL_TARGET: roll_target,
+                              DEGREES_OF_SUCCESS: self.degrees_of_success})
 
     def is_successfull(self):
         result = self.roll_result <= self.roll_target
