@@ -1,5 +1,6 @@
 berzerker:
   _package: chaos
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 40, fellowship: 20, intelligence: 30,
     perception: 40, strength: 45, toughness: 45, weapon_skill: 69, willpower: 45}
@@ -16,6 +17,7 @@ berzerker:
   wounds: 30
 bloodletter:
   _package: chaos
+  _system: deathwatch
   armor: {all: 0}
   characteristics: {agility: 40, ballistic_skill: 30, fellowship: 10, intelligence: 30,
     perception: 30, strength: 45, toughness: 45, weapon_skill: 55, willpower: 30}
@@ -31,6 +33,7 @@ bloodletter:
   wounds: 25
 blue_horror:
   _package: chaos
+  _system: deathwatch
   armor: {all: 0}
   characteristics: {agility: 30, ballistic_skill: 35, fellowship: 10, intelligence: 30,
     perception: 30, strength: 20, toughness: 33, weapon_skill: 23, willpower: 30}
@@ -45,6 +48,7 @@ blue_horror:
   wounds: 9
 chaos_dreadnought:
   _package: chaos
+  _system: deathwatch
   armor: {all: 37, rear: 20}
   characteristics: {agility: 25, ballistic_skill: 50, fellowship: 6, intelligence: 34,
     perception: 33, strength: 70, toughness: 0, weapon_skill: 50, willpower: 30}
@@ -54,6 +58,7 @@ chaos_dreadnought:
   wounds: 35
 chaos_marine:
   _package: chaos
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
     perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
@@ -68,6 +73,7 @@ chaos_marine:
   wounds: 29
 chaos_sorcerer:
   _package: chaos
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
     perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
@@ -83,6 +89,7 @@ chaos_sorcerer:
   wounds: 29
 chaos_sorcerer_khorne:
   _package: chaos
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
     perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
@@ -99,6 +106,7 @@ chaos_sorcerer_khorne:
   wounds: 29
 chaos_sorcerer_nurgle:
   _package: chaos
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
     perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
@@ -114,6 +122,7 @@ chaos_sorcerer_nurgle:
   wounds: 36
 chaos_sorcerer_slaanesh:
   _package: chaos
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
     perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
@@ -130,6 +139,7 @@ chaos_sorcerer_slaanesh:
   wounds: 29
 chaos_sorcerer_tzeentch:
   _package: chaos
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
     perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
@@ -145,6 +155,7 @@ chaos_sorcerer_tzeentch:
   wounds: 29
 daemon_prince:
   _package: chaos
+  _system: deathwatch
   armor: {all: 12}
   characteristics: {agility: 48, ballistic_skill: 60, fellowship: 30, intelligence: 48,
     perception: 48, strength: 66, toughness: 45, weapon_skill: 75, willpower: 75}
@@ -159,6 +170,7 @@ daemon_prince:
   wounds: 80
 defiler:
   _package: chaos
+  _system: deathwatch
   armor: {all: 31, rear: 20}
   characteristics: {agility: 35, ballistic_skill: 25, fellowship: 1, intelligence: 10,
     perception: 40, strength: 75, toughness: 0, weapon_skill: 25, willpower: 40}
@@ -171,6 +183,7 @@ defiler:
   wounds: 28
 khorne_marine:
   _package: chaos
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
     perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
@@ -187,6 +200,7 @@ khorne_marine:
   wounds: 29
 mediphast_the_plaguereaver:
   _package: chaos
+  _system: deathwatch
   armor: {all: 11}
   characteristics: {agility: 32, ballistic_skill: 50, fellowship: 66, intelligence: 52,
     perception: 44, strength: 65, toughness: 87, weapon_skill: 47, willpower: 71}
@@ -205,6 +219,7 @@ mediphast_the_plaguereaver:
   wounds: 149
 noise_marine:
   _package: chaos
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {agility: 50, ballistic_skill: 43, fellowship: 35, intelligence: 30,
     perception: 49, strength: 45, toughness: 45, weapon_skill: 43, willpower: 45}
@@ -222,6 +237,7 @@ noise_marine:
   wounds: 28
 nurgle_marine:
   _package: chaos
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
     perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
@@ -236,6 +252,7 @@ nurgle_marine:
   wounds: 36
 obliterator:
   _package: chaos
+  _system: deathwatch
   armor: {all: 12}
   characteristics: {agility: 35, ballistic_skill: 55, fellowship: 0, intelligence: 30,
     perception: 40, strength: 50, toughness: 55, weapon_skill: 45, willpower: 45}
@@ -251,6 +268,7 @@ obliterator:
   wounds: 40
 pink_horror:
   _package: chaos
+  _system: deathwatch
   armor: {all: 0}
   characteristics: {agility: 30, ballistic_skill: 35, fellowship: 10, intelligence: 30,
     perception: 30, strength: 35, toughness: 33, weapon_skill: 23, willpower: 30}
@@ -265,6 +283,7 @@ pink_horror:
   wounds: 18
 plague_marine:
   _package: chaos
+  _system: deathwatch
   armor: {all: 8, body: 10}
   characteristics: {agility: 40, ballistic_skill: 43, fellowship: 25, intelligence: 30,
     perception: 30, strength: 45, toughness: 55, weapon_skill: 43, willpower: 45}
@@ -279,6 +298,7 @@ plague_marine:
   wounds: 36
 plaguebearer:
   _package: chaos
+  _system: deathwatch
   armor: {all: 0}
   characteristics: {agility: 30, ballistic_skill: 30, fellowship: 10, intelligence: 30,
     perception: 30, strength: 43, toughness: 55, weapon_skill: 45, willpower: 30}
@@ -292,6 +312,7 @@ plaguebearer:
   wounds: 30
 renegade_militia:
   _package: chaos
+  _system: deathwatch
   armor: {all: 4}
   characteristics: {agility: 30, ballistic_skill: 35, perception: 30, strength: 35,
     toughness: 35, weapon_skill: 35, willpower: 35}

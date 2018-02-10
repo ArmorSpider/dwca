@@ -1,5 +1,6 @@
 land_raider:
   _package: empire
+  _system: deathwatch
   armor: {all: 50}
   characteristics: {ballistic_skill: 50}
   name: Land Raider (Tank)
@@ -9,6 +10,7 @@ land_raider:
   wounds: 95
 stormraven:
   _package: empire
+  _system: deathwatch
   armor: {all: 37}
   characteristics: {ballistic_skill: 50}
   name: Stormraven
@@ -18,6 +20,7 @@ stormraven:
   wounds: 35
 warhound_titan:
   _package: empire
+  _system: deathwatch
   armor: {all: 45, front: 50}
   characteristics: {ballistic_skill: 50}
   name: Warhound Titan

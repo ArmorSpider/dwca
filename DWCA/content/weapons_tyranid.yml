@@ -1,5 +1,6 @@
 barbed_strangler:
   _package: tyranid
+  _system: deathwatch
   class: Heavy
   damage_type: I
   dice: 1
@@ -12,6 +13,7 @@ barbed_strangler:
   single_shot: 1
 bio_acid_spray:
   _package: tyranid
+  _system: deathwatch
   class: Basic
   damage_type: E
   dice: 3
@@ -23,6 +25,7 @@ bio_acid_spray:
   single_shot: 1
 bio_electric_pulse:
   _package: tyranid
+  _system: deathwatch
   class: Basic
   damage_type: E
   dice: 2
@@ -34,6 +37,7 @@ bio_electric_pulse:
   range: 30
 bio_plasma:
   _package: tyranid
+  _system: deathwatch
   class: Basic
   damage_type: E
   dice: 3
@@ -45,6 +49,7 @@ bio_plasma:
   single_shot: 1
 bonesword:
   _package: tyranid
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1
@@ -54,6 +59,7 @@ bonesword:
   qualities: {drain_life: true}
 deathspitter:
   _package: tyranid
+  _system: deathwatch
   class: Basic
   damage_type: E
   dice: 1
@@ -66,6 +72,7 @@ deathspitter:
   single_shot: 1
 desiccator_larvae:
   _package: tyranid
+  _system: deathwatch
   class: Basic
   damage_type: I
   dice: 1
@@ -77,6 +84,7 @@ desiccator_larvae:
   range: 15
 devourer:
   _package: tyranid
+  _system: deathwatch
   class: Basic
   damage_type: R
   dice: 1
@@ -88,6 +96,7 @@ devourer:
   range: 30
 electroshock_grubs:
   _package: tyranid
+  _system: deathwatch
   class: Basic
   damage_type: E
   dice: 2
@@ -99,6 +108,7 @@ electroshock_grubs:
   single_shot: 1
 fleshborer:
   _package: tyranid
+  _system: deathwatch
   class: Basic
   damage_type: R
   dice: 1
@@ -110,6 +120,7 @@ fleshborer:
   single_shot: 1
 heavy_venom_cannon:
   _package: tyranid
+  _system: deathwatch
   class: Heavy
   damage_type: I
   dice: 4
@@ -119,19 +130,9 @@ heavy_venom_cannon:
   qualities: {blast: 5, living_ammunition: true, proven: 3, toxic: 1d10}
   range: 100
   single_shot: 1
-twin_heavy_venom_cannon:
-  _package: tyranid
-  class: Heavy
-  damage_type: I
-  dice: 4
-  flat_damage: 10
-  name: Twin-Linked Heavy Venom Cannon
-  penetration: 6
-  qualities: {blast: 5, living_ammunition: true, proven: 3, toxic: 1d10, twin_linked: true}
-  range: 100
-  single_shot: 1
 hierophant_claw_stomp:
   _package: tyranid
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1
@@ -141,6 +142,7 @@ hierophant_claw_stomp:
   qualities: {devastating: 8}
 impaler_cannon:
   _package: tyranid
+  _system: deathwatch
   class: Heavy
   damage_type: R
   dice: 2
@@ -153,6 +155,7 @@ impaler_cannon:
   single_shot: 1
 lash_whip:
   _package: tyranid
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1
@@ -160,10 +163,12 @@ lash_whip:
   name: Lash Whip
   penetration: 3
   qualities: {flexible: true, snare: true}
-ravener_spine_fists: {_package: tyranid, class: Basic, damage_type: R, dice: 1, flat_damage: 12,
-  full_auto: 4, name: Spine Fists, penetration: 2, range: 20, semi_auto: 2, single_shot: 1}
+ravener_spine_fists: {_package: tyranid, _system: deathwatch, class: Basic, damage_type: R,
+  dice: 1, flat_damage: 12, full_auto: 4, name: Spine Fists, penetration: 2, range: 20,
+  semi_auto: 2, single_shot: 1}
 rending_claws:
   _package: tyranid
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1
@@ -173,6 +178,7 @@ rending_claws:
   qualities: {razor_sharp: true}
 ripper_mandibles:
   _package: tyranid
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1
@@ -182,6 +188,7 @@ ripper_mandibles:
   qualities: {tearing: true}
 rupture_cannon:
   _package: tyranid
+  _system: deathwatch
   class: Heavy
   damage_type: I
   dice: 4
@@ -193,6 +200,7 @@ rupture_cannon:
   single_shot: 1
 scything_talons:
   _package: tyranid
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1
@@ -202,6 +210,7 @@ scything_talons:
   qualities: {}
 shreddershard_beetles:
   _package: tyranid
+  _system: deathwatch
   class: Basic
   damage_type: I
   dice: 2
@@ -213,7 +222,9 @@ shreddershard_beetles:
   range: 10
 sonic_screech:
   _package: tyranid
+  _system: deathwatch
   class: Pistol
+  damage_type: E
   dice: 1
   flat_damage: 11
   name: Sonic Screech
@@ -221,9 +232,9 @@ sonic_screech:
   qualities: {blast: 6, concussive: true}
   range: 30
   single_shot: 1
-  damage_type: E
 stranglethorn_cannon:
   _package: tyranid
+  _system: deathwatch
   class: Heavy
   damage_type: I
   dice: 2
@@ -236,6 +247,7 @@ stranglethorn_cannon:
   single_shot: 1
 stringer_salvo:
   _package: tyranid
+  _system: deathwatch
   class: Basic
   damage_type: R
   dice: 2
@@ -247,6 +259,7 @@ stringer_salvo:
   range: 50
 toxic_tendrils:
   _package: tyranid
+  _system: deathwatch
   class: Melee
   damage_type: R
   dice: 1
@@ -256,6 +269,7 @@ toxic_tendrils:
   qualities: {toxic: 3d10+5 (Test is -40)}
 twin_biocannons:
   _package: tyranid
+  _system: deathwatch
   class: Heavy
   damage_type: X
   dice: 4
@@ -267,6 +281,7 @@ twin_biocannons:
   single_shot: 1
 twin_devourer:
   _package: tyranid
+  _system: deathwatch
   class: Basic
   damage_type: R
   dice: 1
@@ -276,8 +291,21 @@ twin_devourer:
   penetration: 0
   qualities: {living_ammunition: true, storm: true, tearing: true, twin_linked: true}
   range: 30
+twin_heavy_venom_cannon:
+  _package: tyranid
+  _system: deathwatch
+  class: Heavy
+  damage_type: I
+  dice: 4
+  flat_damage: 10
+  name: Twin-Linked Heavy Venom Cannon
+  penetration: 6
+  qualities: {blast: 5, living_ammunition: true, proven: 3, toxic: 1d10, twin_linked: true}
+  range: 100
+  single_shot: 1
 twin_stranglethorn_cannon:
   _package: tyranid
+  _system: deathwatch
   class: Heavy
   damage_type: I
   dice: 2
@@ -290,6 +318,7 @@ twin_stranglethorn_cannon:
   single_shot: 1
 tyrannofex_acid_spray:
   _package: tyranid
+  _system: deathwatch
   class: Heavy
   damage_type: I
   dice: 2
@@ -301,6 +330,7 @@ tyrannofex_acid_spray:
   single_shot: 1
 venom_cannon:
   _package: tyranid
+  _system: deathwatch
   class: Heavy
   damage_type: I
   dice: 2
@@ -312,6 +342,7 @@ venom_cannon:
   single_shot: 1
 warp_blast:
   _package: tyranid
+  _system: deathwatch
   class: Psychic
   damage_type: E
   dice: 1
@@ -322,6 +353,7 @@ warp_blast:
   range: 50
 warp_lance:
   _package: tyranid
+  _system: deathwatch
   class: Psychic
   damage_type: E
   dice: 2
