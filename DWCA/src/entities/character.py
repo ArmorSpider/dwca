@@ -4,7 +4,8 @@ from src.action.psychic_attack import PsychicAttack
 from src.action.ranged_attack import RangedAttack
 from src.dwca_log.log import get_log
 from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
-    SINGLE_SHOT, WOUNDS, SKILLS, HALF_MOVE, CHARGE_MOVE, RUN_MOVE, FULL_MOVE
+    SINGLE_SHOT, WOUNDS, SKILLS, HALF_MOVE, CHARGE_MOVE, RUN_MOVE, FULL_MOVE,\
+    STANDARD_ATTACK
 from src.entities.char_stats import STAT_TGH, STAT_AGI
 from src.entities.entity import Entity
 from src.entities.libraries import read_character, get_character_library
@@ -43,12 +44,6 @@ class Character(Entity):
     @property
     def num_melee_attacks(self):
         num_attacks = 1
-        if self.swift_attack is not None:
-            num_attacks += 1
-            if self.lightning_attack is not None:
-                num_attacks += 1
-        if self.multiple_arms is not None:
-            num_attacks += 1
         LOG.info('%s can make %s melee attacks.', self, num_attacks)
         return num_attacks
 
@@ -61,7 +56,7 @@ class Character(Entity):
     def attack(self, weapon, target=None, firemode=SINGLE_SHOT):
         LOG.debug('%s attacks %s with a(n) %s.', self, target, weapon)
         if weapon.is_melee():
-            return self._melee_attack(weapon, target)
+            return self._melee_attack(weapon, target, firemode)
         elif weapon.is_psychic():
             return self._psychic_attack(weapon, target)
         else:
@@ -88,10 +83,11 @@ class Character(Entity):
         characteristic_value = self.get_characteristic(char_stat)
         return characteristic_value
 
-    def _melee_attack(self, weapon, target=None):
+    def _melee_attack(self, weapon, target=None, firemode=STANDARD_ATTACK):
         return MeleeAttack(weapon=weapon,
                            attacker=self,
-                           target=target)
+                           target=target,
+                           firemode=firemode)
 
     def _ranged_attack(self, weapon, target=None, firemode=SINGLE_SHOT):
         return RangedAttack(weapon=weapon,

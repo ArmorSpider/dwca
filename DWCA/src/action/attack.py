@@ -8,7 +8,7 @@ from src.action.action import Action
 from src.action.hit import Hit
 from src.dwca_log.log import get_log
 from src.entities import DICE, PENETRATION, FLAT_DAMAGE,\
-    TEARING_DICE, DAMAGE_TYPE, ARMOR
+    TEARING_DICE, DAMAGE_TYPE, ARMOR, SWIFT_ATTACK, LIGHTNING_ATTACK
 from src.entities.entity import Entity
 from src.hit_location import FRONT, SIDE, REAR, get_hit_location_name
 from src.hitloc_series import get_hit_locations
@@ -250,6 +250,16 @@ class Attack(Action):
         for modifier in self.modifer_iterator():
             effective_damage = modifier.on_damage(self, effective_damage)
         return effective_damage
+
+    @property
+    def firemodes(self):
+        base_firemodes = self.weapon.firemodes
+        if self.is_melee():
+            if self.swift_attack is None:
+                base_firemodes.pop(SWIFT_ATTACK, None)
+            if self.lightning_attack is None:
+                base_firemodes.pop(LIGHTNING_ATTACK, None)
+        return base_firemodes
 
     def is_melee(self):
         return self.weapon.is_melee()

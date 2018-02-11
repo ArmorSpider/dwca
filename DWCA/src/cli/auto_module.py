@@ -1,12 +1,13 @@
 from definitions import FIREMODE, WEAPON, NUM_ATTACKS, ROLL_TARGET, RANGE,\
     ROLL_MODIFIERS
 from src.dwca_log.log import get_log
-from src.entities import SEMI_AUTO, FULL_AUTO, SINGLE_SHOT
+from src.entities import SEMI_AUTO, FULL_AUTO, SINGLE_SHOT, STANDARD_ATTACK,\
+    SWIFT_ATTACK, LIGHTNING_ATTACK
 from src.entities.char_stats import STAT_WS, STAT_BS, STAT_WIL
 from src.errors import OutOfRangeError
 from src.handler import build_attacker, build_weapon, build_target, build_base_attack,\
     choose_or_build_attacker
-from src.modifiers.roll_modifier import ROF_MOD,\
+from src.modifiers.roll_modifier import ATTACK_MODE_MOD,\
     TWIN_LINKED_MOD, RANGE_MOD, add_roll_mod, SIZE_MOD, PSY_RATING_MOD,\
     SKILL_BONUS_MOD, HUNTER_OF_ALIENS_MOD, SLAYER_OF_DAEMONS_MOD
 from src.modifiers.states import Push, Fettered, Unfettered
@@ -58,9 +59,9 @@ def calculate_hit_bonuses(event):
             if attack.weapon.twin_linked is not None:
                 event = add_roll_mod(event, 20, TWIN_LINKED_MOD)
                 LOG.info('+20 to hit from twin-linked.')
-            event = firemode_module(event)
             event = range_module(event)
 
+        event = firemode_module(event)
         event = size_module(event)
         if attack.weapon.skill_bonus is not None:
             event = add_roll_mod(
@@ -114,15 +115,18 @@ def firemode_module(event):
     firemode = event[FIREMODE]
     firemode_bonuses = {SINGLE_SHOT: 10,
                         SEMI_AUTO: 0,
-                        FULL_AUTO: -10}
+                        FULL_AUTO: -10,
+                        STANDARD_ATTACK: 10,
+                        SWIFT_ATTACK: 0,
+                        LIGHTNING_ATTACK: -10}
     firemode_bonus = firemode_bonuses[firemode]
-    event = add_roll_mod(event, firemode_bonus, ROF_MOD)
+    event = add_roll_mod(event, firemode_bonus, ATTACK_MODE_MOD)
     return event
 
 
 def choose_firemode(event):
-    weapon = build_weapon(event)
-    firemodes = weapon.firemodes.keys()
+    attack = build_base_attack(event)
+    firemodes = attack.firemodes.keys()
     firemode = try_user_choose_from_list(firemodes)
     event[FIREMODE] = firemode
     return event
