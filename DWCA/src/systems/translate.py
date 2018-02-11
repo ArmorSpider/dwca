@@ -26,7 +26,7 @@ def translate_weapon(weapon_def):
 def translate_unnatural_characteristics(entity_def):
     characteristics = entity_def.get(CHARACTERISTICS)
     if characteristics is None:
-        LOG.warn(
+        LOG.debug(
             'Cannot translate unnatural characteristics. No characteristics defined.')
         return entity_def
     for characteristic in characteristics.keys():
@@ -41,19 +41,19 @@ def translate_unnatural_characteristics(entity_def):
             current_bonus = raw_bonus * unnatural_value
             new_unnatural = current_bonus - raw_bonus
             entity_def[TRAITS][unnatural_name] = new_unnatural
-            LOG.info('Converted %s from %s to %s',
-                     unnatural_name, unnatural_value, new_unnatural)
+            LOG.debug('Converted %s from %s to %s',
+                      unnatural_name, unnatural_value, new_unnatural)
     return entity_def
 
 
 def translate_skills(entity_def):
     skills = entity_def.get(SKILLS)
     if skills is None:
-        LOG.warn('Cannot translate skills. No skills defined.')
+        LOG.debug('Cannot translate skills. No skills defined.')
         return entity_def
     if skills.get('parry') is None:
         entity_def[SKILLS]['parry'] = 0
-        LOG.info('Added parry skill.')
+        LOG.debug('Added parry skill.')
     if skills.get('carouse') is not None:
         entity_def[SKILLS].pop('carouse', None)
     consolidation_map = {'acrobatics': ['acrobatics', 'contortionist'],
@@ -79,7 +79,7 @@ def _consolidate_skill(core_skill, consolidated_skills, skills):
             skill_value = skills.get(skill)
             skill_values.append(skill_value)
             skills.pop(skill, None)
-            LOG.info('Consolidated skill %s into %s', skill, core_skill)
+            LOG.debug('Consolidated skill %s into %s', skill, core_skill)
     if skill_values != []:
         skills[core_skill] = max(skill_values)
     return skills
@@ -88,42 +88,42 @@ def _consolidate_skill(core_skill, consolidated_skills, skills):
 def translate_entity_traits(entity_def):
     traits = entity_def.get(TRAITS)
     if traits is None:
-        LOG.warn('Cannot translate traits. No traits defined.')
+        LOG.debug('Cannot translate traits. No traits defined.')
         return entity_def
     if traits.get('daemonic') is True:
         toughness = entity_def[CHARACTERISTICS][STAT_TGH]
         tgh_bonus = get_tens(toughness)
         entity_def[TRAITS]['daemonic'] = tgh_bonus
-        LOG.info('Updated daemonic from true to %s', tgh_bonus)
+        LOG.debug('Updated daemonic from true to %s', tgh_bonus)
     if traits.get('brutal_charge') is True:
         entity_def[TRAITS]['brutal_charge'] = 3
-        LOG.info('Updated brutal_charge from true to 3')
+        LOG.debug('Updated brutal_charge from true to 3')
     if traits.get('multiple_arms') is True:
         entity_def[TRAITS]['multiple_arms'] = 4
-        LOG.info('Updated multiple_arms from true to 4')
+        LOG.debug('Updated multiple_arms from true to 4')
     return entity_def
 
 
 def translate_weapon_qualities(weapon_def):
     qualities = weapon_def.get(QUALITIES)
     if qualities is None:
-        LOG.warn('Cannot translate qualities. No qualities defined.')
+        LOG.debug('Cannot translate qualities. No qualities defined.')
         return weapon_def
     if qualities.get('concussive') is True:
         weapon_def[QUALITIES]['concussive'] = 1
-        LOG.info('Updated concussive from true to 1')
+        LOG.debug('Updated concussive from true to 1')
     if qualities.get('primitive') is True:
         weapon_def[QUALITIES]['primitive'] = 8
-        LOG.info('Updated primitive from true to 8')
+        LOG.debug('Updated primitive from true to 8')
     if qualities.get('snare') is True:
         weapon_def[QUALITIES]['snare'] = 1
-        LOG.info('Updated snare from true to 1')
+        LOG.debug('Updated snare from true to 1')
     if qualities.get('deadly_snare') is True:
         weapon_def[QUALITIES]['deadly_snare'] = 1
-        LOG.info('Updated deadly_snare from true to 1')
+        LOG.debug('Updated deadly_snare from true to 1')
     if qualities.get('felling') is not None:
         old_felling = qualities.get('felling')
         new_felling = old_felling * FELLING_FACTOR
         weapon_def[QUALITIES]['felling'] = new_felling
-        LOG.info('Updated felling from %s to %s', old_felling, new_felling)
+        LOG.debug('Updated felling from %s to %s', old_felling, new_felling)
     return weapon_def
