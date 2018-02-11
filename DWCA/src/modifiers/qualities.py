@@ -173,10 +173,14 @@ class Toxic(Modifier):
 
     def on_damage(self, attack, effective_damage):
         toxic_value = attack.toxic
-        if toxic_value is not None and effective_damage > 0:
+        if isinstance(toxic_value, int) and effective_damage > 0:
             penalty = 10 * toxic_value
             queue_message('TOXIC: %s should roll %s -%s or take 1d10 true damage.' %
                           (attack.target, STAT_TGH, penalty))
+        elif isinstance(toxic_value, basestring) and effective_damage > 0:
+            queue_message('TOXIC: %s must roll TGH. %s.' %
+                          (attack.target, toxic_value))
+
         return effective_damage
 
 
@@ -282,7 +286,7 @@ class Snare(Modifier):
             snare_value = attack.snare
             penalty = snare_value * -10
             queue_message(
-                'SNARE: %s must make AGI test %s or be immobilised.' % penalty)
+                'SNARE: %s must make AGI test %s or be immobilised.' % (attack.target, penalty))
 
 
 class DeadlySnare(Modifier):
