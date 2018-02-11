@@ -5,7 +5,7 @@ from src.entities import HALF_MOVE, FULL_MOVE, CHARGE_MOVE,\
 from src.entities.char_stats import STAT_AGI
 from src.modifiers.talents import Sprint
 from src.modifiers.traits import Size, Quadruped, UnnaturalSpeed, JumpPack,\
-    BlackCarapace, UnnaturalAgility
+    BlackCarapace, UnnaturalAgility, PreternaturalSpeed
 from test.test_util import build_mock_entity
 
 
@@ -33,15 +33,15 @@ class Test(unittest.TestCase):
         actual = moveman.movement
         self.assertEqual(expected, actual)
 
-    def test_unnatural_agility_should_not_affect_movement(self):
+    def test_unnatural_agility_should_affect_movement(self):
         moveman = build_mock_entity('Moveman',
                                     characteristics={STAT_AGI: 40},
                                     traits={UnnaturalAgility.name: 2})
 
-        expected = {HALF_MOVE: 4,
-                    FULL_MOVE: 8,
-                    CHARGE_MOVE: 12,
-                    RUN_MOVE: 24}
+        expected = {HALF_MOVE: 6,
+                    FULL_MOVE: 12,
+                    CHARGE_MOVE: 18,
+                    RUN_MOVE: 36}
         actual = moveman.movement
         self.assertEqual(expected, actual)
 
@@ -106,16 +106,29 @@ class Test(unittest.TestCase):
         actual = moveman.movement
         self.assertEqual(expected, actual)
 
-    def test_unnatural_speed_should_double_agi_mod_after_other_mods(self):
+    def test_unnatural_speed_should_do_nothing_because_it_does_not_exist(self):
         moveman = build_mock_entity('Moveman',
                                     characteristics={STAT_AGI: 40},
                                     traits={Size.name: 20,
                                             UnnaturalSpeed.name: True})
 
-        expected = {HALF_MOVE: 12,
-                    FULL_MOVE: 24,
+        expected = {HALF_MOVE: 6,
+                    FULL_MOVE: 12,
+                    CHARGE_MOVE: 18,
+                    RUN_MOVE: 36}
+        actual = moveman.movement
+        self.assertEqual(expected, actual)
+
+    def test_preternatural_speed_should_double_charge_movement(self):
+        moveman = build_mock_entity('Moveman',
+                                    characteristics={STAT_AGI: 40},
+                                    traits={Size.name: 20,
+                                            PreternaturalSpeed.name: True})
+
+        expected = {HALF_MOVE: 6,
+                    FULL_MOVE: 12,
                     CHARGE_MOVE: 36,
-                    RUN_MOVE: 72}
+                    RUN_MOVE: 36}
         actual = moveman.movement
         self.assertEqual(expected, actual)
 
