@@ -161,6 +161,8 @@ class Character(Entity):
         if self.sprint is not None:
             full_move += self.get_raw_characteristic_bonus(STAT_AGI)
             run_move = '{}/{}*'.format(run_move, run_move * 2)
+        if self.preternatural_speed is not None:
+            charge_move *= 2
         movement = {HALF_MOVE: half_move,
                     FULL_MOVE: full_move,
                     CHARGE_MOVE: charge_move,
@@ -169,15 +171,13 @@ class Character(Entity):
 
     @property
     def move_mod(self):
-        agi_mod = self.get_raw_characteristic_bonus(STAT_AGI)
+        agi_mod = self.get_characteristic_bonus(STAT_AGI)
         size = self.size if self.size is not None else 0
         move_mod = agi_mod + int(size / 10)
         if self.quadruped is not None:
             move_mod += agi_mod
         if self.jump_pack is not None:
             move_mod += agi_mod
-        if self.unnatural_speed is not None:
-            move_mod *= 2
         return move_mod
 
     @property

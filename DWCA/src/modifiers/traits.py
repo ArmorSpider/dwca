@@ -130,3 +130,8 @@ class Quadruped(Modifier):
 class JumpPack(Modifier):
 
     name = 'jump_pack'
+
+
+class PreternaturalSpeed(Modifier):
+
+    name = 'preternatural_speed'

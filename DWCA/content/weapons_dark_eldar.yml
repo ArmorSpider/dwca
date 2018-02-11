@@ -29,6 +29,60 @@ mono_sword:
   name: Mono Sword
   penetration: 2
   qualities: {}
+venomblade:
+  _package: dark_eldar
+  class: Melee
+  dice: 1
+  flat_damage: 8
+  penetration: 2
+  damage_type: R
+  qualities: {felling: 2, toxic: 4}
+blast_pistol:
+  _package: dark_eldar
+  class: Pistol
+  dice: 2
+  flat_damage: 7
+  penetration: 4
+  damage_type: E
+  single_shot: 1
+  range: 20
+  qualities: {lance: true}
+wych_knife:
+  _package: dark_eldar
+  name: Wych Knife
+  class: Melee
+  dice: 1
+  flat_damage: 6
+  damage_type: E
+  penetration: 0
+  qualities: {balanced: true}
+hellglaive:
+  _package: dark_eldar
+  name: Hellglaive
+  dice: 1
+  flat_damage: 8
+  penetration: 3
+  damage_type: R
+  class: Melee
+  qualities: {razor_sharp: true}
+razorflail:
+  _package: dark_eldar
+  name: Razorflail
+  class: Melee
+  dice: 1
+  flat_damage: 6
+  damage_type: R
+  penetration: 2
+  qualities: {flexible: true}
+shardnet:
+  _package: dark_eldar
+  name: Shardnet
+  class: Melee
+  dice: 1
+  flat_damage: 4
+  damage_type: R
+  penetration: 0
+  qualities: {snare: 2}
 shardcarbine:
   _package: dark_eldar
   class: Basic

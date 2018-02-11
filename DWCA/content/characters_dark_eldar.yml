@@ -1,8 +1,44 @@
+archon:
+  Name: Archon
+  _package: dark_eldar
+  armor: {all: 6}
+  characteristics: {agility: 66, ballistic_skill: 68, fellowship: 57, intelligence: 58,
+    perception: 58, strength: 48, toughness: 44, weapon_skill: 68, willpower: 59}
+  force_field: {overload_max: 5, protection_max: 20}
+  skills: {acrobatics: 20, awareness: 30, charm: 10, command: 30, deceive: 30, dodge: 20,
+    inquiry: 10, interrogation: 30, intimidate: 30, parry: 20, scrutiny: 30, sleight_of_hand: 10,
+    stealth: 10, tech_use: 0}
+  species: dark_eldar
+  talents: {air_of_authority: true, ambidextrous: true, combat_master: true, deadeye_shot: true,
+    deflect_shot: true, die_hard: true, disarm: true, disturbing_voice: true, gunslinger: true,
+    hard_target: true, jaded: true, leap_up: true, light_sleeper: true, lightning_attack: true,
+    lightning_reflexes: true, nerves_of_steel: true, paranoia: true, precise_blow: true,
+    rapid_reaction: true, sharpshooter: true, step_aside: true, sure_strike: true,
+    swift_attack: true, two_weapon_wielder_melee: true, two_weapon_wielder_ranged: true,
+    whirlwind_of_death: true}
+  traits: {brutal_charge: 5, dark_sight: true, unnatural_agility: null, unnatural_strength: 5}
+  weapons: [venomblade, blast_pistol, traitors_bane]
+  wounds: 25
+hekatrix_bloodbride:
+  _package: dark_eldar
+  armor: {all: 3}
+  name: Hekatrix Bloodbride
+  characteristics: {weapon_skill: 52, ballistic_skill: 46, strength: 41, toughness: 41, agility: 61, intelligence: 38, perception: 49, willpower: 30, fellowship: 48}
+  skills: {acrobatics: 30, athletics: 20, awareness: 20, charm: 0, command: 10, deceive: 0,
+    dodge: 20, intimidate: 10, parry: 20, scrutiny: 10, sleight_of_hand: 10, stealth: 30}
+  talents: {ambidextrous: true, assassin_strike: true, blade_dancer: true, catfall: true,
+    combat_master: true, disarm: true, leap_up: true, lightning_attack: true, lightning_reflexes: true,
+    resistance_fear: true, step_aside: true, street_fightning: true, sure_strike: true,
+    swift_attack: true, two_weapon_wielder_melee: true, two_weapon_wielder_ranged: true,
+    unarmed_master: true, unarmed_warrior: true}
+  traits: {brutal_charge: 5, dark_sight: true, unnatural_agility: 3, unnatural_strength: 5}
+  weapons: [wych_knife, shardnet]
+  wounds: 13
 kabalite_trueborn:
   _package: dark_eldar
   armor: {all: 4}
   characteristics: {agility: 59, ballistic_skill: 51, fellowship: 49, intelligence: 41,
-    strength: 37, toughness: 41, weapon_skill: 47, willpower: 39}
+    perception: 49, strength: 37, toughness: 41, weapon_skill: 47, willpower: 39}
   name: Kabalite Trueborn
   skills: {acrobatics: 10, awareness: 20, command: 10, deceive: 10, dodge: 10, intimidate: 20,
     parry: 10, scrutiny: 10, sleight_of_hand: 0, stealth: 0, tech_use: 0}
@@ -10,7 +46,45 @@ kabalite_trueborn:
   talents: {combat_master: true, deadeye_shot: true, disarm: true, hard_target: true,
     leap_up: true, light_sleeper: true, lightning_reflexes: true, resistance_fear: true,
     sure_strike: true, swift_attack: true}
-  traits: {unnatural_agility: 3, dark_sight: true}
+  traits: {dark_sight: true, unnatural_agility: 8}
   weapons: [splinter_pistol, mono_sword, shardcarbine, shredder, blaster, splinter_cannon,
     dark_lance]
   wounds: 13
+sslyth:
+  _package: dark_eldar
+  armor: {all: 7}
+  name: Sslyth
+  skills: {awareness: 10, deceive: 20, dodge: 0, intimidate: 0, parry: 10, stealth: 10,
+    survival: 0}
+  species: xeno
+  characteristics: {weapon_skill: 45, ballistic_skill: 45, strength: 55, toughness: 52, agility: 48, intelligence: 31, perception: 38, willpower: 23, fellowship: 32}
+  talents: {ambidextrous: true, cold_hearted: true, combat_master: true, dual_shot: true,
+    dual_strike: true, jaded: true, nerves_of_steel: true, sprint: true, two_weapon_wielder_melee: true,
+    two_weapon_wielder_ranged: true}
+  traits: {auto_stabilised: true, fear: 1, multiple_arms: 4, size: 10, unnatural_strength: 4,
+    unnatural_toughness: 4}
+  weapons: [shardcarbine. splinter_cannon, venomblade]
+  wounds: 28
+scourge:
+  _package: dark_eldar
+  name: Scourge
+  species: dark_eldar
+  wounds: 13
+  armor: {all: 6}
+  force_field: {protection_max: 20, overload_max: 5}
+  characteristics: {weapon_skill: 46, ballistic_skill: 51, strength: 45, toughness: 42, agility: 58, intelligence: 36, perception: 52, willpower: 37, fellowship: 41}
+  skills: {acrobatics: 10, awareness: 10, deceive: 0, dodge: 0, inquiry: 10, scrutiny: 0, sleight_of_hand: 0, stealth: 0, tech_use: 0}
+  talents: {assassin_strike: true, bulging_biceps: true, hard_target: true, hip_shooting: true, lightning_reflexes: true, nerves_of_steel: true}
+  traits: {dark_sight: true, flyer: 8, unnatural_agility: 3}
+  weapons: [shardcarbine, blaster, dark_lance, splinter_cannon]
+hellion:
+  _package: dark_eldar
+  name: Hellion
+  species: dark_eldar
+  wounds: 12
+  armor: {all: 3}
+  skills: {acrobatics: 10, awareness: 0, dodge: 0, intimidate: 0, parry: 0, operate: 20, stealth: 0}
+  talents: {ambidextrous: true, catfall: true, hard_target: true, nerves_of_steel: true, two_weapon_wielder_melee: true}
+  traits: {dark_sight: true, unnatural_agility: 3}
+  characteristics: {weapon_skill: 48, ballistic_skill: 48, strength: 38, toughness: 36, agility: 61, intelligence: 31, perception: 34, willpower: 31, fellowship: 44}
+  weapons: [hellglaive]
