@@ -444,7 +444,7 @@ class Lance(Modifier):
     def modify_penetration(self, attack, current_penetration):
         dos = attack.degrees_of_success
         bonus_penetration = max(0, 5 * dos)
-        LOG.info('+%s penetration from Lance', bonus_penetration)
+        LOG.debug('+%s penetration from Lance', bonus_penetration)
         current_penetration += bonus_penetration
         return current_penetration
 
