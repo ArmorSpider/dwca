@@ -15,7 +15,7 @@ LOG = get_log(__name__)
 class RangedAttack(Attack):
 
     def __init__(self, weapon, attacker, target, firemode):
-        Attack.__init__(self, weapon, attacker, target)
+        super(RangedAttack, self).__init__(weapon, attacker, target)
         self.firemode = firemode
         self.update_metadata({FIREMODE: self.firemode})
         self.update_metadata({RATE_OF_FIRE: self.rate_of_fire})
