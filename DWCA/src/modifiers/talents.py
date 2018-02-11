@@ -1,8 +1,7 @@
 from src.cli.message_queue import queue_message
 from src.dwca_log.log import get_log
-from src.entities.char_stats import STAT_INT, STAT_PER
+from src.entities.char_stats import STAT_INT, STAT_PER, STAT_WS
 from src.modifiers.modifier import Modifier
-from src.modifiers.qualities import Tearing
 
 
 LOG = get_log(__name__)
@@ -14,8 +13,10 @@ class CrushingBlow(Modifier):
 
     def modify_damage(self, attack, current_damage):
         if attack.is_melee():
-            current_damage += 2
-            LOG.debug('+2 damage from CrushingBlow.')
+            crushing_blow_damage = attack.attacker.get_characteristic_bonus(
+                STAT_WS) / 2
+            current_damage += crushing_blow_damage
+            LOG.debug('+%s damage from CrushingBlow.', crushing_blow_damage)
         return current_damage
 
 
