@@ -101,6 +101,8 @@ def translate_entity_traits(entity_def):
     if traits.get('multiple_arms') is True:
         entity_def[TRAITS]['multiple_arms'] = 4
         LOG.debug('Updated multiple_arms from true to 4')
+    if traits.get('toxic') == '1d10':
+        entity_def[TRAITS]['toxic'] = 1
     return entity_def
 
 
@@ -121,6 +123,8 @@ def translate_weapon_qualities(weapon_def):
     if qualities.get('deadly_snare') is True:
         weapon_def[QUALITIES]['deadly_snare'] = 1
         LOG.debug('Updated deadly_snare from true to 1')
+    if qualities.get('toxic') == '1d10':
+        weapon_def[QUALITIES]['toxic'] = 1
     if qualities.get('felling') is not None:
         old_felling = qualities.get('felling')
         new_felling = old_felling * FELLING_FACTOR
