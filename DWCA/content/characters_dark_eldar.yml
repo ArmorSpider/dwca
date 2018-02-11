@@ -1,17 +1,3 @@
-eldar_guardian:
-  _package: eldar
-  armor: {all: 5}
-  characteristics: {agility: 43, ballistic_skill: 42, perception: 40, strength: 31,
-    toughness: 32, weapon_skill: 42, willpower: 40}
-  name: Eldar Guardian
-  skills: {acrobatics: 0, awareness: 0, dodge: 0, silent_move: 0}
-  species: eldar
-  talents: {catfall: true, foresight: true, hard_target: true, hip_shooting: true,
-    sprint: true}
-  traits: {dark_sight: true, fighting_withdrawal: true, fire_drill: true, skirmishers: true,
-    unnatural_agility: 2}
-  weapons: [shuriken_catapult, eldar_laspistol, eldar_monoblade]
-  wounds: 10
 kabalite_trueborn:
   _package: dark_eldar
   armor: {all: 4}
@@ -24,7 +10,7 @@ kabalite_trueborn:
   talents: {combat_master: true, deadeye_shot: true, disarm: true, hard_target: true,
     leap_up: true, light_sleeper: true, lightning_reflexes: true, resistance_fear: true,
     sure_strike: true, swift_attack: true}
-  traits: {__unnatural_agility: 3, dark_sight: true}
+  traits: {unnatural_agility: 3, dark_sight: true}
   weapons: [splinter_pistol, mono_sword, shardcarbine, shredder, blaster, splinter_cannon,
     dark_lance]
   wounds: 13

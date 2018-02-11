@@ -20,8 +20,15 @@ dark_lance:
   qualities: {lance: true}
   range: 200
   single_shot: 1
-mono_sword: {_package: dark_eldar, class: Melee, damage_type: R, dice: 1, flat_damage: 3,
-  name: Mono Sword, penetration: 2}
+mono_sword:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 3
+  name: Mono Sword
+  penetration: 2
+  qualities: {}
 shardcarbine:
   _package: dark_eldar
   class: Basic
