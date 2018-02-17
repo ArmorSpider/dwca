@@ -127,11 +127,11 @@ class Test(unittest.TestCase):
                     'unnatural_toughness': 6,
                     'unnatural_agility': 9,
                     'good_listener': True,
-                    'size': 20}
+                    'size': 6}
         actual = self.char_with_stats.modifiers
         self.assertEqual(expected, actual)
 
-    def test_size_bonus_should_return_size_trait_value(self):
+    def test_size_bonus_should_return_size_hit_modifier(self):
         expected = 20
         actual = self.char_with_stats.size_bonus
         self.assertEqual(expected, actual)
@@ -165,6 +165,7 @@ class Test(unittest.TestCase):
 
     def test_black_carapace_should_set_size_bonus_to_zero(self):
         mockman = build_mock_entity('Mockman',
+                                    _system='deathwatch',
                                     traits={'size': 10, 'black_carapace': True})
         expected = 0
         actual = mockman.size_bonus

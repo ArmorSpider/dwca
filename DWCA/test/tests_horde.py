@@ -7,8 +7,9 @@ from test.test_util import add_mock_entity
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self.hulking_person = add_mock_entity(
-            'Hulking Person', traits={'size': 10})
+        self.hulking_person = add_mock_entity('Hulking Person',
+                                              traits={'size': 10},
+                                              _system='deathwatch')
 
     def test_magnitude_below_30_should_return_standard_size_bonus(self):
         horde = build_entity(self.hulking_person, 10)

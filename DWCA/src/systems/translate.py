@@ -103,6 +103,26 @@ def translate_entity_traits(entity_def):
         LOG.debug('Updated multiple_arms from true to 4')
     if traits.get('toxic') == '1d10':
         entity_def[TRAITS]['toxic'] = 1
+    entity_def = _translate_size(traits, entity_def)
+    return entity_def
+
+
+def _translate_size(traits, entity_def):
+    size_value = traits.get('size')
+    if size_value is not None:
+        size_chart = {-30: 1,
+                      -20: 2,
+                      -10: 3,
+                      0: 4,
+                      10: 5,
+                      20: 6,
+                      30: 7,
+                      40: 8,
+                      50: 9,
+                      60: 10}
+        new_size = size_chart[size_value]
+        entity_def[TRAITS]['size'] = new_size
+        LOG.debug('Updated size from %s to %s', size_value, new_size)
     return entity_def
 
 

@@ -172,8 +172,8 @@ class Character(Entity):
     @property
     def move_mod(self):
         agi_mod = self.get_characteristic_bonus(STAT_AGI)
-        size = self.size if self.size is not None else 0
-        move_mod = agi_mod + int(size / 10)
+        size_modifier = (self.size_trait - 4)
+        move_mod = agi_mod + size_modifier
         if self.quadruped is not None:
             move_mod += agi_mod
         if self.jump_pack is not None:
@@ -181,9 +181,13 @@ class Character(Entity):
         return move_mod
 
     @property
+    def size_trait(self):
+        return self.size if self.size is not None else 4
+
+    @property
     def size_bonus(self):
-        size_bonus = self.size if self.size is not None else 0
-        if self.black_carapace is not None:
+        size_bonus = (self.size_trait * 10) - 40
+        if self.black_carapace is not None and size_bonus > 0:
             size_bonus = 0
         return size_bonus
 
