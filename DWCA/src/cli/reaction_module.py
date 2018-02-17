@@ -23,9 +23,11 @@ def defensive_action(event):
 def attempt_dodge(event):
     attacker = choose_or_build_attacker(event)
     roll_result = event.get(ROLL_RESULT)
-    dodge_target = attacker.available_skills.get('dodge')
+    base_target = attacker.available_skills.get('dodge')
+    modifier = get_effective_modifier(event, manual_only=True)
+    roll_target = base_target + modifier
     LOG.info('[DODGE TEST]')
-    try_action(dodge_target, roll_result)
+    try_action(roll_target, roll_result)
 
 
 def attempt_parry(event):
