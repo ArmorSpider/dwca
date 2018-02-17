@@ -167,6 +167,18 @@ class Shocking(Modifier):
         return effective_damage
 
 
+class Crippling(Modifier):
+
+    name = 'crippling'
+
+    def on_damage(self, attack, effective_damage):
+        if effective_damage > 0:
+            message = ('CRIPPLING: %s is crippled. They take %s true damage each turn '
+                       'they use more than a half action until all damage is healed.') % (attack.target, attack.crippling)
+            queue_message(message)
+        return effective_damage
+
+
 class Toxic(Modifier):
 
     name = 'toxic'
