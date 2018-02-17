@@ -1,42 +1,47 @@
 abhor_the_witch: spend fate point before mission to gain chance to ignore psychic
   powers
-psychic_cacophony: Enemies within 75m get -10 to WIL. Make WIL test each turn. If fail, -10 to all tests that turn. If DoS >= 2 suffer 1 fatigue. Psyker that fail may not use powers that turn.
 ambidextrous: No penalty for using off-hand. For TWW penalty becomes -10
 amorphous: Can change size +/- 1 category. Movement based on half AGI_MOD
-armour_monger: Can apply +2 armor to all locations
+armour_monger: Can apply +1 armor to all locations
 armour_plating: +2 armour to all locations. Woo.
+arms_master: Only -10 when using untrained weapons (unless exotic)
 assassin_strike: Check Acrobatics after melee attack. If true, move at half rate w/o
   AOOs. (Only once per round)
 astartes_weapon_specialisation: Set max penalty to -30
 astartes_weapon_training: Can use all non-exotic weapons
 auto_stabilised: Heavy weapons always count as braced. Can semi/full-auto as half
   action.
-bastion_of_iron_will: Double psy rating on opposed tests for Psyniscience or Psychic
-  Powers
-battle_rage: Can parry while frenzied
-berserk_charge: +20 to WS when charging
+bastion_of_iron_will: Add 5xPR to opposted tests against psychic powers
+battle_rage: Can parry while frenzied, reroll failed roll to exit frenzy or resist
+  entering frenzy.
+berserk_charge: Charge attacks are +30 (Easy)
 bestial: Is an animal. Will probably just run.
+blade_dancer: Reduce melee TWF-penalties by 10. Penalty is 0 with ambidex
 blademaster: May reroll one missed attack with a bladed weapon per round.
 blind: Auto fail tests based on vision and BS tests. -30 to WS and other vision-things.
-blind_fighting: Sight penalties are halved.
+blind_fighting: Sight penalties are halved (Melee only)
 blood_soaked_tide: When this horde breaks, gain Fearless and Frenzy instead.
 bolter_drill: +1 RoF for bolters on semi/full-auto
 brutal_charge: +3 damage when charging. +1d10 damage if is a horde.
 bulging_biceps: Can fire heavy weapons on semi/full-auto w/o bracing. No penalty for
-  not bracing.
+  not bracing. +20 to Heft skill usage.
 burrower: Move by burrowing.
-catfall: Reduce fall damage by DoSxAGI_MOD meters on Agi check.
+catfall: Reduce fall "distance" by AGI meters. +20 acrobatics for reducing fall damage
 chem_geld: Mundane seduction impossible. Charm is one level harder.
 cleanse_and_purify: When using flamers, targets get -20 to AGI check. +1d5 MagDMG
   against hordes.
-combat_formation: Allies can use this characters INT_MOD for initiative rolls.
+cloud_of_flies: Enemies within 5m get -10 to WS & BS.
+cold_hearted: Immune to seduction. Charm tests are one level harder.
+combat_formation: Allies can use this characters INT_MOD for initiative rolls. All
+  allies get +1 initiative.
 combat_master: Opponents get no bonuses for outnumbering.
 combat_sense: May use PER_MOD for initiative rolls.
-counter_attack: If Parry, make counter attack with same weapon at -20.
+counter_attack: If Parry, make counter attack with same weapon at -20. Only once per
+  turn.
 crack_shot: If crit damage on ranged, +2 damage.
 crawler: Movement based on half AGI_MOD. No penalties for difficult terrain.
-crippling_strike: If crit damage on melee, +4 damage.
-crushing_blow: +2 melee damage.
+crippling_strike: If crit damage on melee, +2 damage.
+crushing_blow: +WS/2 melee damage.
 daemonic: Like unnatural toughness, but ignored by force weapons, psychic powers,
   holy attacks or other daemonic things. Immune to poison and disease.
 daemonic_possession: May fire all weapons as half action, even if in melee. If melee,
@@ -46,13 +51,14 @@ dark_sight: Can see in darkness. No penalties for bad lighting.
 deadeye_shot: Make Called Shot at -10
 death_from_above: If charge w/ jump pack, +1d10 damage per DoS/2. Max 2d10.
 deathwatch_training: Auto confirm righteous fury against aliens.
-deflect_shot: Can parry primitive ranged weapons
+deflect_shot: Add WS to AP against thrown or primitive ranged weapons
 die_hard: If blood loss, roll twice to avoid death.
 disarm: Full action to disarm. Opposed WS check. If win, enemy drops weapon. If DoS>=3,
   you may take weapon.
 disciplined: Horde does not suffer -10 to WP if below 50%. Does not auto-break at
   25%.
-distrubing_voice: +10 Intimidate/Interrogate. -10 other Fellowship.
+distrubing_voice: +10 Intimidate/Interrogate. -10 other Fellowship. +10 Command to
+  resist fear.
 double_team: When ganging up, additional +10. If outnumber-friend also has this, +20.
 dual_shot: One BS check. Two shots, armor twice, toughness once. One dodge avoids
   both shots.
@@ -81,8 +87,7 @@ exarch_stealth: Awareness tests VS Exarch get -30. Can attempt Concealment as ha
 exarch_sustained_assault: After incapacitating an enemy, may move AGI_MOD meters and
   continue making attacks.
 exemplar_of_honour: Spend fate point to gain cohesion equal to FEL_MOD
-eye_of_vengeance: Ignore one armor per DoS. Auto-confirm Righteous Fury. NO to Blast,
-  semi/full-auto or flame.
+eye_of_vengeance: Spend FP before standard attack. Gain +DoS to damage and penetration
 favoured_by_the_warp: Roll twice on Psychic Phenomena, choose best result.
 fear: Is scary.
 fearless: Immune to Fear and Pinning. Must WP check to disengage from combat.
@@ -91,9 +96,9 @@ fire_drill: +1 ranged attack.
 flesh_render: One extra tearing die for melee weapons with tearing.
 flyer: Can fly. Like a bird in the sky.
 foresight: Spend 10 minutes to get +10 to INT check
-frenzy: Enter frenzy as full action. +10 WS, STR, TGH and WP. -20 BS and INT. Must
-  attack nearest enemy in melee if possible, not stupid. Immune to Fear, Pinning &
-  Stunning. May not Parry, use Psy Powers, retreat or flee.
+frenzy: Enter frenzy as full round action. +10 WS, STR, TGH and WP. -20 BS and INT.
+  Must attack nearest enemy in melee if possible, not stupid. Immune to Fear, Pinning
+  & Stunning. May not Parry, use Psy Powers, retreat or flee.
 from_beyond: Immune to fear, pinning, insanity, and mind-affecting psychic powers.
 furious_assault: If All Out Attack hits, can spend reaction to make identical attack.
 ghosthelm: Ignore PsyPhenomena and Perils with a successfull WP test.
@@ -101,13 +106,14 @@ gun_blessing: Full action INT check to un-jam INT_MOD guns within 10 m.
 gunslinger: With two pistols, reduce penalty for TWF by -10. Penalty is 0 if also
   Ambidextrous.
 hammer_blow: May add half STR_MOD to penetration for All out attacks. Such attacks
-  have Shocking.
+  have Concussive(2).
 hard_target: If Charge or Run. Opponents get -20 to BS until characters next turn.
 hardy: Heal as if lightly wounded from First Aid. Always.
-hatred: +10 WS against hated things.
+hatred: +10 WS tests against hated things.
 heightened_senses: +10 to specifed sense.
 hello: {more_hello: hello}
 hip_shooting: As full action, full move and single shot with ranged weapon.
+hotshot_pilot: Counts as Operate(all) at rank 1. +1 DoS to operate tests
 hoverer: Like flying, but max 2 meters above the ground.
 hunter_of_aliens: +10 WS and +2 damage in melee against aliens.
 improved_natural_weapons: Natural weapons do not count as primitive.
@@ -116,36 +122,44 @@ incorporeal: Is ghost. +30 concealment when hiding inside stuff, can be silent. 
   to normal weapons. Daemons, psychic powers, warp creatures and force weapons work.
 independent_targeting: When firing two weapons at separate targets, they can be at
   any distance from eachother.
-infused_knowledge: All common & scholastic Lore skills are basic skills. +10 if char
-  has them.
-into_the_jaws_of_hell: Followers are immune to Fear and Pinning
+infused_knowledge: All common & scholastic Lore skills at rank 1. +1 DoS to common
+  and scholastic tests
+inspire_wrath: Full action charm test. Give squad hatred talent.
+into_the_jaws_of_hell: Followers within 10m are immune to Fear and Pinning
 iron_discipline: Followers may re-roll failed WP checks against Fear and Pinning.
 iron_jaw: If stunned, check TGH to ignore stun.
 jaded: Not affected by mundane fear.
-killing_strike: Spend fate point to make all out attack un-dodge/parryable.
+killing_strike: Spend fate point at start of turn, all melee attacks are unavoidable.
+lasgun_barrage: If no move this turn, +1 DoS to attacks with SAB/FAB with Las weapons
 last_man_standing: Immune to pinning by pistols and basic weapons. +1 AP to cover.
 leap_up: Stand up as free action.
-lightning_attack: You know this. +1 melee attack.
-lightning_reflexes: Add AGI_MODx2 to initiative roll. If unnatural agi, +1 to multipler
-  instead.
+light_sleeper: Always counts as awake for awareness tests.
+lightning_attack: Enable lightning attacks with melee weapons.
+lightning_reflexes: Advantage on initiative rolls
+limited_synapse_creature: Squadsight from other tyranids, can shot without LoS. Ignore
+  penalties for range, prone, targets in melee, weather & concealment.
 machinator_array: +10 STR and TGH. -5 AGI and FEL. Weigh 3x normal, sing in water.
 machine: No breathing. Immune to vacuum, cold, mind-affecting psychihc powers. Armor
   applies to fire damage.
 marksman: No BS penalties for long/extended range.
-master_chirurgeon: +10 to Medicae. Heal 2 wounds if patient heavy/critical.
-master_enginseer: Spend fate point to succeed on Tech Use Test.
+master_chirurgeon: +10 to Medicae. p149 for more
+master_enginseer: +10 to tech use tests. Spend fate point to succeed on Tech Use Test.
+meditation: WP test and 10 min rest removes 1 fatigue.
 mental_rage: Can use Psychic Powers in frenzy.
-mighty_shot: +2 damage with ranged attacks.
+mighty_shot: +BS/2 to ranged attacks.
 multiple_arms: +10 TGH. +10 to Climb and Swim. +1 melee attack.
 natural_armor: Has armor while naked.
 natural_weapons: Has weapons while naked.
-nerves_of_steel: May re-roll failed WP tests to avoid or recover from Pinning
+nerves_of_steel: May re-roll failed WP tests to avoid or recover from Pinning. +10
+  to WS to resist intimidation
+networked_machine_intelligence: +2 BS, INT & PER for each nearby Gun Drone
+never_die: Spend FP to ignore injury, fatigue, stunning for a combat.
 orthoproxy: +20 to WP when resisting mind control or interrogation.
 overwhelming: If mag>= 20, +1d10 damage.
 paranoia: +2 to initiative rolls.
 phase: Half action to become incorporeal.
 precise_blow: Can make Called Shot in melee without penalty.
-preternatural_speed: Can use multiple attacks as half action and as part of a charge.
+preternatural_speed: Double charge move.
 psy_power_augment: Another Eldar psyker wihtin 10m gainst +1 Psy Rating after pushing
   etc.
 psy_power_conceal: Ranged attacks against Warlock or followers gain -20. Immune to
@@ -154,8 +168,11 @@ psy_power_destructor: Flamer, 30m. 1d10+12 E, Penetration=PRx2 (so 10)
 psy_power_embolden: Warlock and followers gain +20 to WP testa against Fear, Pinning
   and Breaking.
 psy_power_enchance: Warlock and follwers gain +10 WS and +2 initative.
+psychic_cacophony: Enemies within 75m get -10 to WIL. Make WIL test each turn. If
+  fail, -10 to all tests that turn. If DoS >= 2 suffer 1 fatigue. Psyker that fail
+  may not use powers that turn.
 quadruped: Movement based on 2xAGI_MOD.
-quick_draw: Can Ready weapons as Free Action.
+quick_draw: Can Ready weapons as Free Action. Only Pistol,Basic or one-handed melee.
 rapid_reaction: When surpised, AGI check to negate.
 rapid_reload: Halve reload times.
 reaper_rangefinder: +10 BS for semi/full-auto. Dodging attacks from this weapon gets
@@ -169,8 +186,10 @@ runes_of_warding: Non-eldar psykers within 50m count their PR as 2 lower (after 
   level) and get +10 on both effect tables.
 runes_of_witnessing: +10 to invocation, -10 to rolls on effect tables.
 scourge_of_heretics: +10 WS and +2 damage against HERETICS.
+seeker_missile: Unit is armed with a number of seeker missiles.
 shadow_in_the_warp: Non-tyranid psykers nearby get -20 for using Psychic Powers
 sharpshooter: Make Called Shot without penalty.
+sidearm: 1 pistol, 1 melee. No penalties for TWF.
 signum: All squaddies gain +5 BS. Full action tech-use test to increase to +10 until
   end of next round.
 signum_link: All squaddies may benefit from ganging up on opponents, even with ranged
@@ -180,13 +199,16 @@ skirmishers: No penalties to concealement, no hit bonus to attackers for size. H
 slayer_of_daemons: +10 WS and +2 damage against daemons.
 soul_bound: Roll twice on Perils of the Warp. Choose best result.
 sound_constitution: Get more wounds.
+spawn_termagants: As free action each turn, spawn 2d10 termagants horde. If roll is
+  a double, no more spawning.
 spirit_stones: Sustain powers as free action. Once per 24h, use a second PsyPower
   one turn.
 sprint: When doing Full move, move AGI_MOD meters extra. If Run, double movement for
   one round. Gain fatigue if used two turns in a row.
 stalwart_defence: Spend fate point to gain 2 damage resist and infinite parries, cannot
   be outnumbered. Stops if you move.
-step_aside: One free Dodge reaction per turn.
+stealth_field: Choose mode each turn. Passive- -10 to BS attacks. Active- -30 to WS & BS attacks.
+step_aside: One extra evasive reaction per turn.
 storm_of_iron: With flamer or semi/full-auto, double any magnitude damage.
 strange_physiology: All hits are body hits. Death when damage exceeds wounds.
 strong_minded: May re-roll WP tests to resist mind-affecting powers.
@@ -256,9 +278,3 @@ xenos_tactics_tank_hunter: Action-Half, Cost-2, Sustained-No. Mark one enemy veh
 xenos_tactics_war_shout: Action-Free, Cost-3, Sustained-No. Activate during Charge
   attack. Until start of Exarchs next turn, Banshee Masks cause helpless for one round
   instead of stunned.
-stealth_field: Choose mode each turn. Passive- -10 to BS attacks. Active- -30 to WS & BS attacks.
-networked_machine_intelligence: +2 BS, INT & PER for each nearby Gun Drone
-seeker_missile: Unit is armed with a number of seeker missiles.
-spawn_termagants: As free action each turn, spawn 2d10 termagants horde. If roll is a double, no more spawning.
-limited_synapse_creature: Squadsight from other tyranids, can shot without LoS. Ignore penalties for range, prone, targets in melee, weather & concealment.
-cloud_of_flies: Enemies within 5m get -10 to WS & BS.
