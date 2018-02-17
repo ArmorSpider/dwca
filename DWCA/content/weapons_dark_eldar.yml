@@ -1,3 +1,44 @@
+agoniser:
+  _package: dark_eldar
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 7
+  name: Agoniser
+  penetration: 6
+  qualities: {flexible: true, power_field: true, shocking: true, tearing: true}
+blade_of_the_sisterhood:
+  _package: dark_eldar
+  name: Blade of the Sisterhood
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 3
+  penetration: 2
+  qualities: {balanced: true, crippling: 4, felling: 4, toxic: 4}
+enhanced_splinter_pistol:
+  _package: dark_eldar
+  name: Enhanced Splinter Pistol
+  class: Pistol
+  range: 30
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 5
+  dice: 1
+  flat_damage: 2
+  penetration: 3
+  qualities: {crippling: 4, felling: 4, toxic: 5}
+blast_pistol:
+  _package: dark_eldar
+  name: Blast Pistol
+  class: Pistol
+  damage_type: E
+  dice: 2
+  flat_damage: 7
+  penetration: 4
+  qualities: {lance: true}
+  range: 20
+  single_shot: 1
 blaster:
   _package: dark_eldar
   class: Basic
@@ -20,6 +61,15 @@ dark_lance:
   qualities: {lance: true}
   range: 200
   single_shot: 1
+hellglaive:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 8
+  name: Hellglaive
+  penetration: 3
+  qualities: {razor_sharp: true}
 mono_sword:
   _package: dark_eldar
   class: Melee
@@ -29,60 +79,15 @@ mono_sword:
   name: Mono Sword
   penetration: 2
   qualities: {}
-venomblade:
-  _package: dark_eldar
-  class: Melee
-  dice: 1
-  flat_damage: 8
-  penetration: 2
-  damage_type: R
-  qualities: {felling: 2, toxic: 4}
-blast_pistol:
-  _package: dark_eldar
-  class: Pistol
-  dice: 2
-  flat_damage: 7
-  penetration: 4
-  damage_type: E
-  single_shot: 1
-  range: 20
-  qualities: {lance: true}
-wych_knife:
-  _package: dark_eldar
-  name: Wych Knife
-  class: Melee
-  dice: 1
-  flat_damage: 6
-  damage_type: E
-  penetration: 0
-  qualities: {balanced: true}
-hellglaive:
-  _package: dark_eldar
-  name: Hellglaive
-  dice: 1
-  flat_damage: 8
-  penetration: 3
-  damage_type: R
-  class: Melee
-  qualities: {razor_sharp: true}
 razorflail:
   _package: dark_eldar
-  name: Razorflail
   class: Melee
+  damage_type: R
   dice: 1
   flat_damage: 6
-  damage_type: R
+  name: Razorflail
   penetration: 2
   qualities: {flexible: true}
-shardnet:
-  _package: dark_eldar
-  name: Shardnet
-  class: Melee
-  dice: 1
-  flat_damage: 4
-  damage_type: R
-  penetration: 0
-  qualities: {snare: 2}
 shardcarbine:
   _package: dark_eldar
   class: Basic
@@ -96,6 +101,15 @@ shardcarbine:
   range: 60
   semi_auto: 3
   single_shot: 1
+shardnet:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 4
+  name: Shardnet
+  penetration: 0
+  qualities: {snare: 2}
 shredder:
   _package: dark_eldar
   class: Basic
@@ -107,6 +121,15 @@ shredder:
   qualities: {blast: 3, reliable: true, tearing: true}
   range: 40
   single_shot: 1
+scabrous_claws:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 7
+  penetration: 0
+  name: Scabrous Claws
+  qualities: {tearing: true}
 splinter_cannon:
   _package: dark_eldar
   class: Heavy
@@ -126,9 +149,27 @@ splinter_pistol:
   dice: 1
   flat_damage: 2
   full_auto: 5
-  name: Spliter Pistol
+  name: Splinter Pistol
   penetration: 3
   qualities: {reliable: true, toxic: 2}
   range: 30
   semi_auto: 3
   single_shot: 1
+venomblade:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 8
+  name: Venomblade
+  penetration: 2
+  qualities: {felling: 2, toxic: 4}
+wych_knife:
+  _package: dark_eldar
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 6
+  name: Wych Knife
+  penetration: 0
+  qualities: {balanced: true}
