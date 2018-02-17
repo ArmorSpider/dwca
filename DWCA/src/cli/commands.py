@@ -2,6 +2,7 @@ import sys
 
 from definitions import WEAPON, ROLL_TARGET, ATTACKER,\
     TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC, ROLL_RESULT, RANGE
+from src.action.action import try_action
 from src.action.hit import Hit
 from src.cli.auto_module import auto_assemble, range_module, equip_weapon
 from src.cli.info_module import info_module
@@ -15,11 +16,12 @@ from src.cli.table import print_table
 from src.dwca_log.log import get_log
 from src.entities import HALF_MOVE, FULL_MOVE, CHARGE_MOVE, RUN_MOVE
 from src.entities.libraries import get_weapon_library, get_character_library,\
-    MasterLibrary
+    MasterLibrary, find_best_match
 from src.handler import check_required_keys,\
     build_attacker, build_weapon, build_base_attack, choose_or_build_attacker
 from src.hitloc_series import build_hitloc_iterator
-from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod
+from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod,\
+    get_effective_modifier
 from src.save_manager import SaveManager
 from src.situational.scatter import scatter
 from src.situational.state_manager import StateManager
@@ -74,18 +76,27 @@ class CLICommand(object):
     def _process_event(self, event):
         return event
 
-    def get_arg_or_input_int(self, prompt, arg_index=0):
+    def get_arg_or_input_int(self, prompt):
         try:
-            value = int(self.args[arg_index])
+            value = int(self.args[0])
         except IndexError:
             value = user_input_int(prompt)
         return value
 
-    def get_arg_or_input_string(self, prompt, arg_index=0):
+    def get_arg_or_input_string(self, prompt):
         try:
-            value = str(self.args[arg_index])
+            value = str(self.args[0])
         except IndexError:
             value = user_input_string(prompt)
+        return value
+
+    def get_arg_or_select_from_list(self, prompt, options):
+        try:
+            raw_value = self.args[0]
+            value = find_best_match(raw_value, options)
+        except IndexError:
+            LOG.info(prompt)
+            value = try_user_choose_from_list(options)
         return value
 
     def _toggle_key(self, key, event):
@@ -120,6 +131,27 @@ class CommandMove(CLICommand):
                  move_opts.get(FULL_MOVE),
                  move_opts.get(CHARGE_MOVE),
                  move_opts.get(RUN_MOVE))
+        return event
+
+
+class CommandTest(CLICommand):
+
+    keyword = 'test'
+    help = 'Test a skill or characteristic'
+    required_keys = []
+
+    def _process_event(self, event):
+        attacker = choose_or_build_attacker(event)
+        options = {}
+        options.update(attacker.available_skills)
+        options.update(attacker.characteristics)
+        test_stat = self.get_arg_or_select_from_list(
+            'Select stat to test: ', options.keys())
+        LOG.info('%s tests "%s"', attacker.name, test_stat)
+        base_target = options.get(test_stat, 0)
+        modifier = get_effective_modifier(event, manual_only=True)
+        roll_target = base_target + modifier
+        try_action(roll_target)
         return event
 
 
@@ -240,12 +272,13 @@ class CommandPackage(CLICommand):
     help = 'Load a package of weapons and characters.'
 
     def _process_event(self, event):
-        LOG.info('Choose package to load:')
+        prompt = 'Choose package to load:'
         known_packages = MasterLibrary.get_known_packages()
         loaded_packages = MasterLibrary.get_loaded_packages()
         non_loaded_packages = [
             package for package in known_packages if package not in loaded_packages]
-        package_name = try_user_choose_from_list(non_loaded_packages)
+        package_name = self.get_arg_or_select_from_list(
+            prompt, non_loaded_packages)
         MasterLibrary.add_package(package_name)
         return event
 
