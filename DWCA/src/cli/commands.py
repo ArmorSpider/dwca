@@ -2,6 +2,7 @@ import sys
 
 from definitions import WEAPON, ROLL_TARGET, ATTACKER,\
     TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC, ROLL_RESULT, RANGE
+from src.action.action import try_action
 from src.action.hit import Hit
 from src.cli.auto_module import auto_assemble, range_module, equip_weapon
 from src.cli.info_module import info_module
@@ -15,18 +16,20 @@ from src.cli.table import print_table
 from src.dwca_log.log import get_log
 from src.entities import HALF_MOVE, FULL_MOVE, CHARGE_MOVE, RUN_MOVE
 from src.entities.libraries import get_weapon_library, get_character_library,\
-    MasterLibrary
+    MasterLibrary, find_best_match
 from src.handler import check_required_keys,\
     build_attacker, build_weapon, build_base_attack, choose_or_build_attacker
 from src.hitloc_series import build_hitloc_iterator
-from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod
+from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod,\
+    get_effective_modifier
 from src.save_manager import SaveManager
 from src.situational.scatter import scatter
 from src.situational.state_manager import StateManager
 from src.util.dict_util import pretty_print
 from src.util.event_util import update_adhoc_dict
 from src.util.string_util import normalize_string
-from src.util.user_input import try_user_choose_from_list, user_input_int
+from src.util.user_input import try_user_choose_from_list, user_input_int,\
+    user_input_string
 
 
 LOG = get_log(__name__)
@@ -55,18 +58,46 @@ class CLICommand(object):
     keyword = None
     required_keys = []
     help = 'Does stuff'
+    args = []
 
     def is_this_command(self, command_string):
-        normalized_string = normalize_string(command_string)
-        return normalized_string == self.keyword
+        split_command = command_string.split(' ', 1)
+        match = normalize_string(split_command[0]) == self.keyword
+        del split_command[0]
+        self.args = split_command
+        return match
 
     def process_command(self, event):
+        LOG.info('Running command "%s" with args %s', self.keyword, self.args)
         check_required_keys(event, self.required_keys)
         updated_event = self._process_event(event)
         return updated_event
 
     def _process_event(self, event):
         return event
+
+    def get_arg_or_input_int(self, prompt):
+        try:
+            value = int(self.args[0])
+        except IndexError:
+            value = user_input_int(prompt)
+        return value
+
+    def get_arg_or_input_string(self, prompt):
+        try:
+            value = str(self.args[0])
+        except IndexError:
+            value = user_input_string(prompt)
+        return value
+
+    def get_arg_or_select_from_list(self, prompt, options):
+        try:
+            raw_value = self.args[0]
+            value = find_best_match(raw_value, options)
+        except IndexError:
+            LOG.info(prompt)
+            value = try_user_choose_from_list(options)
+        return value
 
     def _toggle_key(self, key, event):
         if key in event:
@@ -100,6 +131,27 @@ class CommandMove(CLICommand):
                  move_opts.get(FULL_MOVE),
                  move_opts.get(CHARGE_MOVE),
                  move_opts.get(RUN_MOVE))
+        return event
+
+
+class CommandTest(CLICommand):
+
+    keyword = 'test'
+    help = 'Test a skill or characteristic'
+    required_keys = []
+
+    def _process_event(self, event):
+        attacker = choose_or_build_attacker(event)
+        options = {}
+        options.update(attacker.available_skills)
+        options.update(attacker.characteristics)
+        test_stat = self.get_arg_or_select_from_list(
+            'Select stat to test: ', options.keys())
+        LOG.info('%s tests "%s"', attacker.name, test_stat)
+        base_target = options.get(test_stat, 0)
+        modifier = get_effective_modifier(event, manual_only=True)
+        roll_target = base_target + modifier
+        try_action(roll_target)
         return event
 
 
@@ -144,7 +196,7 @@ class CommandBonus(CLICommand):
     help = 'Add a to-hit bonus'
 
     def _process_event(self, event):
-        bonus_value = user_input_int('Enter bonus: ')
+        bonus_value = self.get_arg_or_input_int('Enter bonus: ')
         event = add_roll_mod(event, bonus_value)
         return event
 
@@ -155,7 +207,7 @@ class CommandMalus(CLICommand):
     help = 'Add a to-hit malus'
 
     def _process_event(self, event):
-        malus_value = -user_input_int('Enter malus: ')
+        malus_value = -self.get_arg_or_input_int('Enter malus: ')
         event = add_roll_mod(event, malus_value)
         return event
 
@@ -166,7 +218,8 @@ class ComandAdHoc(CLICommand):
     help = 'Manually add temporary modifiers.'
 
     def _process_event(self, event):
-        input_string = raw_input('Enter ad-hoc dict string: ')
+        input_string = self.get_arg_or_input_string(
+            'Enter ad-hoc dict string: ')
         ad_hoc_dict = quick_dict_parse(input_string)
         event = update_adhoc_dict(event, ad_hoc_dict)
         return event
@@ -219,12 +272,13 @@ class CommandPackage(CLICommand):
     help = 'Load a package of weapons and characters.'
 
     def _process_event(self, event):
-        LOG.info('Choose package to load:')
+        prompt = 'Choose package to load:'
         known_packages = MasterLibrary.get_known_packages()
         loaded_packages = MasterLibrary.get_loaded_packages()
         non_loaded_packages = [
             package for package in known_packages if package not in loaded_packages]
-        package_name = try_user_choose_from_list(non_loaded_packages)
+        package_name = self.get_arg_or_select_from_list(
+            prompt, non_loaded_packages)
         MasterLibrary.add_package(package_name)
         return event
 
@@ -292,7 +346,7 @@ class CommandRange(CLICommand):
     required_keys = [WEAPON]
 
     def _process_event(self, event):
-        range_ = user_input_int('Enter range to target: ')
+        range_ = self.get_arg_or_input_int('Enter range to target: ')
         event[RANGE] = range_
         event = range_module(event)
         return event
@@ -304,7 +358,7 @@ class CommandCover(CLICommand):
     help = 'Add cover to the current event.'
 
     def _process_event(self, event):
-        armor_value = user_input_int('Enter cover armor value: ')
+        armor_value = self.get_arg_or_input_int('Enter cover armor value: ')
         event = self._toggle_adhoc_key(COVER, event, armor_value)
         return event
 
@@ -347,7 +401,7 @@ class CommandSave(CLICommand):
     help = 'Save the current event for this session.'
 
     def _process_event(self, event):
-        state_name = raw_input('Save state as: ')
+        state_name = self.get_arg_or_input_string('Save state as: ')
         clean_state_name = normalize_string(state_name)
         SaveManager.save_state(clean_state_name, event)
         return event
@@ -362,7 +416,7 @@ class CommandLoad(CLICommand):
         available_states = SaveManager.saved_states.keys()
         LOG.info('Available states:')
         pretty_print(available_states)
-        state_name = raw_input('Load which state? ')
+        state_name = self.get_arg_or_input_string('Load which state? ')
         clean_state_name = normalize_string(state_name)
         state = SaveManager.load_state(clean_state_name)
         return state
