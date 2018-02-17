@@ -110,6 +110,16 @@ class HardTarget(Modifier):
         return current_num_dice
 
 
+class Ambidextrous(Modifier):
+
+    name = 'ambidextrous'
+
+
+class TwoWeaponWielderMelee(Modifier):
+
+    name = 'two_weapon_wielder_melee'
+
+
 class SwiftAttack(Modifier):
 
     name = 'swift_attack'
