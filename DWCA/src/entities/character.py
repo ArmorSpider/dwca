@@ -44,6 +44,20 @@ class Character(Entity):
     @property
     def num_melee_attacks(self):
         num_attacks = 1
+        if self.two_weapon_wielder_melee is not None:
+            penalty = 20
+            if self.ambidextrous is not None:
+                penalty -= 10
+            if self.blade_dancer is not None:
+                penalty -= 10
+            if penalty == 0:
+                num_attacks += 1
+            else:
+                LOG.info(
+                    '%s could make an extra attack with -%s penalty to all attacks.', self.name, penalty)
+        if self.multiple_arms is not None and self.two_weapon_wielder_melee is not None:
+            extra_attacks = (self.multiple_arms - 2) / 2
+            num_attacks += extra_attacks
         LOG.info('%s can make %s melee attacks.', self, num_attacks)
         return num_attacks
 

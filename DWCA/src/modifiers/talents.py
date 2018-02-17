@@ -123,6 +123,11 @@ class TwoWeaponWielderMelee(Modifier):
     name = 'two_weapon_wielder_melee'
 
 
+class BladeDancer(Modifier):
+
+    name = 'blade_dancer'
+
+
 class SwiftAttack(Modifier):
 
     name = 'swift_attack'
