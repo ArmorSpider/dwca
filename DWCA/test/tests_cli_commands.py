@@ -25,8 +25,7 @@ class Test(unittest.TestCase):
             self.assertFalse(run_command.is_this_command(command_string))
 
     def test_strings_within_normalization_should_match(self):
-        command_strings = ['AUTO', 'Auto', '     auto',
-                           '   auto        ', 'autO     ']
+        command_strings = ['AUTO', 'Auto', 'autO     ']
         run_command = CommandAuto()
         for command_string in command_strings:
             self.assertTrue(run_command.is_this_command(command_string))

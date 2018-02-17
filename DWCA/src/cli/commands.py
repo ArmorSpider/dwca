@@ -26,7 +26,8 @@ from src.situational.state_manager import StateManager
 from src.util.dict_util import pretty_print
 from src.util.event_util import update_adhoc_dict
 from src.util.string_util import normalize_string
-from src.util.user_input import try_user_choose_from_list, user_input_int
+from src.util.user_input import try_user_choose_from_list, user_input_int,\
+    user_input_string
 
 
 LOG = get_log(__name__)
@@ -55,18 +56,37 @@ class CLICommand(object):
     keyword = None
     required_keys = []
     help = 'Does stuff'
+    args = []
 
     def is_this_command(self, command_string):
-        normalized_string = normalize_string(command_string)
-        return normalized_string == self.keyword
+        split_command = command_string.split(' ', 1)
+        match = normalize_string(split_command[0]) == self.keyword
+        del split_command[0]
+        self.args = split_command
+        return match
 
     def process_command(self, event):
+        LOG.info('Running command "%s" with args %s', self.keyword, self.args)
         check_required_keys(event, self.required_keys)
         updated_event = self._process_event(event)
         return updated_event
 
     def _process_event(self, event):
         return event
+
+    def get_arg_or_input_int(self, prompt, arg_index=0):
+        try:
+            value = int(self.args[arg_index])
+        except IndexError:
+            value = user_input_int(prompt)
+        return value
+
+    def get_arg_or_input_string(self, prompt, arg_index=0):
+        try:
+            value = str(self.args[arg_index])
+        except IndexError:
+            value = user_input_string(prompt)
+        return value
 
     def _toggle_key(self, key, event):
         if key in event:
@@ -144,7 +164,7 @@ class CommandBonus(CLICommand):
     help = 'Add a to-hit bonus'
 
     def _process_event(self, event):
-        bonus_value = user_input_int('Enter bonus: ')
+        bonus_value = self.get_arg_or_input_int('Enter bonus: ')
         event = add_roll_mod(event, bonus_value)
         return event
 
@@ -155,7 +175,7 @@ class CommandMalus(CLICommand):
     help = 'Add a to-hit malus'
 
     def _process_event(self, event):
-        malus_value = -user_input_int('Enter malus: ')
+        malus_value = -self.get_arg_or_input_int('Enter malus: ')
         event = add_roll_mod(event, malus_value)
         return event
 
@@ -166,7 +186,8 @@ class ComandAdHoc(CLICommand):
     help = 'Manually add temporary modifiers.'
 
     def _process_event(self, event):
-        input_string = raw_input('Enter ad-hoc dict string: ')
+        input_string = self.get_arg_or_input_string(
+            'Enter ad-hoc dict string: ')
         ad_hoc_dict = quick_dict_parse(input_string)
         event = update_adhoc_dict(event, ad_hoc_dict)
         return event
@@ -292,7 +313,7 @@ class CommandRange(CLICommand):
     required_keys = [WEAPON]
 
     def _process_event(self, event):
-        range_ = user_input_int('Enter range to target: ')
+        range_ = self.get_arg_or_input_int('Enter range to target: ')
         event[RANGE] = range_
         event = range_module(event)
         return event
@@ -304,7 +325,7 @@ class CommandCover(CLICommand):
     help = 'Add cover to the current event.'
 
     def _process_event(self, event):
-        armor_value = user_input_int('Enter cover armor value: ')
+        armor_value = self.get_arg_or_input_int('Enter cover armor value: ')
         event = self._toggle_adhoc_key(COVER, event, armor_value)
         return event
 
@@ -347,7 +368,7 @@ class CommandSave(CLICommand):
     help = 'Save the current event for this session.'
 
     def _process_event(self, event):
-        state_name = raw_input('Save state as: ')
+        state_name = self.get_arg_or_input_string('Save state as: ')
         clean_state_name = normalize_string(state_name)
         SaveManager.save_state(clean_state_name, event)
         return event
@@ -362,7 +383,7 @@ class CommandLoad(CLICommand):
         available_states = SaveManager.saved_states.keys()
         LOG.info('Available states:')
         pretty_print(available_states)
-        state_name = raw_input('Load which state? ')
+        state_name = self.get_arg_or_input_string('Load which state? ')
         clean_state_name = normalize_string(state_name)
         state = SaveManager.load_state(clean_state_name)
         return state
