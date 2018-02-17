@@ -1,5 +1,4 @@
-from src.cli.table import print_table, print_entity_dict
-from src.entities import SKILLS, CHARACTERISTICS
+from src.cli.table import print_table
 from src.handler import choose_or_build_attacker
 from src.util.dict_util import sort_strings_by_length
 from src.util.read_file import read_dospedia
@@ -19,8 +18,6 @@ def info_module(event):
         row = [full_modifier_name, dospedia_entry]
         table_data.append(row)
     print_table(table_data, character.name, headers=False)
-    print_entity_dict(character, SKILLS)
-    print_entity_dict(character, CHARACTERISTICS)
     return event
 
 
