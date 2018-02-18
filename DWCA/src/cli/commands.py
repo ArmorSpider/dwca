@@ -18,6 +18,7 @@ from src.hitloc_series import build_hitloc_iterator
 from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod,\
     get_effective_modifier
 from src.modules.auto_module import handler_auto
+from src.modules.dps_module import handler_dps
 from src.modules.equip_module import handler_equip
 from src.modules.info_module import handler_info
 from src.modules.new_module import handler_new
@@ -115,6 +116,17 @@ class CLICommand(object):
         else:
             ad_hoc[key] = value
         event[AD_HOC] = ad_hoc
+        return event
+
+
+class CommandDPS(CLICommand):
+
+    keyword = 'dps'
+    help = 'Calculate DPS metrics for event'
+    required_keys = [ATTACKER, WEAPON, TARGET, ROLL_TARGET]
+
+    def _process_event(self, event):
+        event = handler_dps(event)
         return event
 
 
