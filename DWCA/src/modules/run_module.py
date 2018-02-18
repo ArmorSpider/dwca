@@ -1,5 +1,5 @@
 from definitions import NUM_ATTACKS
-from src.cli.message_queue import log_messages
+from src.cli.message_queue import log_messages, clear_messages
 from src.cli.read_metadata import present_metadata
 from src.dwca_log.log import get_log
 from src.errors import MechanicsError
@@ -12,6 +12,7 @@ LOG = get_log(__name__)
 
 def handler_run(event):
     StateManager.update(event)
+    clear_messages()
     main_handler(event)
     log_messages()
     return event
