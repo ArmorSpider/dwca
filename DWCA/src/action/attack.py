@@ -235,6 +235,10 @@ class Attack(Action):
         self.update_metadata({OFFENSIVE_MODIFIERS: modifiers})
         return modifiers
 
+    @property
+    def firemodes(self):
+        return self.weapon.firemodes
+
     def get_effective_armor(self, hit):
         armor = self.target.get_armor(hit.hit_location)
         for modifier in self.modifer_iterator():
