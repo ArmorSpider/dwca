@@ -9,32 +9,20 @@ agoniser:
   qualities: {flexible: true, power_field: true, shocking: true, tearing: true}
 blade_of_the_sisterhood:
   _package: dark_eldar
-  name: Blade of the Sisterhood
   class: Melee
   damage_type: R
   dice: 1
   flat_damage: 3
+  name: Blade of the Sisterhood
   penetration: 2
   qualities: {balanced: true, crippling: 4, felling: 4, toxic: 4}
-enhanced_splinter_pistol:
-  _package: dark_eldar
-  name: Enhanced Splinter Pistol
-  class: Pistol
-  range: 30
-  single_shot: 1
-  semi_auto: 3
-  full_auto: 5
-  dice: 1
-  flat_damage: 2
-  penetration: 3
-  qualities: {crippling: 4, felling: 4, toxic: 5}
 blast_pistol:
   _package: dark_eldar
-  name: Blast Pistol
   class: Pistol
   damage_type: E
   dice: 2
   flat_damage: 7
+  name: Blast Pistol
   penetration: 4
   qualities: {lance: true}
   range: 20
@@ -61,6 +49,18 @@ dark_lance:
   qualities: {lance: true}
   range: 200
   single_shot: 1
+enhanced_splinter_pistol:
+  _package: dark_eldar
+  class: Pistol
+  dice: 1
+  flat_damage: 2
+  full_auto: 5
+  name: Enhanced Splinter Pistol
+  penetration: 3
+  qualities: {crippling: 4, felling: 4, toxic: 5}
+  range: 30
+  semi_auto: 3
+  single_shot: 1
 hellglaive:
   _package: dark_eldar
   class: Melee
@@ -70,6 +70,24 @@ hellglaive:
   name: Hellglaive
   penetration: 3
   qualities: {razor_sharp: true}
+impaler:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 5
+  name: Impaler
+  penetration: 0
+  qualities: {toxic: 2}
+implanted_blades:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 8
+  name: Implanted Blades
+  penetration: 3
+  qualities: {tearing: true}
 mono_sword:
   _package: dark_eldar
   class: Melee
@@ -79,6 +97,15 @@ mono_sword:
   name: Mono Sword
   penetration: 2
   qualities: {}
+poisoned_blade:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 3
+  name: Poisoned Blade
+  penetration: 2
+  qualities: {toxic: 2}
 razorflail:
   _package: dark_eldar
   class: Melee
@@ -88,6 +115,15 @@ razorflail:
   name: Razorflail
   penetration: 2
   qualities: {flexible: true}
+scabrous_claws:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 7
+  name: Scabrous Claws
+  penetration: 0
+  qualities: {tearing: true}
 shardcarbine:
   _package: dark_eldar
   class: Basic
@@ -121,15 +157,6 @@ shredder:
   qualities: {blast: 3, reliable: true, tearing: true}
   range: 40
   single_shot: 1
-scabrous_claws:
-  _package: dark_eldar
-  class: Melee
-  damage_type: R
-  dice: 1
-  flat_damage: 7
-  penetration: 0
-  name: Scabrous Claws
-  qualities: {tearing: true}
 splinter_cannon:
   _package: dark_eldar
   class: Heavy
@@ -155,6 +182,55 @@ splinter_pistol:
   range: 30
   semi_auto: 3
   single_shot: 1
+splinter_rifle:
+  _package: dark_eldar
+  class: Basic
+  damage_type: R
+  dice: 1
+  flat_damage: 2
+  full_auto: 5
+  name: Splinter Rifle
+  penetration: 3
+  qualities: {toxic: 2}
+  range: 100
+  semi_auto: 3
+  single_shot: 1
+sslyth_blade:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 9
+  name: Xenos Blade
+  penetration: 2
+  qualities: {balanced: true, razor_sharp: true}
+klaive:
+  _package: dark_eldar
+  name: Klaive
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  penetration: 8
+  qualities: {power_field: true}
+demi_klaive:
+  _package: dark_eldar
+  name: Demi-Klaive
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  penetration: 6
+  qualities: {power_field: true}
+combo_klaive:
+  _package: dark_eldar
+  name: Combo Klaive
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 16
+  penetration: 8
+  qualities: {power_field: true, unwieldy: true}
 venomblade:
   _package: dark_eldar
   class: Melee
@@ -164,6 +240,15 @@ venomblade:
   name: Venomblade
   penetration: 2
   qualities: {felling: 2, toxic: 4}
+enhanced_venomblade:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 8
+  name: Venomblade
+  penetration: 2
+  qualities: {felling: 4, toxic: 6, crippling: 4}
 wych_knife:
   _package: dark_eldar
   class: Melee

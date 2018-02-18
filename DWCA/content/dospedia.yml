@@ -246,7 +246,7 @@ warp_instability: If take damage and not deal damage by next turn, WP check or t
   1 damage per DoF.
 warp_sense: Psyniscience as half action.
 warp_weapon: Attacks ignore physical armor unless holy.
-whirlwind_of_death: Double magnitude damage done in melee.
+whirlwind_of_death: Make one standard attack against each adjacent enemy. (Up to WS)
 xenos_tactics_acrobatic_dodge: Action-Free, Cost-2, Sustained-Yes. While active, any
   squaddie who dodges succesfully may half move. (Once per round)
 xenos_tactics_bladestorm: Action-Free, Cost-3, Sustained-No, Squad may full move and
