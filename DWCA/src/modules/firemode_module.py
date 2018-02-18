@@ -1,5 +1,5 @@
 from definitions import FIREMODE
-from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
+from src.entities import SINGLE_SHOT, SEMI_AUTO, FULL_AUTO, STANDARD_ATTACK
 from src.handler import build_base_attack
 from src.modifiers.roll_modifier import add_roll_mod, ATTACK_MODE_MOD
 from src.util.user_input import try_user_choose_from_list
@@ -10,7 +10,8 @@ def handler_firemode(event):
     firemode = event[FIREMODE]
     firemode_bonuses = {SINGLE_SHOT: 0,
                         SEMI_AUTO: 10,
-                        FULL_AUTO: 20}
+                        FULL_AUTO: 20,
+                        STANDARD_ATTACK: 0}
     firemode_bonus = firemode_bonuses[firemode]
     event = add_roll_mod(event, firemode_bonus, ATTACK_MODE_MOD)
     return event

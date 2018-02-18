@@ -25,6 +25,10 @@ ENTITY = 'entity'
 WOUNDS = 'wounds'
 
 
+STANDARD_ATTACK = 'standard_attack'
+SWIFT_ATTACK = 'swift_attack'
+LIGHTNING_ATTACK = 'lightning_attack'
+
 DUMMY = 'dummy'
 
 HALF_MOVE = 'half_move'
