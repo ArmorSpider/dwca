@@ -13,6 +13,7 @@ barracuda:
   _package: tau
   _system: deathwatch
   armor: {all: 25, rear: 20}
+  characteristics: {ballistic_skill: 35}
   name: Barracuda Fighter
   species: machine
   traits: {size: 20}
