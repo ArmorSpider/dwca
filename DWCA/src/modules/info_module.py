@@ -4,7 +4,7 @@ from src.util.dict_util import sort_strings_by_length
 from src.util.read_file import read_dospedia
 
 
-def info_module(event):
+def handler_info(event):
     character = choose_or_build_attacker(event)
     modifiers = character.modifiers
     modifier_names = sort_strings_by_length(modifiers.keys())
