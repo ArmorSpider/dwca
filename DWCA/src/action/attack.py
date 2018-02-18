@@ -20,6 +20,7 @@ from src.util.user_input import try_user_choose_from_list
 
 
 LOG = get_log(__name__)
+# DEVTEST
 
 
 def select_vehicle_hitloc():

@@ -5,6 +5,8 @@ from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO,\
 from src.entities.entity import Entity
 from src.entities.libraries import read_weapon
 
+# DEVTEST
+
 
 def get_weapon(weapon_name):
     weap_definition = read_weapon(weapon_name)
