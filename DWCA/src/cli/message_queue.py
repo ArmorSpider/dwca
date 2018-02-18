@@ -15,3 +15,7 @@ def log_messages():
     for message in MESSAGE_QUEUE:
         LOG.info(message)
     del MESSAGE_QUEUE[:]
+
+
+def clear_messages():
+    del MESSAGE_QUEUE[:]

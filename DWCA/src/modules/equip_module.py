@@ -46,7 +46,6 @@ def calculate_hit_bonuses(event):
                 event = add_roll_mod(event, 20, TWIN_LINKED_MOD)
                 LOG.info('+20 to hit from twin-linked.')
             event = handler_range(event)
-
         event = handler_firemode(event)
         event = handler_size(event)
         if attack.weapon.skill_bonus is not None:
