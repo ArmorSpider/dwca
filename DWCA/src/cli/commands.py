@@ -4,14 +4,9 @@ from definitions import WEAPON, ROLL_TARGET, ATTACKER,\
     TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC, ROLL_RESULT, RANGE
 from src.action.action import try_action
 from src.action.hit import Hit
-from src.cli.auto_module import auto_assemble, range_module, equip_weapon
-from src.cli.info_module import info_module
 from src.cli.match_map import get_default_match_map
 from src.cli.message_queue import log_messages
-from src.cli.new_module import new_module
 from src.cli.quick_dict import quick_dict_parse
-from src.cli.reaction_module import defensive_action
-from src.cli.run_module import run_module
 from src.cli.table import print_table
 from src.dwca_log.log import get_log
 from src.entities import HALF_MOVE, FULL_MOVE, CHARGE_MOVE, RUN_MOVE
@@ -22,6 +17,13 @@ from src.handler import check_required_keys,\
 from src.hitloc_series import build_hitloc_iterator
 from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod,\
     get_effective_modifier
+from src.modules.auto_module import handler_auto
+from src.modules.equip_module import handler_equip
+from src.modules.info_module import handler_info
+from src.modules.new_module import handler_new
+from src.modules.range_module import handler_range
+from src.modules.reaction_module import handler_defend
+from src.modules.run_module import handler_run
 from src.save_manager import SaveManager
 from src.situational.scatter import scatter
 from src.situational.state_manager import StateManager
@@ -162,7 +164,7 @@ class CommandDefend(CLICommand):
     required_keys = []
 
     def _process_event(self, event):
-        defensive_action(event)
+        handler_defend(event)
         return event
 
 
@@ -232,7 +234,7 @@ class CommandRun(CLICommand):
     help = 'Roll attacks for the current event.'
 
     def _process_event(self, event):
-        event = run_module(event)
+        event = handler_run(event)
         return event
 
 
@@ -253,7 +255,7 @@ class CommandInfo(CLICommand):
     help = 'Show talents & traits for character.'
 
     def _process_event(self, event):
-        event = info_module(event)
+        event = handler_info(event)
         return event
 
 
@@ -291,7 +293,7 @@ class CommandEquip(CLICommand):
     def _process_event(self, event):
         weapon_name = try_user_choose_from_list(get_weapon_library().keys())
         event[WEAPON] = weapon_name
-        event = equip_weapon(event)
+        event = handler_equip(event)
         return event
 
 
@@ -301,7 +303,7 @@ class CommandNew(CLICommand):
     help = 'Configure new attack.'
 
     def _process_event(self, event):
-        event = new_module(event)
+        event = handler_new(event)
         return event
 
 
@@ -348,7 +350,7 @@ class CommandRange(CLICommand):
     def _process_event(self, event):
         range_ = self.get_arg_or_input_int('Enter range to target: ')
         event[RANGE] = range_
-        event = range_module(event)
+        event = handler_range(event)
         return event
 
 
@@ -457,7 +459,7 @@ class CommandAuto(CLICommand):
     required_keys = []
 
     def _process_event(self, event):
-        event = auto_assemble(event)
+        event = handler_auto(event)
         return event
 
 

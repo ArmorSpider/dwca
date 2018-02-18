@@ -4,9 +4,9 @@ import unittest
 from mock import patch
 
 from src.cli.commands import process_command
-from src.cli.new_module import new_module
 from src.entities.libraries import MasterLibrary
 from src.errors import OutOfRangeError
+from src.modules.new_module import handler_new
 from src.util.dict_util import pretty_print
 from src.util.rand_util import _random_int
 
@@ -49,7 +49,7 @@ class Test(unittest.TestCase):
             self._run_random_attack()
 
     def _run_random_attack(self):
-        event = new_module({})
+        event = handler_new({})
         pretty_print(event)
         event = self._run_random_command(event)
         process_command('', event)

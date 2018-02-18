@@ -10,7 +10,7 @@ from src.modifiers.roll_modifier import get_effective_modifier
 LOG = get_log(__name__)
 
 
-def defensive_action(event):
+def handler_defend(event):
     defense_test_result = roll_action_dice()
     event[ROLL_RESULT] = defense_test_result
     attempt_dodge(event)
