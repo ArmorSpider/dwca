@@ -15,7 +15,7 @@ archon:
     nerves_of_steel: true, paranoia: true, precise_blow: true, rapid_reaction: true,
     sharpshooter: true, step_aside: true, sure_strike: true, swift_attack: true, two_weapon_wielder_melee: true,
     two_weapon_wielder_ranged: true, whirlwind_of_death: true}
-  traits: {brutal_charge: 5, dark_sight: true, unnatural_agility: null, unnatural_strength: 5}
+  traits: {brutal_charge: 5, dark_sight: true, unnatural_agility: 3, unnatural_strength: 5}
   weapons: [enhanced_venomblade, blast_pistol, agoniser]
   wounds: 25
 grotesque:
