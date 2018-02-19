@@ -182,7 +182,7 @@ sslyth:
   talents: {ambidextrous: true, cold_hearted: true, combat_master: true, dual_shot: true,
     dual_strike: true, jaded: true, nerves_of_steel: true, sprint: true, two_weapon_wielder_melee: true,
     two_weapon_wielder_ranged: true}
-  traits: {auto_stabilised: true, fear: 1, multiple_arms: 4, size: 10, unnatural_strength: 4,
+  traits: {auto_stabilised: true, fear: 1, multiple_arms: 4, size: 5, unnatural_strength: 4,
     unnatural_toughness: 4}
   weapons: [shardcarbine, splinter_pistol, sslyth_blade]
   wounds: 28
