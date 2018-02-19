@@ -4,7 +4,8 @@ from src.action.psychic_attack import PsychicAttack
 from src.action.ranged_attack import RangedAttack
 from src.dwca_log.log import get_log
 from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
-    SINGLE_SHOT, WOUNDS, SKILLS, HALF_MOVE, CHARGE_MOVE, RUN_MOVE, FULL_MOVE
+    SINGLE_SHOT, WOUNDS, SKILLS, HALF_MOVE, CHARGE_MOVE, RUN_MOVE, FULL_MOVE,\
+    STANDARD_ATTACK
 from src.entities.char_stats import STAT_TGH, STAT_AGI
 from src.entities.entity import Entity
 from src.entities.libraries import read_character, get_character_library
@@ -14,7 +15,7 @@ from src.modifiers.qualities import Felling
 from src.modifiers.traits import Daemonic
 from src.situational.cover import get_cover_armor_for_hitloc
 from src.situational.force_field import ForceField
-from src.skills import get_skill_characteristic, get_all_skills, get_advanced_skills
+from src.skills import get_skill_characteristic, get_all_skills
 from src.util.rand_util import get_tens
 from src.util.user_input import try_user_choose_from_list
 
@@ -43,12 +44,20 @@ class Character(Entity):
     @property
     def num_melee_attacks(self):
         num_attacks = 1
-        if self.swift_attack is not None:
-            num_attacks += 1
-            if self.lightning_attack is not None:
+        if self.two_weapon_wielder_melee is not None:
+            penalty = 20
+            if self.ambidextrous is not None:
+                penalty -= 10
+            if self.blade_dancer is not None:
+                penalty -= 10
+            if penalty == 0:
                 num_attacks += 1
-        if self.multiple_arms is not None:
-            num_attacks += 1
+            else:
+                LOG.info(
+                    '%s could make an extra attack with -%s penalty to all attacks.', self.name, penalty)
+        if self.multiple_arms is not None and self.two_weapon_wielder_melee is not None:
+            extra_attacks = (self.multiple_arms - 2) / 2
+            num_attacks += extra_attacks
         LOG.info('%s can make %s melee attacks.', self, num_attacks)
         return num_attacks
 
@@ -61,7 +70,7 @@ class Character(Entity):
     def attack(self, weapon, target=None, firemode=SINGLE_SHOT):
         LOG.debug('%s attacks %s with a(n) %s.', self, target, weapon)
         if weapon.is_melee():
-            return self._melee_attack(weapon, target)
+            return self._melee_attack(weapon, target, firemode)
         elif weapon.is_psychic():
             return self._psychic_attack(weapon, target)
         else:
@@ -72,14 +81,6 @@ class Character(Entity):
         available_skills = {}
         for skill in get_all_skills():
             available_skills[skill] = self._get_effective_skill_rating(skill)
-        available_skills = self._remove_untrained_advanced_skills(
-            available_skills)
-        return available_skills
-
-    def _remove_untrained_advanced_skills(self, available_skills):
-        for skill in get_advanced_skills():
-            if skill not in self.skills:
-                available_skills.pop(skill, None)
         return available_skills
 
     def _get_effective_skill_rating(self, skill):
@@ -88,7 +89,7 @@ class Character(Entity):
         if trained_value is not None:
             effective_skill_rating = characteristic_value + trained_value
         else:
-            effective_skill_rating = characteristic_value / 2
+            effective_skill_rating = characteristic_value - 20
         return effective_skill_rating
 
     def get_skill_characteristic(self, skill):
@@ -96,10 +97,11 @@ class Character(Entity):
         characteristic_value = self.get_characteristic(char_stat)
         return characteristic_value
 
-    def _melee_attack(self, weapon, target=None):
+    def _melee_attack(self, weapon, target=None, firemode=STANDARD_ATTACK):
         return MeleeAttack(weapon=weapon,
                            attacker=self,
-                           target=target)
+                           target=target,
+                           firemode=firemode)
 
     def _ranged_attack(self, weapon, target=None, firemode=SINGLE_SHOT):
         return RangedAttack(weapon=weapon,
@@ -141,10 +143,10 @@ class Character(Entity):
 
     def get_modded_toughness_bonus(self, attack, hit_location=None):
         raw_bonus = self.get_raw_characteristic_bonus(STAT_TGH)
-        tgh_multiplier = self.get_characteristic_multiplier(STAT_TGH)
-        tgh_multiplier = Felling.handle_felling(attack, tgh_multiplier)
-        tgh_multiplier = Daemonic.handle_daemonic(attack, tgh_multiplier)
-        final_bonus = raw_bonus * tgh_multiplier
+        extra_toughness = self.get_unnatural_characteristic(STAT_TGH)
+        extra_toughness = Felling.handle_felling(attack, extra_toughness)
+        extra_toughness = Daemonic.handle_daemonic(attack, extra_toughness)
+        final_bonus = raw_bonus + extra_toughness
         if hit_location is not None:
             locational_toughness = self.get_locational_toughness(hit_location)
             final_bonus += locational_toughness
@@ -153,22 +155,14 @@ class Character(Entity):
     def get_characteristic_bonus(self, characteristic):
         characteristic_bonus = self.get_raw_characteristic_bonus(
             characteristic)
-        characteristic_multiplier = self.get_characteristic_multiplier(
+        unnatural_bonus = self.get_unnatural_characteristic(
             characteristic)
-        final_bonus = characteristic_bonus * characteristic_multiplier
+        final_bonus = characteristic_bonus + unnatural_bonus
         return final_bonus
-
-    def get_characteristic_multiplier(self, characteristic):
-        trait_value = self.get_unnatural_characteristic(characteristic)
-        if trait_value is not None:
-            multiplier = trait_value
-        else:
-            multiplier = DEFAULT_CHARACTERISTIC_MULTIPLIER
-        return multiplier
 
     def get_unnatural_characteristic(self, characteristic):
         trait_name = 'unnatural_{}'.format(characteristic)
-        trait_value = self.modifiers.get(trait_name)
+        trait_value = self.modifiers.get(trait_name, 0)
         return trait_value
 
     @property
@@ -181,6 +175,8 @@ class Character(Entity):
         if self.sprint is not None:
             full_move += self.get_raw_characteristic_bonus(STAT_AGI)
             run_move = '{}/{}*'.format(run_move, run_move * 2)
+        if self.preternatural_speed is not None:
+            charge_move *= 2
         movement = {HALF_MOVE: half_move,
                     FULL_MOVE: full_move,
                     CHARGE_MOVE: charge_move,
@@ -189,21 +185,23 @@ class Character(Entity):
 
     @property
     def move_mod(self):
-        agi_mod = self.get_raw_characteristic_bonus(STAT_AGI)
-        size = self.size if self.size is not None else 0
-        move_mod = agi_mod + int(size / 10)
+        agi_mod = self.get_characteristic_bonus(STAT_AGI)
+        size_modifier = (self.size_trait - 4)
+        move_mod = agi_mod + size_modifier
         if self.quadruped is not None:
             move_mod += agi_mod
         if self.jump_pack is not None:
             move_mod += agi_mod
-        if self.unnatural_speed is not None:
-            move_mod *= 2
         return move_mod
 
     @property
+    def size_trait(self):
+        return self.size if self.size is not None else 4
+
+    @property
     def size_bonus(self):
-        size_bonus = self.size if self.size is not None else 0
-        if self.black_carapace is not None:
+        size_bonus = (self.size_trait * 10) - 40
+        if self.black_carapace is not None and size_bonus > 0:
             size_bonus = 0
         return size_bonus
 

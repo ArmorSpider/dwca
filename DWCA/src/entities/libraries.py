@@ -1,3 +1,6 @@
+from __future__ import division
+
+from copy import deepcopy
 import difflib
 
 from definitions import CLASS, MELEE, WEAPONS
@@ -5,6 +8,8 @@ from src.dwca_log.log import get_log
 from src.entities import PACKAGE, NAME, DICE, DAMAGE_TYPE, PENETRATION, RANGE,\
     FLAT_DAMAGE, WOUNDS, CHARACTERISTICS, SKILLS, SPECIES, ARMOR
 from src.errors import WeaponNotFoundError, NoMatchError
+from src.systems.translate import translate_entity, translate_weapon
+from src.util.rand_util import get_tens
 from src.util.read_file import read_weapon_library, read_character_library
 from src.util.string_util import normalize_string
 
@@ -142,7 +147,8 @@ def read_character(character_name, best_match=True):
         character_name = find_best_character_match(character_name)
     character_library = get_character_library()
     try:
-        character_definition = character_library[character_name]
+        character_definition = deepcopy(character_library[character_name])
+        character_definition = translate_entity(character_definition)
         return character_definition
     except KeyError:
         print '"{}" not available.'.format(character_name)
@@ -153,7 +159,8 @@ def read_weapon(weapon_name, best_match=True):
         weapon_name = find_best_weapon_match(weapon_name)
     weapon_library = get_weapon_library()
     try:
-        weapon_definition = weapon_library[weapon_name]
+        weapon_definition = deepcopy(weapon_library[weapon_name])
+        weapon_definition = translate_weapon(weapon_definition)
         return weapon_definition
     except KeyError:
         print '"{}" not available.'.format(weapon_name)

@@ -9,6 +9,14 @@ assault_cannon:
   penetration: 6
   qualities: {devastating: 1, tearing: true}
   range: 150
+traitors_bane:
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 7
+  penetration: 7
+  qualities: {power_field: true, special: true, felling: 2}
 autocannon:
   _system: deathwatch
   class: Heavy

@@ -45,7 +45,7 @@ class Action(object):
     @property
     def degrees_of_success(self):
         if self.is_successfull() is True:
-            dos = get_tens(self.roll_target - self.roll_result)
+            dos = 1 + get_tens(self.roll_target - self.roll_result)
         else:
             dos = -1
         LOG.debug('Action has %s DoS', dos)

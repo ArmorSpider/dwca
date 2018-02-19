@@ -1,8 +1,11 @@
 from definitions import CLASS, MELEE, RANGED_CLASSES
 from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO,\
-    DAMAGE_TYPE, FLAT_DAMAGE, PENETRATION, DICE, RANGE, PSYCHIC, STANDARD_ATTACK
+    DAMAGE_TYPE, FLAT_DAMAGE, PENETRATION, DICE, RANGE, PSYCHIC, STANDARD_ATTACK,\
+    SWIFT_ATTACK, LIGHTNING_ATTACK
 from src.entities.entity import Entity
 from src.entities.libraries import read_weapon
+
+# DEVTEST
 
 
 def get_weapon(weapon_name):
@@ -70,7 +73,11 @@ class Weapon(Entity):
                 if rate_of_fire is not None:
                     available_firemodes[firemode] = rate_of_fire
         elif self.is_melee():
-            available_firemodes = {STANDARD_ATTACK: True}
+            available_firemodes = {STANDARD_ATTACK: True,
+                                   SWIFT_ATTACK: True,
+                                   LIGHTNING_ATTACK: True}
+            if self.unbalanced is not None or self.unwieldy is not None:
+                available_firemodes.pop(LIGHTNING_ATTACK)
         return available_firemodes
 
     @property

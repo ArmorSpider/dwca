@@ -11,6 +11,6 @@ class Test(unittest.TestCase):
         attack = Action()
         attack.roll_result = 1
         attack.roll_target = 61
-        expected = [9, 6, 5]
+        expected = [9, 7, 5]
         actual = handle_dos_minimum_damage(attack, roll_results)
         self.assertEqual(expected, actual)

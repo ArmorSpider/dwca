@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
             tens = 0
         # print 'Roll: {}, Target: {}, Diff:{} , DoS: {}'.format(roll_result, roll_target,
         # diff, dos)
-        self.assertTrue(dos <= tens)
+        self.assertTrue(dos <= tens + 1)
 
 
 if __name__ == "__main__":

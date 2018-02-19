@@ -1,8 +1,7 @@
 damocles:
   _system: deathwatch
-  armor: {all: 8, body: 14, left_arm: 12}
+  armor: {all: 14, body: 18, left_arm: 18}
   characteristics: {strength: 54, toughness: 61}
-  force_field: {overload_max: 10, protection_max: 55}
   name: Damocles
   species: human
   traits: {black_carapace: true, power_armour: true, size: 10, unnatural_strength: 2,
@@ -26,9 +25,9 @@ furios:
   wounds: 22
 gilmech:
   _system: deathwatch
-  armor: {body: 13, head: 13, left_arm: 11, left_leg: 11, right_arm: 11, right_leg: 11}
+  toughness: {head: 2}
+  armor: {all: 17, body: 21, left_arm: 21}
   characteristics: {strength: 43, toughness: 50}
-  force_field: {overload_max: 10, protection_max: 55}
   name: Gilmech
   talents: {deathwatch_training: true, mighty_shot: true}
   traits: {black_carapace: true, power_armour: true, size: 10, unnatural_strength: 2,
@@ -48,7 +47,7 @@ marius:
   weapons: [marius_honour_blades, hellfire_bolt_pistol, bolter, marius_executioner_axe]
 morgan:
   _system: deathwatch
-  armor: {all: 8, body: 10}
+  armor: {all: 14}
   characteristics: {agility: 51, ballistic_skill: 44, fellowship: 33, intelligence: 39,
     perception: 33, strength: 59, toughness: 41, weapon_skill: 60, willpower: 48}
   name: Morgan

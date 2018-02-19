@@ -23,30 +23,31 @@ class Test(unittest.TestCase):
                     }
 
         }
-        character_with_characteristics = {
-            TRAITS: {'unnatural_strength': 2,
-                     'unnatural_toughness': 3,
-                     'unnatural_agility': 4,
-                     'size': 20},
-            TALENTS: {'good_listener': True},
-            STAT_TGH: {'all': 2, 'head': 1},
-            CHARACTERISTICS: {STAT_WS: 10,
-                              STAT_BS: 20,
-                              STAT_STR: 29,
-                              STAT_TGH: 35,
-                              STAT_AGI: 30,
-                              STAT_INT: 40,
-                              STAT_PER: 50,
-                              STAT_WIL: 60,
-                              STAT_FEL: 70,
-                              }
-
-        }
         self.force_field_char_def = {'name': 'Mr. Force Field', 'force_field': {
             PROTECTION_MAX: 65, OVERLOAD_MAX: 10}}
         self.char_with_force_field = Character(self.force_field_char_def)
 
-        self.char_with_stats = Character(character_with_characteristics)
+        self.char_with_stats = build_mock_entity('CharWithChars',
+                                                 _system='deathwatch',
+                                                 traits={'unnatural_strength': 2,
+                                                         'unnatural_toughness': 3,
+                                                         'unnatural_agility': 4,
+                                                         'size': 20},
+                                                 talents={
+                                                     'good_listener': True},
+                                                 toughness={
+                                                     'all': 2, 'head': 1},
+                                                 characteristics={STAT_WS: 10,
+                                                                  STAT_BS: 20,
+                                                                  STAT_STR: 29,
+                                                                  STAT_TGH: 35,
+                                                                  STAT_AGI: 30,
+                                                                  STAT_INT: 40,
+                                                                  STAT_PER: 50,
+                                                                  STAT_WIL: 60,
+                                                                  STAT_FEL: 70,
+                                                                  }
+                                                 )
         self.character = Character(character_definition)
         register_modifiers()
 
@@ -121,15 +122,16 @@ class Test(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_modifers_should_include_traits_and_talents(self):
+        # This will look for translated values.
         expected = {'unnatural_strength': 2,
-                    'unnatural_toughness': 3,
-                    'unnatural_agility': 4,
+                    'unnatural_toughness': 6,
+                    'unnatural_agility': 9,
                     'good_listener': True,
-                    'size': 20}
+                    'size': 6}
         actual = self.char_with_stats.modifiers
         self.assertEqual(expected, actual)
 
-    def test_size_bonus_should_return_size_trait_value(self):
+    def test_size_bonus_should_return_size_hit_modifier(self):
         expected = 20
         actual = self.char_with_stats.size_bonus
         self.assertEqual(expected, actual)
@@ -163,15 +165,17 @@ class Test(unittest.TestCase):
 
     def test_black_carapace_should_set_size_bonus_to_zero(self):
         mockman = build_mock_entity('Mockman',
+                                    _system='deathwatch',
                                     traits={'size': 10, 'black_carapace': True})
         expected = 0
         actual = mockman.size_bonus
         self.assertEqual(expected, actual)
 
     def test_getattr_should_do_lookup_in_modifiers(self):
+        # This will look for translated values.
         self.assertEqual(2, self.char_with_stats.unnatural_strength)
-        self.assertEqual(3, self.char_with_stats.unnatural_toughness)
-        self.assertEqual(4, self.char_with_stats.unnatural_agility)
+        self.assertEqual(6, self.char_with_stats.unnatural_toughness)
+        self.assertEqual(9, self.char_with_stats.unnatural_agility)
         self.assertEqual(True, self.char_with_stats.good_listener)
 
     def test_getting_attribute_that_does_not_exist_in_modifers_should_raise_attributeerror(self):
