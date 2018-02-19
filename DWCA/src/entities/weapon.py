@@ -28,7 +28,7 @@ class Weapon(Entity):
 
     @property
     def weapon_class(self):
-        return self.get_stat(CLASS, 'Melee')
+        return self.get_stat(CLASS, MELEE)
 
     @property
     def range_options(self):
