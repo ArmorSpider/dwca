@@ -1,3 +1,20 @@
+veldoran:
+  _package: dark_eldar
+  _system: deathwatch
+  armor: {all: 3, head: 5}
+  characteristics: {agility: 61, ballistic_skill: 60, fellowship: 52, intelligence: 65,
+    perception: 55, strength: 35, toughness: 41, weapon_skill: 65, willpower: 73}
+  force_field: {overload_max: 0, protection_max: 73}
+  name: Farseer Veldoran
+  skills: {awareness: 10, dodge: 20, invocation: 20, psyniscience: 20}
+  species: eldar
+  talents: {catfall: true, hard_target: true, improved_warp_sense: true, lightning_reflexes: true,
+    psy_rating: 10, resistance_psychic: true, sprint: true, step_aside: true, strong_minded: true,
+    warp_conduit: true, warp_sense: true}
+  traits: {dark_sight: true, ghosthelm: true, runes_of_warding: true, runes_of_witnessing: true,
+    spirit_stones: true, touched_by_the_fates: 5, unnatural_agility: 2, unnatural_willpower: 2}
+  weapons: [blast_pistol, focus_test]
+  wounds: 19
 archon:
   _package: dark_eldar
   armor: {all: 6}
