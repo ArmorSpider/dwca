@@ -130,6 +130,18 @@ class CommandDPS(CLICommand):
         return event
 
 
+class CommandAdd(CLICommand):
+
+    keyword = 'add'
+    help = 'adds a character to the battlefield'
+
+    def _process_event(self, event):
+        entity_name = self.get_arg_or_select_from_list(
+            'Select character to add: ', get_character_library().keys())
+        StateManager.add_character(entity_name)
+        return event
+
+
 class CommandMove(CLICommand):
 
     keyword = 'move'
