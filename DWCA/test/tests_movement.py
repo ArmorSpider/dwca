@@ -5,7 +5,7 @@ from src.entities import HALF_MOVE, FULL_MOVE, CHARGE_MOVE,\
 from src.entities.char_stats import STAT_AGI
 from src.modifiers.talents import Sprint
 from src.modifiers.traits import Size, Quadruped, UnnaturalSpeed, JumpPack,\
-    BlackCarapace, UnnaturalAgility, PreternaturalSpeed
+    BlackCarapace, UnnaturalAgility, PreternaturalSpeed, EnhancedMotiveSystems
 from test.test_util import build_mock_entity
 
 
@@ -164,5 +164,18 @@ class Test(unittest.TestCase):
                     FULL_MOVE: 20,
                     CHARGE_MOVE: 20,
                     RUN_MOVE: 20}
+        actual = movevan.movement
+        self.assertEqual(expected, actual)
+
+    def test_enhanced_motive_systems_should_increase_vehicle_movement(self):
+        movevan = build_mock_entity('Movevan',
+                                    vehicle=True,
+                                    speed=10,
+                                    traits={EnhancedMotiveSystems.name: True})
+
+        expected = {HALF_MOVE: 20,
+                    FULL_MOVE: 30,
+                    CHARGE_MOVE: 30,
+                    RUN_MOVE: 30}
         actual = movevan.movement
         self.assertEqual(expected, actual)

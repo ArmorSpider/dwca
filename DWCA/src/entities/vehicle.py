@@ -21,6 +21,12 @@ class Vehicle(Character):
         full_move = move_mod * 2
         charge_move = move_mod * 2
         run_move = move_mod * 2
+        if self.enhanced_motive_systems is not None:
+            half_move = move_mod * 2
+            full_move = move_mod * 3
+            charge_move = move_mod * 3
+            run_move = move_mod * 3
+
         movement = {HALF_MOVE: half_move,
                     FULL_MOVE: full_move,
                     CHARGE_MOVE: charge_move,

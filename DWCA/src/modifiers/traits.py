@@ -135,3 +135,8 @@ class JumpPack(Modifier):
 class PreternaturalSpeed(Modifier):
 
     name = 'preternatural_speed'
+
+
+class EnhancedMotiveSystems(Modifier):
+
+    name = 'enhanced_motive_systems'
