@@ -139,3 +139,8 @@ class PreternaturalSpeed(Modifier):
 class EnhancedMotiveSystems(Modifier):
 
     name = 'enhanced_motive_systems'
+
+
+class Ponderous(Modifier):
+
+    name = 'ponderous'
