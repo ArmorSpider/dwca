@@ -103,7 +103,6 @@ class UnnaturalWillpower(Modifier):
     name = 'unnatural_willpower'
 
     def modify_psy_rating(self, attack, psy_rating):
-        psy_rating += attack.unnatural_willpower
         return psy_rating
 
 
