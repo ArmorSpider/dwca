@@ -2,6 +2,7 @@ air_caste_pilot:
   _package: tau
   _system: deathwatch
   armor: {all: 5}
+  skills: {pilot: 20, drive: 20}
   characteristics: {agility: 35, ballistic_skill: 35, fellowship: 30, intelligence: 30,
     perception: 30, strength: 20, toughness: 30, weapon_skill: 25, willpower: 30}
   name: Air Caste Pilot
@@ -13,13 +14,17 @@ barracuda:
   _package: tau
   _system: deathwatch
   armor: {all: 25, rear: 20}
-  characteristics: {ballistic_skill: 35}
+  skills: {pilot: 20, drive: 20}
+  characteristics: {agility: 35, ballistic_skill: 35, fellowship: 30, intelligence: 30,
+    perception: 30, strength: 20, toughness: 30, weapon_skill: 25, willpower: 30}
   name: Barracuda Fighter
   species: machine
   traits: {size: 20}
   vehicle: true
   weapons: [ion_cannon, twin_missile_pod, burst_cannon]
   wounds: 30
+  manouverability: 10
+  speed: 30
 broadside_battlesuit:
   _package: tau
   _system: deathwatch
@@ -62,13 +67,17 @@ hammerhead_gunship:
   _package: tau
   _system: deathwatch
   armor: {front: 40, rear: 24, side: 32}
-  characteristics: {ballistic_skill: 55}
+  skills: {pilot: 20, drive: 20}
+  characteristics: {agility: 35, ballistic_skill: 35, fellowship: 30, intelligence: 30,
+    perception: 30, strength: 20, toughness: 30, weapon_skill: 25, willpower: 30}
   name: Hammerhead Gunship
   species: machine
   traits: {size: 20}
   vehicle: true
   weapons: [burst_cannon, railgun_ap, railgun_sub]
   wounds: 35
+  manouverability: 17
+  speed: 10
 pathfinder:
   _package: tau
   _system: deathwatch
@@ -128,24 +137,32 @@ sky_ray_gunship:
   _package: tau
   _system: deathwatch
   armor: {front: 40, rear: 24, side: 32}
-  characteristics: {ballistic_skill: 35}
+  skills: {pilot: 20, drive: 20}
+  characteristics: {agility: 35, ballistic_skill: 35, fellowship: 30, intelligence: 30,
+    perception: 30, strength: 20, toughness: 30, weapon_skill: 25, willpower: 30}
   name: Sky Ray Missile Defence Gunship
   species: machine
   traits: {seeker_missile: 6, size: 20}
   vehicle: true
   weapons: [burst_cannon, markerlight, seeker_missile]
   wounds: 35
+  speed: 10
+  manouverability: 17
 stealth_drone:
   _package: tau
   _system: deathwatch
   armor: {all: 25, rear: 20}
-  characteristics: {ballistic_skill: 25}
+  skills: {drive: 0, pilot: 0}
+  characteristics: {agility: 40, ballistic_skill: 25, fellowship: 10, intelligence: 15,
+    perception: 25, strength: 20, toughness: 40, weapon_skill: 20, willpower: 20}
   name: Remora Stealth Drone Fighter
   species: machine
   traits: {networked_machine_intelligence: true, seeker_missile: 2, size: 10, stealth_field: true}
   vehicle: true
   weapons: [twin_burst_cannons, seeker_missile, markerlight]
   wounds: 20
+  speed: 30
+  manouverability: 30
 stealth_suit:
   _package: tau
   _system: deathwatch

@@ -3,7 +3,7 @@ from src.action.action import try_action
 from src.dice import roll_action_dice
 from src.dwca_log.log import get_log
 from src.handler import build_base_attack,\
-    choose_or_build_attacker
+    choose_or_build_attacker, build_attacker
 from src.modifiers.roll_modifier import get_effective_modifier
 
 
@@ -13,14 +13,30 @@ LOG = get_log(__name__)
 def handler_defend(event):
     defense_test_result = roll_action_dice()
     event[ROLL_RESULT] = defense_test_result
-    attempt_dodge(event)
-    attempt_parry(event)
+    attacker = choose_or_build_attacker(event)
+    if attacker.is_vehicle():
+        attempt_vehicle_dodge(event)
+    else:
+        attempt_dodge(event)
+        attempt_parry(event)
     event.pop(ROLL_RESULT)
     return event
 
 
+def attempt_vehicle_dodge(event):
+    attacker = build_attacker(event)
+    base_target = attacker.available_skills.get('operate', 0)
+    modifier = get_effective_modifier(event, manual_only=True)
+    size_modifier = -attacker.size_bonus
+    manouverability = attacker.manouverability
+    roll_result = event.get(ROLL_RESULT)
+    roll_target = base_target + modifier + size_modifier + manouverability
+    LOG.info('[DODGE TEST]')
+    try_action(roll_target, roll_result)
+
+
 def attempt_dodge(event):
-    attacker = choose_or_build_attacker(event)
+    attacker = build_attacker(event)
     roll_result = event.get(ROLL_RESULT)
     base_target = attacker.available_skills.get('dodge')
     modifier = get_effective_modifier(event, manual_only=True)
