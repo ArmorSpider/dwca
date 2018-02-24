@@ -154,3 +154,15 @@ class Test(unittest.TestCase):
                     RUN_MOVE: 12}
         actual = moveman.movement
         self.assertEqual(expected, actual)
+
+    def test_vehicle_movement_should_use_tactical_speed(self):
+        movevan = build_mock_entity('Movevan',
+                                    vehicle=True,
+                                    speed=10)
+
+        expected = {HALF_MOVE: 10,
+                    FULL_MOVE: 20,
+                    CHARGE_MOVE: 20,
+                    RUN_MOVE: 20}
+        actual = movevan.movement
+        self.assertEqual(expected, actual)
