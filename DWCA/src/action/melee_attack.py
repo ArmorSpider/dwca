@@ -3,8 +3,9 @@ from lazy.lazy import lazy
 from definitions import FIREMODE, NUM_HITS
 from src.action.attack import Attack
 from src.dwca_log.log import get_log
-from src.entities import FLAT_DAMAGE, SWIFT_ATTACK, LIGHTNING_ATTACK
-from src.entities.char_stats import STAT_STR, STAT_WS
+from src.entities import FLAT_DAMAGE, SWIFT_ATTACK, LIGHTNING_ATTACK, DICE
+from src.entities.char_stats import STAT_WS, STAT_STR
+from src.modifiers.states import Helpless
 
 
 LOG = get_log(__name__)
@@ -16,6 +17,22 @@ class MeleeAttack(Attack):
         super(MeleeAttack, self).__init__(weapon, attacker, target)
         self.firemode = firemode
         self.update_metadata({FIREMODE: self.firemode})
+
+    def is_successfull(self):
+        if self.helpless is not None:
+            LOG.debug('HELPLESS: Automatic success for WS attacks')
+            return True
+        else:
+            return super(MeleeAttack, self).is_successfull()
+
+    @property
+    def degrees_of_success(self):
+        if self.helpless is not None:
+            ws_bonus = self.attacker.get_characteristic_bonus(STAT_WS)
+            LOG.debug('HELPLESS: Automatic DoS equal to WS bonus (%s)', ws_bonus)
+            return ws_bonus
+        else:
+            return super(MeleeAttack, self).degrees_of_success
 
     @lazy
     def flat_damage(self):
@@ -59,3 +76,10 @@ class MeleeAttack(Attack):
             LOG.debug('DoS hits: %s (%s DoS/2)',
                       horde_dos_hits, self.degrees_of_success)
         return horde_dos_hits
+
+    @lazy
+    def num_dice(self):
+        num_dice = super(MeleeAttack, self).num_dice
+        num_dice = Helpless.handle_helpless(self, num_dice)
+        self.update_metadata({DICE: num_dice})
+        return num_dice

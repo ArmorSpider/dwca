@@ -76,6 +76,17 @@ class Cover(Modifier):
         return current_armor
 
 
+class Helpless(Modifier):
+
+    name = 'helpless'
+
+    @staticmethod
+    def handle_helpless(attack, current_num_dice):
+        if attack.helpless is not None:
+            current_num_dice *= 2
+        return current_num_dice
+
+
 class Fettered(Modifier):
 
     name = 'fettered'

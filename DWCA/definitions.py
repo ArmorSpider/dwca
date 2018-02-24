@@ -45,6 +45,7 @@ OVERLOADED = 'overloaded'
 CHARGED = 'charged'
 COVER = 'cover'
 JAMMED = 'jammed'
+HELPLESS = 'helpless'
 
 # Commands
 RUN = 'run'
