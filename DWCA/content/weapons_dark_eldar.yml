@@ -192,6 +192,19 @@ disintegrator:
   dice: 2
   flat_damage: 6
   penetration: 9
+splinter_pod:
+  _package: dark_eldar
+  name: Splinter Pod
+  class: Basic
+  range: 75
+  single_shot: 1
+  semi_auto: 5
+  full_auto: 7
+  dice: 1
+  flat_damage: 2
+  penetration: 3
+  damage_type: R
+  qualities: {toxic: 1}
 splinter_rifle:
   _package: dark_eldar
   class: Basic
