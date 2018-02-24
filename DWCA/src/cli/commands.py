@@ -1,7 +1,8 @@
 import sys
 
 from definitions import WEAPON, ROLL_TARGET, ATTACKER,\
-    TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC, ROLL_RESULT, RANGE
+    TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC, ROLL_RESULT, RANGE,\
+    HELPLESS
 from src.action.action import try_action
 from src.action.hit import Hit
 from src.cli.match_map import get_default_match_map
@@ -365,6 +366,16 @@ class CommandOverload(CLICommand):
         return event
 
 
+class CommandHelpless(CLICommand):
+
+    keyword = 'helpless'
+    help = 'Toggle helpless TRUE/FALSE for current event'
+
+    def _process_event(self, event):
+        event = self._toggle_adhoc_key(HELPLESS, event, True)
+        return event
+
+
 class CommandRange(CLICommand):
 
     keyword = 'range'
@@ -393,6 +404,7 @@ class CommandCharge(CLICommand):
 
     keyword = 'charge'
     help = 'Toggle charge TRUE/FALSE for current event.'
+    required_keys = [ATTACKER]
 
     def _process_event(self, event):
         event = self._toggle_adhoc_key(CHARGED, event)
@@ -409,6 +421,7 @@ class CommandAim(CLICommand):
 
     keyword = 'aim'
     help = 'Toggle aim TRUE/FALSE for the current event'
+    required_keys = [WEAPON]
 
     def _process_event(self, event):
         event = self._toggle_adhoc_key(AIMED, event)
