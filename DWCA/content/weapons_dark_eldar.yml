@@ -3,7 +3,7 @@ agoniser:
   class: Melee
   damage_type: E
   dice: 1
-  flat_damage: 7
+  flat_damage: 0
   name: Agoniser
   penetration: 6
   qualities: {flexible: true, power_field: true, shocking: true, tearing: true}
@@ -12,7 +12,7 @@ blade_of_the_sisterhood:
   class: Melee
   damage_type: R
   dice: 1
-  flat_damage: 3
+  flat_damage: 0
   name: Blade of the Sisterhood
   penetration: 2
   qualities: {balanced: true, crippling: 4, felling: 4, toxic: 4}
@@ -66,7 +66,7 @@ hellglaive:
   class: Melee
   damage_type: R
   dice: 1
-  flat_damage: 8
+  flat_damage: 5
   name: Hellglaive
   penetration: 3
   qualities: {razor_sharp: true}
@@ -75,7 +75,7 @@ impaler:
   class: Melee
   damage_type: R
   dice: 1
-  flat_damage: 5
+  flat_damage: 0
   name: Impaler
   penetration: 0
   qualities: {toxic: 2}
@@ -84,7 +84,7 @@ implanted_blades:
   class: Melee
   damage_type: R
   dice: 1
-  flat_damage: 8
+  flat_damage: 0
   name: Implanted Blades
   penetration: 3
   qualities: {tearing: true}
@@ -102,7 +102,7 @@ poisoned_blade:
   class: Melee
   damage_type: R
   dice: 1
-  flat_damage: 3
+  flat_damage: 0
   name: Poisoned Blade
   penetration: 2
   qualities: {toxic: 2}
@@ -111,7 +111,7 @@ razorflail:
   class: Melee
   damage_type: R
   dice: 1
-  flat_damage: 6
+  flat_damage: 2
   name: Razorflail
   penetration: 2
   qualities: {flexible: true}
@@ -120,7 +120,7 @@ scabrous_claws:
   class: Melee
   damage_type: R
   dice: 1
-  flat_damage: 7
+  flat_damage: 0
   name: Scabrous Claws
   penetration: 0
   qualities: {tearing: true}
@@ -142,7 +142,7 @@ shardnet:
   class: Melee
   damage_type: R
   dice: 1
-  flat_damage: 4
+  flat_damage: 0
   name: Shardnet
   penetration: 0
   qualities: {snare: 2}
@@ -182,6 +182,16 @@ splinter_pistol:
   range: 30
   semi_auto: 3
   single_shot: 1
+disintegrator:
+  _package: dark_eldar
+  class: Mounted
+  damage_type: E
+  range: 200
+  name:  Disintegrator
+  full_auto: 10
+  dice: 2
+  flat_damage: 6
+  penetration: 9
 splinter_rifle:
   _package: dark_eldar
   class: Basic
@@ -200,7 +210,7 @@ sslyth_blade:
   class: Melee
   damage_type: R
   dice: 1
-  flat_damage: 9
+  flat_damage: 0
   name: Xenos Blade
   penetration: 2
   qualities: {balanced: true, razor_sharp: true}
@@ -210,7 +220,7 @@ klaive:
   class: Melee
   damage_type: E
   dice: 1
-  flat_damage: 12
+  flat_damage: 8
   penetration: 8
   qualities: {power_field: true}
 demi_klaive:
@@ -219,7 +229,7 @@ demi_klaive:
   class: Melee
   damage_type: E
   dice: 1
-  flat_damage: 8
+  flat_damage: 4
   penetration: 6
   qualities: {power_field: true}
 combo_klaive:
@@ -228,7 +238,7 @@ combo_klaive:
   class: Melee
   damage_type: E
   dice: 1
-  flat_damage: 16
+  flat_damage: 12
   penetration: 8
   qualities: {power_field: true, unwieldy: true}
 venomblade:
@@ -236,7 +246,7 @@ venomblade:
   class: Melee
   damage_type: R
   dice: 1
-  flat_damage: 8
+  flat_damage: 4
   name: Venomblade
   penetration: 2
   qualities: {felling: 2, toxic: 4}
@@ -254,7 +264,7 @@ wych_knife:
   class: Melee
   damage_type: E
   dice: 1
-  flat_damage: 6
+  flat_damage: 2
   name: Wych Knife
   penetration: 0
   qualities: {balanced: true}

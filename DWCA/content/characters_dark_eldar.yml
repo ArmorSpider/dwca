@@ -1,10 +1,10 @@
 archon:
-  name: Archon
   _package: dark_eldar
   armor: {all: 6}
   characteristics: {agility: 66, ballistic_skill: 68, fellowship: 57, intelligence: 58,
     perception: 58, strength: 48, toughness: 44, weapon_skill: 68, willpower: 59}
   force_field: {overload_max: 5, protection_max: 20}
+  name: Archon
   skills: {acrobatics: 20, awareness: 30, charm: 10, command: 30, deceive: 30, dodge: 20,
     inquiry: 10, interrogation: 30, intimidate: 30, parry: 20, scrutiny: 30, sleight_of_hand: 10,
     stealth: 10, tech_use: 0}
@@ -31,17 +31,6 @@ grotesque:
     unnatural_toughness: 3}
   weapons: [implanted_blades]
   wounds: 40
-incubus:
-  _package: dark_eldar
-  species: dark_eldar
-  name: Incubus
-  wounds: 16
-  armor: {all: 8}
-  skills: {athletics: 0, awareness: 10, command: 0, dodge: 0, intimidate: 20, parry: 20, scrutiny: 10, stealth: 0}
-  talents: {ambidextrous: true, cold_hearted: true, combat_master: true, disturbing_voice: true, hard_target: true, jaded: true, leap_up: true, light_sleeper: true, lightning_attack: true, lightning_reflexes: true, nerves_of_steel: true, paranoia: true, precise_blow: true, rapid_reaction: true, sure_strike: true, swift_attack: true, two_weapon_wielder_melee: true}
-  traits: {dark_sight: true, unnatural_agility: true}
-  characteristics: {weapon_skill: 59, ballistic_skill: 44, strength: 45, toughness: 45, agility: 57, intelligence: 35, perception: 37, willpower: 39, fellowship: 30}
-  weapons: [klaive, demi_klaive, combo_klaive]
 hekatrix_bloodbride:
   _package: dark_eldar
   armor: {all: 3}
@@ -57,7 +46,7 @@ hekatrix_bloodbride:
     swift_attack: true, two_weapon_wielder_melee: true, two_weapon_wielder_ranged: true,
     unarmed_master: true, unarmed_warrior: true}
   traits: {brutal_charge: 5, dark_sight: true, unnatural_agility: 3, unnatural_strength: 5}
-  weapons: [wych_knife, shardnet, razorflail]
+  weapons: [splinter_pistol, wych_knife, razorflail, impaler, shardnet]
   wounds: 1
 hellion:
   _package: dark_eldar
@@ -76,11 +65,29 @@ hellion:
 hellion_skyboard:
   _package: dark_eldar
   armor: {all: 12, rear: 0}
+  manouverability: 25
   name: Hellion Skyboard
   speed: 18
-  traits: {size: 5}
+  traits: {bike: true, enhanced_motive_systems: true, open_topped: true, size: 5,
+    skimmer: true}
   vehicle: true
   wounds: 10
+incubus:
+  _package: dark_eldar
+  armor: {all: 8}
+  characteristics: {agility: 57, ballistic_skill: 44, fellowship: 30, intelligence: 35,
+    perception: 37, strength: 45, toughness: 45, weapon_skill: 59, willpower: 39}
+  name: Incubus
+  skills: {athletics: 0, awareness: 10, command: 0, dodge: 0, intimidate: 20, parry: 20,
+    scrutiny: 10, stealth: 0}
+  species: dark_eldar
+  talents: {ambidextrous: true, cold_hearted: true, combat_master: true, disturbing_voice: true,
+    hard_target: true, jaded: true, leap_up: true, light_sleeper: true, lightning_attack: true,
+    lightning_reflexes: true, nerves_of_steel: true, paranoia: true, precise_blow: true,
+    rapid_reaction: true, sure_strike: true, swift_attack: true, two_weapon_wielder_melee: true}
+  traits: {dark_sight: true, unnatural_agility: true}
+  weapons: [klaive, demi_klaive, combo_klaive]
+  wounds: 16
 kabalite_trueborn:
   _package: dark_eldar
   armor: {all: 4}
@@ -144,6 +151,19 @@ lhamaean:
   traits: {dark_sight: true, unnatural_agility: 3, unnatural_strength: 5}
   weapons: [blade_of_the_sisterhood, enhanced_splinter_pistol]
   wounds: 13
+ravager:
+  _package: dark_eldar
+  armor: {all: 27, rear: 20}
+  characteristics: {agility: 57, ballistic_skill: 46, fellowship: 44, intelligence: 33,
+    perception: 45, strength: 34, toughness: 39, weapon_skill: 41, willpower: 31}
+  manouverability: 15
+  name: Ravager
+  speed: 21
+  traits: {enhanced_motive_systems: true, flicker_field: true, open_topped: true,
+    size: 6, skimmer: true}
+  vehicle: true
+  weapons: [disintegrator, dark_lance]
+  wounds: 36
 scourge:
   _package: dark_eldar
   armor: {all: 6}
@@ -159,17 +179,6 @@ scourge:
   traits: {dark_sight: true, flyer: 8, unnatural_agility: 3}
   weapons: [shardcarbine, blaster, dark_lance, splinter_cannon, poisoned_blade]
   wounds: 13
-succubus:
-  _package: dark_eldar
-  name: Succubus
-  species: dark_eldar
-  wounds: 23
-  armor: {all: 3}
-  skills: {acrobatics: 30, athletics: 20, awareness: 20, charm: 0, command: 10, deceive: 0, dodge: 20, intimidate: 10, parry: 20, scrutiny: 10, sleight_of_hand: 10 ,stealth: 30}
-  characteristics: {weapon_skill: 75, ballistic_skill: 55, strength: 44, toughness: 43, agility: 72, intelligence: 44, perception: 56, willpower: 54, fellowship: 51}
-  talents: {ambidextrous: true, assassin_strike: true, berserk_charge: true, blade_dancer: true, catfall: true, combat_master: true, counter_attack: true, deflect_shot: true, die_hard: true, disarm: true, hard_target: true, jaded: true, leap_up: true, light_sleeper: true, lightning_attack: true, lightning_reflexes: true, nerves_of_steel: true, paranoia: true, precise_blow: true, preternatural_speed: true, step_aside: true, street_fightning: true, sure_strike: true, swift_attack: true, two_weapon_wielder_melee: true, two_weapon_wielder_ranged: true, unarmed_master: true, unarmed_warrior: true, whirlwind_of_death: true}
-  traits: {dark_sight: true, unnatural_agility: 3, unnatural_strength: 5, brutal_charge: 5}
-  weapons: [agoniser, enhanced_splinter_pistol, shardnet, impaler]
 sslyth:
   _package: dark_eldar
   armor: {all: 7}
@@ -186,6 +195,25 @@ sslyth:
     unnatural_toughness: 4}
   weapons: [shardcarbine, splinter_pistol, sslyth_blade]
   wounds: 28
+succubus:
+  _package: dark_eldar
+  armor: {all: 3}
+  characteristics: {agility: 72, ballistic_skill: 55, fellowship: 51, intelligence: 44,
+    perception: 56, strength: 44, toughness: 43, weapon_skill: 75, willpower: 54}
+  name: Succubus
+  skills: {acrobatics: 30, athletics: 20, awareness: 20, charm: 0, command: 10, deceive: 0,
+    dodge: 20, intimidate: 10, parry: 20, scrutiny: 10, sleight_of_hand: 10, stealth: 30}
+  species: dark_eldar
+  talents: {ambidextrous: true, assassin_strike: true, berserk_charge: true, blade_dancer: true,
+    catfall: true, combat_master: true, counter_attack: true, deflect_shot: true,
+    die_hard: true, disarm: true, hard_target: true, jaded: true, leap_up: true, light_sleeper: true,
+    lightning_attack: true, lightning_reflexes: true, nerves_of_steel: true, paranoia: true,
+    precise_blow: true, preternatural_speed: true, step_aside: true, street_fightning: true,
+    sure_strike: true, swift_attack: true, two_weapon_wielder_melee: true, two_weapon_wielder_ranged: true,
+    unarmed_master: true, unarmed_warrior: true, whirlwind_of_death: true}
+  traits: {brutal_charge: 5, dark_sight: true, unnatural_agility: 3, unnatural_strength: 5}
+  weapons: [agoniser, enhanced_splinter_pistol, shardnet, impaler, razorflail]
+  wounds: 23
 ur_guhl:
   _package: dark_eldar
   armor: {all: 2}
