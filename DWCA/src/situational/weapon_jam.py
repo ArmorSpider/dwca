@@ -32,7 +32,7 @@ def is_weapon_jammed(attack):
 
 
 def get_jam_threshold(attack):
-    if attack.overheats is not None:
+    if attack.overheats is not None or attack.unreliable is not None:
         jam_threshold = 91
     else:
         jam_threshold = 96 if attack.firemode == SINGLE_SHOT else 94

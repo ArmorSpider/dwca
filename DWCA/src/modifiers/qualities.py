@@ -464,3 +464,8 @@ class Lance(Modifier):
 class SkillBonus(Modifier):
 
     name = 'skill_bonus'
+
+
+class Unreliable(Modifier):
+
+    name = 'unreliable'

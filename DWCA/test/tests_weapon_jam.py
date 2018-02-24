@@ -4,7 +4,7 @@ from src.action.ranged_attack import RangedAttack
 from src.dice import queue_d10_rolls
 from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
 from src.entities.weapon import Weapon, get_weapon
-from src.modifiers.qualities import Reliable, NeverJams, OverHeats
+from src.modifiers.qualities import Reliable, NeverJams, OverHeats, Unreliable
 from src.situational.weapon_jam import is_weapon_jammed
 
 
@@ -124,6 +124,15 @@ class Test(TestCase):
 
     def test_single_shot_roll_result_91_and_overheats_should_return_true(self):
         qualities = {OverHeats.name: True}
+        attack = self._build_attack(roll_result=91,
+                                    firemode=SINGLE_SHOT,
+                                    qualities=qualities)
+        expected = True
+        actual = is_weapon_jammed(attack)
+        self.assertEqual(expected, actual)
+
+    def test_single_shot_roll_result_91_and_unreliable_should_return_true(self):
+        qualities = {Unreliable.name: True}
         attack = self._build_attack(roll_result=91,
                                     firemode=SINGLE_SHOT,
                                     qualities=qualities)
