@@ -1,0 +1,197 @@
+big_shoota:
+  _package: ork
+  name: Big Shoota
+  class: Heavy
+  range: 120
+  full_auto: 10
+  dice: 2
+  flat_damage: 5
+  damage_type: I
+  penetration: 2
+  qualities: {inaccurate: true}
+supa_lobba: 
+  range: 200
+  class: Mounted
+  _package: ork
+  name: Supa-Lobba
+  dice: 4
+  damage_type: X
+  flat_damage: 0
+  penetration: 5
+  single_shot: 1
+  qualities: {blast: 10, concussive: 6, inaccurate: true, indirect: true}
+kannon:
+  _package: ork
+  name: Kannon
+  range: 200
+  class: Mounted
+  single_shot: 1
+  dice: 3
+  flat_damage: 6
+  damage_type: X
+  penetration: 6
+  qualities: {blast: 4, concussive: 2, inaccurate: true}
+kill_kannon:
+  _package: ork
+  name: Kill Kannon
+  range: 100
+  single_shot: 1
+  dice: 3
+  flat_damage: 8
+  pen: 8
+  class: Mounted
+  qualities: {blast: 8, concussive: 3, inaccurate: true}
+bigger_stompy_feet:
+  _package: ork
+  name: Gargantuan Stompy Feet
+  class: Melee
+  dice: 2
+  flat_damage: 0
+  qualities: {concussive: 8}
+  damage_type: I
+squiggoth_fangs:
+  _package: ork
+  class: Melee
+  name: Squiggoth Big Fangs
+  damage_type: R
+  penetration: 10
+  dice: 2
+  flat_damage: 0
+  qualities: {tearing: true}
+stompy_feet:
+  _package: ork
+  class: Melee
+  name: Squiggoth Feet
+  class: Melee
+  dice: 2
+  flat_damage: 0
+  penetration: 8
+  damage_type: I
+  qualities: {concussive: 5}
+rokkit_launcha:
+  _package: ork
+  class: Heavy
+  range: 150
+  name: Rokkit Launcha
+  single_shot: 1
+  dice: 3
+  flat_damage: 5
+  damage_type: X
+  penetration: 9
+  qualities: {inaccurate: true}
+kustom_mega_blasta:
+  _package: ork
+  class: Mounted
+  range: 100
+  single_shot: 1
+  semi_auto: 2
+  dice: 4
+  flat_damage: 7
+  damage_type: E
+  penetration: 6
+  qualities: {blast: 2, inaccurate: true, overheats: true, shocking: true}
+grotzooka:
+  _package: ork
+  class: Heavy
+  range: 50
+  name: Grotzooka
+  single_shot: 1
+  dice: 2
+  flat_damage: 5
+  damage_type: I
+  penetration: 2
+  qualities: {inaccurate: true, scatter: true, tearing: true}
+big_shears:
+  _package: ork
+  class: Melee
+  name: Big Shears
+  damage_type: R
+  penetration: 6
+  dice: 2
+  flat_damage: 2
+  qualities: {razor_sharp: true, unbalanced: true}
+buzz_saw:
+  _package: ork
+  class: Melee
+  name: Buzz saw
+  damage_type: R
+  dice: 2
+  flat_damage: 4
+  penetration: 4
+  qualities: {tearing: true, unwieldy: true}
+twin_big_shoota:
+  _package: ork
+  class: Heavy
+  range: 80
+  name: Twin-Linked Big Shoota
+  damage_type: I
+  dice: 1
+  flat_damage: 6
+  penetration: 1
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 10
+  qualities: {inaccurate: true, twin_linked: true}
+big_choppa:
+  _package: ork
+  class: Melee
+  dice: 2
+  flat_damage: 1
+  penetration: 2
+  damage_type: R
+  qualities: {tearing: true, unbalanced: true}
+  name: Big Choppa
+power_klaw:
+  _package: ork
+  name: Power Klaw
+  class: Melee
+  damage_type: R
+  dice: 2
+  flat_damage: 8
+  penetration: 7
+  qualities: {power_field: true, unwieldy: true}
+slugga:
+  _package: ork
+  name: Slugga
+  class: Pistol
+  range: 20
+  damage_type: I
+  dice: 1
+  flat_damage: 4
+  penetration: 0
+  single_shot: 1
+  semi_auto: 3
+  qualities: {inaccurate: true}
+shoota:
+  _package: ork
+  name: Shoota
+  class: Basic
+  range: 60
+  damage_type: I
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 10
+  dice: 1
+  flat_damage: 4
+  penetration: 0
+shokk_attack_gun:
+  _package: ork
+  name: Shokk Attack Gun
+  class: Heavy
+  damage_type: X
+  range: 200
+  single_shot: 1
+  dice: 3
+  flat_damage: 0
+  penetration: 0
+  qualities: {blast: 3, inaccurate: true, overheats: true}
+big_wrench:
+  _package: ork
+  name: Big Wrench
+  class: Melee
+  dice: 1
+  flat_damage: 0
+  penetration: 0
+  damage_type: I
+  qualities: {primitive: 7, unwieldy: true}
+  force_field: {protection_max: 50, overload_max: 15}

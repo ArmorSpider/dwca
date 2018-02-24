@@ -70,6 +70,15 @@ hellglaive:
   name: Hellglaive
   penetration: 3
   qualities: {razor_sharp: true}
+enhanced_impaler:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Enchanced Impaler
+  penetration: 0
+  qualities: {toxic: 4, felling: 4, crippling: 4}
 impaler:
   _package: dark_eldar
   class: Melee
@@ -157,6 +166,18 @@ shredder:
   qualities: {blast: 3, reliable: true, tearing: true}
   range: 40
   single_shot: 1
+enhanced_splinter_cannon:
+  _package: dark_eldar
+  class: Heavy
+  damage_type: R
+  dice: 2
+  flat_damage: 2
+  full_auto: 10
+  name: Enhanced Splinter Cannon
+  penetration: 4
+  qualities: {toxic: 6, felling: 4, crippling: 4}
+  range: 150
+  semi_auto: 5
 splinter_cannon:
   _package: dark_eldar
   class: Heavy

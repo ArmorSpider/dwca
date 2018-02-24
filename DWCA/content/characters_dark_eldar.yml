@@ -13,7 +13,7 @@ veldoran:
     warp_conduit: true, warp_sense: true}
   traits: {dark_sight: true, ghosthelm: true, runes_of_warding: true, runes_of_witnessing: true,
     spirit_stones: true, touched_by_the_fates: 5, unnatural_agility: 2, unnatural_willpower: 2}
-  weapons: [blast_pistol, focus_test]
+  weapons: [blast_pistol, agoniser, focus_test]
   wounds: 19
 archon:
   _package: dark_eldar
@@ -63,7 +63,7 @@ hekatrix_bloodbride:
     swift_attack: true, two_weapon_wielder_melee: true, two_weapon_wielder_ranged: true,
     unarmed_master: true, unarmed_warrior: true}
   traits: {brutal_charge: 5, dark_sight: true, unnatural_agility: 3, unnatural_strength: 5}
-  weapons: [splinter_pistol, wych_knife, razorflail, impaler, shardnet]
+  weapons: [splinter_pistol, wych_knife, razorflail, impaler, shardnet, enhanced_impaler]
   wounds: 1
 hellion:
   _package: dark_eldar
@@ -121,9 +121,9 @@ kabalite_trueborn:
   talents: {combat_master: true, deadeye_shot: true, disarm: true, hard_target: true,
     leap_up: true, light_sleeper: true, lightning_reflexes: true, resistance_fear: true,
     sure_strike: true, swift_attack: true}
-  traits: {dark_sight: true, unnatural_agility: 8}
+  traits: {dark_sight: true, unnatural_agility: 8, fire_drill: true}
   weapons: [splinter_pistol, mono_sword, shardcarbine, shredder, blaster, splinter_cannon,
-    dark_lance]
+    dark_lance, enhanced_splinter_cannon]
   wounds: 13
 kabalite_warrior:
   _package: dark_eldar
@@ -135,7 +135,7 @@ kabalite_warrior:
     parry: 0, scrutiny: 0, sleight_of_hand: 0, stealth: 0}
   species: dark_eldar
   talents: {combat_master: true, hard_target: true, leap_up: true, lightning_reflexes: true}
-  traits: {dark_sight: true, unnatural_agility: 3}
+  traits: {dark_sight: true, unnatural_agility: 3, fire_drill: true}
   weapons: [splinter_rifle, splinter_cannon, dark_lance, poisoned_blade]
   wounds: 14
 kalarel:
@@ -233,7 +233,7 @@ succubus:
     sure_strike: true, swift_attack: true, two_weapon_wielder_melee: true, two_weapon_wielder_ranged: true,
     unarmed_master: true, unarmed_warrior: true, whirlwind_of_death: true}
   traits: {brutal_charge: 5, dark_sight: true, unnatural_agility: 3, unnatural_strength: 5}
-  weapons: [agoniser, enhanced_splinter_pistol, shardnet, impaler, razorflail]
+  weapons: [agoniser, enhanced_splinter_pistol, shardnet, enhanced_impaler, razorflail]
   wounds: 23
 ur_guhl:
   _package: dark_eldar
