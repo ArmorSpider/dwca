@@ -31,3 +31,8 @@ class Vehicle(Character):
     def tactical_speed(self):
         speed = self.get_stat('speed', 0)
         return speed
+
+    @property
+    def manouverability(self):
+        manouverability = self.get_stat('manouverability', 0)
+        return manouverability
