@@ -65,13 +65,17 @@ hellion:
 hellion_skyboard:
   _package: dark_eldar
   armor: {all: 12, rear: 0}
+  characteristics: {agility: 61, ballistic_skill: 48, fellowship: 44, intelligence: 31,
+    perception: 34, strength: 38, toughness: 36, weapon_skill: 48, willpower: 31}
   manouverability: 25
+  skills: {operate: 20}
   name: Hellion Skyboard
   speed: 18
   traits: {bike: true, enhanced_motive_systems: true, open_topped: true, size: 5,
     skimmer: true}
   vehicle: true
   wounds: 10
+  weapons: [hellglaive]
 incubus:
   _package: dark_eldar
   armor: {all: 8}
