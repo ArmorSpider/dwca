@@ -9,6 +9,25 @@ big_shoota:
   damage_type: I
   penetration: 2
   qualities: {inaccurate: true}
+choppa:
+  _package: ork
+  class: Melee
+  name: Choppa
+  damage_type: R
+  dice: 1
+  flat_damage: 1
+  penetration: 2
+  qualities: {tearing: true, unbalanced: true}
+deffgun:
+  _package: ork
+  name: Deffgun
+  class: Heavy
+  range: 200
+  damage_type: X
+  dice: 2
+  flat_damage: 3
+  penetration: 6
+  qualities: {tearing: true, inaccurate: true}
 supa_lobba: 
   range: 200
   class: Mounted
