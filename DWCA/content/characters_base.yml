@@ -9,11 +9,10 @@ damocles:
 dummy: {_system: deathwatch, name: Dummy}
 furios:
   _system: deathwatch
-  armor: {all: 9, body: 11, left_arm: 8, right_arm: 8}
+  armor: {all: 15, body: 19, left_arm: 19}
   characteristics: {agility: 40, ballistic_skill: 46, fellowship: 36, intelligence: 48,
     perception: 34, strength: 52, toughness: 54, weapon_skill: 73, willpower: 64}
   fate_points: 5
-  force_field: {overload_max: 5, protection_max: 25}
   name: Furios
   psy_powers: [smite, short_range_telepathy, inspire, compel, force_dome, null_zone,
     emperors_wrath]
@@ -35,10 +34,10 @@ gilmech:
   weapons: [storm_bolter, heavy_bolter]
 marius:
   _system: deathwatch
-  armor: {all: 8, body: 14, left_arm: 12}
+  armor: {all: 14, body: 18, left_arm: 18}
+  toughness: {left_leg: 2}
   characteristics: {agility: 40, ballistic_skill: 44, intelligence: 54, perception: 38,
     strength: 43, toughness: 50, weapon_skill: 66}
-  force_field: {overload_max: 10, protection_max: 55}
   name: Marius the Parry-God
   skills: {dodge: 10, medicae: 20}
   talents: {deathwatch_training: true, hunter_of_aliens: true, slaughter_the_swarm: true}
@@ -47,7 +46,7 @@ marius:
   weapons: [marius_honour_blades, hellfire_bolt_pistol, bolter, marius_executioner_axe]
 morgan:
   _system: deathwatch
-  armor: {all: 14}
+  armor: {all: 14, body: 18, left_arm: 18}
   characteristics: {agility: 51, ballistic_skill: 44, fellowship: 33, intelligence: 39,
     perception: 33, strength: 59, toughness: 41, weapon_skill: 60, willpower: 48}
   name: Morgan
