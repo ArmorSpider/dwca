@@ -68,7 +68,7 @@ hammerhead_gunship:
   _system: deathwatch
   armor: {front: 40, rear: 24, side: 32}
   skills: {pilot: 20, drive: 20}
-  characteristics: {agility: 35, ballistic_skill: 35, fellowship: 30, intelligence: 30,
+  characteristics: {agility: 35, ballistic_skill: 55, fellowship: 30, intelligence: 30,
     perception: 30, strength: 20, toughness: 30, weapon_skill: 25, willpower: 30}
   name: Hammerhead Gunship
   species: machine
@@ -116,7 +116,7 @@ shield_drone:
   name: Tau Shield Drone
   skills: {dodge: 0}
   species: machine
-  talents: {fearless: true}
+  talents: {fearless: true, networked_machine_intelligence: true}
   weapons: [markerlight]
   wounds: 15
 shielded_missile_drone:
@@ -192,7 +192,7 @@ tau_commander:
     two_weapon_wielder_ballistic: true}
   traits: {auto_stabilised: true, dark_sight: true, flight: 12, size: 20, unnatural_strength: 2,
     unnatural_toughness: 2}
-  weapons: [plasma_rifle, missile_pod]
+  weapons: [twin_plasma_rifle, missile_pod]
   wounds: 90
 xv8_battlesuit:
   _package: tau
@@ -204,7 +204,7 @@ xv8_battlesuit:
   skills: {acrobatics: 0, dodge: 0}
   species: tau
   talents: {ambidextrous: true, independent_targeting: true, meditation: true, rapid_reaction: true,
-    sprint: true, two_weapon_wielder_ballistic: true}
+    sprint: true, two_weapon_wielder_ballistic: true, vectored_retro_thrusters: true}
   traits: {auto_stabilised: true, dark_sight: true, flight: 12, size: 20, unnatural_strength: 2,
     unnatural_toughness: 2}
   weapons: [twin_plasma_rifle, missile_pod, cyclic_ion_blaster, burst_cannon]
