@@ -8,6 +8,7 @@ from src.action.hit import Hit
 from src.cli.match_map import get_default_match_map
 from src.cli.message_queue import log_messages
 from src.cli.quick_dict import quick_dict_parse
+from src.cli.read_metadata import present_metadata
 from src.cli.table import print_table
 from src.dwca_log.log import get_log
 from src.entities import HALF_MOVE, FULL_MOVE, CHARGE_MOVE, RUN_MOVE
@@ -124,7 +125,7 @@ class CommandDPS(CLICommand):
 
     keyword = 'dps'
     help = 'Calculate DPS metrics for event'
-    required_keys = [ATTACKER, WEAPON, TARGET, ROLL_TARGET]
+    required_keys = [ATTACKER, WEAPON, TARGET]
 
     def _process_event(self, event):
         event = handler_dps(event)
@@ -465,13 +466,13 @@ class CommandDamage(CLICommand):
 
     keyword = 'damage'
     help = 'Manually enter the total damage of hits and calculate effective damage.'
-    required_keys = [ATTACKER, TARGET, WEAPON]
+    required_keys = [TARGET]
 
     def _process_event(self, event):
         damage = 0
         hits = []
-        penetration = user_input_int('Enter penetration: ')
         roll_result = user_input_int('Enter roll result: ')
+        penetration = user_input_int('Enter penetration: ')
         event[ROLL_RESULT] = roll_result
         attack = build_base_attack(event)
         attack.roll_result = roll_result
@@ -485,6 +486,7 @@ class CommandDamage(CLICommand):
             hits.append(hit)
         StateManager.update(event)
         attack.apply_hits(hits=hits)
+        present_metadata(attack.metadata)
         log_messages()
         return event
 
