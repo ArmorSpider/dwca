@@ -1,3 +1,4 @@
+from copy import deepcopy
 import sys
 
 from definitions import WEAPON, ROLL_TARGET, ATTACKER,\
@@ -81,6 +82,13 @@ class CLICommand(object):
     def _process_event(self, event):
         return event
 
+    def smart_select_attacker(self, event):
+        attacker = self.get_arg_or_select_from_list(
+            'Select character: ', get_character_library().keys())
+        event_copy = deepcopy(event)
+        event_copy[ATTACKER] = attacker
+        return event_copy
+
     def get_arg_or_input_int(self, prompt):
         try:
             value = int(self.args[0])
@@ -151,7 +159,8 @@ class CommandMove(CLICommand):
     required_keys = []
 
     def _process_event(self, event):
-        attacker = choose_or_build_attacker(event)
+        event_copy = self.smart_select_attacker(event)
+        attacker = choose_or_build_attacker(event_copy)
         move_opts = attacker.movement
         LOG.info('[(%s) - Movement: %s/%s/%s/%s]',
                  attacker.name,
@@ -190,7 +199,8 @@ class CommandDefend(CLICommand):
     required_keys = []
 
     def _process_event(self, event):
-        handler_defend(event)
+        event_copy = self.smart_select_attacker(event)
+        handler_defend(event_copy)
         return event
 
 
@@ -281,7 +291,8 @@ class CommandInfo(CLICommand):
     help = 'Show talents & traits for character.'
 
     def _process_event(self, event):
-        event = handler_info(event)
+        event_copy = self.smart_select_attacker(event)
+        handler_info(event_copy)
         return event
 
 
