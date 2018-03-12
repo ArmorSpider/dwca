@@ -55,7 +55,7 @@ def build_weapon(event):
 
 
 def build_attacker(event):
-    char_name = event[ATTACKER]
+    char_name = event.get(ATTACKER, DUMMY)
     magnitude = event.get(ATTACKER_MAG)
     attacker = build_entity(char_name, magnitude)
     return attacker

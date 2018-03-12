@@ -31,7 +31,6 @@ class Vehicle(Character):
             full_move = move_mod
             charge_move = move_mod
             run_move = move_mod
-
         movement = {HALF_MOVE: half_move,
                     FULL_MOVE: full_move,
                     CHARGE_MOVE: charge_move,

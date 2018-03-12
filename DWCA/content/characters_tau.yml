@@ -68,7 +68,7 @@ hammerhead_gunship:
   _system: deathwatch
   armor: {front: 40, rear: 24, side: 32}
   skills: {pilot: 20, drive: 20}
-  characteristics: {agility: 35, ballistic_skill: 35, fellowship: 30, intelligence: 30,
+  characteristics: {agility: 35, ballistic_skill: 55, fellowship: 30, intelligence: 30,
     perception: 30, strength: 20, toughness: 30, weapon_skill: 25, willpower: 30}
   name: Hammerhead Gunship
   species: machine
