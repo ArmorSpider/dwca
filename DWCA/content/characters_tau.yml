@@ -98,13 +98,14 @@ riptide:
     perception: 55, strength: 80, toughness: 67, weapon_skill: 35, willpower: 55}
   force_field: {overload_max: 1, protection_max: 30}
   name: XV104 Riptide
-  skills: {acrobatics: 0, command: 20, dodge: 0}
+  skills: {acrobatics: 0, command: 20, dodge: 0, tech_use: 20}
   species: tau
   talents: {air_of_authority: true, ambidextrous: true, independent_targeting: true,
     meditation: true, rapid_reaction: true, sprint: true, two_weapon_wielder_ballistic: true}
   traits: {auto_stabilised: true, dark_sight: true, flight: 12, size: 30, unnatural_strength: 2,
-    unnatural_toughness: 2}
+    unnatural_toughness: 2, vectored_retro_thrusters: true, jump_pack: true}
   weapons: [heavy_burst_cannon, twin_smart_missile_system, twin_fusion_blaster]
+  force_field: {overload_max: 1, protection_max: 50}
   wounds: 120
 shield_drone:
   _package: tau
@@ -194,6 +195,21 @@ tau_commander:
     unnatural_toughness: 2}
   weapons: [plasma_rifle, missile_pod]
   wounds: 90
+ghostkeel:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 12}
+  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 30, intelligence: 40,
+    perception: 55, strength: 50, toughness: 52, weapon_skill: 35, willpower: 50}
+  name: Tau Commander
+  skills: {acrobatics: 0, dodge: 0, tech_use: 20}
+  species: tau
+  talents: {ambidextrous: true, independent_targeting: true, meditation: true, rapid_reaction: true,
+    sprint: true, two_weapon_wielder_ballistic: true, vectored_retro_thrusters: true}
+  traits: {auto_stabilised: true, dark_sight: true, flight: 12, size: 20, unnatural_strength: 2,
+    unnatural_toughness: 2, stealth_field: true, neuroweb_system_jammer: true, jump_pack: true, holophoton_countermeasures: true}
+  weapons: [cyclic_ion_blaster, twin_burst_cannons, twin_fusion_blaster]
+  wounds: 80
 xv8_battlesuit:
   _package: tau
   _system: deathwatch

@@ -38,8 +38,8 @@ class Test(unittest.TestCase):
                                             _system='deathwatch')
         self.dummyman_name = add_mock_entity('Dummyman',
                                              traits={'natural_armor': True},
-                                             wounds=122,
-                                             _system='deathwatch')
+                                             _system='deathwatch',
+                                             wounds=122)
         self.psyman_name = add_mock_entity('Psyman',
                                            traits={'psy_rating': 6},
                                            _system='deathwatch')

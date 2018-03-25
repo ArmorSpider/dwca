@@ -10,9 +10,20 @@ burst_cannon:
   penetration: 4
   qualities: {arm_weapon_mounting: true}
   range: 60
-cyclic_ion_blaster: {_package: tau, _system: deathwatch, class: Heavy, damage_type: E,
-  dice: 1, flat_damage: 15, full_auto: 6, name: Cyclic Ion Blaster, penetration: 6,
-  range: 50, semi_auto: 3, single_shot: 1}
+cyclic_ion_blaster:
+  _package: tau
+  _system: deathwatch
+  class: Heavy
+  damage_type: E
+  dice: 2
+  flat_damage: 9
+  full_auto: 6
+  name: Cyclic Ion Blaster
+  penetration: 6
+  qualities: {overheats: true}
+  range: 50
+  semi_auto: 3
+  single_shot: 1
 fusion_blaster:
   _package: tau
   _system: deathwatch
