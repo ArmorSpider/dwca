@@ -8,7 +8,7 @@ from src.action.action import Action
 from src.action.hit import Hit
 from src.dwca_log.log import get_log
 from src.entities import DICE, PENETRATION, FLAT_DAMAGE,\
-    TEARING_DICE, DAMAGE_TYPE, ARMOR
+    TEARING_DICE, DAMAGE_TYPE, ARMOR, WOUNDS
 from src.entities.entity import Entity
 from src.hit_location import FRONT, SIDE, REAR, get_hit_location_name
 from src.hitloc_series import get_hit_locations
@@ -62,6 +62,7 @@ class Attack(Action):
         self.metadata[WEAPON] = self.weapon.name
         self.metadata[ATTACKER] = self.attacker.name
         self.metadata[TARGET] = self.target.name
+        self.metadata[WOUNDS] = self.target.wounds
         self.metadata[ARMOR] = self.target.armor
         self.metadata[DAMAGE_TYPE] = self.weapon.damage_type
         self.metadata[DEFENSIVE_MODIFIERS] = self.target.modifiers
