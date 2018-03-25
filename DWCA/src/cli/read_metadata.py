@@ -5,7 +5,8 @@ from definitions import RAW_WEAPON_STATS, NUM_HITS, EFFECTIVE_PSY_RATING,\
     RATE_OF_FIRE
 from src.cli.table import print_table
 from src.dwca_log.log import get_log
-from src.entities import FLAT_DAMAGE, DICE, PENETRATION, ARMOR, DAMAGE_TYPE
+from src.entities import FLAT_DAMAGE, DICE, PENETRATION, ARMOR, DAMAGE_TYPE,\
+    WOUNDS
 
 
 LOG = get_log(__name__)
@@ -58,6 +59,10 @@ def log_total_summary(metadata):
     total_magnitude_damage = sum([int(s_) for s_ in magnitude_damage_list])
     if attack_total_damage > 0:
         LOG.info('ATTACK TOTAL DAMAGE: %s', attack_total_damage)
+        max_wounds = metadata.get(WOUNDS, 0)
+        current_wounds = max_wounds - attack_total_damage
+        LOG.info('TARGET WOUNDS: %s (%s - %s)', current_wounds,
+                 max_wounds, attack_total_damage)
     if total_magnitude_damage > 0:
         LOG.info('TOTAL MAGNITUDE DAMAGE: %s', total_magnitude_damage)
 

@@ -1,18 +1,18 @@
 from lazy.lazy import lazy
 
-from definitions import ATTACKER, TARGET, WEAPON, NUM_HITS, ROLLED_DAMAGE,\
-    RAW_DAMAGE, OFFENSIVE_MODIFIERS, DEFENSIVE_MODIFIERS, EFFECTIVE_DAMAGE,\
-    HIT_LOCATIONS, RAW_WEAPON_STATS, EFFECTIVE_PSY_RATING, EFFECTIVE_TOUGHNESS,\
-    EFFECTIVE_ARMOR, BLOCKED, MAGNITUDE_DAMAGE
+from definitions import WEAPON, ATTACKER, TARGET, DEFENSIVE_MODIFIERS,\
+    RAW_WEAPON_STATS, HIT_LOCATIONS, MAGNITUDE_DAMAGE, EFFECTIVE_TOUGHNESS,\
+    EFFECTIVE_ARMOR, BLOCKED, EFFECTIVE_DAMAGE, EFFECTIVE_PSY_RATING, NUM_HITS,\
+    ROLLED_DAMAGE, RAW_DAMAGE, OFFENSIVE_MODIFIERS
 from src.action.action import Action
 from src.action.hit import Hit
 from src.dwca_log.log import get_log
-from src.entities import DICE, PENETRATION, FLAT_DAMAGE,\
-    TEARING_DICE, DAMAGE_TYPE, ARMOR, SWIFT_ATTACK, LIGHTNING_ATTACK
+from src.entities import WOUNDS, ARMOR, DAMAGE_TYPE, DICE, PENETRATION,\
+    FLAT_DAMAGE, TEARING_DICE, SWIFT_ATTACK, LIGHTNING_ATTACK
 from src.entities.entity import Entity
 from src.hit_location import FRONT, SIDE, REAR, get_hit_location_name
 from src.hitloc_series import get_hit_locations
-from src.modifiers.modifier import get_modifiers_iterator, get_modifier
+from src.modifiers.modifier import get_modifier, get_modifiers_iterator
 from src.modifiers.qualities import Devastating, Hellfire
 from src.roll_damage import roll_normal_damage, roll_righteous_fury,\
     handle_dos_minimum_damage
@@ -20,7 +20,6 @@ from src.util.user_input import try_user_choose_from_list
 
 
 LOG = get_log(__name__)
-# DEVTEST
 
 
 def select_vehicle_hitloc():
@@ -63,6 +62,7 @@ class Attack(Action):
         self.metadata[WEAPON] = self.weapon.name
         self.metadata[ATTACKER] = self.attacker.name
         self.metadata[TARGET] = self.target.name
+        self.metadata[WOUNDS] = self.target.wounds
         self.metadata[ARMOR] = self.target.armor
         self.metadata[DAMAGE_TYPE] = self.weapon.damage_type
         self.metadata[DEFENSIVE_MODIFIERS] = self.target.modifiers

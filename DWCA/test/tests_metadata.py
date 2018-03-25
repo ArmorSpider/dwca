@@ -10,7 +10,7 @@ from src.cli.commands import process_command
 from src.dice import queue_d100_rolls, queue_d10_rolls
 from src.entities import DICE,\
     FLAT_DAMAGE, PENETRATION, SINGLE_SHOT, TEARING_DICE, FULL_AUTO, DAMAGE_TYPE,\
-    ARMOR
+    ARMOR, WOUNDS
 from src.entities.char_stats import STAT_AGI, STAT_STR, STAT_TGH, STAT_WS,\
     STAT_BS
 from src.handler import build_attack
@@ -38,6 +38,7 @@ class Test(unittest.TestCase):
                                             _system='deathwatch')
         self.dummyman_name = add_mock_entity('Dummyman',
                                              traits={'natural_armor': True},
+                                             wounds=122,
                                              _system='deathwatch')
         self.psyman_name = add_mock_entity('Psyman',
                                            traits={'psy_rating': 6},
@@ -118,6 +119,16 @@ class Test(unittest.TestCase):
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100}
+        actual = self.get_attack_metadata(event)
+        self.assert_dict_contains(expected, actual)
+
+    def test_metadata_should_contain_target_max_wounds(self):
+        event = self.basic_melee_event
+        expected = {ATTACKER: 'Automan',
+                    WEAPON: 'Business Fist',
+                    TARGET: 'Dummyman',
+                    ROLL_TARGET: 100,
+                    WOUNDS: 122}
         actual = self.get_attack_metadata(event)
         self.assert_dict_contains(expected, actual)
 

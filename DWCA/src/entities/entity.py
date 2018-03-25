@@ -1,5 +1,7 @@
 from src.dwca_log.log import get_log
+from src.entities import WOUNDS
 from src.modifiers.modifier import get_modifier
+
 
 LOG = get_log(__name__)
 
@@ -18,6 +20,10 @@ class Entity(object):
 
     def __str__(self, *args, **kwargs):
         return self.name
+
+    @property
+    def wounds(self):
+        return self.get_stat(WOUNDS, 0)
 
     @property
     def name(self):
