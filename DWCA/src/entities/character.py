@@ -3,9 +3,10 @@ from src.action.melee_attack import MeleeAttack
 from src.action.psychic_attack import PsychicAttack
 from src.action.ranged_attack import RangedAttack
 from src.dwca_log.log import get_log
-from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
+from src.entities import ARMOR, TRAITS, TALENTS, SPECIES,\
     SINGLE_SHOT, WOUNDS, SKILLS, HALF_MOVE, CHARGE_MOVE, RUN_MOVE, FULL_MOVE
 from src.entities.char_stats import STAT_TGH, STAT_AGI
+from src.entities.characteristics import Characteristics
 from src.entities.entity import Entity
 from src.entities.libraries import read_character, get_character_library
 from src.entities.species import is_alien_species
@@ -14,16 +15,13 @@ from src.modifiers.qualities import Felling
 from src.modifiers.traits import Daemonic
 from src.situational.cover import get_cover_armor_for_hitloc
 from src.situational.force_field import ForceField
-from src.skills import get_skill_characteristic, get_all_skills, get_advanced_skills
-from src.util.rand_util import get_tens
+from src.skills import get_all_skills, get_advanced_skills
 from src.util.user_input import try_user_choose_from_list
 
 
 LOG = get_log(__name__)
 UNDEFINED_ARMOR_VALUE = 0
 UNDEFINED_LOCATIONAL_TOUGHNESS_VALUE = 0
-UNDEFINED_CHARACTERISTIC_VALUE = 0
-DEFAULT_CHARACTERISTIC_MULTIPLIER = 1
 
 
 def choose_character():
@@ -38,7 +36,7 @@ def build_character(char_name):
     return character
 
 
-class Character(Entity):
+class Character(Entity, Characteristics):
 
     @property
     def num_melee_attacks(self):
@@ -91,11 +89,6 @@ class Character(Entity):
             effective_skill_rating = characteristic_value / 2
         return effective_skill_rating
 
-    def get_skill_characteristic(self, skill):
-        char_stat = get_skill_characteristic(skill)
-        characteristic_value = self.get_characteristic(char_stat)
-        return characteristic_value
-
     def _melee_attack(self, weapon, target=None):
         return MeleeAttack(weapon=weapon,
                            attacker=self,
@@ -129,22 +122,6 @@ class Character(Entity):
                 HITLOC_ALL, UNDEFINED_LOCATIONAL_TOUGHNESS_VALUE)
         return toughness
 
-    def get_characteristic(self, characteristic):
-        char_base = self.get_raw_characteristic(characteristic)
-        char_flat_bonus = self._get_flat_characteristic_value(characteristic)
-        char_total = char_base + char_flat_bonus
-        return char_total
-
-    def get_raw_characteristic(self, characteristic):
-        char_stat = self.characteristics.get(
-            characteristic, UNDEFINED_CHARACTERISTIC_VALUE)
-        return char_stat
-
-    def get_raw_characteristic_bonus(self, characteristic):
-        characteristic_value = self.get_raw_characteristic(characteristic)
-        characteristic_bonus = get_tens(characteristic_value)
-        return characteristic_bonus
-
     def get_modded_toughness_bonus(self, attack, hit_location=None):
         raw_bonus = self.get_raw_characteristic_bonus(STAT_TGH)
         flat_bonus = self._get_flat_characteristic_bonus(STAT_TGH)
@@ -156,38 +133,6 @@ class Character(Entity):
             locational_toughness = self.get_locational_toughness(hit_location)
             final_bonus += locational_toughness
         return final_bonus
-
-    def _get_flat_characteristic_bonus(self, characteristic):
-        flat_value = self._get_flat_characteristic_value(characteristic)
-        flat_bonus = get_tens(flat_value)
-        return flat_bonus
-
-    def _get_flat_characteristic_value(self, characteristic):
-        key = '{}_bonus'.format(characteristic)
-        value = self.characteristics.get(key, 0)
-        return value
-
-    def get_characteristic_bonus(self, characteristic):
-        characteristic_bonus = self.get_raw_characteristic_bonus(
-            characteristic)
-        characteristic_multiplier = self.get_characteristic_multiplier(
-            characteristic)
-        flat_bonus = self._get_flat_characteristic_bonus(characteristic)
-        final_bonus = characteristic_bonus * characteristic_multiplier + flat_bonus
-        return final_bonus
-
-    def get_characteristic_multiplier(self, characteristic):
-        trait_value = self.get_unnatural_characteristic(characteristic)
-        if trait_value is not None:
-            multiplier = trait_value
-        else:
-            multiplier = DEFAULT_CHARACTERISTIC_MULTIPLIER
-        return multiplier
-
-    def get_unnatural_characteristic(self, characteristic):
-        trait_name = 'unnatural_{}'.format(characteristic)
-        trait_value = self.modifiers.get(trait_name)
-        return trait_value
 
     @property
     def movement(self):
@@ -272,10 +217,6 @@ class Character(Entity):
         modifiers.update(self.traits)
         modifiers.update(self.talents)
         return modifiers
-
-    @property
-    def characteristics(self):
-        return self.get_stat(CHARACTERISTICS, default={})
 
     @property
     def armor(self):

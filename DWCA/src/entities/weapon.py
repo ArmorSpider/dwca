@@ -1,6 +1,7 @@
 from definitions import CLASS, MELEE, RANGED_CLASSES
 from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO,\
     DAMAGE_TYPE, FLAT_DAMAGE, PENETRATION, DICE, RANGE, PSYCHIC, STANDARD_ATTACK
+from src.entities.characteristics import Characteristics
 from src.entities.entity import Entity
 from src.entities.libraries import read_weapon
 
@@ -11,7 +12,7 @@ def get_weapon(weapon_name):
     return weapon
 
 
-class Weapon(Entity):
+class Weapon(Entity, Characteristics):
 
     def is_psychic(self):
         return self.weapon_class.lower() == PSYCHIC

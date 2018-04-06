@@ -209,3 +209,18 @@ class Test(unittest.TestCase):
         actual = self.char_with_bonuses.get_modded_toughness_bonus(attack)
 
         self.assertEqual(expected, actual)
+
+    def test_effective_characteristics_should_include_all_characteristics_with_flat_bonuses(self):
+        expected = {STAT_STR: 70,
+                    STAT_TGH: 80,
+                    STAT_AGI: 0,
+                    STAT_BS: 0,
+                    STAT_FEL: 0,
+                    STAT_WIL: 0,
+                    STAT_WS: 0,
+                    STAT_PER: 0,
+                    STAT_INT: 0}
+
+        actual = self.char_with_bonuses.effective_characteristics
+
+        self.assertEqual(expected, actual)

@@ -181,7 +181,7 @@ class CommandTest(CLICommand):
         attacker = choose_or_build_attacker(event)
         options = {}
         options.update(attacker.available_skills)
-        options.update(attacker.characteristics)
+        options.update(attacker.effective_characteristics)
         test_stat = self.get_arg_or_select_from_list(
             'Select stat to test: ', options.keys())
         LOG.info('%s tests "%s"', attacker.name, test_stat)
