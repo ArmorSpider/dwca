@@ -64,7 +64,7 @@ class MeleeAttack(Attack):
             dos_hits += int(dos - 1)
             LOG.debug('DoS hits: %s (%s DoS)',
                       dos_hits, dos)
-        ws_bonus = self.attacker.get_characteristic_bonus(STAT_WS)
+        ws_bonus = self.get_characteristic_bonus(STAT_WS)
         dos_hits = min(ws_bonus, dos_hits)
         return dos_hits
 

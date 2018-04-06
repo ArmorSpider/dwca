@@ -13,7 +13,7 @@ class CrushingBlow(Modifier):
 
     def modify_damage(self, attack, current_damage):
         if attack.is_melee():
-            crushing_blow_damage = attack.attacker.get_characteristic_bonus(
+            crushing_blow_damage = attack.get_characteristic_bonus(
                 STAT_WS) / 2
             current_damage += crushing_blow_damage
             LOG.debug('+%s damage from CrushingBlow.', crushing_blow_damage)
@@ -26,7 +26,7 @@ class MightyShot(Modifier):
 
     def modify_damage(self, attack, current_damage):
         if attack.is_ranged():
-            mighty_shot_damage = attack.attacker.get_characteristic_bonus(
+            mighty_shot_damage = attack.get_characteristic_bonus(
                 STAT_BS) / 2
             current_damage += mighty_shot_damage
             LOG.debug('+%s damage from MightyShot.', mighty_shot_damage)
