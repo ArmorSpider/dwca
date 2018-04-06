@@ -222,6 +222,26 @@ class Test(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
+    def test_raw_bonus_should_only_include_base_characteristics_for_attacker(self):
+        attack = Attack(weapon=None,
+                        attacker=self.normal_attacker,
+                        target=None)
+
+        expected = 5
+        actual = attack.get_raw_characteristic_bonus(STAT_STR)
+
+        self.assertEqual(expected, actual)
+
+    def test_raw_bonus_should_only_include_base_characteristics_for_weapon(self):
+        attack = Attack(weapon=self.unnatural_weapon,
+                        attacker=self.normal_attacker,
+                        target=None)
+
+        expected = 8
+        actual = attack.get_raw_characteristic_bonus(STAT_STR)
+
+        self.assertEqual(expected, actual)
+
     def test_unnatural_characteristics_should_apply_for_weapon(self):
         attack = Attack(weapon=self.unnatural_weapon,
                         attacker=None,

@@ -61,7 +61,7 @@ class Attack(Action):
             return attribute
 
     def get_effective_characteristic(self, characteristic):
-        if self.weapon.get_raw_characteristic(characteristic) != UNDEFINED_CHARACTERISTIC_VALUE:
+        if self.is_overridden_by_weapon(characteristic):
             return self.weapon.get_characteristic(characteristic)
         else:
             weapon_bonus = self.weapon.get_flat_characteristic_value(
@@ -71,7 +71,7 @@ class Attack(Action):
             return total
 
     def get_characteristic_bonus(self, characteristic):
-        if self.weapon.get_raw_characteristic(characteristic) != UNDEFINED_CHARACTERISTIC_VALUE:
+        if self.is_overridden_by_weapon(characteristic):
             return self.weapon.get_characteristic_bonus(characteristic)
         else:
             weapon_bonus = self.weapon.get_flat_characteristic_bonus(
@@ -80,6 +80,15 @@ class Attack(Action):
                 characteristic)
             total = attacker_base + weapon_bonus
             return total
+
+    def get_raw_characteristic_bonus(self, characteristic):
+        if self.is_overridden_by_weapon(characteristic):
+            return self.weapon.get_raw_characteristic_bonus(characteristic)
+        else:
+            return self.attacker.get_raw_characteristic_bonus(characteristic)
+
+    def is_overridden_by_weapon(self, characteristic):
+        return self.weapon.get_raw_characteristic(characteristic) != UNDEFINED_CHARACTERISTIC_VALUE
 
     def initialize_metadata(self):
         self.metadata[WEAPON] = self.weapon.name
