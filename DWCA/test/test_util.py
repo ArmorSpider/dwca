@@ -2,7 +2,7 @@ from definitions import WEAPONS, CLASS
 from src.entities import SPECIES, SKILLS, TALENTS, NAME, TRAITS, CHARACTERISTICS,\
     WOUNDS, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO, DAMAGE_TYPE, DICE, FLAT_DAMAGE,\
     PENETRATION, QUALITIES
-from src.entities.entity_factory import build_entity
+from src.entities.entity_factory import build_entity, build_weapon
 from src.entities.libraries import MasterLibrary
 from src.util.dict_util import pretty_print
 from src.util.rand_util import get_random_string
@@ -28,6 +28,12 @@ def add_mock_entity(entity_name, **kwargs):
     MasterLibrary.add_character(definition_name, base_definition)
     pretty_print(base_definition)
     return definition_name
+
+
+def build_mock_weapon(weapon_name, weapon_class, **kwargs):
+    entity_hash = add_mock_weapon(weapon_name, weapon_class, **kwargs)
+    entity = build_weapon(entity_hash)
+    return entity
 
 
 def add_mock_weapon(weapon_name, weapon_class, **kwargs):

@@ -49,6 +49,14 @@ class Test(unittest.TestCase):
                                                                   }
                                                  )
         self.character = Character(character_definition)
+        self.char_with_bonuses = build_mock_entity('BonusMan',
+                                                   _system='deathwatch',
+                                                   characteristics={STAT_STR: 50,
+                                                                    STAT_STR + '_bonus': 20,
+                                                                    STAT_TGH: 30,
+                                                                    STAT_TGH + '_bonus': 50},
+                                                   traits={'unnatural_strength': 2,
+                                                           'unnatural_toughness': 2})
         register_modifiers()
 
     def test_get_armor_for_hitloc_should_return_all_value_if_hitloc_not_available(self):
@@ -182,7 +190,41 @@ class Test(unittest.TestCase):
         with self.assertRaises(AttributeError):
             self.char_with_stats.THIS_IS_NOT_A_REAL_ATTRIBUTE
 
-    def test_getting_attribute_that_does_not_exist_in_modifers_but_is_a_known_modifers_should_return_none(self):
+    def test_getting_attribute_that_does_not_exist_in_modifiers_but_is_a_known_modifier_should_return_none(self):
         expected = None
         actual = self.char_with_stats.toxic
+        self.assertEqual(expected, actual)
+
+    def test_flat_stat_bonuses_should_not_be_included_in_unnatural_characteristics(self):
+        expected = 12
+        actual = self.char_with_bonuses.get_characteristic_bonus(STAT_STR)
+
+        self.assertEqual(expected, actual)
+
+    def test_flat_stat_bonuses_should_not_be_included_characteristic_value(self):
+        expected = 70
+        actual = self.char_with_bonuses.get_characteristic(STAT_STR)
+
+        self.assertEqual(expected, actual)
+
+    def test_flat_stat_bonus_should_work_for_toughness(self):
+        expected = 11
+        attack = Attack(None, None, None)
+        actual = self.char_with_bonuses.get_modded_toughness_bonus(attack)
+
+        self.assertEqual(expected, actual)
+
+    def test_effective_characteristics_should_include_all_characteristics_with_flat_bonuses(self):
+        expected = {STAT_STR: 70,
+                    STAT_TGH: 80,
+                    STAT_AGI: 0,
+                    STAT_BS: 0,
+                    STAT_FEL: 0,
+                    STAT_WIL: 0,
+                    STAT_WS: 0,
+                    STAT_PER: 0,
+                    STAT_INT: 0}
+
+        actual = self.char_with_bonuses.effective_characteristics
+
         self.assertEqual(expected, actual)

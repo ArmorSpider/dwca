@@ -20,10 +20,12 @@ def translate_entity(entity_def):
 def translate_weapon(weapon_def):
     if weapon_def.get('_system') == 'deathwatch':
         weapon_def = translate_weapon_qualities(weapon_def)
+        weapon_def = translate_unnatural_characteristics(
+            weapon_def, traits_key=QUALITIES)
     return weapon_def
 
 
-def translate_unnatural_characteristics(entity_def):
+def translate_unnatural_characteristics(entity_def, traits_key=TRAITS):
     characteristics = entity_def.get(CHARACTERISTICS)
     if characteristics is None:
         LOG.debug(
@@ -31,7 +33,7 @@ def translate_unnatural_characteristics(entity_def):
         return entity_def
     for characteristic in characteristics.keys():
         unnatural_name = 'unnatural_' + characteristic
-        traits = entity_def.get(TRAITS, {})
+        traits = entity_def.get(traits_key, {})
         unnatural_value = traits.get(unnatural_name, None)
         if unnatural_value is None:
             continue
@@ -40,7 +42,7 @@ def translate_unnatural_characteristics(entity_def):
             raw_bonus = get_tens(characteristic_value)
             current_bonus = raw_bonus * unnatural_value
             new_unnatural = current_bonus - raw_bonus
-            entity_def[TRAITS][unnatural_name] = new_unnatural
+            entity_def[traits_key][unnatural_name] = new_unnatural
             LOG.debug('Converted %s from %s to %s',
                       unnatural_name, unnatural_value, new_unnatural)
     return entity_def

@@ -397,7 +397,7 @@ class MultiplyStrength(Modifier):
 
     def modify_damage(self, attack, current_damage):
         strength_multiplier = attack.multiply_strength
-        raw_str_bonus = attack.attacker.get_raw_characteristic_bonus(STAT_STR)
+        raw_str_bonus = attack.get_raw_characteristic_bonus(STAT_STR)
         if strength_multiplier is not None:
             current_damage += (strength_multiplier * raw_str_bonus)
             LOG.info('Added extra strength multiplier. (%s * %s)',

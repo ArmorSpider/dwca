@@ -9,6 +9,7 @@ from src.action.hit import Hit
 from src.dwca_log.log import get_log
 from src.entities import WOUNDS, ARMOR, DAMAGE_TYPE, DICE, PENETRATION,\
     FLAT_DAMAGE, TEARING_DICE, SWIFT_ATTACK, LIGHTNING_ATTACK
+from src.entities.characteristics import UNDEFINED_CHARACTERISTIC_VALUE
 from src.entities.entity import Entity
 from src.hit_location import FRONT, SIDE, REAR, get_hit_location_name
 from src.hitloc_series import get_hit_locations
@@ -57,6 +58,36 @@ class Attack(Action):
             return super(Attack, self).__getattribute__(name)
         else:
             return attribute
+
+    def get_effective_characteristic(self, characteristic):
+        if self.is_overridden_by_weapon(characteristic):
+            return self.weapon.get_characteristic(characteristic)
+        else:
+            weapon_bonus = self.weapon.get_flat_characteristic_value(
+                characteristic)
+            attacker_base = self.attacker.get_characteristic(characteristic)
+            total = attacker_base + weapon_bonus
+            return total
+
+    def get_characteristic_bonus(self, characteristic):
+        if self.is_overridden_by_weapon(characteristic):
+            return self.weapon.get_characteristic_bonus(characteristic)
+        else:
+            weapon_bonus = self.weapon.get_flat_characteristic_bonus(
+                characteristic)
+            attacker_base = self.attacker.get_characteristic_bonus(
+                characteristic)
+            total = attacker_base + weapon_bonus
+            return total
+
+    def get_raw_characteristic_bonus(self, characteristic):
+        if self.is_overridden_by_weapon(characteristic):
+            return self.weapon.get_raw_characteristic_bonus(characteristic)
+        else:
+            return self.attacker.get_raw_characteristic_bonus(characteristic)
+
+    def is_overridden_by_weapon(self, characteristic):
+        return self.weapon.get_raw_characteristic(characteristic) != UNDEFINED_CHARACTERISTIC_VALUE
 
     def initialize_metadata(self):
         self.metadata[WEAPON] = self.weapon.name

@@ -1,12 +1,13 @@
 from src.dwca_log.log import get_log
 from src.entities import WOUNDS
+from src.entities.characteristics import Characteristics
 from src.modifiers.modifier import get_modifier
 
 
 LOG = get_log(__name__)
 
 
-class Entity(object):
+class Entity(Characteristics):
 
     def __getattr__(self, name):
         attribute = self.modifiers.get(name)

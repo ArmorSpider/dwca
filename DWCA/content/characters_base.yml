@@ -34,14 +34,15 @@ gilmech:
   weapons: [storm_bolter, heavy_bolter]
 marius:
   _system: deathwatch
-  armor: {all: 14, body: 18, left_arm: 18}
+  armor: {all: 12}
   toughness: {left_leg: 2}
   characteristics: {agility: 40, ballistic_skill: 44, intelligence: 54, perception: 38,
-    strength: 43, toughness: 50, weapon_skill: 66}
-  name: Marius the Parry-God
-  skills: {dodge: 10, medicae: 20}
+    strength: 43, toughness: 50, weapon_skill: 66, strength_bonus: 20, weapon_skill_bonus: 15, willpower: 42, fellowship: 54}
+  name: Captain Marius the Parry-God
+  skills: {dodge: 20, medicae: 20, command: 10, intimidate: 10}
+  force_field: {protection_max: 50, overload_max: 1}
   talents: {deathwatch_training: true, hunter_of_aliens: true, slaughter_the_swarm: true}
-  traits: {black_carapace: true, power_armour: true, size: 10, unnatural_strength: 2,
+  traits: {black_carapace: true, size: 10, unnatural_strength: 2,
     unnatural_toughness: 2}
   weapons: [marius_honour_blades, hellfire_bolt_pistol, bolter, marius_executioner_axe]
 morgan:
@@ -56,3 +57,14 @@ morgan:
     size: 10, swift_attack: true, thunder_charge: true, wall_of_steel: true}
   traits: {ambidextrous: true, power_armour: true, unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [morgan_power_claymore]
+solus:
+  _system: deathwatch
+  name: Solus
+  force_field: {protection_max: 55, overload_max: 1}
+  armor: {all: 15, body: 19, left_arm: 19}
+  characteristics: {weapon_skill: 55, ballistic_skill: 50, strength: 35, strength_bonus: 30, toughness: 54, toughness_bonus: 10, agility: 40, intelligence: 46, perception: 41, willpower: 38, fellowship: 36}
+  skills: {awareness: 0, climb: 0, concealment: 0, dodge: 10, silent_move: 0, tech_use: 23, trade: 10}
+  traits: {ambidextrous: true, bulging_biceps: true, deathwatch_training: true, nerves_of_steel: true, quick_draw: true, true_grit: true, unnatural_toughness: 2, unnatural_strength: 2}
+  talents: {abhor_the_witch: true, hardy: true, duty_unto_death: true, hunter_of_aliens: true, technical_knock: true, servo_harness_integration: true, machinator_array: true, armour_monger: true}
+  species: human
+  weapons: [solus_servo_arm, solus_harness_pistol, solus_baugur, solus_meltagun]

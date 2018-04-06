@@ -1,30 +1,26 @@
-from definitions import WEAPONS, FORCE_FIELD
+from definitions import FORCE_FIELD, WEAPONS
 from src.action.melee_attack import MeleeAttack
 from src.action.psychic_attack import PsychicAttack
 from src.action.ranged_attack import RangedAttack
 from src.dwca_log.log import get_log
-from src.entities import ARMOR, CHARACTERISTICS, TRAITS, TALENTS, SPECIES,\
-    SINGLE_SHOT, WOUNDS, SKILLS, HALF_MOVE, CHARGE_MOVE, RUN_MOVE, FULL_MOVE,\
-    STANDARD_ATTACK
+from src.entities import SINGLE_SHOT, STANDARD_ATTACK, HALF_MOVE, FULL_MOVE,\
+    CHARGE_MOVE, RUN_MOVE, SPECIES, TRAITS, SKILLS, TALENTS, WOUNDS, ARMOR
 from src.entities.char_stats import STAT_TGH, STAT_AGI
 from src.entities.entity import Entity
-from src.entities.libraries import read_character, get_character_library
+from src.entities.libraries import get_character_library, read_character
 from src.entities.species import is_alien_species
-from src.hit_location import HITLOC_ALL, get_hit_location_name
+from src.hit_location import get_hit_location_name, HITLOC_ALL
 from src.modifiers.qualities import Felling
 from src.modifiers.traits import Daemonic
 from src.situational.cover import get_cover_armor_for_hitloc
 from src.situational.force_field import ForceField
-from src.skills import get_skill_characteristic, get_all_skills
-from src.util.rand_util import get_tens
+from src.skills import get_all_skills
 from src.util.user_input import try_user_choose_from_list
 
 
 LOG = get_log(__name__)
 UNDEFINED_ARMOR_VALUE = 0
 UNDEFINED_LOCATIONAL_TOUGHNESS_VALUE = 0
-UNDEFINED_CHARACTERISTIC_VALUE = 0
-DEFAULT_CHARACTERISTIC_MULTIPLIER = 1
 
 
 def choose_character():
@@ -92,11 +88,6 @@ class Character(Entity):
             effective_skill_rating = characteristic_value - 20
         return effective_skill_rating
 
-    def get_skill_characteristic(self, skill):
-        char_stat = get_skill_characteristic(skill)
-        characteristic_value = self.get_characteristic(char_stat)
-        return characteristic_value
-
     def _melee_attack(self, weapon, target=None, firemode=STANDARD_ATTACK):
         return MeleeAttack(weapon=weapon,
                            attacker=self,
@@ -131,39 +122,17 @@ class Character(Entity):
                 HITLOC_ALL, UNDEFINED_LOCATIONAL_TOUGHNESS_VALUE)
         return toughness
 
-    def get_characteristic(self, characteristic):
-        char_stat = self.characteristics.get(
-            characteristic, UNDEFINED_CHARACTERISTIC_VALUE)
-        return char_stat
-
-    def get_raw_characteristic_bonus(self, characteristic):
-        characteristic_value = self.get_characteristic(characteristic)
-        characteristic_bonus = get_tens(characteristic_value)
-        return characteristic_bonus
-
     def get_modded_toughness_bonus(self, attack, hit_location=None):
         raw_bonus = self.get_raw_characteristic_bonus(STAT_TGH)
+        flat_bonus = self.get_flat_characteristic_bonus(STAT_TGH)
         extra_toughness = self.get_unnatural_characteristic(STAT_TGH)
         extra_toughness = Felling.handle_felling(attack, extra_toughness)
         extra_toughness = Daemonic.handle_daemonic(attack, extra_toughness)
-        final_bonus = raw_bonus + extra_toughness
+        final_bonus = raw_bonus + extra_toughness + flat_bonus
         if hit_location is not None:
             locational_toughness = self.get_locational_toughness(hit_location)
             final_bonus += locational_toughness
         return final_bonus
-
-    def get_characteristic_bonus(self, characteristic):
-        characteristic_bonus = self.get_raw_characteristic_bonus(
-            characteristic)
-        unnatural_bonus = self.get_unnatural_characteristic(
-            characteristic)
-        final_bonus = characteristic_bonus + unnatural_bonus
-        return final_bonus
-
-    def get_unnatural_characteristic(self, characteristic):
-        trait_name = 'unnatural_{}'.format(characteristic)
-        trait_value = self.modifiers.get(trait_name, 0)
-        return trait_value
 
     @property
     def movement(self):
@@ -173,7 +142,7 @@ class Character(Entity):
         charge_move = move_mod * 3
         run_move = move_mod * 6
         if self.sprint is not None:
-            full_move += self.get_raw_characteristic_bonus(STAT_AGI)
+            full_move += self.get_natural_bonus(STAT_AGI)
             run_move = '{}/{}*'.format(run_move, run_move * 2)
         if self.preternatural_speed is not None:
             charge_move *= 2
@@ -252,10 +221,6 @@ class Character(Entity):
         modifiers.update(self.traits)
         modifiers.update(self.talents)
         return modifiers
-
-    @property
-    def characteristics(self):
-        return self.get_stat(CHARACTERISTICS, default={})
 
     @property
     def armor(self):

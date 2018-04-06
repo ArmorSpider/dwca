@@ -14,17 +14,18 @@ LOG = get_log(__name__)
 
 
 def handler_equip(event):
+    attack = build_base_attack(event)
     attacker = build_attacker(event)
     weapon = build_weapon(event)
     if weapon.is_melee():
         num_attacks = attacker.num_melee_attacks
-        roll_target = attacker.get_characteristic(STAT_WS)
+        roll_target = attack.get_effective_characteristic(STAT_WS)
     elif weapon.is_psychic():
         num_attacks = 1
-        roll_target = attacker.get_characteristic(STAT_WIL)
+        roll_target = attack.get_effective_characteristic(STAT_WIL)
     else:
         num_attacks = attacker.num_ranged_attacks
-        roll_target = attacker.get_characteristic(STAT_BS)
+        roll_target = attack.get_effective_characteristic(STAT_BS)
     event = calculate_hit_bonuses(event)
     event[NUM_ATTACKS] = num_attacks
     event[ROLL_TARGET] = roll_target

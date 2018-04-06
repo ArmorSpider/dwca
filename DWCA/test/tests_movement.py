@@ -129,6 +129,42 @@ class Test(unittest.TestCase):
         actual = moveman.movement
         self.assertEqual(expected, actual)
 
+    def test_flat_agility_bonus_should_affect_movement(self):
+        moveman = build_mock_entity('Moveman',
+                                    characteristics={STAT_AGI: 40,
+                                                     STAT_AGI + '_bonus': 15})
+
+        expected = {HALF_MOVE: 5,
+                    FULL_MOVE: 10,
+                    CHARGE_MOVE: 15,
+                    RUN_MOVE: 30}
+        actual = moveman.movement
+        self.assertEqual(expected, actual)
+
+    def test_flat_agility_bonus_that_does_not_change_tens_should_not_affect_movement(self):
+        moveman = build_mock_entity('Moveman',
+                                    characteristics={STAT_AGI: 40,
+                                                     STAT_AGI + '_bonus': 9})
+
+        expected = {HALF_MOVE: 4,
+                    FULL_MOVE: 8,
+                    CHARGE_MOVE: 12,
+                    RUN_MOVE: 24}
+        actual = moveman.movement
+        self.assertEqual(expected, actual)
+
+    def test_negative_flat_agility_bonus_should_reduce_movement(self):
+        moveman = build_mock_entity('Moveman',
+                                    characteristics={STAT_AGI: 40,
+                                                     STAT_AGI + '_bonus': -11})
+
+        expected = {HALF_MOVE: 2,
+                    FULL_MOVE: 4,
+                    CHARGE_MOVE: 6,
+                    RUN_MOVE: 12}
+        actual = moveman.movement
+        self.assertEqual(expected, actual)
+
     def test_preternatural_speed_should_double_charge_movement(self):
         moveman = build_mock_entity('Moveman',
                                     _system='deathwatch',
