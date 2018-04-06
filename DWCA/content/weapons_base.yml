@@ -215,6 +215,28 @@ furios_thunder_hammer:
   penetration: 9
   qualities: {concussive: true, multiply_strength: 1, power_field: true, skill_bonus: 10,
     unwieldy: true}
+conflagration_meltagun:
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 2
+  flat_damage: 14
+  penetration: 14
+  range: 20
+  name: Conflagration Meltagun
+  single_shot: 1
+  qualities: {melta: true}
+solus_meltagun:
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 2
+  flat_damage: 14
+  penetration: 14
+  range: 20
+  name: Solus' Conflagration Meltagun
+  single_shot: 1
+  qualities: {melta: true, accurate: true}
 heavy_bolter:
   _system: deathwatch
   class: Heavy
@@ -277,7 +299,7 @@ marius_honour_blades:
   flat_damage: 7
   name: Marius' Honour Blades
   penetration: 6
-  qualities: {balanced: 30, power_field: true, razor_sharp: true, skill_bonus: 15}
+  qualities: {balanced: 30, power_field: true, razor_sharp: true}
 morgan_power_claymore:
   _system: deathwatch
   class: Melee
@@ -367,6 +389,27 @@ power_fist:
   name: Astartes Power Fist
   penetration: 9
   qualities: {multiply_strength: 1, power_field: true, unwieldy: true}
+siege_drill:
+  _system: deathwatch
+  name: Centurion Siege Drill
+  class: Melee
+  damage_type: R
+  dice: 5
+  penetration: 15
+  flat_damage: 0
+  qualities: {tearing: true, unwieldy: true, multiply_strength: 1}
+hurricane_bolter:
+  _system: deathwatch
+  name: Hurricane Bolter
+  class: Mounted
+  range: 50
+  semi_auto: 6
+  full_auto: 12
+  dice: 1
+  flat_damage: 9
+  damage_type: X
+  penetration: 4
+  qualities: {tearing: true, twin_linked: true}
 power_spear:
   _system: deathwatch
   class: Melee
@@ -473,6 +516,17 @@ twin_lascannon:
   qualities: {proven: 3, twin_linked: true}
   range: 300
   single_shot: 1
+lascannon:
+  _system: deathwatch
+  class: Heavy
+  damage_type: E
+  dice: 5
+  flat_damage: 10
+  name: Astartes Lascannon
+  penetration: 10
+  qualities: {proven: 3}
+  range: 300
+  single_shot: 1
 twin_plasma_gun:
   _system: deathwatch
   class: Basic
@@ -485,5 +539,38 @@ twin_plasma_gun:
   range: 100
   semi_auto: 2
   single_shot: 1
+solus_servo_arm:
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 0
+  qualities: {unnatural_strength: 2}
+  penetration: 10
+  characteristics: {strength: 85, weapon_skill_bonus: 5}
+  name: Solus' Servo-Arm
+solus_baugur:
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 11
+  qualities: {unnatural_strength: 2, tearing: true, power_field: true}
+  penetration: 7
+  characteristics: {strength: 85, weapon_skill_bonus: 5}
+  name: Solus' Breaching Augur
+solus_harness_pistol:
+ _system: deathwatch
+ name: Solus' Harness Plasma Pistol
+ class: Pistol
+ single_shot: 1
+ semi_auto: 2
+ dice: 1
+ flat_damage: 10
+ penetration: 8
+ range: 10
+ damage_type: E
+ characteristics: {ballistic_skill_bonus: 5}
+ qualities: {volatile: true}
 unarmed: {_system: deathwatch, class: Melee, damage_type: I, dice: 1, flat_damage: 0,
   name: Unarmed, penetration: 0}
