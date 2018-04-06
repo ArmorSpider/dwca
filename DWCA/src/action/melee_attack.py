@@ -22,7 +22,7 @@ class MeleeAttack(Attack):
     @property
     def degrees_of_success(self):
         if self.helpless is not None:
-            ws_bonus = self.attacker.get_characteristic_bonus(STAT_WS)
+            ws_bonus = self.get_characteristic_bonus(STAT_WS)
             LOG.debug('HELPLESS: Automatic DoS equal to WS bonus (%s)', ws_bonus)
             return ws_bonus
         else:
@@ -31,7 +31,7 @@ class MeleeAttack(Attack):
     @lazy
     def flat_damage(self):
         flat_damage = super(MeleeAttack, self).flat_damage
-        str_bonus = self.attacker.get_characteristic_bonus(STAT_STR)
+        str_bonus = self.get_characteristic_bonus(STAT_STR)
         LOG.debug('Added strength bonus (%s) to flat damage (%s).',
                   str_bonus, flat_damage)
         flat_damage += str_bonus

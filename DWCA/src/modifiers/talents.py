@@ -47,9 +47,8 @@ class SlaughterTheSwarm(Modifier):
 
     def modify_num_hits(self, attack, current_num_hits):
         if attack.target.is_horde():
-            attacker = attack.attacker
-            int_mod = attacker.get_characteristic_bonus(STAT_INT)
-            per_mod = attacker.get_characteristic_bonus(STAT_PER)
+            int_mod = attack.get_characteristic_bonus(STAT_INT)
+            per_mod = attack.get_characteristic_bonus(STAT_PER)
             extra_hits = max(int_mod, per_mod)
             LOG.info('+%s hits from SlaughterTheSwarm.', extra_hits)
             current_num_hits += extra_hits
