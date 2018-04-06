@@ -40,6 +40,12 @@ class Characteristics(object):
         value = self.characteristics.get(key, 0)
         return value
 
+    def get_natural_bonus(self, characteristic):
+        base_bonus = self.get_raw_characteristic_bonus(characteristic)
+        flat_bonus = self.get_flat_characteristic_bonus(characteristic)
+        natural_bonus = base_bonus + flat_bonus
+        return natural_bonus
+
     def get_characteristic_bonus(self, characteristic):
         characteristic_bonus = self.get_raw_characteristic_bonus(
             characteristic)

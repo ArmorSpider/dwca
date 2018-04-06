@@ -17,7 +17,6 @@ from src.modifiers.modifier import get_modifiers_iterator, get_modifier
 from src.modifiers.qualities import Devastating, Hellfire
 from src.roll_damage import roll_normal_damage, roll_righteous_fury,\
     handle_dos_minimum_damage
-from src.util.rand_util import get_tens
 from src.util.user_input import try_user_choose_from_list
 
 
