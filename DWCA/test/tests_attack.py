@@ -6,9 +6,11 @@ import unittest
 from src.action.attack import Attack
 from src.entities import NAME, FLAT_DAMAGE, PENETRATION, DICE, QUALITIES, TALENTS,\
     TRAITS, ARMOR, CHARACTERISTICS
+from src.entities.char_stats import STAT_STR, STAT_WS
 from src.entities.character import Character
 from src.entities.weapon import Weapon
 from src.hit_location import HITLOC_ALL, HITLOC_BODY
+from test.test_util import build_mock_weapon, build_mock_entity
 
 
 class Test(unittest.TestCase):
@@ -43,6 +45,17 @@ class Test(unittest.TestCase):
 
         self.chainsword = Weapon(definition=chainsword_definition)
         self.space_marine = Character(definition=space_marine_definition)
+
+        self.weak_attacker = build_mock_entity('WeakMan',
+                                               _system='deathwatch',
+                                               characteristics={STAT_STR: 10,
+                                                                STAT_WS: 50,
+                                                                STAT_STR + '_bonus': 20})
+        self.weapon_with_stats = build_mock_weapon('StatBlade',
+                                                   'Melee',
+                                                   _system='deathwatch',
+                                                   characteristics={STAT_STR: 85,
+                                                                    STAT_WS + '_bonus': 15})
 
     def test_attacking_should_return_an_attack(self):
         entity = self.entity
@@ -162,3 +175,27 @@ class Test(unittest.TestCase):
         self.assertEqual(5, _melee_attack.machine)
         self.assertEqual(True, _melee_attack.balanced)
         self.assertEqual(True, _melee_attack.tearing)
+
+    def test_weapon_characteristic_should_override_attacker_including_flat_bonus(self):
+        attack = Attack(weapon=self.weapon_with_stats,
+                        attacker=self.weak_attacker,
+                        target=None)
+        expected = 85
+        expected_bonus = 8
+        actual = attack.get_effective_characteristic(STAT_STR)
+        actual_bonus = attack.get_effective_bonus(STAT_STR)
+
+        self.assertEqual(expected, actual)
+        self.assertEqual(expected_bonus, actual_bonus)
+
+    def test_attacker_characteristic_should_include_bonus_from_weapon(self):
+        attack = Attack(weapon=self.weapon_with_stats,
+                        attacker=self.weak_attacker,
+                        target=None)
+        expected = 65
+        expected_bonus = 6
+        actual = attack.get_effective_characteristic(STAT_WS)
+        actual_bonus = attack.get_effective_bonus(STAT_WS)
+
+        self.assertEqual(expected, actual)
+        self.assertEqual(expected_bonus, actual_bonus)
