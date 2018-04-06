@@ -6,7 +6,6 @@ from src.dwca_log.log import get_log
 from src.entities import ARMOR, TRAITS, TALENTS, SPECIES,\
     SINGLE_SHOT, WOUNDS, SKILLS, HALF_MOVE, CHARGE_MOVE, RUN_MOVE, FULL_MOVE
 from src.entities.char_stats import STAT_TGH, STAT_AGI
-from src.entities.characteristics import Characteristics
 from src.entities.entity import Entity
 from src.entities.libraries import read_character, get_character_library
 from src.entities.species import is_alien_species
@@ -36,7 +35,7 @@ def build_character(char_name):
     return character
 
 
-class Character(Entity, Characteristics):
+class Character(Entity):
 
     @property
     def num_melee_attacks(self):
@@ -124,7 +123,7 @@ class Character(Entity, Characteristics):
 
     def get_modded_toughness_bonus(self, attack, hit_location=None):
         raw_bonus = self.get_raw_characteristic_bonus(STAT_TGH)
-        flat_bonus = self._get_flat_characteristic_bonus(STAT_TGH)
+        flat_bonus = self.get_flat_characteristic_bonus(STAT_TGH)
         tgh_multiplier = self.get_characteristic_multiplier(STAT_TGH)
         tgh_multiplier = Felling.handle_felling(attack, tgh_multiplier)
         tgh_multiplier = Daemonic.handle_daemonic(attack, tgh_multiplier)

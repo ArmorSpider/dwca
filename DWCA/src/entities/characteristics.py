@@ -30,7 +30,7 @@ class Characteristics(object):
         characteristic_bonus = get_tens(characteristic_value)
         return characteristic_bonus
 
-    def _get_flat_characteristic_bonus(self, characteristic):
+    def get_flat_characteristic_bonus(self, characteristic):
         flat_value = self.get_flat_characteristic_value(characteristic)
         flat_bonus = get_tens(flat_value)
         return flat_bonus
@@ -45,7 +45,7 @@ class Characteristics(object):
             characteristic)
         characteristic_multiplier = self.get_characteristic_multiplier(
             characteristic)
-        flat_bonus = self._get_flat_characteristic_bonus(characteristic)
+        flat_bonus = self.get_flat_characteristic_bonus(characteristic)
         final_bonus = characteristic_bonus * characteristic_multiplier + flat_bonus
         return final_bonus
 

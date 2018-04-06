@@ -70,10 +70,16 @@ class Attack(Action):
             total = attacker_base + weapon_bonus
             return total
 
-    def get_effective_bonus(self, characteristic):
-        base_value = self.get_effective_characteristic(characteristic)
-        effective_bonus = get_tens(base_value)
-        return effective_bonus
+    def get_characteristic_bonus(self, characteristic):
+        if self.weapon.get_raw_characteristic(characteristic) != UNDEFINED_CHARACTERISTIC_VALUE:
+            return self.weapon.get_characteristic_bonus(characteristic)
+        else:
+            weapon_bonus = self.weapon.get_flat_characteristic_bonus(
+                characteristic)
+            attacker_base = self.attacker.get_characteristic_bonus(
+                characteristic)
+            total = attacker_base + weapon_bonus
+            return total
 
     def initialize_metadata(self):
         self.metadata[WEAPON] = self.weapon.name

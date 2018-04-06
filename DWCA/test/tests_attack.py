@@ -51,11 +51,23 @@ class Test(unittest.TestCase):
                                                characteristics={STAT_STR: 10,
                                                                 STAT_WS: 50,
                                                                 STAT_STR + '_bonus': 20})
+        self.normal_attacker = build_mock_entity('NormalMan',
+                                                 _system='deathwatch',
+                                                 characteristics={STAT_STR: 50,
+                                                                  STAT_WS: 50,
+                                                                  STAT_STR + '_bonus': 20},
+                                                 traits={'unnatural_strength': 2})
         self.weapon_with_stats = build_mock_weapon('StatBlade',
                                                    'Melee',
                                                    _system='deathwatch',
                                                    characteristics={STAT_STR: 85,
                                                                     STAT_WS + '_bonus': 15})
+        self.unnatural_weapon = build_mock_weapon('StatBlade',
+                                                  'Melee',
+                                                  _system='deathwatch',
+                                                  characteristics={STAT_STR: 85,
+                                                                   STAT_STR + '_bonus': 15},
+                                                  qualities={'unnatural_strength': 2})
 
     def test_attacking_should_return_an_attack(self):
         entity = self.entity
@@ -183,7 +195,7 @@ class Test(unittest.TestCase):
         expected = 85
         expected_bonus = 8
         actual = attack.get_effective_characteristic(STAT_STR)
-        actual_bonus = attack.get_effective_bonus(STAT_STR)
+        actual_bonus = attack.get_characteristic_bonus(STAT_STR)
 
         self.assertEqual(expected, actual)
         self.assertEqual(expected_bonus, actual_bonus)
@@ -195,7 +207,27 @@ class Test(unittest.TestCase):
         expected = 65
         expected_bonus = 6
         actual = attack.get_effective_characteristic(STAT_WS)
-        actual_bonus = attack.get_effective_bonus(STAT_WS)
+        actual_bonus = attack.get_characteristic_bonus(STAT_WS)
 
         self.assertEqual(expected, actual)
         self.assertEqual(expected_bonus, actual_bonus)
+
+    def test_unnatural_characteristics_should_apply_for_attacker(self):
+        attack = Attack(weapon=None,
+                        attacker=self.normal_attacker,
+                        target=None)
+
+        expected = 12
+        actual = attack.get_characteristic_bonus(STAT_STR)
+
+        self.assertEqual(expected, actual)
+
+    def test_unnatural_characteristics_should_apply_for_weapon(self):
+        attack = Attack(weapon=self.unnatural_weapon,
+                        attacker=None,
+                        target=None)
+
+        expected = 17
+        actual = attack.get_characteristic_bonus(STAT_STR)
+
+        self.assertEqual(expected, actual)
