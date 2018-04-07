@@ -2,6 +2,7 @@ from definitions import ROLL_RESULT
 from src.action.action import try_action
 from src.dice import roll_action_dice
 from src.dwca_log.log import get_log
+from src.entities.char_stats import STAT_WS
 from src.handler import build_base_attack,\
     choose_or_build_attacker, build_attacker
 from src.modifiers.roll_modifier import get_effective_modifier
@@ -51,6 +52,8 @@ def attempt_parry(event):
     parry_target = 0
     if attack.is_melee():
         parry_target = attack.attacker.available_skills.get('parry')
+        weapon_bonus = attack.weapon.get_flat_characteristic_value(STAT_WS)
+        parry_target += weapon_bonus
         manual_bonus = get_effective_modifier(event, manual_only=True)
         parry_target += manual_bonus
         if attack.balanced is not None:
