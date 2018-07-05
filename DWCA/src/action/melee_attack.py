@@ -57,7 +57,7 @@ class MeleeAttack(Attack):
         dos_hits = 0
         dos = self.degrees_of_success
         if self.firemode == SWIFT_ATTACK:
-            dos_hits += int(dos - 1 / 2)
+            dos_hits += int((dos - 1) / 2)
             LOG.debug('DoS hits: %s (%s DoS/2)',
                       dos_hits, dos)
         elif self.firemode == LIGHTNING_ATTACK:
