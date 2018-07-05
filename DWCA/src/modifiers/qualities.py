@@ -27,6 +27,45 @@ class PsychicScaling(Modifier):
         return current_value
 
 
+class PsychicScalingDamage(Modifier):
+
+    name = 'psychic_scaling_damage'
+
+    def modify_damage(self, attack, current_damage):
+        return self.scale_with_pr(attack, current_damage)
+
+    def scale_with_pr(self, attack, current_value):
+        if attack.effective_psy_rating is not None:
+            current_value = current_value * attack.effective_psy_rating
+        return current_value
+
+
+class PsychicScalingDice(Modifier):
+
+    name = 'psychic_scaling_dice'
+
+    def modify_num_dice(self, attack, current_num_dice):
+        return self.scale_with_pr(attack, current_num_dice)
+
+    def scale_with_pr(self, attack, current_value):
+        if attack.effective_psy_rating is not None:
+            current_value = current_value * attack.effective_psy_rating
+        return current_value
+
+
+class PsychicScalingPenetration(Modifier):
+
+    name = 'psychic_scaling_penetration'
+
+    def modify_penetration(self, attack, current_penetration):
+        return self.scale_with_pr(attack, current_penetration)
+
+    def scale_with_pr(self, attack, current_value):
+        if attack.effective_psy_rating is not None:
+            current_value = current_value * attack.effective_psy_rating
+        return current_value
+
+
 class Balanced(Modifier):
 
     name = 'balanced'
