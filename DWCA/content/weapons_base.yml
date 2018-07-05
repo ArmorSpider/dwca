@@ -574,3 +574,43 @@ solus_harness_pistol:
  qualities: {volatile: true}
 unarmed: {_system: deathwatch, class: Melee, damage_type: I, dice: 1, flat_damage: 0,
   name: Unarmed, penetration: 0}
+spirits_of_the_steppes:
+  _system: deathwatch
+  name: Spirits of the Steppes
+  class: Psychic
+  dice: 2
+  flat_damage: 1
+  penetration: 4
+  qualities: {psychic_scaling_damage: true, shocking: true}
+  damage_type: E
+  range: 100
+stormlance:
+  _system: deathwatch
+  name: Stormlance
+  class: Psychic
+  range: 100
+  damage_type: E
+  dice: 1
+  penetration: 5
+  flat_damage: 0
+  qualities: {psychic_scaling_dice: true, shocking: true}
+crusher_cross:
+  _system: deathwatch
+  name: Crusher's Cruciform of the Crusade
+  class: Melee
+  damage_type: I
+  dice: 2
+  flat_damage: 5
+  penetration: 0
+  qualities: {concussive: true, unwieldy: true}
+  characteristics: {weapon_skill_bonus: 15}
+combat_shield:
+  _system: deathwatch
+  name: Combat Shield
+  class: Melee
+  dice: 1
+  flat_damage: 1
+  penetration: 0
+  qualities: {balanced: true}
+
+
