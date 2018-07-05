@@ -106,3 +106,15 @@ solus:
     black_carapace: true, bulging_biceps: true, deathwatch_training: true, nerves_of_steel: true,
     quick_draw: true, size: 10, true_grit: true, unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [solus_servo_arm, solus_harness_pistol, solus_baugur, solus_meltagun]
+crusher:
+  _system: deathwatch
+  name: Crusher
+  armor: {all: 14}
+  skills: {awareness: 0, climb: 0, concealment: 0, dodge: 0, silent_move: 0}
+  characteristics: {weapon_skill: 55, ballistic_skill: 40, strength: 43, strength_bonus: 40, agility_bonus: -20, toughness: 51, agility: 53, intelligence: 44, perception: 39, willpower: 69, fellowship: 37}
+  traits: {ambidextrous: true, bulging_biceps: true, deathwatch_training: true, nerves_of_steel: true, quick_draw: true, true_grit: true, unnatural_toughness: 2, unnatural_strength: 2, size: 20, black_carapace: true}
+  talents: {sprint: true, berserk_charge: true, hunter_of_aliens: true, rite_of_sanctioning: true, hatred_tyranids: true, warp_sense: true, swift_attack: true, step_aside: true, psy_rating: 8, warp_conduit: true}
+  fate_points: 3
+  species: human
+  wounds: 22
+  weapons: [spirits_of_the_steppes, stormlance, crusher_cross, combat_shield]
