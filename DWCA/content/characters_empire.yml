@@ -28,3 +28,11 @@ warhound_titan:
   vehicle: true
   weapons: [vulcan_mega_bolter, twin_turbo_laser, plasma_blastgun, plasma_blastgun_max]
   wounds: 90
+drop_pod:
+  _package: empire
+  _system: deathwatch
+  armor: {all: 24}
+  characteristics: {ballistic_skill: 50}
+  traits: {size: 20}
+  wounds: 30
+  weapons: [storm_bolter]

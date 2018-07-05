@@ -9,14 +9,6 @@ assault_cannon:
   penetration: 6
   qualities: {devastating: 1, tearing: true}
   range: 150
-traitors_bane:
-  _system: deathwatch
-  class: Melee
-  damage_type: E
-  dice: 2
-  flat_damage: 7
-  penetration: 7
-  qualities: {power_field: true, special: true, felling: 2}
 autocannon:
   _system: deathwatch
   class: Heavy
@@ -133,6 +125,26 @@ combat_knife:
   name: Astartes Combat Knife
   penetration: 0
   qualities: {}
+kregos_melee:
+  _system: deathwatch
+  name: Dreadnought Close Combat Weapon
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 10
+  penetration: 6
+  qualities: {power_field: true}
+conflagration_meltagun:
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 2
+  flat_damage: 14
+  name: Conflagration Meltagun
+  penetration: 14
+  qualities: {melta: true}
+  range: 20
+  single_shot: 1
 crozius_arcanum:
   _system: deathwatch
   class: Melee
@@ -150,6 +162,16 @@ dual_lightning_claw:
   flat_damage: 6
   name: Astartes Lightning Claw
   penetration: 8
+  qualities: {damage_per_dos: 2, power_field: true, proven: 4}
+aarian_lightning_claws:
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 6
+  name: Aarian's Lightning Claws
+  penetration: 8
+  characteristics: {weapon_skill_bonus: 10}
   qualities: {damage_per_dos: 2, power_field: true, proven: 4}
 dummy: {_system: deathwatch, class: Melee, damage_type: I, dice: 1, flat_damage: 0,
   name: Dummy Weapon, penetration: 0}
@@ -223,28 +245,6 @@ furios_thunder_hammer:
   penetration: 9
   qualities: {concussive: true, multiply_strength: 1, power_field: true, skill_bonus: 10,
     unwieldy: true}
-conflagration_meltagun:
-  _system: deathwatch
-  class: Basic
-  damage_type: E
-  dice: 2
-  flat_damage: 14
-  penetration: 14
-  range: 20
-  name: Conflagration Meltagun
-  single_shot: 1
-  qualities: {melta: true}
-solus_meltagun:
-  _system: deathwatch
-  class: Basic
-  damage_type: E
-  dice: 2
-  flat_damage: 14
-  penetration: 14
-  range: 20
-  name: Solus' Conflagration Meltagun
-  single_shot: 1
-  qualities: {melta: true, accurate: true}
 heavy_bolter:
   _system: deathwatch
   class: Heavy
@@ -268,6 +268,18 @@ hellfire_bolt_pistol:
   range: 30
   semi_auto: 2
   single_shot: 1
+hurricane_bolter:
+  _system: deathwatch
+  class: Mounted
+  damage_type: X
+  dice: 1
+  flat_damage: 9
+  full_auto: 12
+  name: Hurricane Bolter
+  penetration: 4
+  qualities: {tearing: true, twin_linked: true}
+  range: 50
+  semi_auto: 6
 krak_grenade_melee: {_system: deathwatch, class: Melee, damage_type: E, dice: 3, flat_damage: 4,
   name: Krak Grenade (Melee), penetration: 6}
 krak_missile:
@@ -280,6 +292,17 @@ krak_missile:
   penetration: 8
   qualities: {blast: 1}
   range: 250
+  single_shot: 1
+lascannon:
+  _system: deathwatch
+  class: Heavy
+  damage_type: E
+  dice: 5
+  flat_damage: 10
+  name: Astartes Lascannon
+  penetration: 10
+  qualities: {proven: 3}
+  range: 300
   single_shot: 1
 lightning_claw:
   _system: deathwatch
@@ -397,27 +420,6 @@ power_fist:
   name: Astartes Power Fist
   penetration: 9
   qualities: {multiply_strength: 1, power_field: true, unwieldy: true}
-siege_drill:
-  _system: deathwatch
-  name: Centurion Siege Drill
-  class: Melee
-  damage_type: R
-  dice: 5
-  penetration: 15
-  flat_damage: 0
-  qualities: {tearing: true, unwieldy: true, multiply_strength: 1}
-hurricane_bolter:
-  _system: deathwatch
-  name: Hurricane Bolter
-  class: Mounted
-  range: 50
-  semi_auto: 6
-  full_auto: 12
-  dice: 1
-  flat_damage: 9
-  damage_type: X
-  penetration: 4
-  qualities: {tearing: true, twin_linked: true}
 power_spear:
   _system: deathwatch
   class: Melee
@@ -456,6 +458,23 @@ sharpshooter_rifle:
   qualities: {accurate: true, felling: 1, toxic: 1d10}
   range: 250
   single_shot: 1
+centurion_fist:
+  _system: deathwatch
+  class: Melee
+  damage_type: I
+  dice: 1
+  flat_damage: 0
+  penetration: 0
+  qualities: {unwieldy: true}
+siege_drill:
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 5
+  flat_damage: 0
+  name: Centurion Siege Drill
+  penetration: 15
+  qualities: {multiply_strength: 1, tearing: true, unwieldy: true}
 smite:
   _system: deathwatch
   class: Psychic
@@ -466,6 +485,50 @@ smite:
   penetration: 1
   qualities: {psychic_scaling: true}
   range: 10
+solus_baugur:
+  _system: deathwatch
+  characteristics: {strength: 85, weapon_skill_bonus: 5}
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 11
+  name: Solus' Breaching Augur
+  penetration: 7
+  qualities: {power_field: true, tearing: true, unnatural_strength: 2}
+solus_harness_pistol:
+  _system: deathwatch
+  characteristics: {ballistic_skill_bonus: 5}
+  class: Pistol
+  damage_type: E
+  dice: 1
+  flat_damage: 10
+  name: Solus' Harness Plasma Pistol
+  penetration: 8
+  qualities: {volatile: true}
+  range: 10
+  semi_auto: 2
+  single_shot: 1
+solus_meltagun:
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 2
+  flat_damage: 14
+  name: Solus' Conflagration Meltagun
+  penetration: 14
+  qualities: {accurate: true, melta: true}
+  range: 20
+  single_shot: 1
+solus_servo_arm:
+  _system: deathwatch
+  characteristics: {strength: 85, weapon_skill_bonus: 5}
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 0
+  name: Solus' Servo-Arm
+  penetration: 10
+  qualities: {unnatural_strength: 2}
 storm_bolter:
   _system: deathwatch
   class: Basic
@@ -489,6 +552,33 @@ thunder_hammer:
   name: Astartes Thunder Hammer
   penetration: 9
   qualities: {concussive: true, multiply_strength: 1, power_field: true, unwieldy: true}
+melee_krak:
+  _system: deathwatch
+  class: Melee
+  damage_type: X
+  dice: 3
+  flat_damage: 4
+  penetration: 6
+  qualities: {penetration_per_dos: 1}
+traitors_bane:
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 7
+  penetration: 7
+  qualities: {felling: 2, power_field: true, special: true}
+twin_assault_cannon:
+  _system: deathwatch
+  class: Mounted
+  damage_type: I
+  dice: 2
+  flat_damage: 13
+  full_auto: 10
+  name: Twin Astartes Assault Cannon
+  penetration: 6
+  qualities: {devastating: 1, tearing: true, twin_linked: true}
+  range: 150
 twin_autocannons:
   _system: deathwatch
   class: Heavy
@@ -524,17 +614,6 @@ twin_lascannon:
   qualities: {proven: 3, twin_linked: true}
   range: 300
   single_shot: 1
-lascannon:
-  _system: deathwatch
-  class: Heavy
-  damage_type: E
-  dice: 5
-  flat_damage: 10
-  name: Astartes Lascannon
-  penetration: 10
-  qualities: {proven: 3}
-  range: 300
-  single_shot: 1
 twin_plasma_gun:
   _system: deathwatch
   class: Basic
@@ -547,38 +626,5 @@ twin_plasma_gun:
   range: 100
   semi_auto: 2
   single_shot: 1
-solus_servo_arm:
-  _system: deathwatch
-  class: Melee
-  damage_type: E
-  dice: 2
-  flat_damage: 0
-  qualities: {unnatural_strength: 2}
-  penetration: 10
-  characteristics: {strength: 85, weapon_skill_bonus: 5}
-  name: Solus' Servo-Arm
-solus_baugur:
-  _system: deathwatch
-  class: Melee
-  damage_type: E
-  dice: 2
-  flat_damage: 11
-  qualities: {unnatural_strength: 2, tearing: true, power_field: true}
-  penetration: 7
-  characteristics: {strength: 85, weapon_skill_bonus: 5}
-  name: Solus' Breaching Augur
-solus_harness_pistol:
- _system: deathwatch
- name: Solus' Harness Plasma Pistol
- class: Pistol
- single_shot: 1
- semi_auto: 2
- dice: 1
- flat_damage: 10
- penetration: 8
- range: 10
- damage_type: E
- characteristics: {ballistic_skill_bonus: 5}
- qualities: {volatile: true}
 unarmed: {_system: deathwatch, class: Melee, damage_type: I, dice: 1, flat_damage: 0,
   name: Unarmed, penetration: 0}

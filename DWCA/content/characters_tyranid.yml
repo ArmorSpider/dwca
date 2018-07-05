@@ -278,7 +278,7 @@ tervigon:
     natural_armor: true, shadow_in_the_warp: true, size: 30, spawn_termagants: true,
     synapse_creature: true, tearing: true, tyranid: true, unnatural_strength: 2, unnatural_toughness: 3,
     unnatural_willpower: 2}
-  weapons: [teeth_and_claws, stinger_salvo, scything_talons]
+  weapons: [teeth_and_claws, stinger_salvo, scything_talons, focus_test]
   wounds: 180
 thornback:
   _package: tyranid
@@ -319,7 +319,7 @@ tyranid_warrior:
   skills: {awareness: 0, climb: 0, swim: 10}
   species: tyranid
   talents: {fearless: true, swift_attack: true}
-  traits: {horde: true, multiple_arms: true, natural_armor: true, size: 20, unnatural_strength: 2,
+  traits: {multiple_arms: true, natural_armor: true, size: 20, unnatural_strength: 2,
     unnatural_toughness: 2}
   weapons: [scything_talons, rending_claws, devourer, deathspitter]
   wounds: 48

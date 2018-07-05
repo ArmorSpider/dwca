@@ -56,3 +56,44 @@ namael:
   talents: {deathwatch_training: true}
   traits: {black_carapace: true, power_armour: true, size: 10, unnatural_strength: 2,
     unnatural_toughness: 2}
+armor_man:
+  _package: dev
+  _system: deathwatch
+  armor: {body: 10, all: 8}
+  characteristics: {strength: 42, toughness: 50}
+  name: ArmorMan
+  talents: {deathwatch_training: true}
+  traits: {black_carapace: true, power_armour: true, size: 10, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [lascannon]
+terminator_man:
+  _package: dev
+  _system: deathwatch
+  armor: {all: 14}
+  characteristics: {strength: 42, toughness: 50}
+  force_field: {overload_max: 0, protection_max: 35}
+  name: TerminatorMan
+  talents: {deathwatch_training: true}
+  traits: {black_carapace: true, power_armour: true, size: 10, unnatural_strength: 2,
+    unnatural_toughness: 2}
+centurion_man:
+  _package: dev
+  _system: deathwatch
+  armor: {front: 30, side: 30, rear: 20}
+  characteristics: {strength: 70, weapon_skill: 60, ballistic_skill: 60}
+  name: CenturionMan
+  vehicle : true
+  talents: {deathwatch_training: true}
+  traits: {power_armour: true, size: 20, unnatural_strength: 2}
+  weapons: [siege_drill, hurricane_bolter, frag_missile, krak_missile]
+centurion_armor:
+  _package: dev
+  _system: deathwatch
+  name: CenturionArmorMan
+  armor: {all: 20, head: 8}
+  characteristics: {agility: 54, ballistic_skill: 43, fellowship: 39, intelligence: 43,
+    perception: 49, strength: 70, toughness: 61, weapon_skill: 65,
+    willpower: 43, willpower_bonus: 5, strength_bonus: 40, agility_bonus: -20}
+  talents: {deathwatch_training: true}
+  traits: {unnatural_toughness: 2, unnatural_strength: 3, size: 20}
+  weapons: [siege_drill, hurricane_bolter, frag_missile, krak_missile, centurion_fist]

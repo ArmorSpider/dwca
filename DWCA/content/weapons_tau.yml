@@ -153,6 +153,7 @@ seeker_missile:
   name: Seeker Missile
   penetration: 8
   qualities: {blast: 1}
+  characteristics: {ballistic_skill: 80}
   range: 25000
   single_shot: 1
 smart_missile_system:
