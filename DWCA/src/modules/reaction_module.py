@@ -51,7 +51,7 @@ def attempt_parry(event):
     roll_result = event.get(ROLL_RESULT)
     parry_target = 0
     if attack.is_melee():
-        parry_target = attack.get_characteristic(STAT_WS)
+        parry_target = attack.get_effective_characteristic(STAT_WS)
         manual_bonus = get_effective_modifier(event, manual_only=True)
         parry_target += manual_bonus
         if attack.balanced is not None:
