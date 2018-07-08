@@ -612,5 +612,23 @@ combat_shield:
   flat_damage: 1
   penetration: 0
   qualities: {balanced: true}
+malleus_hammerhand:
+  _system: deathwatch
+  name: Malleus Hammerhand
+  class: Melee
+  dice: 2
+  flat_damage: 5
+  penetration: 5
+  qualities: {power_field: true, multiply_strength: 1}
+inferno:
+  _system: deathwatch
+  name: Inferno
+  class: Basic
+  single_shot: 1
+  dice: 14
+  flat_damage: 0
+  penetration: 0
+  damage_type: E
+  range: 20
 
 

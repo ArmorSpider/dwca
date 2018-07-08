@@ -79,4 +79,27 @@ crusher:
   fate_points: 3
   species: human
   wounds: 22
-  weapons: [spirits_of_the_steppes, stormlance, crusher_cross, combat_shield]
+  weapons: [spirits_of_the_steppes, stormlance, crusher_cross, combat_shield, focus_test, smite]
+crusher_buffed:
+  _system: deathwatch
+  name: Crusher
+  armor: {all: 14}
+  skills: {awareness: 0, climb: 0, concealment: 0, dodge: 0, silent_move: 0}
+  characteristics: {weapon_skill: 55, weapon_skill_bonus: 40, ballistic_skill: 40, strength: 43, strength_bonus: 40, agility_bonus: 20, toughness: 51, agility: 53, intelligence: 44, perception: 39, willpower: 69, fellowship: 37}
+  traits: {ambidextrous: true, bulging_biceps: true, deathwatch_training: true, nerves_of_steel: true, quick_draw: true, true_grit: true, unnatural_toughness: 2, unnatural_strength: 2, size: 20, black_carapace: true}
+  talents: {sprint: true, berserk_charge: true, hunter_of_aliens: true, rite_of_sanctioning: true, hatred_tyranids: true, warp_sense: true, swift_attack: true, step_aside: true, psy_rating: 8, warp_conduit: true}
+  fate_points: 3
+  species: human
+  wounds: 22
+  weapons: [spirits_of_the_steppes, stormlance, crusher_cross, combat_shield, focus_test, smite]
+karl_friedrich:
+  _system: deathwatch
+  name: Inquisitor Karl-Friedrich
+  skills: {dodge: 20}
+  armor: {all: 8}
+  characteristics: {weapon_skill: 65, ballistic_skill: 40, strength: 40, toughness: 32, agility: 32, intelligence: 60, perception: 45, willpower: 75, fellowship: 50}
+  traits: {size: 10, dark_sight: true, touched_by_the_fates: 4, ambidextrous: true, unnatural_willpower: 2}
+  talents: {swift_attack: true, lightning_attack: true, two_weapon_wielder_melee: true, step_aside: true, favoured_by_the_warp: true, fearless: true, psy_rating: 8}
+  wounds: 18
+  force_field: {protection_max: 50}
+  weapons: [malleus_hammerhand, inferno, focus_test]
