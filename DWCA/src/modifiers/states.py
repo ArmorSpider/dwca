@@ -113,3 +113,13 @@ class Push(Modifier):
         if psy_rating > 0:
             psy_rating += 3
         return psy_rating
+
+
+class BonusPR(Modifier):
+
+    name = 'bonus_pr'
+
+    def modify_psy_rating(self, attack, psy_rating):
+        bonus_pr = attack.bonus_pr
+        psy_rating += bonus_pr
+        return psy_rating
