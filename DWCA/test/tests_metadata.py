@@ -111,7 +111,7 @@ class Test(unittest.TestCase):
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_target_max_wounds(self):
         event = self.basic_melee_event
@@ -121,7 +121,7 @@ class Test(unittest.TestCase):
                     ROLL_TARGET: 100,
                     WOUNDS: 122}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_roll_result(self):
         event = self.basic_melee_event
@@ -133,7 +133,7 @@ class Test(unittest.TestCase):
                     ROLL_TARGET: 100,
                     ROLL_RESULT: 50}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_effective_psy_rating(self):
         event = self.basic_psy_event
@@ -146,7 +146,7 @@ class Test(unittest.TestCase):
                     ROLL_RESULT: 50,
                     EFFECTIVE_PSY_RATING: 6}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_raw_weapon_stats(self):
         event = self.basic_melee_event
@@ -162,7 +162,7 @@ class Test(unittest.TestCase):
                     ROLL_RESULT: 50,
                     RAW_WEAPON_STATS: raw_weapon_stats}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_target_raw_armor(self):
         event = self.armorman_melee_event
@@ -181,7 +181,7 @@ class Test(unittest.TestCase):
                     ROLL_RESULT: 50,
                     ARMOR: raw_target_armor}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_degrees_of_success(self):
         event = self.basic_melee_event
@@ -194,7 +194,7 @@ class Test(unittest.TestCase):
                     ROLL_RESULT: 50,
                     DEGREES_OF_SUCCESS: 5}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_damage_type(self):
         event = self.basic_melee_event
@@ -207,7 +207,7 @@ class Test(unittest.TestCase):
                     ROLL_RESULT: 50,
                     DAMAGE_TYPE: 'I'}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_firemode(self):
         event = self.full_auto_event
@@ -221,7 +221,7 @@ class Test(unittest.TestCase):
                     DEGREES_OF_SUCCESS: 5,
                     FIREMODE: FULL_AUTO}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_rate_of_fire(self):
         event = self.full_auto_event
@@ -236,7 +236,7 @@ class Test(unittest.TestCase):
                     FIREMODE: FULL_AUTO,
                     RATE_OF_FIRE: 5}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_jammed_status_when_jammed(self):
         event = self.full_auto_event
@@ -251,7 +251,7 @@ class Test(unittest.TestCase):
                     FIREMODE: FULL_AUTO,
                     JAMMED: True}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_jammed_status_when_not_jammed(self):
         event = self.full_auto_event
@@ -266,7 +266,7 @@ class Test(unittest.TestCase):
                     FIREMODE: FULL_AUTO,
                     JAMMED: False}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_penetration(self):
         event = self.basic_melee_event
@@ -280,7 +280,7 @@ class Test(unittest.TestCase):
                     DEGREES_OF_SUCCESS: 5,
                     PENETRATION: 10}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_flat_damage(self):
         event = self.basic_melee_event
@@ -294,7 +294,7 @@ class Test(unittest.TestCase):
                     DEGREES_OF_SUCCESS: 5,
                     FLAT_DAMAGE: 20}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_num_dice(self):
         event = self.basic_melee_event
@@ -308,7 +308,7 @@ class Test(unittest.TestCase):
                     DEGREES_OF_SUCCESS: 5,
                     DICE: 1}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_num_tearing_dice(self):
         event = self.basic_melee_event
@@ -322,7 +322,7 @@ class Test(unittest.TestCase):
                     DEGREES_OF_SUCCESS: 5,
                     TEARING_DICE: 1}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_num_hits(self):
         event = self.basic_melee_event
@@ -336,7 +336,7 @@ class Test(unittest.TestCase):
                     DEGREES_OF_SUCCESS: 5,
                     NUM_HITS: 1}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_rolled_damage(self):
         event = self.basic_melee_event
@@ -351,7 +351,7 @@ class Test(unittest.TestCase):
                     DEGREES_OF_SUCCESS: 5,
                     ROLLED_DAMAGE: [[5]]}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_total_damage(self):
         event = self.basic_melee_event
@@ -368,7 +368,7 @@ class Test(unittest.TestCase):
                     FLAT_DAMAGE: 20,
                     RAW_DAMAGE: [25]}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_multiple_rolled_and_raw_for_multiple_hits(self):
         event = self.full_auto_event
@@ -385,7 +385,7 @@ class Test(unittest.TestCase):
                     FLAT_DAMAGE: 10,
                     RAW_DAMAGE: [20, 20, 20, 20, 20]}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_effective_damage(self):
         event = self.full_auto_event
@@ -403,7 +403,7 @@ class Test(unittest.TestCase):
                     RAW_DAMAGE: [20, 20, 20, 20, 20],
                     EFFECTIVE_DAMAGE: [20, 20, 20, 20, 20]}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_hit_locations(self):
         event = self.full_auto_event
@@ -426,7 +426,7 @@ class Test(unittest.TestCase):
                                     HITLOC_LEFT_ARM,
                                     HITLOC_HEAD]}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_effective_armor(self):
         event = self.armorman_full_auto_event
@@ -450,7 +450,7 @@ class Test(unittest.TestCase):
                                     HITLOC_LEFT_ARM,
                                     HITLOC_HEAD]}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_effective_toughness(self):
         event = self.armorman_full_auto_event
@@ -474,7 +474,7 @@ class Test(unittest.TestCase):
                                     HITLOC_LEFT_ARM,
                                     HITLOC_HEAD]}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_offensive_modifiers(self):
         event = self.basic_melee_event
@@ -492,7 +492,7 @@ class Test(unittest.TestCase):
                                           'unnatural_toughness': 2,
                                           Tearing.name: True}}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_defensive_modifiers(self):
         event = self.basic_melee_event
@@ -507,7 +507,7 @@ class Test(unittest.TestCase):
                     DEGREES_OF_SUCCESS: 5,
                     DEFENSIVE_MODIFIERS: {'natural_armor': True}}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_offensive_modifiers_should_include_ad_hoc_mods(self):
         event = self.basic_melee_event
@@ -527,7 +527,7 @@ class Test(unittest.TestCase):
                                           Tearing.name: True,
                                           Blast.name: 5}}
         actual = self.get_attack_metadata(event)
-        self.assert_dict_contains(expected, actual)
+        self.assertDictContainsSubset(expected, actual)
 
     def run_cli_commands(self, command_strings):
         event = {}
@@ -541,7 +541,3 @@ class Test(unittest.TestCase):
         attack_metadata = attack.metadata
         pretty_print(attack_metadata)
         return attack_metadata
-
-    def assert_dict_contains(self, expected, actual):
-        for key, value in expected.iteritems():
-            self.assertEqual(value, actual[key])
