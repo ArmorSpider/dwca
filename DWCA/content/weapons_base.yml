@@ -322,6 +322,7 @@ marius_executioner_axe:
   name: Astartes Executioner Axe
   penetration: 8
   qualities: {felling: 1, power_field: true, razor_sharp: true, unwieldy: true}
+  characteristics: {weapon_skill_bonus: 15}
 marius_honour_blades:
   _system: deathwatch
   class: Melee
@@ -331,6 +332,7 @@ marius_honour_blades:
   name: Marius' Honour Blades
   penetration: 6
   qualities: {balanced: 30, power_field: true, razor_sharp: true}
+  characteristics: {weapon_skill_bonus: 15}
 morgan_power_claymore:
   _system: deathwatch
   class: Melee
@@ -563,11 +565,21 @@ melee_krak:
 traitors_bane:
   _system: deathwatch
   class: Melee
+  name: Traitor's Bane (Relic Blade)
   damage_type: E
   dice: 2
   flat_damage: 7
   penetration: 7
   qualities: {felling: 2, power_field: true, special: true}
+relic_blade:
+  _system: deathwatch
+  name: Relic Blade
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  penetration: 9
+  qualities: {power_field: true, special: true}
 twin_assault_cannon:
   _system: deathwatch
   class: Mounted
@@ -684,5 +696,6 @@ inferno:
   penetration: 0
   damage_type: E
   range: 20
+  characteristics: {ballistic_skill_bonus: 60}
 
 
