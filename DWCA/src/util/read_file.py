@@ -48,7 +48,9 @@ def sort_char_files():
 def read_file(file_path):
     with open(file_path, 'r') as infile:
         file_content = yaml.load(infile)
-        return file_content
+    if file_content is None:
+        file_content = {}
+    return file_content
 
 
 def read_files(file_paths):

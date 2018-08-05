@@ -44,7 +44,7 @@ class Test(unittest.TestCase):
     @patch('src.util.user_input.user_choose_from_list', side_effect=return_random)
     @patch('src.util.user_input.user_input_int', side_effect=return_number)
     @patch('src.cli.commands.user_input_int', side_effect=return_number)
-    def test_run_random_attacks(self, _1, _2, _3):
+    def DISABLED_test_run_random_attacks(self, _1, _2, _3):
         for _ in range(100):
             self._run_random_attack()
 

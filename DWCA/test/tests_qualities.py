@@ -11,8 +11,8 @@ from test.test_util import build_mock_weapon, build_mock_entity
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self.dummy = build_character('dummy')
-        self.dummy_weapon = get_weapon('dummy')
+        self.dummy = build_mock_entity('dummy')
+        self.dummy_weapon = build_mock_weapon('dummy', 'Melee')
         self.proven_5_weapon = Weapon({'name': 'proven_weapon',
                                        'qualities': {Proven.name: 5}})
         self.proven_3_weapon = Weapon({'name': 'proven_weapon',
