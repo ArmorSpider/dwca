@@ -1,16 +1,15 @@
 aarian:
   _system: deathwatch
   armor: {all: 8, body: 10, head: 9}
-  characteristics: {agility: 51, ballistic_skill: 39, fellowship: 45, intelligence: 50,
+  characteristics: {agility: 46, ballistic_skill: 39, fellowship: 45, intelligence: 50,
     perception: 39, strength: 57, strength_bonus: 20, toughness: 53, weapon_skill: 61,
     willpower: 46}
-  force_field: {overload_max: 0, protection_max: 50}
   name: Aarian
   skills: {dodge: 10, intimidate: 2, medicae: 20, pilot: 0, acrobatics: 10}
   species: human
   talents: {berserk_charge: true, combat_master: true, crushing_blow: true, hardy: true,
     hunter_of_aliens: true, lightning_attack: true, mentor: true, swift_attack: true,
-    two_weapon_wielder_melee: true, wall_of_steel: true, double_team: true, assassin_strike: true, disarm: true}
+    two_weapon_wielder_melee: true, wall_of_steel: true, double_team: true, assassin_strike: true}
   traits: {ambidextrous: true, black_carapace: true, deathwatch_training: true, fearless: true,
     hatred_daemons: true, hatred_tyranids: true, litany_of_hate: true, nerves_of_steel: true,
     size: 10, unnatural_perception: 2, unnatural_strength: 2, unnatural_toughness: 2}
@@ -38,7 +37,7 @@ gilmech:
   name: Gilmech
   talents: {bolter_drill: true, crack_shot: true, deathwatch_training: true, hardy: true,
     mighty_shot: true, storm_of_iron: true, target_selection: true}
-  toughness: {head: 2}
+  toughness: {head: 2, right_leg: 2}
   traits: {ambidextrous: true, black_carapace: true, bulging_biceps: true, nerves_of_steel: true,
     quick_draw: true, size: 10, true_grit: true, unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [twin_assault_cannon]
@@ -51,7 +50,7 @@ kregos:
   talents: {abhor_the_witch: true, combat_master: true, deathwatch_training: true,
     fearless: true, hatred_tyranids: true, hunter_of_aliens: true, swift_attack: true,
     target_selection: true, two_weapon_wielder_melee: true, two_weapon_wielder_ranged: true,
-    whirlwind_of_death: true, storm_of_iron: true}
+    whirlwind_of_death: true}
   traits: {ambidextrous: true, combat_walker: true, reinforced_hull: true, size: 20,
     unnatural_strength: 2, walker: true}
   vehicle: true
@@ -82,7 +81,7 @@ marius:
   name: Captain Marius the Parry-God
   skills: {command: 10, dodge: 20, intimidate: 10, medicae: 40}
   talents: {deathwatch_training: true, hatred_tyranids: true, hunter_of_aliens: true,
-    jump_pack: true, slaughter_the_swarm: true, swift_attack: true, two_weapon_wielder_melee: true, distract_thy_enemy: true}
+    jump_pack: true, slaughter_the_swarm: true, swift_attack: true, two_weapon_wielder_melee: true}
   toughness: {left_leg: 2}
   traits: {a_fury_like_lightning: true, ambidextrous: true, black_carapace: true,
     size: 10, thy_strength_be_legend: true, toxic: 1, unnatural_strength: 2, unnatural_toughness: 2}
@@ -90,7 +89,7 @@ marius:
 solus:
   _system: deathwatch
   armor: {all: 17, body: 21, left_arm: 21}
-  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 36, intelligence: 56,
+  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 36, intelligence: 46,
     perception: 41, strength: 35, strength_bonus: 30, toughness: 54, toughness_bonus: 10,
     weapon_skill: 55, willpower: 38}
   force_field: {overload_max: 1, protection_max: 55}
@@ -139,5 +138,4 @@ karl_friedrich:
   traits: {size: 10, dark_sight: true, touched_by_the_fates: 4, ambidextrous: true, unnatural_willpower: 2}
   talents: {swift_attack: true, lightning_attack: true, two_weapon_wielder_melee: true, step_aside: true, favoured_by_the_warp: true, fearless: true, psy_rating: 8}
   wounds: 18
-  force_field: {protection_max: 50}
   weapons: [malleus_hammerhand, inferno, focus_test]
