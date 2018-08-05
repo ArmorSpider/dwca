@@ -1,18 +1,18 @@
 from unittest import TestCase
 
 from src.action.ranged_attack import RangedAttack
-from src.cli.message_queue import log_messages
 from src.dice import queue_d10_rolls
 from src.entities import QUALITIES, SINGLE_SHOT, SEMI_AUTO, FULL_AUTO
-from src.entities.weapon import Weapon, get_weapon
+from src.entities.weapon import Weapon
 from src.modifiers.qualities import Reliable, NeverJams, OverHeats
 from src.situational.weapon_jam import is_weapon_jammed
+from test.test_util import build_mock_weapon
 
 
 class Test(TestCase):
 
     def setUp(self):
-        self.dummy_weapon = get_weapon('dummy_ranged')
+        self.dummy_weapon = build_mock_weapon('dummy_ranged', 'Basic')
         self.jammed_attack_single_shot = RangedAttack(attacker=None,
                                                       weapon=self.dummy_weapon,
                                                       target=None,
