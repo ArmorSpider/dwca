@@ -222,6 +222,11 @@ class Sanctified(Modifier):
     name = 'sanctified'
 
 
+class SanctifiedArmor(Modifier):
+
+    name = 'sanctified_armor'
+
+
 class ForceWeapon(Modifier):
 
     name = 'force_weapon'
@@ -350,8 +355,11 @@ class WarpWeapon(Modifier):
     name = 'warp_weapon'
 
     def modify_armor(self, attack, current_armor, hit_location):
-        LOG.info('WarpWeapon ignores mundane armor.')
-        current_armor = 0
+        if attack.target.sanctified_armor is not None:
+            LOG.info('SanctifiedArmor protects against WarpWeapon.')
+        else:
+            LOG.info('WarpWeapon ignores mundane armor.')
+            current_armor = 0
         return current_armor
 
 
