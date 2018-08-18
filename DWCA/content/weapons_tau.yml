@@ -267,3 +267,50 @@ twin_smart_missile_system:
   penetration: 4
   qualities: {arm_weapon_mounting: true, twin_linked: true}
   range: 90
+fusion_torch:
+  name: Fusion Torch
+  class: Basic
+  _system: deathwatch
+  _package: tau
+  dice: 2
+  flat_damage: 10
+  range: 20
+  penetration: 13
+  single_shot: 1
+  qualities: {scatter: true}
+emp_blaster:
+  name: Experimental EMP Blaster
+  _package: tau
+  _system: deathwatch
+  class: Heavy
+  range: 40
+  single_shot: 1
+  damage_type: E
+  dice: 2
+  flat_damage: 2
+  penetration: 8
+  qualities: {blast: 3, haywire: 3, shocking: true, unreliable: true}
+microburst_launcher:
+  name: Microburst Fragmentation Launcher
+  _package: tau
+  _system: deathwatch
+  class: Heavy
+  range: 60
+  semi_auto: 3
+  dice: 1
+  flat_damage: 6
+  damage_type: X
+  penetration: 3
+  qualities: {blast: 2, concussive: true}
+twin_railguns:
+  name: Twin-Linked Railguns
+  _system: deathwatch
+  _package: tau
+  range: 500
+  single_shot: 1
+  dice: 4
+  flat_damage: 10
+  damage_type: I
+  penetration: 10
+  qualities: {twin_linked: true}
+  class: Mounted
