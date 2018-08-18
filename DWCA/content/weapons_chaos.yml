@@ -1,3 +1,20 @@
+accursed_eviscerator:
+  _package: chaos
+  _system: deathwatch
+  damage_type: R
+  dice: 2
+  flat_damage: 6
+  name: Accursed Eviscerator
+  penetration: 3
+  qualities: {felling: 1, razor_sharp: true, tearing: true, unwieldy: true}
+vicious_talons:
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  dice: 1
+  flat_damage: 0
+  damage_type: R
+  qualities: {tearing: true}
 berzerker_axe:
   _package: chaos
   _system: deathwatch
@@ -8,6 +25,25 @@ berzerker_axe:
   name: Berzerker Axe
   penetration: 4
   qualities: {tearing: true}
+touch_of_dread:
+  _system: deathwatch
+  _package: chaos
+  name: The Touch of Dread
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  class: Melee
+  qualities: {felling: 2, warp_weapon: true}
+warp_maw:
+  _system: deathwatch
+  _package: chaos
+  name: Warp Maw
+  damage_type: E
+  class: Melee
+  dice: 1
+  flat_damage: 0
+  penetration: 12
+  qualities: {felling: 3, razor_sharp: true, tearing: true}
 blastmaster:
   _package: chaos
   _system: deathwatch
@@ -66,6 +102,19 @@ chaos_sword:
   name: Chaos-Forged Sword
   penetration: 6
   qualities: {felling: 1, unwieldy: true}
+combat_shotgun:
+  _package: chaos
+  _system: deathwatch
+  class: Basic
+  damage_type: I
+  dice: 1
+  flat_damage: 4
+  name: Combat Shotgun
+  penetration: 0
+  qualities: {scatter: true}
+  range: 30
+  semi_auto: 2
+  single_shot: 1
 crushing_claw:
   _package: chaos
   _system: deathwatch
@@ -143,6 +192,8 @@ hellblade:
   name: Hellblade
   penetration: 0
   qualities: {balanced: true, warp_weapon: true}
+mono_axe: {_package: chaos, _system: deathwatch, class: Melee, damage_type: R, dice: 1,
+  flat_damage: 4, name: Mono-Axe, penetration: 2}
 plague_knife:
   _package: chaos
   _system: deathwatch
@@ -163,6 +214,16 @@ plague_longsword:
   name: Plague Longsword
   penetration: 0
   qualities: {toxic: 1d10, unbalanced: true, warp_weapon: true}
+daemonic_blade:
+  _system: deathwatch
+  _package: chaos
+  class: Melee
+  damage_type: R
+  name: Daemonic Blade
+  dice: 1
+  flat_damage: 4
+  penetration: 6
+  qualities: {balanced: true, tearing: true, warp_weapon: true}
 plaguesword:
   _package: chaos
   _system: deathwatch
@@ -203,3 +264,34 @@ sonic_blaster:
   single_shot: 1
 warpfire: {_package: chaos, _system: deathwatch, class: Basic, damage_type: E, dice: 1,
   flat_damage: 10, name: Warpfire, penetration: 6, range: 30, semi_auto: 3, single_shot: 1}
+stinger:
+  name: Stinger
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  dice: 1
+  flat_damage: 0
+  penetration: 0
+  qualities: {toxic: true, warp_weapon: true}
+  damage_type: R
+psychic_shock:
+  class: Psychic
+  name: Psychic Shock
+  qualities: {blast: 2, ignore_armor: true}
+  dice: 1
+  flat_damage: 12
+  damage_type: E
+  _system: deathwatch
+  _package: chaos
+compact_autogun:
+  name: Compact Autogun
+  class: Basic
+  _package: chaos
+  _system: deathwatch
+  range: 50
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 10
+  dice: 1
+  flat_damage: 2
+  penetration: 0

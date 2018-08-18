@@ -196,7 +196,7 @@ executioner_axe:
   name: Astartes Executioner Axe
   penetration: 8
   qualities: {felling: 1, power_field: true, unwieldy: true}
-focus_test:
+.psy_power: &psy_power 
   _system: deathwatch
   class: Psychic
   damage_type: E
@@ -206,6 +206,87 @@ focus_test:
   penetration: 0
   qualities: {non_damaging: true}
   range: 100
+compel:
+  <<: *psy_power
+  name: Compel
+mind_scan:
+  <<: *psy_power
+  name: Mind Scan
+mind_worm:
+  <<: *psy_power
+  name: Mind Worm
+weaker_resolve:
+  <<: *psy_power
+  name: Weaken Resolve
+focus_test:
+  <<: *psy_power
+  name: Focus Test
+astrotelepathy:
+  <<: *psy_power
+  name: Astrotelepathy
+dominate:
+  <<: *psy_power
+  name: Dominate
+inspire:
+  <<: *psy_power
+  name: Inspire
+long_range_telepathy:
+  <<: *psy_power
+  name: Long-Range Telepathy
+short_range_telepathy:
+  <<: *psy_power
+  name: Short-Range Telepathy
+augury:
+  <<: *psy_power
+  name: Augury
+divination:
+  <<: *psy_power
+  name: Divination
+mind_probe:
+  <<: *psy_power
+  name: Mind Probe
+lifting_the_veil:
+  <<: *psy_power
+  name: Lifting the Veil
+possibility_shield:
+  <<: *psy_power
+  name: Possibility Shield
+psychometry:
+  <<: *psy_power
+  name: Psychometry
+reading:
+  <<: *psy_power
+  name: Reading
+avenger:
+  <<: *psy_power
+  name: Avenger
+force_dome:
+  <<: *psy_power
+  name: Force Dome
+the_gate_of_infinity:
+  <<: *psy_power
+  name: The Gate of Infinity
+iron_arm:
+  <<: *psy_power
+  name: Iron Arm
+machine_curse:
+  <<: *psy_power
+  name: Machine Curse
+might_of_the_ancients:
+  <<: *psy_power
+  name: Might of the Ancients
+veil_of_time:
+  <<: *psy_power
+  name: Veil of Time
+vortex_of_doom:
+  <<: *psy_power
+  name: Vortex of Doom
+blood_boil:
+  <<: *psy_power
+  name: Blood Boil
+  dice: 1
+  flat_damage: 2
+  qualities: {psychic_scaling_damage: true, true_damage: true}
 force_staff:
   _system: deathwatch
   class: Melee
