@@ -1,6 +1,6 @@
 import unittest
 
-from definitions import ATTACKER, WEAPON, TARGET, ROLL_TARGET, EFFECTIVE_DAMAGE,\
+from definitions import ROLL_TARGET, EFFECTIVE_DAMAGE,\
     EFFECTIVE_ARMOR, CLASS
 from src.entities import QUALITIES, FLAT_DAMAGE, PENETRATION, DICE, ARMOR,\
     TRAITS, CHARACTERISTICS
