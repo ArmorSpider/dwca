@@ -143,6 +143,10 @@ class Attack(Action):
         toughness = self.target.get_modded_toughness_bonus(
             self, hit.hit_location)
         effective_armor = self.get_effective_armor(hit)
+
+        toughness, effective_armor = self.handle_mitigation_bypass(
+            toughness, effective_armor)
+
         effective_damage = max(hit.damage - effective_armor - toughness, 0)
         effective_damage = self.on_damage_effects(effective_damage)
         is_blocked = self.is_hit_blocked()
@@ -154,6 +158,17 @@ class Attack(Action):
         self.append_to_metadata(BLOCKED, is_blocked)
         self.append_to_metadata(EFFECTIVE_DAMAGE, effective_damage)
         return effective_damage
+
+    def handle_mitigation_bypass(self, toughness, effective_armor):
+        if self.true_damage is not None:
+            LOG.info('True damage ignores armor and toughness.')
+            toughness = 0
+            effective_armor = 0
+        if self.ignore_armor is not None:
+            effective_armor = 0
+        if self.ignore_toughness is not None:
+            toughness = 0
+        return toughness, effective_armor
 
     def calculate_magnitude_damage(self, effective_damage):
         if self.target.is_horde():
