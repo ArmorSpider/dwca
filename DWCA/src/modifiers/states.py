@@ -4,6 +4,21 @@ from src.modifiers.modifier import Modifier
 from src.situational.cover import is_hitloc_eligible_for_cover
 
 
+class TrueDamage(Modifier):
+
+    name = 'true_damage'
+
+
+class IgnoreArmor(Modifier):
+
+    name = 'ignore_armor'
+
+
+class IgnoreToughness(Modifier):
+
+    name = 'ignore_toughness'
+
+
 class BonusArmor(Modifier):
 
     name = 'bonus_armor'
@@ -39,8 +54,8 @@ class ReducePenetration(Modifier):
     name = 'reduce_penetration'
 
     def modify_penetration(self, attack, current_penetration):
-        if attack.negate_penetration is not None:
-            current_penetration -= attack.negate_penetration
+        if attack.reduce_penetration is not None:
+            current_penetration -= attack.reduce_penetration
             current_penetration = max(current_penetration, 0)
         return current_penetration
 

@@ -1,11 +1,13 @@
-from definitions import ROLL_RESULT
+from definitions import ROLL_RESULT, WEAPON
 from src.action.action import try_action
 from src.dice import roll_action_dice
 from src.dwca_log.log import get_log
 from src.entities.char_stats import STAT_WS
+from src.entities.entity_factory import build_weapon
 from src.handler import build_base_attack,\
     choose_or_build_attacker, build_attacker
 from src.modifiers.roll_modifier import get_effective_modifier
+from src.util.user_input import try_user_choose_from_list
 
 
 LOG = get_log(__name__)
@@ -15,8 +17,17 @@ def handler_defend(event):
     defense_test_result = roll_action_dice()
     event[ROLL_RESULT] = defense_test_result
     attacker = choose_or_build_attacker(event)
+    melee_weapons = []
+    for weapon_name in attacker.weapons:
+        weapon = build_weapon(weapon_name)
+        if weapon.is_melee() is True:
+            melee_weapons.append(weapon_name)
+    if melee_weapons != []:
+        weapon_name = try_user_choose_from_list(melee_weapons)
+        event[WEAPON] = weapon_name
     if attacker.is_vehicle():
         attempt_vehicle_dodge(event)
+        attempt_parry(event)
     else:
         attempt_dodge(event)
         attempt_parry(event)

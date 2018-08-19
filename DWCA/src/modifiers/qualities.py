@@ -1,5 +1,5 @@
 from src.cli.message_queue import queue_message
-from src.dice import roll_damage_die
+from src.dice import roll_damage_die, roll_action_dice
 from src.dwca_log.log import get_log
 from src.entities.char_stats import STAT_TGH, STAT_STR
 from src.modifiers.modifier import Modifier
@@ -256,6 +256,11 @@ class Sanctified(Modifier):
     name = 'sanctified'
 
 
+class SanctifiedArmor(Modifier):
+
+    name = 'sanctified_armor'
+
+
 class ForceWeapon(Modifier):
 
     name = 'force_weapon'
@@ -389,8 +394,11 @@ class WarpWeapon(Modifier):
     name = 'warp_weapon'
 
     def modify_armor(self, attack, current_armor, hit_location):
-        LOG.info('WarpWeapon ignores mundane armor.')
-        current_armor = 0
+        if attack.target.sanctified_armor is not None:
+            LOG.info('SanctifiedArmor protects against WarpWeapon.')
+        else:
+            LOG.info('WarpWeapon ignores mundane armor.')
+            current_armor = 0
         return current_armor
 
 
@@ -508,3 +516,22 @@ class SkillBonus(Modifier):
 class Unreliable(Modifier):
 
     name = 'unreliable'
+
+
+class Haywire(Modifier):
+
+    name = 'haywire'
+
+    def on_hit(self, attack):
+        roll_result = roll_action_dice()
+        if roll_result <= 20:
+            message = 'HAYWIRE: Nothing happens.'
+        elif 21 <= roll_result <= 40:
+            message = 'HAYWIRE: All tests using tech get -10. \nPower armor base movement reduced by 1.'
+        elif 41 <= roll_result <= 60:
+            message = 'HAYWIRE: All tests using tech get -20. \nPower armor base movement reduced by 3. \nTechnical melee weapons become primitive.'
+        elif 61 <= roll_result <= 80:
+            message = 'HAYWIRE: All tech stops working. \nPower armor becomes unpowered. \nCybernetics suffer 1 FAT per round in zone. \nTechnical melee weapons become primitive.'
+        elif 81 <= roll_result <= 100:
+            message = 'HAYWIRE: All tech stops working. \nPower armor becomes unpowered. \nCybernetics suffer 1 FAT per round in zone. \nTechnical melee weapons become primitive.'
+        queue_message(message)

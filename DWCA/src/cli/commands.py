@@ -16,7 +16,8 @@ from src.entities import HALF_MOVE, FULL_MOVE, CHARGE_MOVE, RUN_MOVE
 from src.entities.libraries import get_weapon_library, get_character_library,\
     MasterLibrary, find_best_match
 from src.handler import check_required_keys,\
-    build_attacker, build_weapon, build_base_attack, choose_or_build_attacker
+    build_attacker, build_weapon, build_base_attack, choose_or_build_attacker,\
+    build_attack
 from src.hitloc_series import build_hitloc_iterator
 from src.modifiers.roll_modifier import CHARGE_MOD, AIM_MOD, add_roll_mod,\
     get_effective_modifier
@@ -25,7 +26,9 @@ from src.modules.dps_module import handler_dps
 from src.modules.equip_module import handler_equip
 from src.modules.info_module import handler_info
 from src.modules.new_module import handler_new
+from src.modules.profile_module import handler_profile
 from src.modules.range_module import handler_range
+from src.modules.raw_module import handler_rawdef
 from src.modules.reaction_module import handler_defend
 from src.modules.run_module import handler_run
 from src.save_manager import SaveManager
@@ -520,4 +523,49 @@ class CommandClear(CLICommand):
 
     def _process_event(self, event):
         event.clear()
+        return event
+
+
+class CommandDos(CLICommand):
+
+    keyword = 'dos'
+    help = 'Calculate DoS'
+
+    def _process_event(self, event):
+        event_copy = deepcopy(event)
+        result = user_input_int('Enter roll result: ')
+        target = user_input_int('Enter roll target: ')
+        event_copy[ROLL_RESULT] = result
+        event_copy[ROLL_TARGET] = target
+        attack = build_attack(event_copy)
+        dos = attack.degrees_of_success
+        semi_hits = 1 + int(dos / 2)
+        fab_hits = 1 + dos
+        LOG.info('%s vs %s = %s DoS', result, target, dos)
+        LOG.info('SEMI/SWIFT Hits max: %s', semi_hits)
+        LOG.info('FAB/LIGHTNING Hits max: %s', fab_hits)
+        return event
+
+
+class CommandProfile(CLICommand):
+
+    keyword = 'profile'
+    required_keys = []
+    help = 'Show unit profile'
+
+    def _process_event(self, event):
+        event_copy = self.smart_select_attacker(event)
+        handler_profile(event_copy)
+        return event
+
+
+class CommandRawDef(CLICommand):
+
+    keyword = 'raw'
+    required_keys = []
+    help = 'Show raw definition'
+
+    def _process_event(self, event):
+        event_copy = self.smart_select_attacker(event)
+        handler_rawdef(event_copy)
         return event
