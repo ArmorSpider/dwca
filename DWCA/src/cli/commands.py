@@ -3,7 +3,7 @@ import sys
 
 from definitions import WEAPON, ROLL_TARGET, ATTACKER,\
     TARGET, OVERLOADED, CHARGED, AIMED, COVER, AD_HOC, ROLL_RESULT, RANGE,\
-    HELPLESS
+    HELPLESS, TARGET_MAG, ATTACKER_MAG
 from src.action.action import try_action
 from src.action.hit import Hit
 from src.cli.match_map import get_default_match_map
@@ -38,7 +38,7 @@ from src.util.dict_util import pretty_print
 from src.util.event_util import update_adhoc_dict
 from src.util.string_util import normalize_string
 from src.util.user_input import try_user_choose_from_list, user_input_int,\
-    user_input_string
+    user_input_string, try_user_input_int
 
 
 LOG = get_log(__name__)
@@ -90,6 +90,13 @@ class CLICommand(object):
             'Select character: ', get_character_library().keys())
         event_copy = deepcopy(event)
         event_copy[ATTACKER] = attacker
+        return event_copy
+
+    def smart_select_target(self, event):
+        target = self.get_arg_or_select_from_list(
+            'Select character: ', get_character_library().keys())
+        event_copy = deepcopy(event)
+        event_copy[TARGET] = target
         return event_copy
 
     def get_arg_or_input_int(self, prompt):
@@ -353,9 +360,10 @@ class CommandAttacker(CLICommand):
     help = 'Choose attacker from a list of available characters.'
 
     def _process_event(self, event):
-        character_name = try_user_choose_from_list(
-            get_character_library().keys())
-        event[ATTACKER] = character_name
+        event = self.smart_select_attacker(event)
+        attacker_magnitude = try_user_input_int('Attacker magnitude: ')
+        if attacker_magnitude is not None:
+            event[ATTACKER_MAG] = attacker_magnitude
         return event
 
 
@@ -365,9 +373,10 @@ class CommandTarget(CLICommand):
     help = 'Choose target from a list of available characters.'
 
     def _process_event(self, event):
-        character_name = try_user_choose_from_list(
-            get_character_library().keys())
-        event[TARGET] = character_name
+        event = self.smart_select_target(event)
+        target_magnitude = try_user_input_int('Target magnitude: ')
+        if target_magnitude is not None:
+            event[TARGET_MAG] = target_magnitude
         return event
 
 
