@@ -479,3 +479,13 @@ class Haywire(Modifier):
         elif 81 <= roll_result <= 100:
             message = 'HAYWIRE: All tech stops working. \nPower armor becomes unpowered. \nCybernetics suffer 1 FAT per round in zone. \nTechnical melee weapons become primitive.'
         queue_message(message)
+
+
+class Flame(Modifier):
+
+    name = 'flame'
+
+    def on_hit(self, attack):
+        message = '{} must make AGI test or catch fire.'.format(
+            attack.target.name)
+        queue_message(message)
