@@ -28,6 +28,13 @@ def try_user_choose_from_list(list_):
         raise ChooseFromListFailedError('Choose from list failed.')
 
 
+def try_user_input_int(prompt):
+    try:
+        return user_input_int(prompt)
+    except ValueError:
+        return None
+
+
 def user_choose_from_list(list_):
     if len(list_) == 1:
         user_choice = list_[0]
