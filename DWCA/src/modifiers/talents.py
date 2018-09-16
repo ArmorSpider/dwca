@@ -140,3 +140,8 @@ class LightningAttack(Modifier):
 class Sprint(Modifier):
 
     name = 'sprint'
+
+
+class UnfetteredPsyker(Modifier):
+
+    name = 'unfettered_psyker'
