@@ -14,6 +14,18 @@ auran_genestealer:
     tyranid: true, unnatural_agility: 3, unnatural_speed: 2, unnatural_strength: 2}
   weapons: [rending_claws]
   wounds: 20
+beast_of_thule:
+  name: Beast of Thule
+  _package: tyranid
+  _system: deathwatch
+  species: tyranid
+  armor: {all: 8}
+  wounds: 120
+  characteristics: {weapon_skill: 65, ballistic_skill: 0, strength: 75, agility: 55, intelligence: 25, perception: 45, willpower: 45, fellowship: 0}
+  skills: {acrobatics: 0, awareness: 20, climb: 20, concealment: 20, contortionist: 10, dodge: 20, shadowing: 20 ,silent_move: 20, survival: 20, swim: 0, tracking: 20}
+  talents: {ambidextrous: true, assassin_strike: true, berserk_charge: true, blind_fighting: true, catfall: true, combat_master: true, counter_attack: true, crushing_blow: true, fearless: true, furious_assault: true, hard_target: true, leap_up: true, lightning_attack: true, sprint: true, step_aside: true, swift_attack: true, true_grit: true}
+  traits: {chameleonic_scales: true, flesh_hooks: true, dark_sight: true, fear: 3, hardened_talons: true, multiple_arms: true, peerless_reflexes: true, regeneration: 6, unnatural_agility: 2, unnatural_strength: 2, unnatural_perception: 2, unnatural_toughness: 2, size: 20, tyranid: true}
+  weapons: [scything_talons, rending_claws]
 carnifex:
   _package: tyranid
   _system: deathwatch

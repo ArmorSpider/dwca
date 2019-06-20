@@ -275,7 +275,7 @@ fury:
   talents: {berserk_charge: true, fearless: true, furious_assault: true}
   traits: {daemonic: true, daemonic_presence: true, fear: 1, flyer: 12, from_beyond: true,
     improved_natural_weapons: true, strange_physiology: true, unnatural_strength: 2,
-    warp_instability: true}
+    warp_instability: true, blood_soaked_tide: true, overwhelming: true}
   weapons: [vicious_talons]
   wounds: 13
 khorne_marine:

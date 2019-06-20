@@ -755,6 +755,7 @@ combat_shield:
   _system: deathwatch
   name: Combat Shield
   class: Melee
+  damage_type: I
   dice: 1
   flat_damage: 1
   penetration: 0

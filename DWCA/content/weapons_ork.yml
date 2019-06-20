@@ -20,14 +20,18 @@ choppa:
   qualities: {tearing: true, unbalanced: true}
 deffgun:
   _package: ork
+  _system: deathwatch
   name: Deffgun
   class: Heavy
-  range: 200
+  range: 90
+  single_shot: 1
+  semi_auto: 4
+  full_auto: 8
   damage_type: X
-  dice: 2
-  flat_damage: 3
-  penetration: 6
-  qualities: {tearing: true, inaccurate: true}
+  dice: 1
+  flat_damage: 10
+  penetration: 2
+  qualities: {tearing: true, inaccurate: true, storm: true}
 supa_lobba: 
   range: 200
   class: Mounted
@@ -131,13 +135,14 @@ big_shears:
   qualities: {razor_sharp: true, unbalanced: true}
 buzz_saw:
   _package: ork
+  _system: deathwatch
   class: Melee
   name: Buzz saw
   damage_type: R
   dice: 2
   flat_damage: 4
   penetration: 4
-  qualities: {tearing: true, unwieldy: true}
+  qualities: {tearing: true, unwieldy: true, razor_sharp: true}
 twin_big_shoota:
   _package: ork
   class: Heavy
@@ -183,6 +188,7 @@ slugga:
   qualities: {inaccurate: true}
 shoota:
   _package: ork
+  _system: deathwatch
   name: Shoota
   class: Basic
   range: 60
@@ -191,8 +197,10 @@ shoota:
   semi_auto: 3
   full_auto: 10
   dice: 1
-  flat_damage: 4
-  penetration: 0
+  flat_damage: 6
+  penetration: 2
+  qualities: {inaccurate: true}
+
 shokk_attack_gun:
   _package: ork
   name: Shokk Attack Gun

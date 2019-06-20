@@ -80,6 +80,17 @@ bolt_of_change:
   penetration: 0
   qualities: {psychic_scaling: true}
   range: 50
+wind_of_chaos:
+  _package: chaos
+  _system: deathwatch
+  class: Psychic
+  damage_type: E
+  dice: 2
+  flat_damage: 1
+  name: Wind of Chaos
+  penetration: 0
+  qualities: {psychic_scaling_damage: true, felling: 2, warp_weapon: true, flame: true}
+  range: 50
 bomb_rack:
   _package: chaos
   _system: deathwatch

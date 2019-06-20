@@ -15,6 +15,31 @@ dark_reaper:
   traits: {dark_sight: true, reaper_rangefinder: true, sturdy: true, unnatural_agility: 2}
   weapons: [reaper_launcher, shuriken_pistol, eldar_monoblade]
   wounds: 17
+voidstorm_corsair:
+  _package: eldar
+  _system: deathwatch
+  name: Voidstorm Corsair
+  species: eldar
+  wounds: 11
+  armor: {all: 5}
+  characteristics: {weapon_skill: 46, ballistic_skill: 43, strength: 35, toughness: 36, agility: 49, intelligence: 38, perception: 41, willpower: 36, fellowship: 33}
+  skills: {acrobatics: 10, awareness: 10, climb: 0, concealment: 0, dodge: 0, pilot: 0, search: 0, silent_move: 0}
+  talents: {catfall: true, foresight: true, hard_target: true, heightened_senses: true, jaded: true, nerves_of_steel: true, quick_draw: true, rapid_reaction: true, jump_pack: true}
+  traits: {unnatural_agility: 2, flyer: 10, fighting_withdrawal: true, fire_drill: true, shimmershield: 35}
+  weapons: [lasblaster, shuriken_catapult, eldar_power_sword]
+  force_field: {protection_max: 35, overload_max: 1}
+void_dreamer:
+  _system: deathwatch
+  _package: eldar
+  name: Void Dreamer
+  species: eldar
+  wounds: 15
+  characteristics: {weapon_skill: 51, ballistic_skill: 48, strength: 35, toughness: 36, agility: 54, intelligence: 52, perception: 51, willpower: 55, fellowship: 43}
+  force_field: {protection_max: 55, overload_max: 0}
+  skills: {acrobatics: 10, awareness: 10, climb: 0, command: 0, concealment: 0, dodge: 0, invocation: 0, pilot: 10, psyniscience: 10, silent_move: 0,search: 0}
+  talents: {ambidextrous: true, bastion_of_iron_will: true, catfall: true, foresight: true, hard_target: true, improved_warp_sense: true, jaded: true, nerves_of_steel: true, psy_rating: 5, quick_draw: true, rapid_reaction: true, resistance_psychic: true, strong_minded: true, swift_attack: true, two_weapon_wielder_melee: true, two_weapon_wielder_ballistic: true, wall_of_steel: true, warp_sense: true}
+  traits: {flyer: 10, unnatural_agility: 2, spiritshield: true}
+  weapons: [shuriken_pistol, witchblade, eldar_haywire_grenade, withering_radiance]
 dark_reaper_exarch:
   _package: eldar
   _system: deathwatch

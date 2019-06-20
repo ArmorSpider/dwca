@@ -25,8 +25,33 @@ deff_dread:
   vehicle: true
   weapons: [big_shoota, rokkit_launcha, power_klaw, buzz_saw, kustom_mega_blasta]
   wounds: 25
+wrekka:
+  _package: ork
+  _system: deathwatch
+  name: Ork Wrekka
+  wounds: 15
+  armor: {all: 3}
+  species: ork
+  characteristics: {weapon_skill: 40, ballistic_skill: 20, strength: 46, toughness: 48, agility: 30, intelligence: 26, perception: 25, willpower: 25, fellowship: 20}
+  skills: {awareness: 0, demolitions: 0, dodge: 0, intimidate: 0, tech_use: 0}
+  talents: {bulging_biceps: true, crushing_blow: true, furious_assault: true, hardy: true, iron_jaw: true, street_fighting: true, true_grit: true}
+  traits: {overwhelming: true, brutal_charge: true, make_it_work: true, might_makes_right: true, mob_rule: true, sturdy: true, unnatural_toughness: 2, waaagh : true}
+  weapons: [shoota, buzz_saw]
+loota:
+  _package: ork
+  _system: deathwatch
+  name: Ork Loota
+  species: ork
+  armor: {all: 5}
+  wounds: 17
+  characteristics: {weapon_skill: 40, ballistic_skill: 28, strength: 46, toughness: 45, agility: 30, intelligence: 28, perception: 25, willpower: 31, fellowship: 20}
+  skills: {awareness: 0, barter: 0, dodge: 0, intimidate: 0, tech_use: 0}
+  talents: {bulging_biceps: true, crushing_blow: true, furious_assault: true, hardy: true, iron_jaw: true, paranoia: true, street_fighting: true, true_grit: true}
+  traits: {brutal_charge: true, give_it_sum_dakka: true, make_it_work: true, might_makes_right: true, mob_rule: true, sturdy: true, unnatural_toughness: 2, waaagh: true}
+  weapons: [choppa, deffgun]
 gargantuan_squiggoth:
   _package: ork
+  _system: onlywar
   armor: {all: 15}
   name: Gargantuan Squiggoth
   skills: {athletics: 0, awareness: 0}

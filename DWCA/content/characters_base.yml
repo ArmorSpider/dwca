@@ -42,6 +42,7 @@ gilmech:
     quick_draw: true, size: 10, true_grit: true, unnatural_strength: 2, unnatural_toughness: 2}
   weapons: [twin_assault_cannon]
 kregos:
+  name: Kregos
   _system: deathwatch
   armor: {front: 37, rear: 20, side: 37}
   characteristics: {agility: 20, ballistic_skill: 65, fellowship: 12, intelligence: 55,
