@@ -1,8 +1,7 @@
 from src.cli.message_queue import queue_message
 from src.dwca_log.log import get_log
-from src.entities.char_stats import STAT_INT, STAT_PER
+from src.entities.char_stats import STAT_INT, STAT_PER, STAT_WS, STAT_BS
 from src.modifiers.modifier import Modifier
-from src.modifiers.qualities import Tearing
 
 
 LOG = get_log(__name__)
@@ -14,8 +13,10 @@ class CrushingBlow(Modifier):
 
     def modify_damage(self, attack, current_damage):
         if attack.is_melee():
-            current_damage += 2
-            LOG.debug('+2 damage from CrushingBlow.')
+            crushing_blow_damage = attack.get_characteristic_bonus(
+                STAT_WS) / 2
+            current_damage += crushing_blow_damage
+            LOG.debug('+%s damage from CrushingBlow.', crushing_blow_damage)
         return current_damage
 
 
@@ -25,8 +26,10 @@ class MightyShot(Modifier):
 
     def modify_damage(self, attack, current_damage):
         if attack.is_ranged():
-            current_damage += 2
-            LOG.debug('+2 damage from MightyShot.')
+            mighty_shot_damage = attack.get_characteristic_bonus(
+                STAT_BS) / 2
+            current_damage += mighty_shot_damage
+            LOG.debug('+%s damage from MightyShot.', mighty_shot_damage)
         return current_damage
 
 
@@ -117,6 +120,11 @@ class Ambidextrous(Modifier):
 class TwoWeaponWielderMelee(Modifier):
 
     name = 'two_weapon_wielder_melee'
+
+
+class BladeDancer(Modifier):
+
+    name = 'blade_dancer'
 
 
 class SwiftAttack(Modifier):

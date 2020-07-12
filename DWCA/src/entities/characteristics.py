@@ -49,10 +49,10 @@ class Characteristics(object):
     def get_characteristic_bonus(self, characteristic):
         characteristic_bonus = self.get_raw_characteristic_bonus(
             characteristic)
-        characteristic_multiplier = self.get_characteristic_multiplier(
+        unnatural_bonus = self.get_unnatural_characteristic(
             characteristic)
         flat_bonus = self.get_flat_characteristic_bonus(characteristic)
-        final_bonus = characteristic_bonus * characteristic_multiplier + flat_bonus
+        final_bonus = characteristic_bonus + unnatural_bonus + flat_bonus
         return final_bonus
 
     def get_characteristic_multiplier(self, characteristic):
@@ -65,7 +65,7 @@ class Characteristics(object):
 
     def get_unnatural_characteristic(self, characteristic):
         trait_name = 'unnatural_{}'.format(characteristic)
-        trait_value = self.modifiers.get(trait_name)
+        trait_value = self.modifiers.get(trait_name, 0)
         return trait_value
 
     @property

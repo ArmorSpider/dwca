@@ -12,10 +12,10 @@ class Test(unittest.TestCase):
     def setUp(self):
         self.non_psyker = build_entity(add_mock_entity('Non-psyker'))
         self.psyker = build_entity(add_mock_entity('Pskyer',
-                                                    traits={'psy_rating': 3}))
+                                                   traits={'psy_rating': 3}))
         self.unnatural_psyker = build_entity(add_mock_entity('Pskyer',
-                                                              traits={'psy_rating': 3,
-                                                                      'unnatural_willpower': 2}))
+                                                             traits={'psy_rating': 3,
+                                                                     'unnatural_willpower': 2}))
 
     def tearDown(self):
         pass
@@ -32,10 +32,10 @@ class Test(unittest.TestCase):
         actual = attack.effective_psy_rating
         self.assertEqual(expected, actual)
 
-    def test_unnatural_pskyer_should_add_unnatural_multiplier(self):
+    def test_unnatural_pskyer_should_not_add_unnatural_multiplier(self):
         attack = Attack(
             weapon=None, attacker=self.unnatural_psyker, target=None)
-        expected = 5
+        expected = 3
         actual = attack.effective_psy_rating
         self.assertEqual(expected, actual)
 
@@ -72,6 +72,6 @@ class Test(unittest.TestCase):
         attack = Attack(
             weapon=None, attacker=self.unnatural_psyker, target=None)
         attack.ad_hoc_modifiers = {'fettered': True}
-        expected = 4
+        expected = 2
         actual = attack.effective_psy_rating
         self.assertEqual(expected, actual)

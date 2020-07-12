@@ -11,6 +11,7 @@ class Test(unittest.TestCase):
 
     def test_slaughter_the_swarm(self):
         attacker = build_mock_entity('MockMan',
+                                     _system='deathwatch',
                                      characteristics={STAT_INT: 50,
                                                       STAT_INT + '_bonus': 15},
                                      traits={'unnatural_intelligence': 2})

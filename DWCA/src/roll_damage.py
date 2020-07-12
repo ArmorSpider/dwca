@@ -1,6 +1,6 @@
 from src.dice import roll_damage_dice, roll_action_dice
 from src.dwca_log.log import get_log
-from src.modifiers.qualities import Proven
+from src.modifiers.qualities import Proven, Primitive
 
 
 LOG = get_log(__name__)
@@ -16,6 +16,7 @@ def roll_normal_damage(real_dice, tearing_dice, attack=None):
     LOG.debug('Rolled normal damage: %s', actual_results)
     if attack is not None:
         actual_results = Proven.handle_proven(attack, actual_results)
+        actual_results = Primitive.handle_primitive(attack, actual_results)
     return actual_results
 
 

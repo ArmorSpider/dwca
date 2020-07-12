@@ -1,5 +1,4 @@
 from definitions import JAMMED
-from src.dice import roll_damage_dice
 from src.dwca_log.log import get_log
 from src.entities import SINGLE_SHOT
 from src.modifiers.qualities import OverHeats
@@ -25,7 +24,7 @@ def is_weapon_jammed(attack):
         if attack.never_jams is not None or attack.living_ammunition is not None:
             return False
         elif attack.reliable is not None:
-            return _did_reliable_jam()
+            return _did_reliable_jam(attack)
         else:
             return True
     else:
@@ -33,7 +32,7 @@ def is_weapon_jammed(attack):
 
 
 def get_jam_threshold(attack):
-    if attack.overheats is not None:
+    if attack.overheats is not None or attack.unreliable is not None:
         jam_threshold = 91
     else:
         jam_threshold = 96 if attack.firemode == SINGLE_SHOT else 94
@@ -44,6 +43,5 @@ def is_eligible_for_jam(attack):
     return attack.roll_result >= get_jam_threshold(attack)
 
 
-def _did_reliable_jam():
-    reliable_roll = roll_damage_dice(1)[0]
-    return reliable_roll == 10
+def _did_reliable_jam(attack):
+    return attack.roll_result == 100

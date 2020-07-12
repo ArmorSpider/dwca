@@ -37,7 +37,7 @@ def handler_defend(event):
 
 def attempt_vehicle_dodge(event):
     attacker = build_attacker(event)
-    base_target = attacker.available_skills.get('drive', 0)
+    base_target = attacker.available_skills.get('operate', 0)
     modifier = get_effective_modifier(event, manual_only=True)
     size_modifier = -attacker.size_bonus
     manouverability = attacker.manouverability
@@ -62,7 +62,9 @@ def attempt_parry(event):
     roll_result = event.get(ROLL_RESULT)
     parry_target = 0
     if attack.is_melee():
-        parry_target = attack.get_effective_characteristic(STAT_WS)
+        parry_target = attack.attacker.available_skills.get('parry')
+        weapon_bonus = attack.weapon.get_flat_characteristic_value(STAT_WS)
+        parry_target += weapon_bonus
         manual_bonus = get_effective_modifier(event, manual_only=True)
         parry_target += manual_bonus
         if attack.balanced is not None:

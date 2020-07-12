@@ -34,12 +34,15 @@ class Test(unittest.TestCase):
                                                              STAT_TGH: 54,
                                                              STAT_WS: 50,
                                                              STAT_BS: 50,
-                                                             STAT_AGI: 40})
+                                                             STAT_AGI: 40},
+                                            _system='deathwatch')
         self.dummyman_name = add_mock_entity('Dummyman',
                                              traits={'natural_armor': True},
+                                             _system='deathwatch',
                                              wounds=122)
         self.psyman_name = add_mock_entity('Psyman',
-                                           traits={'psy_rating': 6})
+                                           traits={'psy_rating': 6},
+                                           _system='deathwatch')
         self.armorman_name = add_mock_entity('Armorman',
                                              armor={HITLOC_LEFT_LEG: 11,
                                                     HITLOC_RIGHT_LEG: 12,
@@ -49,7 +52,8 @@ class Test(unittest.TestCase):
                                                     HITLOC_HEAD: 16},
                                              characteristics={STAT_TGH: 10},
                                              traits={'daemonic': True,
-                                                     'unnatural_toughness': 2})
+                                                     'unnatural_toughness': 2},
+                                             _system='deathwatch')
         self.business_gun_name = add_mock_weapon('Business Gun',
                                                  'Basic',
                                                  dice=2,
@@ -57,21 +61,26 @@ class Test(unittest.TestCase):
                                                  penetration=10,
                                                  single_shot=1,
                                                  semi_auto=3,
-                                                 full_auto=5)
+                                                 full_auto=5,
+                                                 _system='deathwatch')
         self.business_fist_name = add_mock_weapon('Business Fist',
                                                   'Melee',
                                                   damage_type='I',
                                                   dice=1,
                                                   flat_damage=10,
                                                   penetration=10,
-                                                  qualities={Tearing.name: True})
+                                                  qualities={
+                                                      Tearing.name: True},
+                                                  _system='deathwatch')
         self.business_psy_name = add_mock_weapon('Business Psy',
                                                  'Psychic',
                                                  damage_type='I',
                                                  dice=1,
                                                  flat_damage=10,
                                                  penetration=10,
-                                                 qualities={'psychic_scaling': True})
+                                                 qualities={
+                                                     'psychic_scaling': True},
+                                                 _system='deathwatch')
 
         self.basic_melee_event = {ATTACKER: self.automan_name,
                                   WEAPON: self.business_fist_name,
@@ -125,32 +134,32 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_roll_result(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50}
+                    ROLL_RESULT: 51}
         actual = self.get_attack_metadata(event)
         self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_effective_psy_rating(self):
         event = self.basic_psy_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Psyman',
                     WEAPON: 'Business Psy',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     EFFECTIVE_PSY_RATING: 6}
         actual = self.get_attack_metadata(event)
         self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_raw_weapon_stats(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
         raw_weapon_stats = {DICE: 1,
                             PENETRATION: 10,
                             FLAT_DAMAGE: 10}
@@ -159,14 +168,14 @@ class Test(unittest.TestCase):
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     RAW_WEAPON_STATS: raw_weapon_stats}
         actual = self.get_attack_metadata(event)
         self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_target_raw_armor(self):
         event = self.armorman_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
         raw_target_armor = {HITLOC_LEFT_LEG: 11,
                             HITLOC_RIGHT_LEG: 12,
                             HITLOC_BODY: 13,
@@ -178,46 +187,46 @@ class Test(unittest.TestCase):
                     WEAPON: 'Business Fist',
                     TARGET: 'Armorman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     ARMOR: raw_target_armor}
         actual = self.get_attack_metadata(event)
         self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_degrees_of_success(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5}
         actual = self.get_attack_metadata(event)
         self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_damage_type(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DAMAGE_TYPE: 'I'}
         actual = self.get_attack_metadata(event)
         self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_firemode(self):
         event = self.full_auto_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Gun',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     FIREMODE: FULL_AUTO}
         actual = self.get_attack_metadata(event)
@@ -225,13 +234,13 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_rate_of_fire(self):
         event = self.full_auto_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Gun',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     FIREMODE: FULL_AUTO,
                     RATE_OF_FIRE: 5}
@@ -255,13 +264,13 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_jammed_status_when_not_jammed(self):
         event = self.full_auto_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Gun',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     FIREMODE: FULL_AUTO,
                     JAMMED: False}
@@ -270,13 +279,13 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_penetration(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     PENETRATION: 10}
         actual = self.get_attack_metadata(event)
@@ -284,13 +293,13 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_flat_damage(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     FLAT_DAMAGE: 20}
         actual = self.get_attack_metadata(event)
@@ -298,13 +307,13 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_num_dice(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     DICE: 1}
         actual = self.get_attack_metadata(event)
@@ -312,13 +321,13 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_num_tearing_dice(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     TEARING_DICE: 1}
         actual = self.get_attack_metadata(event)
@@ -326,13 +335,13 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_num_hits(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     NUM_HITS: 1}
         actual = self.get_attack_metadata(event)
@@ -340,14 +349,14 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_rolled_damage(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
         queue_d10_rolls([5] * 10)
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     ROLLED_DAMAGE: [[5]]}
         actual = self.get_attack_metadata(event)
@@ -355,14 +364,14 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_total_damage(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
         queue_d10_rolls([5] * 10)
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     ROLLED_DAMAGE: [[5]],
                     FLAT_DAMAGE: 20,
@@ -372,14 +381,14 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_multiple_rolled_and_raw_for_multiple_hits(self):
         event = self.full_auto_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
         queue_d10_rolls([5] * 10)
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Gun',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     ROLLED_DAMAGE: [[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]],
                     FLAT_DAMAGE: 10,
@@ -389,14 +398,14 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_effective_damage(self):
         event = self.full_auto_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
         queue_d10_rolls([5] * 10)
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Gun',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     ROLLED_DAMAGE: [[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]],
                     FLAT_DAMAGE: 10,
@@ -407,14 +416,14 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_hit_locations(self):
         event = self.full_auto_event
-        queue_d100_rolls([49])
+        queue_d100_rolls([59])
         queue_d10_rolls([5] * 10)
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Gun',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 49,
+                    ROLL_RESULT: 59,
                     DEGREES_OF_SUCCESS: 5,
                     ROLLED_DAMAGE: [[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]],
                     FLAT_DAMAGE: 10,
@@ -430,14 +439,14 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_effective_armor(self):
         event = self.armorman_full_auto_event
-        queue_d100_rolls([49])
+        queue_d100_rolls([59])
         queue_d10_rolls([5] * 10)
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Gun',
                     TARGET: 'Armorman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 49,
+                    ROLL_RESULT: 59,
                     DEGREES_OF_SUCCESS: 5,
                     ROLLED_DAMAGE: [[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]],
                     EFFECTIVE_ARMOR: [1, 1, 3, 5, 6],
@@ -454,14 +463,14 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_effective_toughness(self):
         event = self.armorman_full_auto_event
-        queue_d100_rolls([49])
+        queue_d100_rolls([59])
         queue_d10_rolls([5] * 10)
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Gun',
                     TARGET: 'Armorman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 49,
+                    ROLL_RESULT: 59,
                     DEGREES_OF_SUCCESS: 5,
                     ROLLED_DAMAGE: [[5, 5], [5, 5], [5, 5], [5, 5], [5, 5]],
                     EFFECTIVE_TOUGHNESS: [3, 3, 3, 3, 3],
@@ -478,32 +487,32 @@ class Test(unittest.TestCase):
 
     def test_metadata_should_contain_offensive_modifiers(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
         queue_d10_rolls([5] * 10)
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     OFFENSIVE_MODIFIERS: {'power_armour': True,
-                                          'unnatural_strength': 2,
-                                          'unnatural_toughness': 2,
+                                          'unnatural_strength': 4,
+                                          'unnatural_toughness': 5,
                                           Tearing.name: True}}
         actual = self.get_attack_metadata(event)
         self.assertDictContainsSubset(expected, actual)
 
     def test_metadata_should_contain_defensive_modifiers(self):
         event = self.basic_melee_event
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
         queue_d10_rolls([5] * 10)
 
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     DEFENSIVE_MODIFIERS: {'natural_armor': True}}
         actual = self.get_attack_metadata(event)
@@ -512,18 +521,19 @@ class Test(unittest.TestCase):
     def test_metadata_offensive_modifiers_should_include_ad_hoc_mods(self):
         event = self.basic_melee_event
         event[AD_HOC] = {Blast.name: 5}
-        queue_d100_rolls([50])
+        queue_d100_rolls([51])
         queue_d10_rolls([5] * 10)
 
+        # This will look for translated values.
         expected = {ATTACKER: 'Automan',
                     WEAPON: 'Business Fist',
                     TARGET: 'Dummyman',
                     ROLL_TARGET: 100,
-                    ROLL_RESULT: 50,
+                    ROLL_RESULT: 51,
                     DEGREES_OF_SUCCESS: 5,
                     OFFENSIVE_MODIFIERS: {'power_armour': True,
-                                          'unnatural_strength': 2,
-                                          'unnatural_toughness': 2,
+                                          'unnatural_strength': 4,
+                                          'unnatural_toughness': 5,
                                           Tearing.name: True,
                                           Blast.name: 5}}
         actual = self.get_attack_metadata(event)

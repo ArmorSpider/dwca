@@ -1,19 +1,19 @@
 from lazy.lazy import lazy
 
-from definitions import ATTACKER, TARGET, WEAPON, NUM_HITS, ROLLED_DAMAGE,\
-    RAW_DAMAGE, OFFENSIVE_MODIFIERS, DEFENSIVE_MODIFIERS, EFFECTIVE_DAMAGE,\
-    HIT_LOCATIONS, RAW_WEAPON_STATS, EFFECTIVE_PSY_RATING, EFFECTIVE_TOUGHNESS,\
-    EFFECTIVE_ARMOR, BLOCKED, MAGNITUDE_DAMAGE
+from definitions import WEAPON, ATTACKER, TARGET, DEFENSIVE_MODIFIERS,\
+    RAW_WEAPON_STATS, HIT_LOCATIONS, MAGNITUDE_DAMAGE, EFFECTIVE_TOUGHNESS,\
+    EFFECTIVE_ARMOR, BLOCKED, EFFECTIVE_DAMAGE, EFFECTIVE_PSY_RATING, NUM_HITS,\
+    ROLLED_DAMAGE, RAW_DAMAGE, OFFENSIVE_MODIFIERS
 from src.action.action import Action
 from src.action.hit import Hit
 from src.dwca_log.log import get_log
-from src.entities import DICE, PENETRATION, FLAT_DAMAGE,\
-    TEARING_DICE, DAMAGE_TYPE, ARMOR, WOUNDS
+from src.entities import WOUNDS, ARMOR, DAMAGE_TYPE, DICE, PENETRATION,\
+    FLAT_DAMAGE, TEARING_DICE, SWIFT_ATTACK, LIGHTNING_ATTACK
 from src.entities.characteristics import UNDEFINED_CHARACTERISTIC_VALUE
 from src.entities.entity import Entity
 from src.hit_location import FRONT, SIDE, REAR, get_hit_location_name
 from src.hitloc_series import get_hit_locations
-from src.modifiers.modifier import get_modifiers_iterator, get_modifier
+from src.modifiers.modifier import get_modifier, get_modifiers_iterator
 from src.modifiers.qualities import Devastating, Hellfire
 from src.roll_damage import roll_normal_damage, roll_righteous_fury,\
     handle_dos_minimum_damage
@@ -282,10 +282,6 @@ class Attack(Action):
         self.update_metadata({OFFENSIVE_MODIFIERS: modifiers})
         return modifiers
 
-    @property
-    def firemodes(self):
-        return self.weapon.firemodes
-
     def get_effective_armor(self, hit):
         armor = self.target.get_armor(hit.hit_location)
         for modifier in self.modifer_iterator():
@@ -301,6 +297,16 @@ class Attack(Action):
         for modifier in self.modifer_iterator():
             effective_damage = modifier.on_damage(self, effective_damage)
         return effective_damage
+
+    @property
+    def firemodes(self):
+        base_firemodes = self.weapon.firemodes
+        if self.is_melee():
+            if self.swift_attack is None:
+                base_firemodes.pop(SWIFT_ATTACK, None)
+            if self.lightning_attack is None:
+                base_firemodes.pop(LIGHTNING_ATTACK, None)
+        return base_firemodes
 
     def is_melee(self):
         return self.weapon.is_melee()

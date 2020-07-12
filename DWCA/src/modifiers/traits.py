@@ -53,15 +53,15 @@ class Daemonic(Modifier):
     name = 'daemonic'
 
     @staticmethod
-    def handle_daemonic(attack, tgh_multiplier):
+    def handle_daemonic(attack, extra_toughness):
         daemonic_value = attack.target.daemonic
         bypass_daemonic = any([attack.sanctified,
                                attack.force_weapon,
                                attack.daemonic])
         if daemonic_value is not None and bypass_daemonic is False:
-            tgh_multiplier += 1
-            LOG.debug('+1 TGH multiplier from Daemonic.')
-        return tgh_multiplier
+            extra_toughness += daemonic_value
+            LOG.debug('+%s TB from Daemonic.', daemonic_value)
+        return extra_toughness
 
 
 class BrutalCharge(Modifier):
@@ -70,8 +70,9 @@ class BrutalCharge(Modifier):
 
     def modify_damage(self, attack, current_damage):
         if attack.attacker.is_horde() is False and attack.charged is not None:
-            LOG.info('+3 damage from BrutalCharge')
-            current_damage += 3
+            brutal_charge_value = attack.brutal_charge
+            LOG.info('+%s damage from BrutalCharge', brutal_charge_value)
+            current_damage += brutal_charge_value
         return current_damage
 
     def modify_num_dice(self, attack, current_num_dice):
@@ -102,7 +103,6 @@ class UnnaturalWillpower(Modifier):
     name = 'unnatural_willpower'
 
     def modify_psy_rating(self, attack, psy_rating):
-        psy_rating += attack.unnatural_willpower
         return psy_rating
 
 
@@ -129,3 +129,18 @@ class Quadruped(Modifier):
 class JumpPack(Modifier):
 
     name = 'jump_pack'
+
+
+class PreternaturalSpeed(Modifier):
+
+    name = 'preternatural_speed'
+
+
+class EnhancedMotiveSystems(Modifier):
+
+    name = 'enhanced_motive_systems'
+
+
+class Ponderous(Modifier):
+
+    name = 'ponderous'

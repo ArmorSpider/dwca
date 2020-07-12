@@ -44,12 +44,12 @@ def handler_profile(event):
 
     armor = attacker.get_armor(HITLOC_BODY)
     toughness_bonus = attacker.get_raw_characteristic_bonus(STAT_TGH)
-    toughness_multiplier = attacker.get_characteristic_multiplier(STAT_TGH)
+    toughness_unnatural = attacker.get_characteristic_multiplier(STAT_TGH)
     toughness_flat = attacker.get_flat_characteristic_bonus(STAT_TGH)
     toughness_actual = (
-        toughness_bonus * toughness_multiplier) + toughness_flat
-    LOG.info('[Armor: %s TGH: %s (%s x %s + %s)]', armor, toughness_actual,
-             toughness_bonus, toughness_multiplier, toughness_flat)
+        toughness_bonus + toughness_unnatural) + toughness_flat
+    LOG.info('[Armor: %s TGH: %s (%s + %s + %s)]', armor, toughness_actual,
+             toughness_bonus, toughness_unnatural, toughness_flat)
 
     LOG.info('[Weapons]')
     weapon_strings = []

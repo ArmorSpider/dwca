@@ -1,5 +1,5 @@
 from src.cli.message_queue import queue_message
-from src.dice import roll_action_dice
+from src.dice import roll_damage_die, roll_action_dice
 from src.dwca_log.log import get_log
 from src.entities.char_stats import STAT_TGH, STAT_STR
 from src.modifiers.modifier import Modifier
@@ -86,7 +86,7 @@ class RazorSharp(Modifier):
     name = 'razor_sharp'
 
     def modify_penetration(self, attack, current_penetration):
-        if attack.degrees_of_success >= 2:
+        if attack.degrees_of_success >= 3:
             current_penetration += attack.weapon.penetration
             LOG.debug('Double penetration from RazorSharp.')
         return current_penetration
@@ -135,13 +135,13 @@ class Felling(Modifier):
     name = 'felling'
 
     @staticmethod
-    def handle_felling(attack, tgh_multiplier):
+    def handle_felling(attack, extra_toughness):
         felling_value = attack.felling
         if felling_value is not None:
-            tgh_multiplier = max(tgh_multiplier - felling_value, 1)
+            extra_toughness = max(extra_toughness - felling_value, 0)
             LOG.debug('Toughness multiplier reduced by Felling(%s)',
                       felling_value)
-        return tgh_multiplier
+        return extra_toughness
 
 
 class Volatile(Modifier):
@@ -178,14 +178,43 @@ class Proven(Modifier):
             return roll_results
 
 
+class Primitive(Modifier):
+
+    name = 'primitive'
+
+    @staticmethod
+    def handle_primitive(attack, roll_results):
+        primitive_value = attack.primitive
+        if primitive_value is not None:
+            modified_results = [min(value, primitive_value)
+                                for value in roll_results]
+            LOG.debug('Primitive modified roll result to %s.',
+                      modified_results)
+            return modified_results
+        else:
+            return roll_results
+
+
 class Shocking(Modifier):
 
     name = 'shocking'
 
     def on_damage(self, attack, effective_damage):
         if effective_damage > 0:
-            queue_message('SHOCKING: %s must make TGH test +10*(location AP) or be stunned for %s rounds.' %
-                          (attack.target, int(effective_damage * 0.5)))
+            queue_message(
+                'SHOCKING: %s must make TGH test or be stunned for DoF rounds.' % attack.target)
+        return effective_damage
+
+
+class Crippling(Modifier):
+
+    name = 'crippling'
+
+    def on_damage(self, attack, effective_damage):
+        if effective_damage > 0:
+            message = ('CRIPPLING: %s is crippled. They take %s true damage each turn '
+                       'they use more than a half action until all damage is healed.') % (attack.target, attack.crippling)
+            queue_message(message)
         return effective_damage
 
 
@@ -195,10 +224,14 @@ class Toxic(Modifier):
 
     def on_damage(self, attack, effective_damage):
         toxic_value = attack.toxic
-        if toxic_value is not None and effective_damage > 0:
-            penalty = 5 * effective_damage
-            queue_message('TOXIC: %s should roll %s -%s or take %s true damage.' %
-                          (attack.target, STAT_TGH, penalty, toxic_value))
+        if isinstance(toxic_value, int) and effective_damage > 0:
+            penalty = 10 * toxic_value
+            queue_message('TOXIC: %s should roll %s -%s or take 1d10 true damage.' %
+                          (attack.target, STAT_TGH, penalty))
+        elif isinstance(toxic_value, basestring) and effective_damage > 0:
+            queue_message('TOXIC: %s must roll TGH. %s.' %
+                          (attack.target, toxic_value))
+
         return effective_damage
 
 
@@ -251,15 +284,15 @@ class Accurate(Modifier):
 
     name = 'accurate'
 
-    def modify_num_dice(self, attack, current_num_dice):
+    def modify_damage(self, attack, current_damage):
         if attack.degrees_of_success >= 2:
             if attack.aimed is True:
-                current_num_dice += 1
-                LOG.info('+1d10 from Accurate with DoS >= 2')
+                current_damage += roll_damage_die()
+                LOG.info('+1d10 damage from Accurate with DoS >= 2')
                 if attack.degrees_of_success >= 4:
-                    current_num_dice += 1
-                    LOG.info('+1d10 from Accurate with DoS >= 4')
-        return current_num_dice
+                    current_damage += roll_damage_die()
+                    LOG.info('+1d10 damage from Accurate with DoS >= 4')
+        return current_damage
 
 
 class Blast(Modifier):
@@ -306,7 +339,10 @@ class Snare(Modifier):
 
     def on_hit(self, attack):
         if attack.snare is not None:
-            queue_message('SNARE: %s must make AGI test or be immobilised.')
+            snare_value = attack.snare
+            penalty = snare_value * -10
+            queue_message(
+                'SNARE: %s must make AGI test %s or be immobilised.' % (attack.target, penalty))
 
 
 class DeadlySnare(Modifier):
@@ -315,13 +351,15 @@ class DeadlySnare(Modifier):
 
     def on_hit(self, attack):
         if attack.deadly_snare is not None:
+            snare_value = attack.deadly_snare
+            penalty = snare_value * -10
             damage_roll_base = '{dice}d10+{flat_damage} Pen: {pen}'
             damage_roll = damage_roll_base.format(dice=attack.num_dice,
                                                   flat_damage=attack.flat_damage,
                                                   pen=attack.penetration)
             queue_message(
-                'DEADLY_SNARE: %s must make AGI test or be immobilised.'
-                'Take %s each turn until escape.' % (attack.target, damage_roll))
+                'DEADLY_SNARE: %s must make AGI %s test or be immobilised.'
+                'Take %s each turn until escape.' % (attack.target, penalty, damage_roll))
 
 
 class Flexible(Modifier):
@@ -387,8 +425,9 @@ class Concussive(Modifier):
     name = 'concussive'
 
     def on_hit(self, attack):
-        test_difficulty = -10 * attack.degrees_of_success
-        queue_message('CONCUSSIVE: %s must make TGH test (%s) or be Stunned for 1 round.' %
+        concussive_value = attack.concussive
+        test_difficulty = -10 * concussive_value
+        queue_message('CONCUSSIVE: %s must make TGH test (%s) or be Stunned for 1 round/DoF' %
                       (attack.target, test_difficulty))
 
     def on_damage(self, attack, effective_damage):
@@ -457,9 +496,26 @@ class PenetrationPerDos(Modifier):
         return current_penetration
 
 
+class Lance(Modifier):
+
+    name = 'lance'
+
+    def modify_penetration(self, attack, current_penetration):
+        dos = attack.degrees_of_success
+        bonus_penetration = max(0, 5 * dos)
+        LOG.debug('+%s penetration from Lance', bonus_penetration)
+        current_penetration += bonus_penetration
+        return current_penetration
+
+
 class SkillBonus(Modifier):
 
     name = 'skill_bonus'
+
+
+class Unreliable(Modifier):
+
+    name = 'unreliable'
 
 
 class Haywire(Modifier):

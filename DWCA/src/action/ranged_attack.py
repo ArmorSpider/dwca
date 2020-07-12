@@ -34,16 +34,17 @@ class RangedAttack(Attack):
     def _num_shots(self):
         LOG.debug('Firemode is "%s".', self.firemode)
         num_shots = 1
+        dos = self.degrees_of_success
         if self.firemode == SINGLE_SHOT:
             num_shots = 1
         elif self.firemode == SEMI_AUTO:
-            num_shots += int(self.degrees_of_success / 2)
+            num_shots += int((dos - 1) / 2)
             LOG.debug('DoS hits: %s (%s DoS/2)',
-                      num_shots, self.degrees_of_success)
+                      num_shots, dos)
         elif self.firemode == FULL_AUTO:
-            num_shots += int(self.degrees_of_success)
+            num_shots += int(dos - 1)
             LOG.debug('DoS hits: %s (%s DoS)',
-                      num_shots, self.degrees_of_success)
+                      num_shots, dos)
         else:
             raise NoFiremodeError(
                 '"%s" did not match any known firemode.' % self.firemode)
