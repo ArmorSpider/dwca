@@ -71,7 +71,7 @@ class AdvancedSkills(Enum):
 
 
 def get_skill_characteristic(active_skill):
-    for char_stat, skills in get_skill_characteristic_mappings().iteritems():
+    for char_stat, skills in get_skill_characteristic_mappings().items():
         for skill in skills:
             if active_skill.lower() == skill.value:
                 return char_stat

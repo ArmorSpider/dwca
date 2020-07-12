@@ -5,12 +5,12 @@ LOG = get_log(__name__)
 
 
 def user_input_string(prompt):
-    string_ = str(raw_input(prompt))
+    string_ = str(input(prompt))
     return string_
 
 
 def user_input_int(prompt):
-    int_ = int(raw_input(prompt))
+    int_ = int(input(prompt))
     return int_
 
 
@@ -45,6 +45,6 @@ def user_choose_from_list(list_):
             LOG.debug('List was not orderable.')
         for index, string_ in enumerate(list_, start=1):
             LOG.info('%s: %s', index, string_)
-        index = input('Enter a number: (1-%s) ' % len(list_))
+        index = eval(input('Enter a number: (1-%s) ' % len(list_)))
         user_choice = list_[index - 1]
     return user_choice

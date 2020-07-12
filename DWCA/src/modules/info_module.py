@@ -7,7 +7,7 @@ from src.util.read_file import read_dospedia
 def handler_info(event):
     character = choose_or_build_attacker(event)
     modifiers = character.modifiers
-    modifier_names = sort_strings_by_length(modifiers.keys())
+    modifier_names = sort_strings_by_length(list(modifiers.keys()))
     dospedia = read_dospedia()
     table_data = []
     for modifier in modifier_names:

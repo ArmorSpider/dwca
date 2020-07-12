@@ -19,7 +19,7 @@ def handler_firemode(event):
 
 def _choose_firemode(event):
     attack = build_base_attack(event)
-    firemodes = attack.firemodes.keys()
+    firemodes = list(attack.firemodes.keys())
     firemode = try_user_choose_from_list(firemodes)
     event[FIREMODE] = firemode
     return event

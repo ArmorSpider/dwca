@@ -122,7 +122,7 @@ class Test(unittest.TestCase):
 
     def test_no_configured_skills_should_return_basic_skills_with_halved_characteristics(self):
         expected = {skill.value: 20 for skill in BasicSkills}
-        print {skill.value: 0 for skill in AdvancedSkills}
+        print({skill.value: 0 for skill in AdvancedSkills})
         self.assert_available_skills(expected,
                                      characteristics=self.even_characteristics)
 

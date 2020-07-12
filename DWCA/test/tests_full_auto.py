@@ -13,7 +13,7 @@ from src.util.rand_util import _random_int
 
 def return_random(list_):
     thing = choice(list_)
-    print 'Chose "%s"' % thing
+    print('Chose "%s"' % thing)
     return thing
 
 
@@ -56,7 +56,7 @@ class Test(unittest.TestCase):
 
     def _run_random_command(self, event):
         command = choice(self.random_commands)
-        print 'Ran command "%s"' % command
+        print('Ran command "%s"' % command)
         try:
             event = process_command(command, event)
         except OutOfRangeError:

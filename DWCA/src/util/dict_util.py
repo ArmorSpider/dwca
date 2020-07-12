@@ -2,7 +2,7 @@ import json
 
 
 def pretty_print(dict_):
-    print json.dumps(dict_, indent=4)
+    print(json.dumps(dict_, indent=4))
 
 
 def sort_strings_by_length(list_of_strings):

@@ -24,7 +24,7 @@ UNDEFINED_LOCATIONAL_TOUGHNESS_VALUE = 0
 
 
 def choose_character():
-    available_characters = get_character_library().keys()
+    available_characters = list(get_character_library().keys())
     character_name = try_user_choose_from_list(available_characters)
     return character_name
 

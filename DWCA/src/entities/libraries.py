@@ -19,7 +19,7 @@ def verify_weapons():
     ranged_only = require_all + [RANGE]
     MasterLibrary.reload_libraries()
     MasterLibrary.load_all_packages()
-    for weapon_name, weapon_def in get_weapon_library().iteritems():
+    for weapon_name, weapon_def in get_weapon_library().items():
         missing_keys = []
         is_melee = weapon_def.get(CLASS, 'NO_CLASS').lower() == MELEE
         if is_melee:
@@ -30,10 +30,10 @@ def verify_weapons():
             if key not in weapon_def:
                 missing_keys.append(key)
         if missing_keys != []:
-            print '______[%s]______' % weapon_name
-            print weapon_def.get('_package', DEFAULT_PACKAGE)
+            print('______[%s]______' % weapon_name)
+            print(weapon_def.get('_package', DEFAULT_PACKAGE))
             for key in missing_keys:
-                print '%s is missing %s' % (weapon_name, key)
+                print('%s is missing %s' % (weapon_name, key))
 
 
 def verify_entities():
@@ -41,7 +41,7 @@ def verify_entities():
     required_char = required_all + [SKILLS, SPECIES, CHARACTERISTICS]
     MasterLibrary.reload_libraries()
     MasterLibrary.load_all_packages()
-    for entity_name, entity_def in get_character_library().iteritems():
+    for entity_name, entity_def in get_character_library().items():
         missing_keys = []
         if entity_def.get('vehicle') is True:
             vehicle = True
@@ -61,10 +61,10 @@ def verify_entities():
                 except TypeError:
                     LOG.error(entity_def)
         if missing_keys != []:
-            print '______[%s]______' % entity_name
-            print entity_def.get('_package', DEFAULT_PACKAGE)
+            print('______[%s]______' % entity_name)
+            print(entity_def.get('_package', DEFAULT_PACKAGE))
             for key in missing_keys:
-                print '%s is missing %s' % (entity_name, key)
+                print('%s is missing %s' % (entity_name, key))
 
 
 class MasterLibrary(object):
@@ -91,10 +91,10 @@ class MasterLibrary(object):
     @staticmethod
     def get_known_packages():
         known_packages = []
-        for entity_def in MasterLibrary.weapon_library.values():
+        for entity_def in list(MasterLibrary.weapon_library.values()):
             package = entity_def.get(PACKAGE, DEFAULT_PACKAGE)
             known_packages.append(package)
-        for entity_def in MasterLibrary.character_library.values():
+        for entity_def in list(MasterLibrary.character_library.values()):
             package = entity_def.get(PACKAGE, DEFAULT_PACKAGE)
             known_packages.append(package)
         known_packages = list(set(known_packages))
@@ -107,7 +107,7 @@ class MasterLibrary(object):
     @staticmethod
     def filter_library(library_dict):
         filtered_library = {}
-        for entity_name, entity_def in library_dict.iteritems():
+        for entity_name, entity_def in library_dict.items():
             weapon_package = entity_def.get(PACKAGE, DEFAULT_PACKAGE)
             if weapon_package in MasterLibrary.available_packages:
                 filtered_library[entity_name] = entity_def
@@ -145,7 +145,7 @@ def read_character(character_name, best_match=True):
         character_definition = character_library[character_name]
         return character_definition
     except KeyError:
-        print '"{}" not available.'.format(character_name)
+        print('"{}" not available.'.format(character_name))
 
 
 def read_weapon(weapon_name, best_match=True):
@@ -156,13 +156,13 @@ def read_weapon(weapon_name, best_match=True):
         weapon_definition = weapon_library[weapon_name]
         return weapon_definition
     except KeyError:
-        print '"{}" not available.'.format(weapon_name)
+        print('"{}" not available.'.format(weapon_name))
         raise WeaponNotFoundError
 
 
 def find_best_character_match(character_name):
     cleaned_name = normalize_string(character_name)
-    available_characters = get_character_library().keys()
+    available_characters = list(get_character_library().keys())
     best_match = find_best_match(cleaned_name, available_characters)
     LOG.debug('Best match for "%s" is "%s"', character_name, best_match)
     return best_match
@@ -180,7 +180,7 @@ def find_best_match(input_string, options):
 
 def find_best_weapon_match(weapon_name):
     cleaned_name = normalize_string(weapon_name)
-    available_weapons = get_weapon_library().keys()
+    available_weapons = list(get_weapon_library().keys())
     best_match = find_best_match(cleaned_name, available_weapons)
     LOG.debug('Best match for "%s" is "%s"', weapon_name, best_match)
     return best_match

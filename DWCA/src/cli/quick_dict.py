@@ -52,7 +52,7 @@ def _parse_pair(pair_string):
 
 
 def _match_pair(key, value, match_map):
-    possible_keys = match_map.keys()
+    possible_keys = list(match_map.keys())
     matched_key = find_best_match(input_string=key,
                                   options=possible_keys)
     possible_values = match_map[matched_key]

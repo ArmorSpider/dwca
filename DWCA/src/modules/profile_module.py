@@ -27,7 +27,7 @@ def handler_profile(event):
 
     header_row = []
     stat_row = []
-    for stat_name, stat_value in stats.iteritems():
+    for stat_name, stat_value in stats.items():
         header_row.append(stat_name)
         stat_row.append(stat_value)
     table_data = [header_row,
@@ -60,7 +60,7 @@ def handler_profile(event):
         damage_type = weapon.damage_type
         penetration = weapon.penetration
         quality_strings = []
-        for quality_name, quality_value in weapon.qualities.iteritems():
+        for quality_name, quality_value in weapon.qualities.items():
             if quality_value is True:
                 quality_string = quality_name
             else:

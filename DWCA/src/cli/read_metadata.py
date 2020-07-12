@@ -87,7 +87,7 @@ def log_metadata_table(metadata):
                    'ARMOR',
                    'BLOCKED',
                    'MAGNITUDE']]
-    for hit_information in zip(range(1, num_hits + 1),
+    for hit_information in zip(list(range(1, num_hits + 1)),
                                rolled_damage_list,
                                raw_damage_list,
                                effective_armor_list,

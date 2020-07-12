@@ -22,7 +22,7 @@ class SaveManager(object):
 
     @staticmethod
     def load_state(state_name):
-        available_states = SaveManager.saved_states.keys()
+        available_states = list(SaveManager.saved_states.keys())
         state_name_best_match = find_best_match(state_name, available_states)
         state = deepcopy(SaveManager.saved_states[state_name_best_match])
         return state

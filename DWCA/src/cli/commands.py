@@ -87,14 +87,14 @@ class CLICommand(object):
 
     def smart_select_attacker(self, event):
         attacker = self.get_arg_or_select_from_list(
-            'Select character: ', get_character_library().keys())
+            'Select character: ', list(get_character_library().keys()))
         event_copy = deepcopy(event)
         event_copy[ATTACKER] = attacker
         return event_copy
 
     def smart_select_target(self, event):
         target = self.get_arg_or_select_from_list(
-            'Select character: ', get_character_library().keys())
+            'Select character: ', list(get_character_library().keys()))
         event_copy = deepcopy(event)
         event_copy[TARGET] = target
         return event_copy
@@ -157,7 +157,7 @@ class CommandAdd(CLICommand):
 
     def _process_event(self, event):
         entity_name = self.get_arg_or_select_from_list(
-            'Select character to add: ', get_character_library().keys())
+            'Select character to add: ', list(get_character_library().keys()))
         StateManager.add_character(entity_name)
         return event
 
@@ -193,7 +193,7 @@ class CommandTest(CLICommand):
         options.update(attacker.available_skills)
         options.update(attacker.effective_characteristics)
         test_stat = self.get_arg_or_select_from_list(
-            'Select stat to test: ', options.keys())
+            'Select stat to test: ', list(options.keys()))
         LOG.info('%s tests "%s"', attacker.name, test_stat)
         base_target = options.get(test_stat, 0)
         modifier = get_effective_modifier(event, manual_only=True)
@@ -338,7 +338,7 @@ class CommandEquip(CLICommand):
     help = 'Choose weapon from a list of available weapons.'
 
     def _process_event(self, event):
-        weapon_name = try_user_choose_from_list(get_weapon_library().keys())
+        weapon_name = try_user_choose_from_list(list(get_weapon_library().keys()))
         event[WEAPON] = weapon_name
         event = handler_equip(event)
         return event
@@ -476,7 +476,7 @@ class CommandLoad(CLICommand):
     help = 'Load a saved event.'
 
     def _process_event(self, event):
-        available_states = SaveManager.saved_states.keys()
+        available_states = list(SaveManager.saved_states.keys())
         LOG.info('Available states:')
         pretty_print(available_states)
         state_name = self.get_arg_or_input_string('Load which state? ')
@@ -502,10 +502,10 @@ class CommandDamage(CLICommand):
         hitloc_iterator = build_hitloc_iterator(attack.hit_location)
 
         while damage != '':
-            damage = raw_input('Enter damage: ')
+            damage = input('Enter damage: ')
             if damage == '':
                 continue
-            hit = Hit(hitloc_iterator.next(), damage, penetration)
+            hit = Hit(next(hitloc_iterator), damage, penetration)
             hits.append(hit)
         StateManager.update(event)
         attack.apply_hits(hits=hits)

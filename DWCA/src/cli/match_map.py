@@ -6,9 +6,9 @@ from src.entities.libraries import get_character_library, get_weapon_library
 
 
 def get_default_match_map():
-    match_map = {ATTACKER: get_character_library().keys(),
-                 TARGET: get_character_library().keys(),
-                 WEAPON: get_weapon_library().keys(),
+    match_map = {ATTACKER: list(get_character_library().keys()),
+                 TARGET: list(get_character_library().keys()),
+                 WEAPON: list(get_weapon_library().keys()),
                  FIREMODE: [SINGLE_SHOT, SEMI_AUTO, FULL_AUTO],
                  ROLL_MODIFIERS: None,
                  ROLL_RESULT: None,

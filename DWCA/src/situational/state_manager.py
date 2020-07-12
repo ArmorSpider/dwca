@@ -11,7 +11,7 @@ class StateManager(object):
     overloaded = False
     cover = 0
     extra_characters = []
-    base_characters = get_character_library().keys()
+    base_characters = list(get_character_library().keys())
 
     @staticmethod
     def get_loaded_characters():
@@ -42,7 +42,7 @@ class StateManager(object):
     @staticmethod
     def available_characters():
         if StateManager.get_loaded_characters() == StateManager.base_characters:
-            return get_character_library().keys()
+            return list(get_character_library().keys())
         else:
             return StateManager.get_loaded_characters()
 

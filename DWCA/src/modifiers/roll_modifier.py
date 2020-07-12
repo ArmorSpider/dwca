@@ -49,7 +49,7 @@ def add_roll_modifier(event, roll_modifier):
 def get_effective_modifier(event, manual_only=False):
     roll_modifiers = event.get(ROLL_MODIFIERS, {})
     effective_modifier = 0
-    for key, modifier_values in roll_modifiers.iteritems():
+    for key, modifier_values in roll_modifiers.items():
         if manual_only is True and key != OTHER_MODS:
             continue
         key_total = sum(modifier_values)

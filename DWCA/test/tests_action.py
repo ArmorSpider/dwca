@@ -18,7 +18,7 @@ class Test(unittest.TestCase):
 
     def test_get_reverse_should_reverse_roll_result(self):
         input_values = [21, 100, 20, 1]
-        expected = [12, 001, 02, 10]
+        expected = [12, 0o01, 0o2, 10]
 
         for input_value, expected_value in zip(input_values, expected):
             action = Action()
