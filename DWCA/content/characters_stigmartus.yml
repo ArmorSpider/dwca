@@ -1,0 +1,67 @@
+defaced:
+  _package: stigmartus
+  _system: deathwatch
+  armor: {all: 4}
+  characteristics: {agility: 30, ballistic_skill: 35, fellowship: 15, intelligence: 20,
+    perception: 30, strength: 35, toughness: 40, weapon_skill: 35, willpower: 35}
+  name: The Defaced
+  skills: {awareness: 0, climb: 10, silent_move: 0, tracking: 0}
+  species: human
+  talents: {fearless: true, frenzy: true, hatred: space marines}
+  traits: {brutal_charge: true, dark_sight: true, fear: 2, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [samech_multi_melta, samech_lascannon, samech_mono_sword]
+  wounds: 20
+officer_bishop:
+  _package: stigmartus
+  _system: deathwatch
+  armor: {all: 3}
+  characteristics: {agility: 39, ballistic_skill: 45, fellowship: 40, intelligence: 35,
+    perception: 45, strength: 37, toughness: 40, weapon_skill: 40, willpower: 45}
+  name: Stigmartus Officer-Bishop
+  skills: {awareness: 0, climb: 0, command: 20, dodge: 0, tactics: 0}
+  species: human
+  talents: {air_of_authority: true, unshakeable_faith: true}
+  weapons: [samech_chainsword, compact_laspistol, officers_lash]
+  wounds: 30
+stigmartus_brute:
+  _package: stigmartus
+  _system: deathwatch
+  armor: {all: 4}
+  characteristics: {agility: 30, ballistic_skill: 25, fellowship: 15, intelligence: 20,
+    perception: 25, strength: 60, toughness: 50, weapon_skill: 45, willpower: 30}
+  name: Stigmartus Ogryn Brute
+  skills: {awareness: 0, climb: 10, dodge: 0}
+  species: human
+  talents: {berserk_charge: true, crushing_blow: true, die_hard: true, fearless: true,
+    furious_assault: true, hardy: true, lightning_attacK: true, swift_attack: true}
+  traits: {auto_stabilised: true, brutal_charge: true, bulging_biceps: true, fear: 2,
+    size: 10, sturdy: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [hooked_cleaver, heavy_stubber, huge_fists]
+  wounds: 65
+stigmartus_infantry:
+  _package: stigmartus
+  _system: deathwatch
+  armor: {all: 4}
+  characteristics: {agility: 30, ballistic_skill: 35, fellowship: 15, intelligence: 20,
+    perception: 30, strength: 35, toughness: 40, weapon_skill: 35, willpower: 35}
+  name: Stigmartus Infantry
+  skills: {awareness: 0, climb: 0, dodge: 0}
+  species: human
+  talents: {hatred: space marines}
+  traits: {blood_soaked_tide: true, disciplined: true, fighting_withdrawal: true}
+  weapons: [samech_autogun, samech_frag]
+  wounds: 15
+undying:
+  _package: stigmartus
+  _system: deathwatch
+  armor: {all: 6, head: 4}
+  characteristics: {agility: 30, ballistic_skill: 45, fellowship: 20, intelligence: 30,
+    perception: 30, strength: 35, toughness: 55, weapon_skill: 40, willpower: 40}
+  name: The Undying
+  skills: {awareness: 0, climb: 0, command: 0, dodge: 10}
+  species: human
+  talents: {marksman: true, mighty_shot: true}
+  traits: {disciplined: true, fire_drill: true}
+  weapons: [samech_chain_axe, samech_hellgun]
+  wounds: 15

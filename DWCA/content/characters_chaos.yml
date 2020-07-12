@@ -1,0 +1,534 @@
+berzerker:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 40, fellowship: 20, intelligence: 30,
+    perception: 40, strength: 45, strength_bonus: 20, toughness: 45, weapon_skill: 69,
+    willpower: 45}
+  name: Khorne Berzerker
+  skills: {awareness: 0, dodge: 10}
+  species: human
+  talents: {ambidextrous: true, berserk_charge: true, die_hard: true, fearless: true,
+    frenzy: true, furious_assault: true, hatred: loyalist space marines, jaded: true,
+    lightning_attack: true, swift_attack: true, true_grit: true, two_weapon_wielder_melee: true,
+    whirlwind_of_death: true}
+  traits: {black_carapace: true, dark_sight: true, size: 10, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [chainsword, plasma_pistol, berzerker_axe]
+  wounds: 30
+bloodletter:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 0}
+  characteristics: {agility: 40, ballistic_skill: 30, fellowship: 10, intelligence: 30,
+    perception: 30, strength: 45, toughness: 45, weapon_skill: 55, willpower: 30}
+  name: Bloodletter
+  skills: {awareness: 0, climb: 20, dodge: 0, intimidate: 20, psyniscience: 0}
+  species: daemon
+  talents: {battle_rage: true, combat_master: true, crushing_blow: true, fearless: true,
+    frenzy: true, furious_assault: true, swift_attack: true}
+  traits: {blood_soaked_tide: true, brutal_charge: true, daemonic: true, daemonic_presence: true,
+    disciplined: true, fear: 2, from_beyond: true, horde: true, strange_physiology: true,
+    unnatural_strength: 2, warp_instability: true}
+  weapons: [hellblade, teeth_and_claws]
+  wounds: 25
+blue_horror:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 0}
+  characteristics: {agility: 30, ballistic_skill: 35, fellowship: 10, intelligence: 30,
+    perception: 30, strength: 20, toughness: 33, weapon_skill: 23, willpower: 30}
+  force_field: {overload_max: 0, protection_max: 20}
+  name: Blue Horror
+  skills: {awareness: 0, dodge: 0, psyniscience: 0}
+  species: daemon
+  talents: {fearless: true}
+  traits: {daemonic: true, daemonic_presence: true, fear: 2, from_beyond: true, horde: true,
+    strange_physiology: true, warp_instability: true}
+  weapons: [warpfire, teeth_and_claws]
+  wounds: 9
+chaos_dreadnought:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 37, rear: 20}
+  characteristics: {agility: 25, ballistic_skill: 50, fellowship: 6, intelligence: 34,
+    perception: 33, strength: 70, toughness: 0, weapon_skill: 50, willpower: 30}
+  name: Chaos Dreadnought
+  vehicle: true
+  weapons: [twin_autocannons, twin_lascannon, dreadnought_melee]
+  wounds: 35
+chaos_marine:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
+    perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
+  name: Chaos Space Marine
+  skills: {awareness: 0, climb: 0, dodge: 10}
+  species: human
+  talents: {bolter_drill: true, fearless: true, hatred: loyalist space marines, jaded: true,
+    killing_strike: true, swift_attack: true, true_grit: true}
+  traits: {black_carapace: true, fire_drill: true, power_armour: true, size: 10, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [bolt_pistol, bolter, chainsword, heavy_bolter]
+  wounds: 29
+chaos_sorcerer:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
+    perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
+  name: Chaos Space Marine Sorcerer
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  species: human
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space
+      marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
+    swift_attack: true, true_grit: true}
+  traits: {black_carapace: true, dark_sight: true, power_armour: true, psy_rating: 5,
+    size: 10, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
+  wounds: 29
+chaos_sorcerer_khorne:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
+    perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
+  name: Chaos Sorcerer (Khorne)
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  species: human
+  talents: {berserk_charge: true, bolter_drill: true, die_hard: true, fearless: true,
+    frenzy: true, furious_assault: true, hatred: loyalist space marines, jaded: true,
+    killing_strike: true, lightning_attack: true, quick_draw: true, rapid_reload: true,
+    resistance_psychic: true, swift_attack: true, true_grit: true, whirlwind_of_death: true}
+  traits: {black_carapace: true, dark_sight: true, power_armour: true, psy_rating: 5,
+    size: 10, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
+  wounds: 29
+chaos_sorcerer_nurgle:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
+    perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
+  name: Chaos Sorcerer (Nurgle)
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  species: human
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space
+      marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
+    swift_attack: true, true_grit: true}
+  traits: {black_carapace: true, dark_sight: true, power_armour: true, psy_rating: 5,
+    size: 10, stuff_of_nightmares: true, unnatural_strength: 2, unnatural_toughness: 3}
+  weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
+  wounds: 36
+chaos_sorcerer_slaanesh:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
+    perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
+  name: Chaos Sorcerer (Slaanesh)
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  species: human
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space
+      marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
+    swift_attack: true, true_grit: true}
+  traits: {black_carapace: true, dark_sight: true, power_armour: true, psy_rating: 5,
+    size: 10, unnatural_agility: 2, unnatural_fellowship: 2, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [force_sword, bolt_pistol, combat_knife, focus_test, bolt_of_change]
+  wounds: 29
+chaos_sorcerer_tzeentch:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 43, fellowship: 27, intelligence: 35,
+    perception: 40, strength: 45, toughness: 45, weapon_skill: 53, willpower: 50}
+  name: Chaos Sorcerer (Tzeentch)
+  skills: {awareness: 0, climb: 0, dodge: 10, intimidate: 20, psyniscience: 20}
+  species: human
+  talents: {bolter_drill: true, die_hard: true, fearless: true, hatred: loyalist space
+      marines, jaded: true, killing_strike: true, quick_draw: true, rapid_reload: true,
+    swift_attack: true, true_grit: true}
+  traits: {black_carapace: true, daemonic: true, dark_sight: true, power_armour: true,
+    psy_rating: 7, size: 10, unnatural_strength: 2, unnatural_toughness: 2, unnatural_willpower: 2}
+  weapons: [force_sword, bolt_pistol, combat_knife]
+  wounds: 29
+chaos_terminator_melee:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 14}
+  characteristics: {agility: 25, ballistic_skill: 45, fellowship: 30, intelligence: 40,
+    perception: 45, strength: 80, toughness: 50, weapon_skill: 65, willpower: 48}
+  force_field: {overload_max: 0, protection_max: 35}
+  name: Chaos Terminator Melee
+  skills: {awareness: 10, command: 10, intimidate: 20, scrutiny: 0, survival: 0}
+  species: human
+  talents: {ambidextrous: true, bolter_drill: true, bulging_biceps: true, combat_master: true,
+    crushing_blow: true, die_hard: true, fearless: true, flesh_tearer: true, hammer_blow: true,
+    hatred_space_marines: true, heightened_senses_hearing: true, heightened_senses_sight: true,
+    jaded: true, lightning_attack: true, quick_draw: true, rapid_reload: true, sprint: true,
+    swift_attack: true, true_grit: true, two_weapon_wielder_melee: true, whirlwind_of_death: true}
+  traits: {auto_stabilised: true, black_carapace: true, dark_sight: true, size: 10,
+    unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [reaper_autocannon, dual_lightning_claw, chainfist, power_claymore, thunder_hammer]
+chaos_terminator_ranged:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 14}
+  characteristics: {agility: 25, ballistic_skill: 65, fellowship: 30, intelligence: 40,
+    perception: 45, strength: 80, toughness: 50, weapon_skill: 45, willpower: 48}
+  force_field: {overload_max: 0, protection_max: 35}
+  name: Chaos Terminator Ranged
+  skills: {awareness: 10, command: 10, intimidate: 20, scrutiny: 0, survival: 0}
+  species: human
+  talents: {ambidextrous: true, bolter_drill: true, bulging_biceps: true, die_hard: true,
+    fearless: true, hammer_blow: true, hatred_space_marines: true, heightened_senses_hearing: true,
+    heightened_senses_sight: true, hip_shooting: true, jaded: true, lightning_attack: true,
+    mighty_shot: true, quick_draw: true, rapid_reload: true, swift_attack: true, target_selection: true,
+    true_grit: true, two_weapon_wielder_ballistic: true}
+  traits: {auto_stabilised: true, black_carapace: true, dark_sight: true, size: 10,
+    unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [power_sword, reaper_autocannon, assault_cannon, krak_missile]
+daemon_prince:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 12}
+  characteristics: {agility: 48, ballistic_skill: 60, fellowship: 30, intelligence: 48,
+    perception: 48, strength: 66, toughness: 45, weapon_skill: 75, willpower: 75}
+  name: Daemon Prince
+  skills: {awareness: 10, climb: 0, command: 20, dodge: 10, intimidate: 20, scrutiny: 20}
+  species: daemon
+  talents: {crippling_strike: true, crushing_blow: true, hammer_blow: true, killing_strike: true,
+    swift_attack: true, thunder_charge: true}
+  traits: {brutal_charge: true, daemonic: true, fear: 4, touched_by_the_fates: 3,
+    unnatural_strength: 3, unnatural_toughness: 2}
+  weapons: [chaos_sword]
+  wounds: 80
+defiler:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 31, rear: 20}
+  characteristics: {agility: 35, ballistic_skill: 25, fellowship: 1, intelligence: 10,
+    perception: 40, strength: 75, toughness: 0, weapon_skill: 25, willpower: 40}
+  name: Chaos Defiler
+  species: daemon
+  talents: {lightning_attack: true, swift_attack: true}
+  traits: {daemonic_possession: true, size: 20, walker: true}
+  vehicle: true
+  weapons: [crushing_claw, reaper_autocannon, havoc_launcher, defiler_battle_cannon]
+  wounds: 28
+enslaved_psyker:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 4}
+  characteristics: {agility: 35, ballistic_skill: 25, fellowship: 3, intelligence: 51,
+    perception: 49, strength: 40, toughness: 40, weapon_skill: 25, willpower: 67}
+  name: Enslaved Psyker
+  species: human
+  talents: {enslaved: true, undying: true, unnatural_toughness: 2, warp_gate: true}
+  weapons: [compact_autogun, compel, mind_scan]
+  wounds: 20
+enslaver:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 0}
+  characteristics: {agility: 40, ballistic_skill: 0, fellowship: 3, intelligence: 51,
+    perception: 49, strength: 53, toughness: 51, weapon_skill: 12, willpower: 67}
+  name: Enslaver
+  skills: {awareness: 10, psyniscience: 20}
+  talents: {bastion_of_iron_will: true, combat_formation: true, improved_warp_sense: true,
+    psy_rating: 6, resistance_psychic: true, strong_minded: true, warp_sense: true}
+  traits: {creature_of_the_warp: true, enslavement: true, fear: 2, from_beyond: true, hoverer: 6, multiple_arms: true, psychic_shock: true, size: 10, strange_physiology: true, unnatural_senses: 15, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [compel, dominate, mind_probe, mind_scan]
+  wounds: 50
+exalted_champion:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 12}
+  characteristics: {agility: 50, ballistic_skill: 60, fellowship: 45, intelligence: 45,
+    perception: 50, strength: 70, toughness: 50, weapon_skill: 70, willpower: 53}
+  force_field: {overload_max: 5, protection_max: 50}
+  name: Exalted Champion
+  skills: {awareness: 20, command: 20, dodge: 10, intimidate: 20, scrutiny: 0, survival: 0}
+  species: human
+  talents: {ambidextrous: true, astartes_weapon_training: true, bolter_drill: true,
+    bulging_biceps: true, crushing_blow: true, die_hard: true, fearless: true, hammer_blow: true,
+    hatred_space_marines: true, heightened_senses_hearing: true, heightened_senses_sight: true,
+    jaded: true, killing_strike: true, lightning_attack: true, quick_draw: true, rapid_reload: true,
+    swift_attack: true, true_grit: true, two_weapon_wielder_ballistic: true, two_weapon_wielder_melee: true,
+    wall_of_steel: true}
+  traits: {black_carapace: true, dark_blessings: true, dark_sight: true, fear: 2,
+    from_beyond: true, rule_through_dread: true, size: 10, touched_by_the_fates: 2,
+    unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [plasma_pistol, daemonic_blade]
+  wounds: 50
+fury:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 0}
+  characteristics: {agility: 35, ballistic_skill: 0, fellowship: 10, intelligence: 19,
+    perception: 40, strength: 39, toughness: 39, weapon_skill: 42, willpower: 29}
+  name: Fury
+  skills: {awareness: 0, dodge: 0, intimidate: 0, psyniscience: 0}
+  species: daemon
+  talents: {berserk_charge: true, fearless: true, furious_assault: true}
+  traits: {daemonic: true, daemonic_presence: true, fear: 1, flyer: 12, from_beyond: true,
+    improved_natural_weapons: true, strange_physiology: true, unnatural_strength: 2,
+    warp_instability: true, blood_soaked_tide: true, overwhelming: true}
+  weapons: [vicious_talons]
+  wounds: 13
+khorne_marine:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
+    perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
+  name: Chaos Space Marine
+  skills: {awareness: 0, climb: 0, dodge: 10}
+  species: human
+  talents: {berserk_charge: true, bolter_drill: true, fearless: true, frenzy: true,
+    furious_assault: true, hatred: loyalist space marines, jaded: true, killing_strike: true,
+    lightning_attack: true, resistance_psychic: true, swift_attack: true, true_grit: true,
+    whirlwind_of_death: true}
+  traits: {black_carapace: true, fire_drill: true, power_armour: true, size: 10, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [bolt_pistol, bolter, chainsword, heavy_bolter]
+  wounds: 29
+mediphast_the_plaguereaver:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 11}
+  characteristics: {agility: 32, ballistic_skill: 50, fellowship: 66, intelligence: 52,
+    perception: 44, strength: 65, toughness: 87, weapon_skill: 47, willpower: 71}
+  force_field: {overload_max: 0, protection_max: 35}
+  name: Mediphast the Plaguereaver
+  skills: {awareness: 10, deceive: 0, intimidate: 20, scrutiny: 20}
+  species: human
+  talents: {bulging_biceps: true, combat_master: true, crippling_strike: true, crushing_blow: true,
+    die_hard: true, disturbing_voice: true, favoured_by_the_warp: true, hammer_blow: true,
+    hatred: loyalist, iron_discipline: true, litany_of_hate: true, resistance_psychic: true,
+    true_grit: true}
+  traits: {cloud_of_flies: true, daemonic: true, dark_sight: true, fear: 4, from_beyond: true,
+    psy_rating: 7, size: 20, sturdy: true, the_stuff_of_nightmares: true, touched_by_the_fates: 3,
+    unnatural_strength: 2}
+  weapons: [plague_longsword, focus_test]
+  wounds: 149
+mind_slaves:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 4}
+  characteristics: {agility: 35, ballistic_skill: 25, fellowship: 3, intelligence: 51,
+    perception: 49, strength: 34, toughness: 33, weapon_skill: 25, willpower: 67}
+  name: Mind Slaves
+  skills: {awareness: 10, psyniscience: 20}
+  species: human
+  talents: {chem_geld: true, fearles: true, orthoproxy: true}
+  traits: {disciplined: true, enslaved: true, overwhelming: true, undying: true}
+  weapons: [compact_autogun]
+  wounds: 14
+noise_marine:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 50, ballistic_skill: 43, fellowship: 35, intelligence: 30,
+    perception: 49, strength: 45, toughness: 45, weapon_skill: 43, willpower: 45}
+  name: Noise Marine
+  skills: {awareness: 0, command: 10, dodge: 10, intimidate: 20, psyniscience: 0,
+    survival: 0, swim: 0}
+  species: human
+  talents: {die_hard: true, fearless: true, feedback_screech: true, hatred: loyalist,
+    jaded: true, lightning_reflexes: true, litany_of_hate: true, quick_draw: true,
+    rapid_reload: true, swift_attack: true, true_grit: true}
+  traits: {black_carapace: true, dark_sight: true, fear: 2, power_armour: true, psychic_cacophony: true,
+    size: 10, unnatual_perception: 2, unnatural_fellowship: 2, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [chainsword, bolt_pistol, blastmaster, sonic_blaster]
+  wounds: 28
+nurgle_marine:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 17, intelligence: 35,
+    perception: 40, strength: 65, toughness: 45, weapon_skill: 60, willpower: 43}
+  name: Nurgle Marine
+  skills: {awareness: 0, climb: 0, dodge: 10}
+  species: human
+  talents: {bolter_drill: true, fearless: true, hatred: loyalist space marines, jaded: true,
+    killing_strike: true, swift_attack: true, true_grit: true}
+  traits: {black_carapace: true, fire_drill: true, power_armour: true, size: 10, stuff_of_nightmares: true,
+    unnatural_strength: 2, unnatural_toughness: 3}
+  weapons: [bolt_pistol, bolter, chainsword, heavy_bolter]
+  wounds: 36
+obliterator:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 12}
+  characteristics: {agility: 35, ballistic_skill: 55, fellowship: 0, intelligence: 30,
+    perception: 40, strength: 50, toughness: 55, weapon_skill: 45, willpower: 45}
+  force_field: {overload_max: 0, protection_max: 35}
+  name: Obliterator
+  skills: {awareness: 0, tech_use: 20}
+  species: daemon
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, independent_targeting: true,
+    mighty_shot: true, swift_attack: true, two_weapon_wielder_ballistic: true, two_weapon_wielder_melee: true}
+  traits: {auto_stabilised: true, daemonic: true, fear: 2, natural_armor: true, regeneration: 2,
+    size: 10, sturdy: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [eviscerator_chainblade, lascannon, multi_melta, plasma_cannon, twin_plasma_gun]
+  wounds: 40
+pink_horror:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 0}
+  characteristics: {agility: 30, ballistic_skill: 35, fellowship: 10, intelligence: 30,
+    perception: 30, strength: 35, toughness: 33, weapon_skill: 23, willpower: 30}
+  force_field: {overload_max: 0, protection_max: 20}
+  name: Pink Horror
+  skills: {awareness: 0, dodge: 0, psyniscience: 0}
+  species: daemon
+  talents: {fearless: true}
+  traits: {daemonic: true, daemonic_presence: true, fear: 2, from_beyond: true, horde: true,
+    strange_physiology: true, warp_instability: true}
+  weapons: [warpfire, teeth_and_claws]
+  wounds: 18
+plague_marine:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {agility: 40, ballistic_skill: 43, fellowship: 25, intelligence: 30,
+    perception: 30, strength: 45, toughness: 55, weapon_skill: 43, willpower: 45}
+  name: Plague Marine
+  skills: {awareness: 0, command: 10, dodge: 0, intimidate: 20, survival: 0, swim: 0}
+  species: human
+  talents: {crippling_strike: true, fearless: true, hatred: loyalist, swift_attack: true}
+  traits: {black_carapace: true, cloud_of_flies: true, dark_sight: true, fear: 2,
+    power_armour: true, size: 10, stuff_of_nightmares: true, toxic: 1d10, unnatural_strength: 2,
+    unnatural_toughness: 3}
+  weapons: [chainsword, bolt_pistol, bolter, plague_knife, blight_grenade]
+  wounds: 36
+plaguebearer:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 0}
+  characteristics: {agility: 30, ballistic_skill: 30, fellowship: 10, intelligence: 30,
+    perception: 30, strength: 43, toughness: 55, weapon_skill: 45, willpower: 30}
+  name: Plaguebearer
+  skills: {awareness: 0, psyniscience: 0}
+  species: daemon
+  talents: {crippling_strike: true, fearless: true}
+  traits: {cloud_of_flies: true, daemonic: true, daemonic_presence: true, fear: 2,
+    strange_physiology: true, unnatural_strength: 2, unnatural_toughness: 2}
+  weapons: [plaguesword]
+  wounds: 30
+psychneuin_drone:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 0}
+  characteristics: {agility: 32, ballistic_skill: 0, fellowship: 0, intelligence: 16,
+    perception: 66, strength: 40, toughness: 56, weapon_skill: 38, willpower: 70}
+  name: Psychneuin Drone
+  skills: {awareness: 0, climb: 20, dodge: 10, psyniscience: 0}
+  species: daemon
+  talents: {double_team: true, psy_rating: 4, swift_attack: true}
+  traits: {dark_sight: true, fear: 4, flyer: 10, from_beyond: true, improved_natural_weapons: true,
+    six_legged: true, strange_physiology: true, the_stuff_of_nightmares: true, toxic: true,
+    unfettered_psyker: true, unnatural_agility: 2, unnatural_senses: 30, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [stinger, blood_boil, the_gate_of_infinity]
+  wounds: 20
+psychneuin_grub:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 0}
+  characteristics: {agility: 30, ballistic_skill: 0, fellowship: 0, intelligence: 0,
+    perception: 10, strength: 20, toughness: 20, weapon_skill: 15, willpower: 70}
+  name: Psychneuin Grub
+  species: daemon
+  talents: {}
+  traits: {fear: 2, from_beyond: true, improved_natural_weapons: true, six_legged: true,
+    size: -20, spontaneous_mutation: true, strange_physiology: true}
+  weapons: [unarmed]
+  wounds: 6
+psychneuin_queen:
+  _package: chaos
+  _system: deathwatch
+  characteristics: {agility: 22, ballistic_skill: 0, fellowship: 0, intelligence: 16,
+    perception: 66, strength: 40, toughness: 86, weapon_skill: 38, willpower: 70}
+  name: Psychneuin Queen
+  skills: {awareness: 0, climb: 20, dodge: 0, psyniscience: 20}
+  talents: {double_team: true, lightning_attack: true, psy_rating: 6, swift_attack: true}
+  traits: {dark_sight: true, fear: 4, flyer: 10, from_beyond: true, improved_natural_weapons: true,
+    lay_eggs: true, six_legged: true, size: 10, strange_physiology: true, the_stuff_of_nightmares: true,
+    toxic: true, unnatural_senses: 30, unnatural_strength: 3, unnatural_toughness: 2}
+  weapons: [blood_boil, the_gate_of_infinity, stinger]
+  wounds: 60
+reaver_champion:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 5}
+  characteristics: {agility: 41, ballistic_skill: 32, fellowship: 35, intelligence: 28,
+    perception: 30, strength: 52, toughness: 48, weapon_skill: 52, willpower: 35}
+  name: Reaver Champion
+  skills: {awareness: 0, charm: 0, command: 10, dodge: 0, intimidate: 10, tech_use: 0}
+  species: human
+  talents: {berserk_charge: true, disturbing_voice: true, for_the_dark_gods: true,
+    frenzy: true, furious_assault: true, hatred_space_marines: true, inspire_wrath: true,
+    into_the_jaws_of_hell: true, iron_discipline: true}
+  weapons: [accursed_eviscerator]
+  wounds: 20
+renegade_militia:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 4}
+  characteristics: {agility: 30, ballistic_skill: 35, perception: 30, strength: 35,
+    toughness: 35, weapon_skill: 35, willpower: 35}
+  name: Renegade Militia
+  skills: {awareness: 0, climb: 0, survival: 0, swim: 9}
+  species: human
+  talents: {}
+  traits: {disciplined: true, horde: true}
+  weapons: [autogun]
+  wounds: 10
+renegade_reaver:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 5}
+  characteristics: {agility: 32, ballistic_skill: 32, fellowship: 26, intelligence: 28,
+    perception: 30, strength: 35, toughness: 35, weapon_skill: 32, willpower: 27}
+  name: Renegade Reaver
+  skills: {awareness: 0, intimidate: 0, tech_use: 0}
+  species: human
+  talents: {}
+  traits: {blood_soaked_tide: true}
+  weapons: [combat_shotgun, mono_axe]
+  wounds: 10
+screamer_of_tzeentch:
+  _package: chaos
+  _system: deathwatch
+  armor: {all: 0}
+  characteristics: {agility: 50, ballistic_skill: 2, fellowship: 3, intelligence: 15,
+    perception: 43, strength: 45, toughness: 45, weapon_skill: 40, willpower: 40}
+  name: Screamer of Tzeentch
+  skills: {awareness: 20}
+  species: daemon
+  traits: {daemonic: true, daemonic_presence: true, fear: 2, flyer: 12, from_beyond: true,
+    improved_natural_weapons: true, warp_instability: true}
+  weapons: [warp_maw]
+  wounds: 18
+uhlevorix:
+  _package: chaos
+  _system: deathwatch
+  characteristics: {agility: 52, ballistic_skill: 0, fellowship: 22, intelligence: 49,
+    perception: 50, strength: 38, toughness: 56, weapon_skill: 43, willpower: 68}
+  name: Uhlevorix, The Eater of Dread
+  skills: {awareness: 10, concealment: 20, dodge: 20, intimidate: 20, psyniscience: 10,
+    silent_move: 20}
+  talents: {assassin_strike: true, crippling_strike: true, crushing_blow: true, improved_warp_sense: true,
+    lightning_attack: true, psy_rating: 6, swift_attack: true, warp_sense: true}
+  traits: {daemonic: true, daemonic_presence: true, dark_sight: true, eater_of_dread: true,
+    ephemeral_nightmare: true, fear: 4, from_beyond: true, improved_natural_weapons: true,
+    incorporeal: true, palpable_fear: true, size: 20, strange_physiology: true, the_stuff_of_nightmares: true,
+    unfettered_psyker: true, unnatural_agility: 2, unnatural_speed: true, unnatural_toughness: 2,
+    unnatural_willpower: 2, warp_instability: true}
+  weapons: [compel, mind_scan, mind_worm, weaken_resolve, touch_of_dread]
+  wounds: 120

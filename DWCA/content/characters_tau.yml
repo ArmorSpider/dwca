@@ -1,0 +1,263 @@
+air_caste_pilot:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 5}
+  skills: {pilot: 20, drive: 20}
+  characteristics: {agility: 35, ballistic_skill: 35, fellowship: 30, intelligence: 30,
+    perception: 30, strength: 20, toughness: 30, weapon_skill: 25, willpower: 30}
+  name: Air Caste Pilot
+  skills: {awareness: 0, dodge: 0}
+  species: tau
+  weapons: [pulse_carbine]
+  wounds: 11
+barracuda:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 25, rear: 20}
+  skills: {pilot: 20, drive: 20}
+  characteristics: {agility: 35, ballistic_skill: 35, fellowship: 30, intelligence: 30,
+    perception: 30, strength: 20, toughness: 30, weapon_skill: 25, willpower: 30}
+  name: Barracuda Fighter
+  species: machine
+  traits: {size: 20}
+  vehicle: true
+  weapons: [ion_cannon, twin_missile_pod, burst_cannon]
+  wounds: 30
+  manouverability: 10
+  speed: 30
+broadside_battlesuit:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 12}
+  characteristics: {agility: 20, ballistic_skill: 39, fellowship: 30, intelligence: 30,
+    perception: 40, strength: 50, toughness: 55, weapon_skill: 25, willpower: 40}
+  name: XV-88 Broadside Battlesuit
+  skills: {awareness: 0}
+  species: tau
+  traits: {auto_stabilised: true, dark_sight: true, size: 20, sturdy: true, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [twin_broadside_railgun, twin_ion_cannon, smart_missile_system, twin_plasma_rifle]
+  wounds: 30
+fire_warrior:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 6}
+  characteristics: {agility: 25, ballistic_skill: 35, fellowship: 30, intelligence: 30,
+    perception: 20, strength: 30, toughness: 30, weapon_skill: 25, willpower: 30}
+  name: Tau Fire Warrior
+  skills: {awareness: 0}
+  species: tau
+  traits: {fighting_withdrawal: true, fire_drill: true, horde: true}
+  weapons: [pulse_rifle, pulse_carbine, markerlight]
+  wounds: 12
+gun_drone:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 5}
+  characteristics: {agility: 40, ballistic_skill: 25, fellowship: 10, intelligence: 15,
+    perception: 25, strength: 20, toughness: 40, weapon_skill: 20, willpower: 20}
+  name: Tau Gun Drone
+  skills: {acrobatics: 0, awareness: 0, dodge: 0}
+  species: machine
+  talents: {fearless: true}
+  traits: {fire_drill: true, flier: 12, horde: true, machine: 5, networked_machine_intelligence: true}
+  weapons: [twin_pulse_carbine, markerlight, missile_pod]
+  wounds: 15
+hammerhead_gunship:
+  _package: tau
+  _system: deathwatch
+  armor: {front: 40, rear: 24, side: 32}
+  skills: {pilot: 20, drive: 20}
+  characteristics: {agility: 35, ballistic_skill: 55, fellowship: 30, intelligence: 30,
+    perception: 30, strength: 20, toughness: 30, weapon_skill: 25, willpower: 30}
+  name: Hammerhead Gunship
+  species: machine
+  traits: {size: 20}
+  vehicle: true
+  weapons: [burst_cannon, railgun_ap, railgun_sub]
+  wounds: 35
+  manouverability: 17
+  speed: 10
+pathfinder:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 7}
+  characteristics: {agility: 25, ballistic_skill: 35, fellowship: 30, intelligence: 35,
+    perception: 30, strength: 30, toughness: 30, weapon_skill: 25, willpower: 30}
+  name: Pathfinder
+  skills: {awareness: 20, concealment: 10, dodge: 10, shadowing: 0, tracking: 0}
+  species: tau
+  traits: {fighting_withdrawal: true, fire_drill: true, horde: true}
+  weapons: [pulse_carbine, markerlight, rail_rifle]
+  wounds: 12
+riptide:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 14}
+  characteristics: {agility: 45, ballistic_skill: 60, fellowship: 30, intelligence: 40,
+    perception: 55, strength: 80, toughness: 67, weapon_skill: 35, willpower: 55}
+  force_field: {overload_max: 1, protection_max: 30}
+  name: XV104 Riptide
+  skills: {acrobatics: 0, command: 20, dodge: 0, tech_use: 20}
+  species: tau
+  talents: {air_of_authority: true, ambidextrous: true, independent_targeting: true,
+    meditation: true, rapid_reaction: true, sprint: true, two_weapon_wielder_ballistic: true}
+  traits: {auto_stabilised: true, dark_sight: true, flier: 12, size: 30, unnatural_strength: 2,
+    unnatural_toughness: 2, vectored_retro_thrusters: true, jump_pack: true}
+  weapons: [heavy_burst_cannon, twin_smart_missile_system, twin_fusion_blaster]
+  force_field: {overload_max: 1, protection_max: 50}
+  wounds: 120
+shield_drone:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 5}
+  characteristics: {agility: 40, ballistic_skill: 20, fellowship: 10, intelligence: 15,
+    perception: 25, strength: 20, toughness: 40, weapon_skill: 20, willpower: 20}
+  force_field: {overload_max: 10, protection_max: 45}
+  name: Tau Shield Drone
+  skills: {dodge: 0}
+  species: machine
+  talents: {fearless: true}
+  weapons: [markerlight]
+  wounds: 15
+shielded_missile_drone:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 5}
+  characteristics: {agility: 40, ballistic_skill: 25, fellowship: 10, intelligence: 15,
+    perception: 25, strength: 20, toughness: 40, weapon_skill: 20, willpower: 20}
+  force_field: {overload_max: 10, protection_max: 45}
+  name: Tau Shielded Missile Drone
+  skills: {acrobatics: 0, awareness: 0, dodge: 0}
+  species: machine
+  talents: {fearless: true}
+  traits: {fire_drill: true, flier: 12, horde: true, machine: 5, networked_machine_intelligence: true}
+  weapons: [missile_pod]
+  wounds: 15
+sky_ray_gunship:
+  _package: tau
+  _system: deathwatch
+  armor: {front: 40, rear: 24, side: 32}
+  skills: {pilot: 20, drive: 20}
+  characteristics: {agility: 35, ballistic_skill: 35, fellowship: 30, intelligence: 30,
+    perception: 30, strength: 20, toughness: 30, weapon_skill: 25, willpower: 30}
+  name: Sky Ray Missile Defence Gunship
+  species: machine
+  traits: {seeker_missile: 6, size: 20}
+  vehicle: true
+  weapons: [burst_cannon, markerlight, seeker_missile]
+  wounds: 35
+  speed: 10
+  manouverability: 17
+stealth_drone:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 25, rear: 20}
+  skills: {drive: 0, pilot: 0}
+  characteristics: {agility: 40, ballistic_skill: 25, fellowship: 10, intelligence: 15,
+    perception: 25, strength: 20, toughness: 40, weapon_skill: 20, willpower: 20}
+  name: Remora Stealth Drone Fighter
+  species: machine
+  traits: {networked_machine_intelligence: true, seeker_missile: 2, size: 10, stealth_field: true}
+  vehicle: true
+  weapons: [twin_burst_cannons, seeker_missile, markerlight]
+  wounds: 20
+  speed: 30
+  manouverability: 30
+stealth_suit:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 7, body: 8, head: 8}
+  characteristics: {agility: 38, ballistic_skill: 42, fellowship: 40, intelligence: 30,
+    perception: 40, strength: 42, toughness: 47, weapon_skill: 30, willpower: 40}
+  name: Tau Stealth Suit
+  skills: {acrobatics: 10, awareness: 20, concealment: 20, dodge: 10, shadowing: 20,
+    tracking: 10}
+  species: tau
+  talents: {hard_target: true, rapid_reaction: true, sprint: true}
+  traits: {auto_stabilised: true, dark_sight: true, flier: 12, stealth_field: true,
+    unnatural_strength: 2}
+  weapons: [burst_cannon, fusion_blaster]
+  wounds: 30
+tau_commander:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 9}
+  characteristics: {agility: 45, ballistic_skill: 55, fellowship: 30, intelligence: 40,
+    perception: 55, strength: 50, toughness: 57, weapon_skill: 35, willpower: 55}
+  name: Tau Commander
+  skills: {acrobatics: 0, command: 20, dodge: 0}
+  species: tau
+  talents: {air_of_authority: true, ambidextrous: true, independent_targeting: true,
+    meditation: true, rapid_reaction: true, sprint: true, touched_by_the_fates: 2,
+    two_weapon_wielder_ballistic: true}
+  traits: {auto_stabilised: true, dark_sight: true, flier: 12, size: 20, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [plasma_rifle, missile_pod]
+  wounds: 90
+ghostkeel:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 12}
+  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 30, intelligence: 40,
+    perception: 55, strength: 50, toughness: 52, weapon_skill: 35, willpower: 50}
+  name: Tau Commander
+  skills: {acrobatics: 0, dodge: 0, tech_use: 20}
+  species: tau
+  talents: {ambidextrous: true, independent_targeting: true, meditation: true, rapid_reaction: true,
+    sprint: true, two_weapon_wielder_ballistic: true, vectored_retro_thrusters: true}
+  traits: {auto_stabilised: true, dark_sight: true, flier: 12, size: 20, unnatural_strength: 2,
+    unnatural_toughness: 2, stealth_field: true, neuroweb_system_jammer: true, jump_pack: true, holophoton_countermeasures: true}
+  weapons: [cyclic_ion_blaster, twin_burst_cannons, twin_fusion_blaster]
+  wounds: 80
+xv8_battlesuit:
+  _package: tau
+  _system: deathwatch
+  armor: {all: 9}
+  characteristics: {agility: 40, ballistic_skill: 50, fellowship: 30, intelligence: 40,
+    perception: 55, strength: 50, toughness: 52, weapon_skill: 35, willpower: 50}
+  name: Tau Commander
+  skills: {acrobatics: 0, dodge: 0}
+  species: tau
+  talents: {ambidextrous: true, independent_targeting: true, meditation: true, rapid_reaction: true,
+    sprint: true, two_weapon_wielder_ballistic: true}
+  traits: {auto_stabilised: true, dark_sight: true, flier: 12, size: 20, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [twin_plasma_rifle, missile_pod, cyclic_ion_blaster, burst_cannon]
+  wounds: 40
+exploratory_drone:
+  name: Exploratory Drone
+  _system: deathwatch
+  _package: tau
+  species: machine
+  characteristics: {weapon_skill: 20, ballistic_skill: 20, strength: 20, toughness: 40, agility: 40, intelligence: 15, perception: 35, willpower: 20, fellowship: 10}
+  armor: {all: 5}
+  wounds: 15
+  skills: {acrobatics: 0, concealment: 20, awareness: 10, dodge: 0, search: 0, tech_use: 20}
+  talents: {fearless: true}
+  traits: {flier: 20, machine: true, seeker_protocol: true}
+  weapons: [pulse_carbine]
+vanguard_battlesuit:
+  name: XV-46 Vanguard Void Battlesuit
+  species: tau
+  _system: deathwatch
+  _package: tau
+  wounds: 36
+  characteristics: {weapon_skill: 26, ballistic_skill: 46, strength: 50, toughness: 50, agility: 30, intelligence: 40, perception: 40, willpower: 40, fellowship: 35}
+  armor: {all: 8}
+  skills: {acrobatics: 20, awareness: 10, dodge: 10, search: 0, tech_use: 20}
+  talents: {ambidextrous: true, cleanse_and_purify: true, combat_formation: true, gunslinger: true, hip_shooting: true, independent_targeting: true, leap_up: true, mighty_shot: true, nerves_of_steel: true, two_weapon_wielder_ballistic: true}
+  traits: {auto_stabilised: true, dark_sight: true, defensive_systems: true, flier: 12, size: 10, sturdy: true, unnatural_toughness: 2, unnatural_strength: 2}
+  weapons: [burst_cannon, fusion_torch]
+vanguard_commander:
+    name: XV-46-4 Vanguard Commander Variant Void Battlesuit
+    _package: tau
+    _system: deathwatch
+    wounds: 72
+    characteristics: {weapon_skill: 35, ballistic_skill: 55, strength: 50, toughness: 50, agility: 35, intelligence: 50, perception: 50, willpower: 40, fellowship: 45}
+    armor: {all: 9}
+    skills: {acrobatics: 20, awareness: 10, command: 10, dodge: 10, search: 0, tech_use: 20}
+    talents: {air_of_authority: true, ambidextrous: true, cleanse_and_purify: true, combat_formation: true, gunslinger: true, hip_shooting: true, independent_targeting: true, iron_discipline: true, leap_up: true, mighty_shot: true, nerves_of_steel: true, two_weapon_wielder_ballistic: true}
+    traits: {auto_stabilised: true, dark_sight: true, flier: 12, size: 10, sturdy: true, unnatural_strength: 2, unnatural_toughness: 2}
+    weapons: [emp_blaster, microburst_launcher]
+

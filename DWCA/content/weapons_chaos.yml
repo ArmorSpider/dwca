@@ -1,0 +1,308 @@
+accursed_eviscerator:
+  _package: chaos
+  _system: deathwatch
+  damage_type: R
+  dice: 2
+  flat_damage: 6
+  name: Accursed Eviscerator
+  penetration: 3
+  qualities: {felling: 1, razor_sharp: true, tearing: true, unwieldy: true}
+vicious_talons:
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  dice: 1
+  flat_damage: 0
+  damage_type: R
+  qualities: {tearing: true}
+berzerker_axe:
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 8
+  name: Berzerker Axe
+  penetration: 4
+  qualities: {tearing: true}
+touch_of_dread:
+  _system: deathwatch
+  _package: chaos
+  name: The Touch of Dread
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  class: Melee
+  qualities: {felling: 2, warp_weapon: true}
+warp_maw:
+  _system: deathwatch
+  _package: chaos
+  name: Warp Maw
+  damage_type: E
+  class: Melee
+  dice: 1
+  flat_damage: 0
+  penetration: 12
+  qualities: {felling: 3, razor_sharp: true, tearing: true}
+blastmaster:
+  _package: chaos
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  name: Noise Marine Blastmaster
+  penetration: 6
+  qualities: {devastating: 1, storm: true}
+  range: 150
+  semi_auto: 2
+  single_shot: 1
+blight_grenade:
+  _package: chaos
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 3
+  flat_damage: 5
+  name: Blight Grenade
+  penetration: 0
+  qualities: {blast: 3, devastating: 3, toxic: 1d10}
+  range: 20
+  single_shot: 1
+bolt_of_change:
+  _package: chaos
+  _system: deathwatch
+  class: Psychic
+  damage_type: E
+  dice: 1
+  flat_damage: 0
+  name: Bolt of Change
+  penetration: 0
+  qualities: {psychic_scaling: true}
+  range: 50
+wind_of_chaos:
+  _package: chaos
+  _system: deathwatch
+  class: Psychic
+  damage_type: E
+  dice: 2
+  flat_damage: 1
+  name: Wind of Chaos
+  penetration: 0
+  qualities: {psychic_scaling_damage: true, felling: 2, warp_weapon: true, flame: true}
+  range: 50
+bomb_rack:
+  _package: chaos
+  _system: deathwatch
+  class: Mounted
+  damage_type: X
+  dice: 3
+  flat_damage: 10
+  name: Bombadier-operated Bomb Rack
+  penetration: 6
+  qualities: {blast: 15}
+  range: 30
+  single_shot: 1
+chaos_sword:
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 5
+  name: Chaos-Forged Sword
+  penetration: 6
+  qualities: {felling: 1, unwieldy: true}
+combat_shotgun:
+  _package: chaos
+  _system: deathwatch
+  class: Basic
+  damage_type: I
+  dice: 1
+  flat_damage: 4
+  name: Combat Shotgun
+  penetration: 0
+  qualities: {scatter: true}
+  range: 30
+  semi_auto: 2
+  single_shot: 1
+crushing_claw:
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 2
+  flat_damage: 6
+  name: Crushing Claw
+  penetration: 8
+  qualities: {tearing: true, unwieldy: true}
+defiler_battle_cannon:
+  _package: chaos
+  _system: deathwatch
+  class: Heavy
+  damage_type: X
+  dice: 3
+  flat_damage: 5
+  name: Defiler Battle Cannon
+  penetration: 8
+  qualities: {blast: 8, devastating: 4}
+  range: 300
+  single_shot: 1
+doom_siren:
+  _package: chaos
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  name: Noise Marine Doom Siren
+  penetration: 9
+  qualities: {flame: true}
+  range: 30
+  single_shot: 1
+dreadnought_melee:
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 10
+  name: Dreadnought Close Combat Weapon
+  penetration: 6
+  qualities: {power_field: true}
+eviscerator_chainblade:
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 10
+  name: Eviscerator Chainblade
+  penetration: 5
+  qualities: {tearing: true, unbalanced: true}
+havoc_launcher:
+  _package: chaos
+  _system: deathwatch
+  class: Heavy
+  damage_type: X
+  dice: 2
+  flat_damage: 0
+  name: Havoc Launcher
+  penetration: 2
+  qualities: {blast: 4, devastating: 2}
+  range: 100
+  semi_auto: 2
+  single_shot: 1
+hellblade:
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 2
+  name: Hellblade
+  penetration: 0
+  qualities: {balanced: true, warp_weapon: true}
+mono_axe: {_package: chaos, _system: deathwatch, class: Melee, damage_type: R, dice: 1,
+  flat_damage: 4, name: Mono-Axe, penetration: 2}
+plague_knife:
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Plague Knife
+  penetration: 2
+  qualities: {toxic: 1d10}
+plague_longsword:
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 2
+  flat_damage: 6
+  name: Plague Longsword
+  penetration: 0
+  qualities: {toxic: 1d10, unbalanced: true, warp_weapon: true}
+daemonic_blade:
+  _system: deathwatch
+  _package: chaos
+  class: Melee
+  damage_type: R
+  name: Daemonic Blade
+  dice: 1
+  flat_damage: 4
+  penetration: 6
+  qualities: {balanced: true, tearing: true, warp_weapon: true}
+plaguesword:
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 5
+  name: Plaguesword
+  penetration: 1
+  qualities: {felling: 1, toxic: true}
+reaper_autocannon:
+  _package: chaos
+  _system: deathwatch
+  class: Heavy
+  damage_type: I
+  dice: 4
+  flat_damage: 5
+  full_auto: 6
+  name: Reaper Autocannon
+  penetration: 4
+  qualities: {twin_linked: true}
+  range: 300
+  semi_auto: 3
+  single_shot: 1
+sonic_blaster:
+  _package: chaos
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 9
+  full_auto: 4
+  name: Noise Marine Sonic Blaster
+  penetration: 4
+  qualities: {storm: true, tearing: true}
+  range: 100
+  semi_auto: 2
+  single_shot: 1
+warpfire: {_package: chaos, _system: deathwatch, class: Basic, damage_type: E, dice: 1,
+  flat_damage: 10, name: Warpfire, penetration: 6, range: 30, semi_auto: 3, single_shot: 1}
+stinger:
+  name: Stinger
+  _package: chaos
+  _system: deathwatch
+  class: Melee
+  dice: 1
+  flat_damage: 0
+  penetration: 0
+  qualities: {toxic: true, warp_weapon: true}
+  damage_type: R
+psychic_shock:
+  class: Psychic
+  name: Psychic Shock
+  qualities: {blast: 2, ignore_armor: true}
+  dice: 1
+  flat_damage: 12
+  damage_type: E
+  _system: deathwatch
+  _package: chaos
+compact_autogun:
+  name: Compact Autogun
+  class: Basic
+  _package: chaos
+  _system: deathwatch
+  range: 50
+  single_shot: 1
+  semi_auto: 3
+  full_auto: 10
+  dice: 1
+  flat_damage: 2
+  penetration: 0

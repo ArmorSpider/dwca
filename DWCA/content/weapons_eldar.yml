@@ -1,0 +1,515 @@
+avenger_shuriken_catapult:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: R
+  dice: 1
+  flat_damage: 6
+  full_auto: 10
+  name: Avenger Shuriken Catapult
+  penetration: 6
+  qualities: {reliable: true, tearing: true}
+  range: 80
+  semi_auto: 3
+  single_shot: 1
+biting_blade:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 2
+  flat_damage: 5
+  name: Biting Blade
+  penetration: 3
+  qualities: {damage_per_dos: 3, razor_sharp: true, tearing: true}
+bright_lance:
+  _package: eldar
+  _system: deathwatch
+  class: Heavy
+  damage_type: E
+  dice: 4
+  flat_damage: 15
+  name: Bright Lance
+  penetration: 20
+  qualities: {accurate: true}
+  range: 200
+  single_shot: 1
+chainsabre:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 4
+  name: Chainsabre
+  penetration: 3
+  qualities: {balanced: true, razor_sharp: true, tearing: true}
+distort_cannon:
+  _package: eldar
+  _system: deathwatch
+  class: Mounted
+  damage_type: R
+  dice: 4
+  flat_damage: 20
+  name: Distort Cannon
+  penetration: 6
+  qualities: {blast: 5, devastating: 2, felling: 3, recharge: true, volatile: true,
+    warp_weapon: true}
+  range: 100
+  single_shot: 1
+eldar_chainsword:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 3
+  name: Eldar Chainsword
+  penetration: 3
+  qualities: {balanced: true, razor_sharp: true, tearing: true}
+eldar_executioner:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 3
+  name: Executioner
+  penetration: 10
+  qualities: {balanced: true, power_field: true}
+eldar_krak_missile:
+  _package: eldar
+  _system: deathwatch
+  class: Heavy
+  damage_type: X
+  dice: 4
+  flat_damage: 6
+  name: Eldar Missile Launcher(Krak Missile)
+  penetration: 10
+  qualities: {blast: 1}
+  range: 250
+  single_shot: 1
+eldar_laspistol:
+  _package: eldar
+  _system: deathwatch
+  class: Pistol
+  damage_type: E
+  dice: 1
+  flat_damage: 3
+  name: Eldar Lastpistol
+  penetration: 2
+  qualities: {reliable: true}
+  range: 35
+  semi_auto: 2
+  single_shot: 1
+eldar_monoblade: {_package: eldar, _system: deathwatch, class: Melee, damage_type: R,
+  dice: 1, flat_damage: 5, name: Eldar Mono-blade, penetration: 2}
+eldar_plasma_grenade:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  name: Eldar Plasma Grenade
+  penetration: 6
+  qualities: {blast: 4, concussive: true, volatile: true}
+  range: 15
+  single_shot: 1
+eldar_plasma_missile:
+  _package: eldar
+  _system: deathwatch
+  class: Heavy
+  damage_type: E
+  dice: 2
+  flat_damage: 5
+  name: Eldar Missile Launcher(Plasma Missile)
+  penetration: 6
+  qualities: {blast: 6, concussive: true, volatile: true}
+  range: 250
+  single_shot: 1
+eldar_power_sword:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 4
+  name: Eldar Power Sword
+  penetration: 8
+  qualities: {balanced: 20, power_field: true}
+fire_pike:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 3
+  flat_damage: 15
+  name: Fire Pike
+  penetration: 15
+  qualities: {blast: 1, felling: 1, penetration_per_dos: 2}
+  range: 80
+  single_shot: 1
+fusion_gun:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 3
+  flat_damage: 8
+  name: Fusion Gun
+  penetration: 13
+  qualities: {felling: 1, penetration_per_dos: 2, reliable: true}
+  range: 40
+  single_shot: 1
+hawks_talon:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 2
+  flat_damage: 6
+  full_auto: 6
+  name: Hawk's Talon
+  penetration: 5
+  qualities: {never_jams: true}
+  range: 120
+  semi_auto: 3
+  single_shot: 1
+lasblaster:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 4
+  full_auto: 6
+  name: Lastblaster
+  penetration: 4
+  qualities: {reliable: true}
+  range: 120
+  semi_auto: 3
+  single_shot: 1
+fusion_pistol:
+  _system: deathwatch
+  _package: eldar
+  class: Pistol
+  dice: 2
+  single_shot: 1
+  range: 20
+  name: Fusion Pistol
+  damage_type: E
+  flat_damage: 6
+  penetration: 13
+  qualities: {reliable: true, volatile: true, melta: true}
+mandiblaster_helm:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 2
+  flat_damage: 2
+  name: Mandiblaster Helm
+  penetration: 5
+  qualities: {shocking: true, twin_linked: true}
+  range: 1
+  single_shot: 1
+mc_avenger_shuriken_catapult:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: R
+  dice: 1
+  flat_damage: 8
+  full_auto: 10
+  name: Mastercrafted Avenger Shuriken Catapult
+  penetration: 6
+  qualities: {never_jams: true, tearing: true}
+  range: 80
+  semi_auto: 3
+  single_shot: 1
+eldar_haywire_grenade:
+  _system: deathwatch
+  _package: eldar
+  class: Basic
+  damage_type: E
+  dice: 0
+  flat_damage: 0
+  penetration: 0
+  qualities: {haywire: 3}
+  range: 9
+mc_eldar_chainsword:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 5
+  name: Mastercrafted Eldar Chainsword
+  penetration: 3
+  qualities: {balanced: true, razor_sharp: true, tearing: true}
+withering_radiance:
+  _package: eldar
+  _system: deathwatch
+  name: Withering Radiance
+  class: Psychic
+  dice: 2
+  flat_damage: 1
+  penetration: 10
+  qualities: {psychic_scaling_damage: true}
+  range: 100
+mc_eldar_executioner:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 2
+  flat_damage: 5
+  name: Executioner
+  penetration: 10
+  qualities: {balanced: true, power_field: true}
+mc_eldar_power_sword:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 6
+  name: Mastercrafted Eldar Power Sword
+  penetration: 8
+  qualities: {balanced: 20, power_field: true}
+mc_fusion_gun:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 3
+  flat_damage: 10
+  name: Mastercrafted Fusion Gun
+  penetration: 13
+  qualities: {felling: 1, penetration_per_dos: 2, reliable: true}
+  range: 40
+  single_shot: 1
+mc_lasblaster:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 6
+  full_auto: 6
+  name: Mastercrafted Lasblaster
+  penetration: 4
+  qualities: {never_jams: true}
+  range: 120
+  semi_auto: 3
+  single_shot: 1
+mc_power_glaive:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  name: Mastercrafted Power Glaive
+  penetration: 8
+  qualities: {balanced: true, power_field: true}
+mc_reaper_launcher:
+  _package: eldar
+  _system: deathwatch
+  class: Heavy
+  damage_type: X
+  dice: 2
+  flat_damage: 12
+  full_auto: 5
+  name: Mastercrafted Reaper Launcher
+  penetration: 10
+  qualities: {reliable: true, tearing: true}
+  range: 250
+  semi_auto: 3
+  single_shot: 1
+mc_shuriken_pistol:
+  _package: eldar
+  _system: deathwatch
+  class: Pistol
+  damage_type: R
+  dice: 1
+  flat_damage: 4
+  full_auto: 5
+  name: Mastercrafted Shuriken Pistol
+  penetration: 4
+  qualities: {reliable: true}
+  range: 20
+  semi_auto: 3
+  single_shot: 1
+mc_witchblade:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 11
+  name: Mastercrafted Witchblade
+  penetration: 10
+  qualities: {balanced: true, power_field: true}
+mirrorsword:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  name: Mirrorsword
+  penetration: 10
+  qualities: {balanced: 20, power_field: true}
+reaper_launcher:
+  _package: eldar
+  _system: deathwatch
+  class: Heavy
+  damage_type: X
+  dice: 2
+  flat_damage: 10
+  full_auto: 5
+  name: Reaper Launcher
+  penetration: 10
+  qualities: {reliable: true, tearing: true}
+  range: 250
+  semi_auto: 3
+  single_shot: 1
+scatter_laser:
+  _package: eldar
+  _system: deathwatch
+  class: Heavy
+  damage_type: E
+  dice: 3
+  flat_damage: 10
+  full_auto: 6
+  name: Scatter Laser
+  penetration: 2
+  qualities: {reliable: true, storm: true}
+  range: 180
+scorpions_claw:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 2
+  flat_damage: 8
+  name: Scorpion's Claw
+  penetration: 10
+  qualities: {power_field: true, unwieldy: true}
+scorpions_claw_ranged:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 6
+  full_auto: 10
+  name: Scorpion's Claw (Ranged)
+  penetration: 6
+  qualities: {never_jams: true, razor_sharp: true, tearing: true}
+  range: 60
+  semi_auto: 3
+  single_shot: 1
+shadow_weaver:
+  _package: eldar
+  _system: deathwatch
+  class: Mounted
+  damage_type: R
+  dice: 4
+  flat_damage: 5
+  name: Shadow Weaver
+  penetration: 3
+  qualities: {blast: 6, deadly_snare: true, devastating: 1, razor_sharp: true, tearing: true}
+  range: 250
+  single_shot: 1
+shuriken_cannon:
+  _package: eldar
+  _system: deathwatch
+  class: Heavy
+  damage_type: R
+  dice: 2
+  flat_damage: 6
+  full_auto: 10
+  name: Shuriken Cannon
+  penetration: 6
+  qualities: {razor_sharp: true, reliable: true, tearing: true}
+  range: 110
+shuriken_catapult:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: R
+  dice: 1
+  flat_damage: 4
+  full_auto: 10
+  name: Shuriken Catapult
+  penetration: 6
+  qualities: {reliable: true}
+  range: 60
+  semi_auto: 3
+  single_shot: 1
+shuriken_pistol:
+  _package: eldar
+  _system: deathwatch
+  class: Pistol
+  damage_type: R
+  dice: 1
+  flat_damage: 2
+  full_auto: 5
+  name: Shuriken Pistol
+  penetration: 4
+  qualities: {reliable: true}
+  range: 20
+  semi_auto: 3
+  single_shot: 1
+starcannon:
+  _package: eldar
+  _system: deathwatch
+  class: Heavy
+  damage_type: E
+  dice: 3
+  flat_damage: 10
+  full_auto: 5
+  name: Starcannon
+  penetration: 10
+  qualities: {volatile: null}
+  range: 180
+sunrifle:
+  _package: eldar
+  _system: deathwatch
+  class: Basic
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  full_auto: 8
+  name: Sunrifle
+  penetration: 4
+  qualities: {never_jams: true, storm: true}
+  range: 90
+  semi_auto: 4
+  single_shot: 1
+tempest_launcher:
+  _package: eldar
+  _system: deathwatch
+  class: Heavy
+  damage_type: X
+  dice: 2
+  flat_damage: 6
+  name: Tempest Launcher
+  penetration: 10
+  qualities: {blast: 6, devastating: 1, tearing: true}
+  range: 300
+  semi_auto: 3
+  single_shot: 1
+witchblade:
+  _package: eldar
+  _system: deathwatch
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 11
+  name: Witchblade
+  penetration: 5
+  qualities: {balanced: true, power_field: true}

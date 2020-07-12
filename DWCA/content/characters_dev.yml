@@ -1,0 +1,99 @@
+alakir:
+  _package: dev
+  _system: deathwatch
+  armor: {body: 14, head: 8, left_arm: 12, left_leg: 8, right_arm: 8, right_leg: 8}
+  characteristics: {strength: 42, toughness: 54, willpower: 50}
+  force_field: {overload_max: 10, protection_max: 55}
+  name: Al'akir
+  talents: {deathwatch_training: true}
+  traits: {black_carapace: true, power_armour: true, psy_rating: 5, size: 10, unnatural_strength: 2,
+    unnatural_toughness: 2, unnatural_willpower: 2}
+  weapons: [smite]
+dev_bohn_jobb:
+  _package: dev
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
+  force_field: {overload_max: 10, protection_max: 65}
+  name: Bohn-Jobb
+  species: human
+  talents: {ambidextrous: true, astartes_weapon_training: true, bulging_biceps: true,
+    flesh_render: true, heightened_hearing: true, heightened_sight: true, killing_strike: true,
+    nerves_of_steel: true, quick_draw: true, resistance_psychic: true, touched_by_the_fates: true,
+    unarmed_master: true}
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+dev_genestealer:
+  _package: dev
+  _system: deathwatch
+  armor: {all: 6}
+  characteristics: {strength: 60, toughness: 60, weapon_skill: 65}
+  name: Dev Genestealer
+  species: tyranid
+  talents: {ambidextrous: true, crushing_blow: true, fearless: true, hard_target: true,
+    leap_up: true, lightning_attack: true, lightning_reflexes: true, preternatural_speed: true,
+    step_aside: true, swift_attack: true}
+  traits: {dark_sight: true, fear: 2, improved_natural_weapons: true, multiple_arms: true,
+    tyranid: true, unnatural_agility: 3, unnatural_strength: 2}
+dev_john_bobb:
+  _package: dev
+  _system: deathwatch
+  armor: {all: 8, body: 10}
+  characteristics: {strength: 45, toughness: 51, weapon_skill: 45}
+  name: John-Bobb
+  species: human
+  talents: {ambidextrous: true, astartes_weapon_training: true, bulging_biceps: true,
+    deathwatch_training: true, flesh_render: true, heightened_hearing: true, heightened_sight: true,
+    killing_strike: true, nerves_of_steel: true, quick_draw: true, resistance_psychic: true,
+    unarmed_master: true}
+  traits: {unnatural_strength: 2, unnatural_toughness: 2}
+namael:
+  _package: dev
+  _system: deathwatch
+  armor: {body: 14, head: 8, left_arm: 12, left_leg: 8, right_arm: 8, right_leg: 8}
+  characteristics: {strength: 42, toughness: 43}
+  force_field: {overload_max: 10, protection_max: 55}
+  name: Namael
+  talents: {deathwatch_training: true}
+  traits: {black_carapace: true, power_armour: true, size: 10, unnatural_strength: 2,
+    unnatural_toughness: 2}
+armor_man:
+  _package: dev
+  _system: deathwatch
+  armor: {body: 10, all: 8}
+  characteristics: {strength: 42, toughness: 50}
+  name: ArmorMan
+  talents: {deathwatch_training: true}
+  traits: {black_carapace: true, power_armour: true, size: 10, unnatural_strength: 2,
+    unnatural_toughness: 2}
+  weapons: [lascannon]
+terminator_man:
+  _package: dev
+  _system: deathwatch
+  armor: {all: 14}
+  characteristics: {strength: 42, toughness: 50}
+  force_field: {overload_max: 0, protection_max: 35}
+  name: TerminatorMan
+  talents: {deathwatch_training: true}
+  traits: {black_carapace: true, power_armour: true, size: 10, unnatural_strength: 2,
+    unnatural_toughness: 2}
+centurion_man:
+  _package: dev
+  _system: deathwatch
+  armor: {front: 30, side: 30, rear: 20}
+  characteristics: {strength: 70, weapon_skill: 60, ballistic_skill: 60}
+  name: CenturionMan
+  vehicle : true
+  talents: {deathwatch_training: true}
+  traits: {power_armour: true, size: 20, unnatural_strength: 2}
+  weapons: [siege_drill, hurricane_bolter, frag_missile, krak_missile]
+centurion_armor:
+  _package: dev
+  _system: deathwatch
+  name: CenturionArmorMan
+  armor: {all: 20, head: 8}
+  characteristics: {agility: 54, ballistic_skill: 43, fellowship: 39, intelligence: 43,
+    perception: 49, strength: 70, toughness: 61, weapon_skill: 65,
+    willpower: 43, willpower_bonus: 5, strength_bonus: 40, agility_bonus: -20}
+  talents: {deathwatch_training: true}
+  traits: {unnatural_toughness: 2, unnatural_strength: 3, size: 20}
+  weapons: [siege_drill, hurricane_bolter, frag_missile, krak_missile, centurion_fist]

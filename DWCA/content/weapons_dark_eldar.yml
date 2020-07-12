@@ -1,0 +1,304 @@
+agoniser:
+  _package: dark_eldar
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 0
+  name: Agoniser
+  penetration: 6
+  qualities: {flexible: true, power_field: true, shocking: true, tearing: true}
+blade_of_the_sisterhood:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Blade of the Sisterhood
+  penetration: 2
+  qualities: {balanced: true, crippling: 4, felling: 4, toxic: 4}
+blast_pistol:
+  _package: dark_eldar
+  class: Pistol
+  damage_type: E
+  dice: 2
+  flat_damage: 7
+  name: Blast Pistol
+  penetration: 4
+  qualities: {lance: true}
+  range: 20
+  single_shot: 1
+blaster:
+  _package: dark_eldar
+  class: Basic
+  damage_type: E
+  dice: 3
+  flat_damage: 7
+  name: Blaster
+  penetration: 4
+  qualities: {lance: true}
+  range: 75
+  single_shot: 1
+dark_lance:
+  _package: dark_eldar
+  class: Heavy
+  damage_type: E
+  dice: 3
+  flat_damage: 7
+  name: Dark Lance
+  penetration: 4
+  qualities: {lance: true}
+  range: 200
+  single_shot: 1
+enhanced_splinter_pistol:
+  _package: dark_eldar
+  class: Pistol
+  dice: 1
+  flat_damage: 2
+  full_auto: 5
+  name: Enhanced Splinter Pistol
+  penetration: 3
+  qualities: {crippling: 4, felling: 4, toxic: 5}
+  range: 30
+  semi_auto: 3
+  single_shot: 1
+hellglaive:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 5
+  name: Hellglaive
+  penetration: 3
+  qualities: {razor_sharp: true}
+enhanced_impaler:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Enchanced Impaler
+  penetration: 0
+  qualities: {toxic: 4, felling: 4, crippling: 4}
+impaler:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Impaler
+  penetration: 0
+  qualities: {toxic: 2}
+implanted_blades:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Implanted Blades
+  penetration: 3
+  qualities: {tearing: true}
+mono_sword:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 3
+  name: Mono Sword
+  penetration: 2
+  qualities: {}
+poisoned_blade:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Poisoned Blade
+  penetration: 2
+  qualities: {toxic: 2}
+razorflail:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 2
+  name: Razorflail
+  penetration: 2
+  qualities: {flexible: true}
+scabrous_claws:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Scabrous Claws
+  penetration: 0
+  qualities: {tearing: true}
+shardcarbine:
+  _package: dark_eldar
+  class: Basic
+  damage_type: R
+  dice: 1
+  flat_damage: 2
+  full_auto: 5
+  name: Shardcarbine
+  penetration: 0
+  qualities: {storm: true, toxic: 1}
+  range: 60
+  semi_auto: 3
+  single_shot: 1
+shardnet:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Shardnet
+  penetration: 0
+  qualities: {snare: 2}
+shredder:
+  _package: dark_eldar
+  class: Basic
+  damage_type: R
+  dice: 2
+  flat_damage: 5
+  name: Shredder
+  penetration: 2
+  qualities: {blast: 3, reliable: true, tearing: true}
+  range: 40
+  single_shot: 1
+enhanced_splinter_cannon:
+  _package: dark_eldar
+  class: Heavy
+  damage_type: R
+  dice: 2
+  flat_damage: 2
+  full_auto: 10
+  name: Enhanced Splinter Cannon
+  penetration: 4
+  qualities: {toxic: 6, felling: 4, crippling: 4}
+  range: 150
+  semi_auto: 5
+splinter_cannon:
+  _package: dark_eldar
+  class: Heavy
+  damage_type: R
+  dice: 2
+  flat_damage: 2
+  full_auto: 10
+  name: Splinter Cannon
+  penetration: 4
+  qualities: {toxic: 4}
+  range: 150
+  semi_auto: 5
+splinter_pistol:
+  _package: dark_eldar
+  class: Pistol
+  damage_type: R
+  dice: 1
+  flat_damage: 2
+  full_auto: 5
+  name: Splinter Pistol
+  penetration: 3
+  qualities: {reliable: true, toxic: 2}
+  range: 30
+  semi_auto: 3
+  single_shot: 1
+disintegrator:
+  _package: dark_eldar
+  class: Mounted
+  damage_type: E
+  range: 200
+  name:  Disintegrator
+  full_auto: 10
+  dice: 2
+  flat_damage: 6
+  penetration: 9
+splinter_pod:
+  _package: dark_eldar
+  name: Splinter Pod
+  class: Basic
+  range: 75
+  single_shot: 1
+  semi_auto: 5
+  full_auto: 7
+  dice: 1
+  flat_damage: 2
+  penetration: 3
+  damage_type: R
+  qualities: {toxic: 1}
+splinter_rifle:
+  _package: dark_eldar
+  class: Basic
+  damage_type: R
+  dice: 1
+  flat_damage: 2
+  full_auto: 5
+  name: Splinter Rifle
+  penetration: 3
+  qualities: {toxic: 2}
+  range: 100
+  semi_auto: 3
+  single_shot: 1
+sslyth_blade:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 0
+  name: Xenos Blade
+  penetration: 2
+  qualities: {balanced: true, razor_sharp: true}
+klaive:
+  _package: dark_eldar
+  name: Klaive
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 8
+  penetration: 8
+  qualities: {power_field: true}
+demi_klaive:
+  _package: dark_eldar
+  name: Demi-Klaive
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 4
+  penetration: 6
+  qualities: {power_field: true}
+combo_klaive:
+  _package: dark_eldar
+  name: Combo Klaive
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 12
+  penetration: 8
+  qualities: {power_field: true, unwieldy: true}
+venomblade:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 4
+  name: Venomblade
+  penetration: 2
+  qualities: {felling: 2, toxic: 4}
+enhanced_venomblade:
+  _package: dark_eldar
+  class: Melee
+  damage_type: R
+  dice: 1
+  flat_damage: 8
+  name: Venomblade
+  penetration: 2
+  qualities: {felling: 4, toxic: 6, crippling: 4}
+wych_knife:
+  _package: dark_eldar
+  class: Melee
+  damage_type: E
+  dice: 1
+  flat_damage: 2
+  name: Wych Knife
+  penetration: 0
+  qualities: {balanced: true}
